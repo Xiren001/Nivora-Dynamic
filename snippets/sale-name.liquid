@@ -1,32 +1,34 @@
 {%- comment -%}
   Outputs the name of the currently active seasonal sale based on the calendar month.
-  Schedule (aligned to full calendar months, no gaps/overlaps):
-    Jan New Year Sale | Feb Valentine's Day | Mar Women's Day | Apr Easter Sale
-    May Mother's Day | Jun Father's Day | Jul-Sep Summer Sale | Oct Halloween Sale
-    Nov Black Friday | Dec Christmas Sale
+  Editable in Theme Settings > Dynamic Seasonal Sale, so one change applies everywhere
+  the "dynamic sale" toggle is used.
 {%- endcomment -%}
 {%- liquid
   assign current_month = 'now' | date: '%-m' | plus: 0
   case current_month
     when 1
-      echo 'New Year Sale'
+      echo settings.sale_name_jan
     when 2
-      echo "Valentine's Day"
+      echo settings.sale_name_feb
     when 3
-      echo "Women's Day"
+      echo settings.sale_name_mar
     when 4
-      echo 'Easter Sale'
+      echo settings.sale_name_apr
     when 5
-      echo "Mother's Day"
+      echo settings.sale_name_may
     when 6
-      echo "Father's Day"
-    when 7, 8, 9
-      echo 'Summer Sale'
+      echo settings.sale_name_jun
+    when 7
+      echo settings.sale_name_jul
+    when 8
+      echo settings.sale_name_aug
+    when 9
+      echo settings.sale_name_sep
     when 10
-      echo 'Halloween Sale'
+      echo settings.sale_name_oct
     when 11
-      echo 'Black Friday'
+      echo settings.sale_name_nov
     when 12
-      echo 'Christmas Sale'
+      echo settings.sale_name_dec
   endcase
 -%}

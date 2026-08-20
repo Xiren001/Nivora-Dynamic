@@ -1485,5 +1485,86 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Dynamic Seasonal Sale",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Text shown wherever a \"dynamic sale\" toggle is enabled (announcement bar, image with text, etc), based on the current calendar month. Edit a month below and it updates everywhere dynamic sale is used."
+      },
+      {
+        "type": "text",
+        "id": "sale_name_jan",
+        "label": "January",
+        "default": "New Year Sale"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_feb",
+        "label": "February",
+        "default": "Valentine's Day"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_mar",
+        "label": "March",
+        "default": "Women's Day"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_apr",
+        "label": "April",
+        "default": "Easter Sale"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_may",
+        "label": "May",
+        "default": "Mother's Day"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_jun",
+        "label": "June",
+        "default": "Father's Day"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_jul",
+        "label": "July",
+        "default": "Summer Sale"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_aug",
+        "label": "August",
+        "default": "Summer Sale"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_sep",
+        "label": "September",
+        "default": "Summer Sale"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_oct",
+        "label": "October",
+        "default": "Halloween Sale"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_nov",
+        "label": "November",
+        "default": "Black Friday"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_dec",
+        "label": "December",
+        "default": "Christmas Sale"
+      }
+    ]
   }
 ]
