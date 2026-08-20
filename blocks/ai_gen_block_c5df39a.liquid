@@ -1,0 +1,254 @@
+{% doc %}
+  @prompt
+    Just a headline,  please make sure it's in the middle of the screen
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-headline-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: {{ block.settings.padding_top }}px {{ block.settings.padding_horizontal }}px {{ block.settings.padding_bottom }}px {{ block.settings.padding_horizontal }}px;
+  }
+
+  .ai-headline-inner-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+  }
+
+  .ai-headline-text-{{ ai_gen_id }} {
+    margin: 0;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    color: {{ block.settings.text_color }};
+    text-align: {{ block.settings.text_alignment }};
+    line-height: {{ block.settings.line_height }};
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-headline-text-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.font_size }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<headline-block-{{ ai_gen_id }} class="ai-headline-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-headline-inner-{{ ai_gen_id }}">
+    {% if block.settings.heading_tag == 'h1' %}
+      <h1 class="ai-headline-text-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h1>
+    {% elsif block.settings.heading_tag == 'h2' %}
+      <h2 class="ai-headline-text-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h2>
+    {% elsif block.settings.heading_tag == 'h3' %}
+      <h3 class="ai-headline-text-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h3>
+    {% elsif block.settings.heading_tag == 'h4' %}
+      <h4 class="ai-headline-text-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h4>
+    {% elsif block.settings.heading_tag == 'h5' %}
+      <h5 class="ai-headline-text-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h5>
+    {% elsif block.settings.heading_tag == 'h6' %}
+      <h6 class="ai-headline-text-{{ ai_gen_id }}">{{ block.settings.headline_text }}</h6>
+    {% else %}
+      <p class="ai-headline-text-{{ ai_gen_id }}">{{ block.settings.headline_text }}</p>
+    {% endif %}
+  </div>
+</headline-block-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class HeadlineBlock{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+    }
+    customElements.define('headline-block-{{ ai_gen_id }}', HeadlineBlock{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Headline",
+  "tag": null,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "headline_text",
+      "label": "Headline text",
+      "default": "Your headline here"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "p",
+          "label": "Paragraph"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "line_height",
+      "label": "Line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "min": -2,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Headline"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,562 @@
+{% doc %}
+  @prompt
+    A section that has headline underneath sub headline in the middle underneath there are four image boxes and under the images in the same boxes you can put short text. Also make sure to enable scrolling on mobile., make the image boxes have a headline and a sub-headline below them, aligned in the middle
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-image-grid-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+  }
+
+  .ai-image-grid-header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-image-grid-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    font-weight: 600;
+    margin: 0 0 {{ block.settings.headline_spacing }}px;
+    color: {{ block.settings.headline_color }};
+  }
+
+  .ai-image-grid-subheadline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheadline_size }}px;
+    margin: 0;
+    color: {{ block.settings.subheadline_color }};
+  }
+
+  .ai-image-grid-container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: {{ block.settings.grid_gap }}px;
+  }
+
+  .ai-image-grid-item-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    background-color: {{ block.settings.box_background_color }};
+    border-radius: {{ block.settings.box_border_radius }}px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, {{ block.settings.box_shadow_opacity }});
+  }
+
+  .ai-image-grid-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ block.settings.image_aspect_ratio }};
+    overflow: hidden;
+  }
+
+  .ai-image-grid-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-image-grid-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-image-grid-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-image-grid-content-{{ ai_gen_id }} {
+    padding: {{ block.settings.text_padding }}px;
+    text-align: center;
+  }
+
+  .ai-image-grid-box-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.box_headline_size }}px;
+    font-weight: 600;
+    margin: 0 0 {{ block.settings.box_headline_spacing }}px;
+    color: {{ block.settings.box_headline_color }};
+  }
+
+  .ai-image-grid-box-subheadline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.box_subheadline_size }}px;
+    margin: 0;
+    color: {{ block.settings.box_subheadline_color }};
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-image-grid-container-{{ ai_gen_id }} {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: {{ block.settings.mobile_gap }}px;
+      padding-bottom: 10px;
+    }
+
+    .ai-image-grid-item-{{ ai_gen_id }} {
+      flex: 0 0 {{ block.settings.mobile_item_width }}%;
+      scroll-snap-align: start;
+    }
+
+    .ai-image-grid-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.8 }}px;
+    }
+
+    .ai-image-grid-subheadline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subheadline_size | times: 0.8 }}px;
+    }
+
+    .ai-image-grid-box-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.box_headline_size | times: 0.9 }}px;
+    }
+
+    .ai-image-grid-box-subheadline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.box_subheadline_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<image-grid-{{ ai_gen_id }} class="ai-image-grid-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-image-grid-header-{{ ai_gen_id }}">
+    {% if block.settings.headline != blank %}
+      <h2 class="ai-image-grid-headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+    {% endif %}
+    {% if block.settings.subheadline != blank %}
+      <p class="ai-image-grid-subheadline-{{ ai_gen_id }}">{{ block.settings.subheadline }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ai-image-grid-container-{{ ai_gen_id }}">
+    {% for i in (1..4) %}
+      {% liquid
+        assign image_key = 'image_' | append: i
+        assign box_headline_key = 'box_headline_' | append: i
+        assign box_subheadline_key = 'box_subheadline_' | append: i
+        assign image = block.settings[image_key]
+        assign box_headline = block.settings[box_headline_key]
+        assign box_subheadline = block.settings[box_subheadline_key]
+      %}
+
+      <div class="ai-image-grid-item-{{ ai_gen_id }}">
+        <div class="ai-image-grid-image-wrapper-{{ ai_gen_id }}">
+          {% if image %}
+            <img
+              src="{{ image | image_url: width: 600 }}"
+              alt="{{ image.alt | escape }}"
+              loading="lazy"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+              class="ai-image-grid-image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-image-grid-placeholder-{{ ai_gen_id }}">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="ai-image-grid-content-{{ ai_gen_id }}">
+          {% if box_headline != blank %}
+            <h3 class="ai-image-grid-box-headline-{{ ai_gen_id }}">{{ box_headline }}</h3>
+          {% endif %}
+          {% if box_subheadline != blank %}
+            <p class="ai-image-grid-box-subheadline-{{ ai_gen_id }}">{{ box_subheadline }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</image-grid-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ImageGrid{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.container = this.querySelector('.ai-image-grid-container-{{ ai_gen_id }}');
+        this.setupScrollBehavior();
+      }
+
+      setupScrollBehavior() {
+        if (!this.container) return;
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        this.container.addEventListener('mousedown', (e) => {
+          if (window.innerWidth > 749) return;
+          isDown = true;
+          startX = e.pageX - this.container.offsetLeft;
+          scrollLeft = this.container.scrollLeft;
+        });
+
+        this.container.addEventListener('mouseleave', () => {
+          isDown = false;
+        });
+
+        this.container.addEventListener('mouseup', () => {
+          isDown = false;
+        });
+
+        this.container.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - this.container.offsetLeft;
+          const walk = (x - startX) * 2;
+          this.container.scrollLeft = scrollLeft - walk;
+        });
+      }
+    }
+
+    customElements.define('image-grid-{{ ai_gen_id }}', ImageGrid{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Image grid with text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main headline"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Our Features"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Headline size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "headline_spacing",
+      "label": "Space below headline",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Main subheadline"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Discover what makes us special"
+    },
+    {
+      "type": "range",
+      "id": "subheadline_size",
+      "label": "Subheadline size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subheadline_color",
+      "label": "Subheadline color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Space below header",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Image box 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "box_headline_1",
+      "label": "Headline",
+      "default": "Feature One"
+    },
+    {
+      "type": "textarea",
+      "id": "box_subheadline_1",
+      "label": "Subheadline",
+      "default": "Description for feature one"
+    },
+    {
+      "type": "header",
+      "content": "Image box 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "box_headline_2",
+      "label": "Headline",
+      "default": "Feature Two"
+    },
+    {
+      "type": "textarea",
+      "id": "box_subheadline_2",
+      "label": "Subheadline",
+      "default": "Description for feature two"
+    },
+    {
+      "type": "header",
+      "content": "Image box 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "box_headline_3",
+      "label": "Headline",
+      "default": "Feature Three"
+    },
+    {
+      "type": "textarea",
+      "id": "box_subheadline_3",
+      "label": "Subheadline",
+      "default": "Description for feature three"
+    },
+    {
+      "type": "header",
+      "content": "Image box 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "box_headline_4",
+      "label": "Headline",
+      "default": "Feature Four"
+    },
+    {
+      "type": "textarea",
+      "id": "box_subheadline_4",
+      "label": "Subheadline",
+      "default": "Description for feature four"
+    },
+    {
+      "type": "header",
+      "content": "Box text style"
+    },
+    {
+      "type": "range",
+      "id": "box_headline_size",
+      "label": "Headline size",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "box_headline_color",
+      "label": "Headline color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "box_headline_spacing",
+      "label": "Space below headline",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "box_subheadline_size",
+      "label": "Subheadline size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "box_subheadline_color",
+      "label": "Subheadline color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "text_padding",
+      "label": "Content padding",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Box style"
+    },
+    {
+      "type": "color",
+      "id": "box_background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "box_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "box_shadow_opacity",
+      "label": "Shadow opacity",
+      "min": 0,
+      "max": 0.5,
+      "step": 0.1,
+      "default": 0.1
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "1/1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "4/3",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "16/9",
+          "label": "Wide (16:9)"
+        },
+        {
+          "value": "3/4",
+          "label": "Portrait (3:4)"
+        }
+      ],
+      "default": "1/1"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Desktop gap",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Mobile settings"
+    },
+    {
+      "type": "range",
+      "id": "mobile_item_width",
+      "label": "Item width",
+      "min": 60,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Gap between items",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "unit": "px",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image grid with text"
+    }
+  ]
+}
+{% endschema %}

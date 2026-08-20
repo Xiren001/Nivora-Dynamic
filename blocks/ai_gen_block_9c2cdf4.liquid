@@ -1,0 +1,679 @@
+{% doc %}
+  @prompt
+    Generate a section that has a headline in the middle and a sub headline ride below aligned in the middle. Also, then there are five boxes below, and each box has an image that I can choose from library and below each image I can put a headline in the description. Make sure in the description I can put text under each other in a new line in dashes. Also make sure that I can choose how many boxes there are per page and make sure there are five of these boxes in total, also make sure to enable scrolling using an arrow both in desktop and mobile Preview and make sure it is not buggy and it's perfectly aligned and looks perfect in mobile preview when scrolled. Also make sure the arrow is below the boxes aligned in the middle and also make sure I can make the headlines and sub headlines bold or semi bold and can change the size of it both a mobile and desktop review
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-feature-carousel-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .ai-feature-carousel__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-feature-carousel__headline-{{ ai_gen_id }} {
+    margin: 0 0 12px;
+    font-size: {{ block.settings.headline_size_desktop }}px;
+    font-weight: {{ block.settings.headline_weight }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-feature-carousel__subheadline-{{ ai_gen_id }} {
+    margin: 0;
+    font-size: {{ block.settings.subheadline_size_desktop }}px;
+    font-weight: {{ block.settings.subheadline_weight }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-feature-carousel__container-{{ ai_gen_id }} {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-feature-carousel__track-wrapper-{{ ai_gen_id }} {
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+
+  .ai-feature-carousel__track-{{ ai_gen_id }} {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease;
+  }
+
+  .ai-feature-carousel__item-{{ ai_gen_id }} {
+    flex: 0 0 calc((100% - ({{ block.settings.items_per_row_desktop | minus: 1 }} * 20px)) / {{ block.settings.items_per_row_desktop }});
+    min-width: 0;
+  }
+
+  .ai-feature-carousel__image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-feature-carousel__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-feature-carousel__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-feature-carousel__image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+  }
+
+  .ai-feature-carousel__item-headline-{{ ai_gen_id }} {
+    margin: 0 0 8px;
+    font-size: {{ block.settings.item_headline_size_desktop }}px;
+    font-weight: {{ block.settings.item_headline_weight }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-feature-carousel__item-description-{{ ai_gen_id }} {
+    margin: 0;
+    font-size: {{ block.settings.item_description_size_desktop }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+  }
+
+  .ai-feature-carousel__item-description-{{ ai_gen_id }} ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ai-feature-carousel__item-description-{{ ai_gen_id }} li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 4px;
+  }
+
+  .ai-feature-carousel__item-description-{{ ai_gen_id }} li:before {
+    content: '—';
+    position: absolute;
+    left: 0;
+  }
+
+  .ai-feature-carousel__controls-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .ai-feature-carousel__arrow-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: {{ block.settings.arrow_background_color }};
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-feature-carousel__arrow-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.arrow_hover_color }};
+  }
+
+  .ai-feature-carousel__arrow-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ai-feature-carousel__arrow-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    fill: {{ block.settings.arrow_icon_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-feature-carousel__headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size_mobile }}px;
+    }
+
+    .ai-feature-carousel__subheadline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subheadline_size_mobile }}px;
+    }
+
+    .ai-feature-carousel__item-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.item_headline_size_mobile }}px;
+    }
+
+    .ai-feature-carousel__item-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.item_description_size_mobile }}px;
+    }
+
+    .ai-feature-carousel__item-{{ ai_gen_id }} {
+      flex: 0 0 calc((100% - ({{ block.settings.items_per_row_mobile | minus: 1 }} * 20px)) / {{ block.settings.items_per_row_mobile }});
+    }
+  }
+{% endstyle %}
+
+<feature-carousel-{{ ai_gen_id }} class="ai-feature-carousel-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-feature-carousel__header-{{ ai_gen_id }}">
+    {% if block.settings.headline != blank %}
+      <h2 class="ai-feature-carousel__headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+    {% endif %}
+    {% if block.settings.subheadline != blank %}
+      <p class="ai-feature-carousel__subheadline-{{ ai_gen_id }}">{{ block.settings.subheadline }}</p>
+    {% endif %}
+  </div>
+
+  <div class="ai-feature-carousel__container-{{ ai_gen_id }}">
+    <div class="ai-feature-carousel__track-wrapper-{{ ai_gen_id }}">
+      <div class="ai-feature-carousel__track-{{ ai_gen_id }}" data-track>
+        {% for i in (1..5) %}
+          {% liquid
+            assign image_key = 'item_' | append: i | append: '_image'
+            assign headline_key = 'item_' | append: i | append: '_headline'
+            assign description_key = 'item_' | append: i | append: '_description'
+            
+            assign item_image = block.settings[image_key]
+            assign item_headline = block.settings[headline_key]
+            assign item_description = block.settings[description_key]
+          %}
+
+          <div class="ai-feature-carousel__item-{{ ai_gen_id }}">
+            <div class="ai-feature-carousel__image-wrapper-{{ ai_gen_id }}">
+              {% if item_image %}
+                <img
+                  src="{{ item_image | image_url: width: 600 }}"
+                  alt="{{ item_image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ item_image.width }}"
+                  height="{{ item_image.height }}"
+                  class="ai-feature-carousel__image-{{ ai_gen_id }}"
+                >
+              {% else %}
+                <div class="ai-feature-carousel__image-placeholder-{{ ai_gen_id }}">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+            </div>
+
+            {% if item_headline != blank %}
+              <h3 class="ai-feature-carousel__item-headline-{{ ai_gen_id }}">{{ item_headline }}</h3>
+            {% endif %}
+
+            {% if item_description != blank %}
+              <div class="ai-feature-carousel__item-description-{{ ai_gen_id }}">
+                {% assign lines = item_description | newline_to_br | split: '<br />' %}
+                <ul>
+                  {% for line in lines %}
+                    {% assign trimmed_line = line | strip %}
+                    {% if trimmed_line != blank %}
+                      <li>{{ trimmed_line }}</li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="ai-feature-carousel__controls-{{ ai_gen_id }}">
+      <button
+        class="ai-feature-carousel__arrow-{{ ai_gen_id }} ai-feature-carousel__arrow--prev-{{ ai_gen_id }}"
+        aria-label="Previous"
+        data-prev
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        </svg>
+      </button>
+      <button
+        class="ai-feature-carousel__arrow-{{ ai_gen_id }} ai-feature-carousel__arrow--next-{{ ai_gen_id }}"
+        aria-label="Next"
+        data-next
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</feature-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FeatureCarousel{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentIndex = 0;
+        this.itemsPerView = {{ block.settings.items_per_row_desktop }};
+        this.totalItems = 5;
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('[data-track]');
+        this.prevButton = this.querySelector('[data-prev]');
+        this.nextButton = this.querySelector('[data-next]');
+
+        this.updateItemsPerView();
+        this.updateButtons();
+
+        this.prevButton.addEventListener('click', () => this.prev());
+        this.nextButton.addEventListener('click', () => this.next());
+
+        window.addEventListener('resize', () => this.handleResize());
+      }
+
+      handleResize() {
+        this.updateItemsPerView();
+        this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+        this.updateCarousel();
+      }
+
+      updateItemsPerView() {
+        if (window.innerWidth <= 749) {
+          this.itemsPerView = {{ block.settings.items_per_row_mobile }};
+        } else {
+          this.itemsPerView = {{ block.settings.items_per_row_desktop }};
+        }
+        this.maxIndex = Math.max(0, this.totalItems - this.itemsPerView);
+      }
+
+      prev() {
+        if (this.currentIndex > 0) {
+          this.currentIndex--;
+          this.updateCarousel();
+        }
+      }
+
+      next() {
+        if (this.currentIndex < this.maxIndex) {
+          this.currentIndex++;
+          this.updateCarousel();
+        }
+      }
+
+      updateCarousel() {
+        const itemWidth = this.track.children[0].offsetWidth;
+        const gap = 20;
+        const offset = -(this.currentIndex * (itemWidth + gap));
+        this.track.style.transform = `translateX(${offset}px)`;
+        this.updateButtons();
+      }
+
+      updateButtons() {
+        this.prevButton.disabled = this.currentIndex === 0;
+        this.nextButton.disabled = this.currentIndex >= this.maxIndex;
+      }
+    }
+
+    customElements.define('feature-carousel-{{ ai_gen_id }}', FeatureCarousel{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Feature carousel",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main headings"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Our Features"
+    },
+    {
+      "type": "range",
+      "id": "headline_size_desktop",
+      "label": "Headline size (desktop)",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "headline_size_mobile",
+      "label": "Headline size (mobile)",
+      "min": 14,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "headline_weight",
+      "label": "Headline weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Discover what makes us special"
+    },
+    {
+      "type": "range",
+      "id": "subheadline_size_desktop",
+      "label": "Subheadline size (desktop)",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subheadline_size_mobile",
+      "label": "Subheadline size (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "subheadline_weight",
+      "label": "Subheadline weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "items_per_row_desktop",
+      "label": "Items per row (desktop)",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "items_per_row_mobile",
+      "label": "Items per row (mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Item text"
+    },
+    {
+      "type": "range",
+      "id": "item_headline_size_desktop",
+      "label": "Item headline size (desktop)",
+      "min": 14,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_headline_size_mobile",
+      "label": "Item headline size (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "select",
+      "id": "item_headline_weight",
+      "label": "Item headline weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "600",
+          "label": "Semi bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "item_description_size_desktop",
+      "label": "Item description size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "item_description_size_mobile",
+      "label": "Item description size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "arrow_background_color",
+      "label": "Arrow background",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "arrow_hover_color",
+      "label": "Arrow hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "arrow_icon_color",
+      "label": "Arrow icon",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Item 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_1_headline",
+      "label": "Headline",
+      "default": "Feature One"
+    },
+    {
+      "type": "textarea",
+      "id": "item_1_description",
+      "label": "Description",
+      "default": "First benefit\nSecond benefit\nThird benefit",
+      "info": "Each line will appear with a dash"
+    },
+    {
+      "type": "header",
+      "content": "Item 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_2_headline",
+      "label": "Headline",
+      "default": "Feature Two"
+    },
+    {
+      "type": "textarea",
+      "id": "item_2_description",
+      "label": "Description",
+      "default": "First benefit\nSecond benefit\nThird benefit",
+      "info": "Each line will appear with a dash"
+    },
+    {
+      "type": "header",
+      "content": "Item 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_3_headline",
+      "label": "Headline",
+      "default": "Feature Three"
+    },
+    {
+      "type": "textarea",
+      "id": "item_3_description",
+      "label": "Description",
+      "default": "First benefit\nSecond benefit\nThird benefit",
+      "info": "Each line will appear with a dash"
+    },
+    {
+      "type": "header",
+      "content": "Item 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_4_headline",
+      "label": "Headline",
+      "default": "Feature Four"
+    },
+    {
+      "type": "textarea",
+      "id": "item_4_description",
+      "label": "Description",
+      "default": "First benefit\nSecond benefit\nThird benefit",
+      "info": "Each line will appear with a dash"
+    },
+    {
+      "type": "header",
+      "content": "Item 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "item_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "item_5_headline",
+      "label": "Headline",
+      "default": "Feature Five"
+    },
+    {
+      "type": "textarea",
+      "id": "item_5_description",
+      "label": "Description",
+      "default": "First benefit\nSecond benefit\nThird benefit",
+      "info": "Each line will appear with a dash"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature carousel"
+    }
+  ]
+}
+{% endschema %}

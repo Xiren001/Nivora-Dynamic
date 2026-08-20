@@ -1,0 +1,352 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+    }
+  }
+
+   /* General style to remove arrows */
+    details > summary {
+      list-style: none;
+    }
+    
+    /* Remove default arrow icon from Chrome, Safari and Opera */
+    details > summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    /* Remove default arrow icon from Firefox */
+    details > summary {
+      /* Your custom styles for the summary element */
+    }
+    
+    details > summary::-moz-list-bullet {
+      display: none;
+    }
+
+  .ss-faq-details {
+    transition: all 0.2s;
+    padding: 5px 2px;
+  }
+  
+  .ss-faq-question {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s;
+    font-weight: {{section.settings.font_weight}};
+    color: {{section.settings.content_color}};
+    font-size:{{ section.settings.question-font-size }}px;
+    padding: 7px 15px;
+    background-color: {{section.settings.line-color}};
+  }
+  
+  .ss-faq-question::after {
+    content: '\FE62';
+    font-size:calc({{ section.settings.question-font-size }}px + 4px);
+    transition: all 0.2s ease;
+  }
+
+    details[open] .ss-faq-question::after {
+          transform: rotate(45deg);
+    }
+
+  .ss-accordion {
+  }
+
+  .ss-accordion-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ss-faq-content p {
+    font-size:{{ section.settings.answer-font-size }}px;
+    padding:10px 15px;
+    margin: 0;
+    color: {{section.settings.content_color}};
+    border: 1px solid {{section.settings.line-color}};
+  }
+
+  .ss-faq-header {
+    text-align:center;
+    font-size:{{ section.settings.header-font-size }}px;
+    font-weight: {{section.settings.font_weight}};
+    color: {{section.settings.header_color}};
+    margin: 16px 0;
+    line-height: calc(1 + .3/max(1,var(--font-heading-scale)));
+  }
+
+  .ss-extra-text {
+    font-size:{{ section.settings.more-questions-font-size }}px;
+  }
+  
+  .ss-extra-text a {
+    font-weight: {{section.settings.font_weight}};
+    color: {{section.settings.link_color}};
+    font-size:{{ section.settings.more-questions-font-size }}px;
+  }
+
+  @media screen and (max-width: 750px) {
+    .ss-faq-header {
+       font-size:calc({{ section.settings.header-font-size }}px * 0.8);
+    }
+  }
+
+  DETAILS[open] SUMMARY ~ * {
+    animation: sweep 0.2s ease-in-out;
+  }
+  
+  @keyframes sweep {
+    0% {
+      opacity: 0;
+      margin-top: -10px
+    }
+    100% {
+      opacity: 1;
+      margin-top: 0px
+    }
+  }
+  
+{%- endstyle -%}
+
+<div style="background-color:{{section.settings.background-color}};">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="ss_faq_wrapper">
+      <p class="ss-faq-header">{{ section.settings.heading }}</p>
+      <div class="ss-accordion-wrapper">
+      {%for block in section.blocks %}
+        <div class="ss-accordion">
+          <details class="ss-faq-details" {% if section.settings.open_first_collapsible_row and forloop.first %} open{% endif %}>
+            <summary class="ss-faq-question">
+              {{ block.settings.question }}
+            </summary>
+            <div class="ss-faq-content">
+              {{ block.settings.answer }}
+            </div>
+          </details>
+        </div>
+      {% endfor %}
+      </div>
+      {% if section.settings.hide_more_questions_text %}
+        <p class="ss-extra-text"style="text-align: center;">{{ section.settings.more_questions }} <a href="{{ section.settings.full_faq_url }}">{{ section.settings.full_faq }}</a></p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "SS - FAQ",
+	"class": "section",
+	"tag": "section",
+    "settings": [
+		{
+          "type": "header",
+          "content": "Background color"
+        },
+	    {
+		  "type": "color",
+		  "label": "Section background color",
+		  "id": "background-color",
+		  "default": "#ffffff"
+		},
+        {
+            "type":"text",
+            "label":"Heading",
+            "id":"heading",
+            "default":"Frequently Asked Questions"
+        },
+        {
+         "type": "select",
+         "id": "font_weight",
+         "label": "Font thickness",
+         "options": [
+            {
+              "value": "700",
+              "label": "Thick"
+            },
+            {
+              "value": "300",
+              "label": "Normal"
+            }
+          ],
+          "default": "300"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_first_collapsible_row",
+          "default": false,
+          "label": "Open first collapsible row"
+        },
+        {
+          "type": "header",
+          "content": "Font colors"
+        },
+        {
+            "type":"color",
+            "label":"Header color",
+            "id":"header_color",
+            "default":"#121212"
+        },
+        {
+            "type":"color",
+            "label":"Question/answer color",
+            "id":"content_color",
+            "default":"#121212"
+        },
+        {
+            "type":"color",
+            "label":"Link color",
+            "id":"link_color",
+            "default":"#000"
+        },
+         {
+            "type":"color",
+            "label":"Question background color",
+            "id":"line-color",
+            "default":"#F2F2F2"
+        },
+         {
+          "type": "header",
+          "content": "Font sizes"
+        },
+        {
+            "type":"range",
+            "id":"header-font-size",
+            "label":"Header font size",
+            "default":32,
+            "min":12,
+            "max":60,
+            "step":2
+        },
+        {
+            "type":"range",
+            "id":"question-font-size",
+            "label":"Question font size",
+            "default":16,
+            "min":12,
+            "max":60,
+            "step":2
+        },
+        {
+            "type":"range",
+            "id":"answer-font-size",
+            "label":"Answer font size",
+            "default":16,
+            "min":10,
+            "max":60,
+            "step":2
+        },
+         {
+            "type":"range",
+            "id":"more-questions-font-size",
+            "label":"More questions font size",
+            "default":16,
+            "min":10,
+            "max":60,
+            "step":2
+        },
+        {
+          "type": "header",
+          "content": "Optional text below"
+        },
+        {
+            "type":"text",
+            "label":"More questions text",
+            "id":"more_questions",
+            "default":"More questions?"
+        },
+        {
+            "type":"text",
+            "label":"See our full FAQ text",
+            "id":"full_faq",
+            "default":"See our full FAQ"
+        },
+        {
+            "type":"url",
+            "label":"Url for see full faq text",
+            "id":"full_faq_url"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_more_questions_text",
+          "default": true,
+          "label": "Show 'More Questions' text"
+        },
+        {
+          "type": "header",
+          "content": "Section padding"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top",
+          "default": 36
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_bottom",
+          "default": 36
+        }
+	],
+      "blocks":	[
+        {
+        "type":"text",
+        "name":"Questions/Answer",
+        "settings": [
+            {
+                "type":"text",
+                "label":"Question",
+                "id":"question",
+                "default":"FAQ question"
+            },
+            {
+                "type":"richtext",
+                "label":"Answer",
+                "id":"answer",
+                "default":"<p>Answer richtext</p>"
+                }
+            ]
+        }
+    ],
+ 	"presets": [
+      {
+        "name": "SS - FAQ #3",
+         "blocks": [
+                {
+                    "type":"text"
+                },
+                {
+                    "type":"text"
+                },
+                {
+                    "type":"text"
+                }
+            ]
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

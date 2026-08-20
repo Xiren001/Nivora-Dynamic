@@ -1,0 +1,615 @@
+{% doc %}
+  @prompt
+    A section that has a headline, below that it has a sub headline and below that it has five boxes which you can put images into and each box has a headline in the sub headline below them. Make sure that both on phone preview and desktop you can choose how many boxes appear on the page and can enables scroll on desktop AND mobile. Make sure when I change boxes pair page it automatically enables scroll so for example if I choose for boxes per page there's an arrow to see the last box. Make sure it's the same both on desktop review and mobile. also make sure in the boxes for the subheadline  I can write text under each other using dashes, each sentence in a new line
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-feature-boxes-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-feature-boxes-container-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-feature-boxes-header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-bottom: 40px;
+  }
+
+  .ai-feature-boxes-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    color: {{ block.settings.headline_color }};
+    margin: 0 0 16px 0;
+    font-weight: 600;
+  }
+
+  .ai-feature-boxes-subheadline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheadline_size }}px;
+    color: {{ block.settings.subheadline_color }};
+    margin: 0;
+  }
+
+  .ai-feature-boxes-carousel-wrapper-{{ ai_gen_id }} {
+    position: relative;
+  }
+
+  .ai-feature-boxes-carousel-{{ ai_gen_id }} {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .ai-feature-boxes-track-{{ ai_gen_id }} {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.4s ease;
+  }
+
+  .ai-feature-box-{{ ai_gen_id }} {
+    flex: 0 0 calc((100% - ({{ block.settings.boxes_per_page_desktop | minus: 1 }} * 20px)) / {{ block.settings.boxes_per_page_desktop }});
+    background-color: {{ block.settings.box_background_color }};
+    border-radius: {{ block.settings.box_border_radius }}px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-feature-box-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-feature-box-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-feature-box-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-feature-box-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-feature-box-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.box_headline_size }}px;
+    color: {{ block.settings.box_headline_color }};
+    margin: 0 0 12px 0;
+    font-weight: 600;
+  }
+
+  .ai-feature-box-subheadline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.box_subheadline_size }}px;
+    color: {{ block.settings.box_subheadline_color }};
+    margin: 0;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  .ai-feature-boxes-nav-{{ ai_gen_id }} {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .ai-feature-boxes-nav-{{ ai_gen_id }}.active {
+    display: flex;
+  }
+
+  .ai-feature-boxes-nav-button-{{ ai_gen_id }} {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: {{ block.settings.arrow_background_color }};
+    color: {{ block.settings.arrow_color }};
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-feature-boxes-nav-button-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ai-feature-boxes-nav-button-{{ ai_gen_id }}:not(:disabled):hover {
+    opacity: 0.8;
+  }
+
+  .ai-feature-boxes-nav-button-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-feature-box-{{ ai_gen_id }} {
+      flex: 0 0 calc((100% - ({{ block.settings.boxes_per_page_mobile | minus: 1 }} * 20px)) / {{ block.settings.boxes_per_page_mobile }});
+    }
+
+    .ai-feature-boxes-headline-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.headline_size }}px * 0.8);
+    }
+
+    .ai-feature-boxes-subheadline-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subheadline_size }}px * 0.9);
+    }
+
+    .ai-feature-box-headline-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.box_headline_size }}px * 0.9);
+    }
+
+    .ai-feature-box-subheadline-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.box_subheadline_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<feature-boxes-{{ ai_gen_id }}
+  class="ai-feature-boxes-{{ ai_gen_id }}"
+  data-boxes-desktop="{{ block.settings.boxes_per_page_desktop }}"
+  data-boxes-mobile="{{ block.settings.boxes_per_page_mobile }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-feature-boxes-container-{{ ai_gen_id }}">
+    <div class="ai-feature-boxes-header-{{ ai_gen_id }}">
+      {% if block.settings.headline != blank %}
+        <h2 class="ai-feature-boxes-headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+      {% endif %}
+      {% if block.settings.subheadline != blank %}
+        <p class="ai-feature-boxes-subheadline-{{ ai_gen_id }}">{{ block.settings.subheadline }}</p>
+      {% endif %}
+    </div>
+
+    <div class="ai-feature-boxes-carousel-wrapper-{{ ai_gen_id }}">
+      <div class="ai-feature-boxes-carousel-{{ ai_gen_id }}">
+        <div class="ai-feature-boxes-track-{{ ai_gen_id }}">
+          {% for i in (1..5) %}
+            {% liquid
+              assign image_key = 'box_' | append: i | append: '_image'
+              assign headline_key = 'box_' | append: i | append: '_headline'
+              assign subheadline_key = 'box_' | append: i | append: '_subheadline'
+              
+              assign box_image = block.settings[image_key]
+              assign box_headline = block.settings[headline_key]
+              assign box_subheadline = block.settings[subheadline_key]
+            %}
+
+            <div class="ai-feature-box-{{ ai_gen_id }}">
+              <div class="ai-feature-box-image-wrapper-{{ ai_gen_id }}">
+                {% if box_image %}
+                  <img
+                    src="{{ box_image | image_url: width: 600 }}"
+                    alt="{{ box_image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ box_image.width }}"
+                    height="{{ box_image.height }}"
+                    class="ai-feature-box-image-{{ ai_gen_id }}"
+                  >
+                {% else %}
+                  <div class="ai-feature-box-image-placeholder-{{ ai_gen_id }}">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {% endif %}
+              </div>
+
+              {% if box_headline != blank %}
+                <h3 class="ai-feature-box-headline-{{ ai_gen_id }}">{{ box_headline }}</h3>
+              {% endif %}
+
+              {% if box_subheadline != blank %}
+                <div class="ai-feature-box-subheadline-{{ ai_gen_id }}">{{ box_subheadline }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="ai-feature-boxes-nav-{{ ai_gen_id }}">
+        <button
+          class="ai-feature-boxes-nav-button-{{ ai_gen_id }} ai-feature-boxes-prev-{{ ai_gen_id }}"
+          aria-label="Previous"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button
+          class="ai-feature-boxes-nav-button-{{ ai_gen_id }} ai-feature-boxes-next-{{ ai_gen_id }}"
+          aria-label="Next"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</feature-boxes-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FeatureBoxes{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentIndex = 0;
+        this.totalBoxes = 5;
+      }
+
+      connectedCallback() {
+        this.track = this.querySelector('.ai-feature-boxes-track-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('.ai-feature-boxes-prev-{{ ai_gen_id }}');
+        this.nextButton = this.querySelector('.ai-feature-boxes-next-{{ ai_gen_id }}');
+        this.nav = this.querySelector('.ai-feature-boxes-nav-{{ ai_gen_id }}');
+        
+        this.boxesDesktop = parseInt(this.dataset.boxesDesktop);
+        this.boxesMobile = parseInt(this.dataset.boxesMobile);
+
+        this.setupEventListeners();
+        this.updateCarousel();
+        
+        window.addEventListener('resize', () => this.updateCarousel());
+      }
+
+      setupEventListeners() {
+        this.prevButton.addEventListener('click', () => this.navigate(-1));
+        this.nextButton.addEventListener('click', () => this.navigate(1));
+      }
+
+      getBoxesPerPage() {
+        return window.innerWidth <= 749 ? this.boxesMobile : this.boxesDesktop;
+      }
+
+      navigate(direction) {
+        const boxesPerPage = this.getBoxesPerPage();
+        this.currentIndex += direction;
+        
+        const maxIndex = this.totalBoxes - boxesPerPage;
+        this.currentIndex = Math.max(0, Math.min(this.currentIndex, maxIndex));
+        
+        this.updateCarousel();
+      }
+
+      updateCarousel() {
+        const boxesPerPage = this.getBoxesPerPage();
+        const shouldShowNav = boxesPerPage < this.totalBoxes;
+        
+        if (shouldShowNav) {
+          this.nav.classList.add('active');
+        } else {
+          this.nav.classList.remove('active');
+          this.currentIndex = 0;
+        }
+
+        const boxWidth = 100 / boxesPerPage;
+        const gap = 20;
+        const gapPercentage = (gap * (boxesPerPage - 1)) / this.track.offsetWidth * 100;
+        const translateX = -(this.currentIndex * (boxWidth + (gapPercentage / boxesPerPage)));
+        
+        this.track.style.transform = `translateX(${translateX}%)`;
+
+        const maxIndex = this.totalBoxes - boxesPerPage;
+        this.prevButton.disabled = this.currentIndex === 0;
+        this.nextButton.disabled = this.currentIndex >= maxIndex;
+      }
+    }
+
+    customElements.define('feature-boxes-{{ ai_gen_id }}', FeatureBoxes{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Feature boxes",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Main headings"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Our Features"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Headline size",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline color",
+      "default": "#121212"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Discover what makes us special"
+    },
+    {
+      "type": "range",
+      "id": "subheadline_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheadline size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subheadline_color",
+      "label": "Subheadline color",
+      "default": "#121212"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "boxes_per_page_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "Boxes per page on desktop",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "boxes_per_page_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Boxes per page on mobile",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Box 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_1_headline",
+      "label": "Headline",
+      "default": "Feature One"
+    },
+    {
+      "type": "textarea",
+      "id": "box_1_subheadline",
+      "label": "Subheadline",
+      "default": "First benefit\nSecond benefit\nThird benefit"
+    },
+    {
+      "type": "header",
+      "content": "Box 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_2_headline",
+      "label": "Headline",
+      "default": "Feature Two"
+    },
+    {
+      "type": "textarea",
+      "id": "box_2_subheadline",
+      "label": "Subheadline",
+      "default": "First benefit\nSecond benefit\nThird benefit"
+    },
+    {
+      "type": "header",
+      "content": "Box 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_3_headline",
+      "label": "Headline",
+      "default": "Feature Three"
+    },
+    {
+      "type": "textarea",
+      "id": "box_3_subheadline",
+      "label": "Subheadline",
+      "default": "First benefit\nSecond benefit\nThird benefit"
+    },
+    {
+      "type": "header",
+      "content": "Box 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_4_headline",
+      "label": "Headline",
+      "default": "Feature Four"
+    },
+    {
+      "type": "textarea",
+      "id": "box_4_subheadline",
+      "label": "Subheadline",
+      "default": "First benefit\nSecond benefit\nThird benefit"
+    },
+    {
+      "type": "header",
+      "content": "Box 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_5_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_5_headline",
+      "label": "Headline",
+      "default": "Feature Five"
+    },
+    {
+      "type": "textarea",
+      "id": "box_5_subheadline",
+      "label": "Subheadline",
+      "default": "First benefit\nSecond benefit\nThird benefit"
+    },
+    {
+      "type": "header",
+      "content": "Box style"
+    },
+    {
+      "type": "color",
+      "id": "box_background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "box_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Image border radius",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "box_headline_size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Headline size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "box_headline_color",
+      "label": "Headline color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "box_subheadline_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheadline size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "box_subheadline_color",
+      "label": "Subheadline color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Navigation arrows"
+    },
+    {
+      "type": "color",
+      "id": "arrow_background_color",
+      "label": "Background color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section style"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f3f3f3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature boxes"
+    }
+  ]
+}
+{% endschema %}

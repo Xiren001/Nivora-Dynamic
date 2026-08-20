@@ -1,0 +1,540 @@
+{% doc %}
+  @prompt
+    A section that is divided into two parts on the left side of the screen you can put a video next to the video on the right side of the page. You can put a hat headline and below that sub headline., Instead of having to paste a video link or URL please make sure I can insert the video from my files,  please make sure I can adjust the width and the length of the video's size, Please make sure when on mobile preview, the video and the content is perfectly looking and it's not buggy
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-video-text-split-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding_top }}px 0 {{ block.settings.section_padding_bottom }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-video-text-split__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-video-text-split__wrapper-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.gap }}px;
+    align-items: {{ block.settings.vertical_alignment }};
+  }
+
+  .ai-video-text-split__video-column-{{ ai_gen_id }} {
+    flex: 0 0 {{ block.settings.video_column_width }}%;
+  }
+
+  .ai-video-text-split__text-column-{{ ai_gen_id }} {
+    flex: 1;
+  }
+
+  .ai-video-text-split__video-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    {% assign aspect_ratio = 100.0 | divided_by: block.settings.video_aspect_ratio %}
+    padding-bottom: {{ aspect_ratio }}%;
+    overflow: hidden;
+    border-radius: {{ block.settings.video_border_radius }}px;
+    background-color: #f4f4f4;
+  }
+
+  .ai-video-text-split__video-wrapper-{{ ai_gen_id }} video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-video-text-split__video-placeholder-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+  }
+
+  .ai-video-text-split__video-placeholder-{{ ai_gen_id }} svg {
+    width: 80px;
+    height: 80px;
+    opacity: 0.3;
+  }
+
+  .ai-video-text-split__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+    max-width: 90%;
+  }
+
+  .ai-video-text-split__heading-{{ ai_gen_id }} {
+    margin: 0 0 {{ block.settings.heading_spacing }}px;
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+
+  .ai-video-text-split__subheading-{{ ai_gen_id }} {
+    margin: 0;
+    font-size: {{ block.settings.subheading_size }}px;
+    color: {{ block.settings.subheading_color }};
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-video-text-split-{{ ai_gen_id }} {
+      padding: {{ block.settings.mobile_padding_top }}px 0 {{ block.settings.mobile_padding_bottom }}px;
+    }
+
+    .ai-video-text-split__container-{{ ai_gen_id }} {
+      padding: 0 16px;
+    }
+
+    .ai-video-text-split__wrapper-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: {{ block.settings.mobile_gap }}px;
+    }
+
+    .ai-video-text-split__video-column-{{ ai_gen_id }} {
+      flex: 0 0 100%;
+      width: 100%;
+    }
+
+    .ai-video-text-split__text-column-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-video-text-split__video-wrapper-{{ ai_gen_id }} {
+      {% assign mobile_aspect_ratio = 100.0 | divided_by: block.settings.mobile_video_aspect_ratio %}
+      padding-bottom: {{ mobile_aspect_ratio }}%;
+    }
+
+    .ai-video-text-split__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_heading_size }}px;
+      margin-bottom: {{ block.settings.mobile_heading_spacing }}px;
+    }
+
+    .ai-video-text-split__subheading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_subheading_size }}px;
+    }
+
+    .ai-video-text-split__empty-state-{{ ai_gen_id }} {
+      font-size: 12px;
+      bottom: 10px;
+    }
+  }
+{% endstyle %}
+
+<video-text-split-{{ ai_gen_id }}
+  class="ai-video-text-split-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-video-text-split__container-{{ ai_gen_id }}">
+    <div class="ai-video-text-split__wrapper-{{ ai_gen_id }}">
+      <div class="ai-video-text-split__video-column-{{ ai_gen_id }}">
+        <div class="ai-video-text-split__video-wrapper-{{ ai_gen_id }}">
+          {% if block.settings.video != blank %}
+            {{
+              block.settings.video
+              | video_tag:
+                autoplay: block.settings.autoplay,
+                loop: block.settings.loop,
+                controls: block.settings.show_controls,
+                muted: block.settings.muted
+            }}
+          {% else %}
+            <div class="ai-video-text-split__video-placeholder-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              <div class="ai-video-text-split__empty-state-{{ ai_gen_id }}">
+                Add a video from your files
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="ai-video-text-split__text-column-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-video-text-split__heading-{{ ai_gen_id }}">
+            {{ block.settings.heading }}
+          </h2>
+        {% endif %}
+
+        {% if block.settings.subheading != blank %}
+          <div class="ai-video-text-split__subheading-{{ ai_gen_id }}">
+            {{ block.settings.subheading }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</video-text-split-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class VideoTextSplit{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('video-text-split-{{ ai_gen_id }}', VideoTextSplit{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Video with text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show controls",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Muted",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Desktop video size"
+    },
+    {
+      "type": "range",
+      "id": "video_column_width",
+      "label": "Column width",
+      "min": 30,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "select",
+      "id": "video_aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "value": "0.5625",
+          "label": "16:9 (Landscape)"
+        },
+        {
+          "value": "0.75",
+          "label": "4:3"
+        },
+        {
+          "value": "1",
+          "label": "1:1 (Square)"
+        },
+        {
+          "value": "1.25",
+          "label": "4:5"
+        },
+        {
+          "value": "1.78",
+          "label": "9:16 (Portrait)"
+        }
+      ],
+      "default": "0.5625"
+    },
+    {
+      "type": "range",
+      "id": "video_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Mobile video size"
+    },
+    {
+      "type": "select",
+      "id": "mobile_video_aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        {
+          "value": "0.5625",
+          "label": "16:9 (Landscape)"
+        },
+        {
+          "value": "0.75",
+          "label": "4:3"
+        },
+        {
+          "value": "1",
+          "label": "1:1 (Square)"
+        },
+        {
+          "value": "1.25",
+          "label": "4:5"
+        },
+        {
+          "value": "1.78",
+          "label": "9:16 (Portrait)"
+        }
+      ],
+      "default": "0.5625"
+    },
+    {
+      "type": "header",
+      "content": "Text content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Discover our story"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Watch this video to learn more about our brand and what makes us unique.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Desktop text style"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Subheading size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Heading spacing",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Mobile text style"
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Heading size",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_subheading_size",
+      "label": "Subheading size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_spacing",
+      "label": "Heading spacing",
+      "min": 0,
+      "max": 32,
+      "step": 4,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Desktop layout"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "label": "Container width",
+      "min": 800,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between columns",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "label": "Gap between video and text",
+      "min": 12,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video with text"
+    }
+  ]
+}
+{% endschema %}

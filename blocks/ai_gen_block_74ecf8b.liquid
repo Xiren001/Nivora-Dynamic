@@ -1,0 +1,550 @@
+{% doc %}
+  @prompt
+    A section that has a headline below that it has a sub headline and below that it has three boxes which you can put images into and each box has a headline in the sub headline below them. Make sure that phone preview enables scroll
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-feature-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-feature-section__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.max_width }}px;
+    margin: 0 auto;
+  }
+
+  .ai-feature-section__header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-bottom: {{ block.settings.header_spacing }}px;
+  }
+
+  .ai-feature-section__headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    color: {{ block.settings.headline_color }};
+    margin: 0 0 {{ block.settings.headline_spacing }}px;
+    font-weight: 600;
+  }
+
+  .ai-feature-section__subheadline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheadline_size }}px;
+    color: {{ block.settings.subheadline_color }};
+    margin: 0;
+  }
+
+  .ai-feature-section__boxes-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns_desktop }}, 1fr);
+    gap: {{ block.settings.box_gap }}px;
+  }
+
+  .ai-feature-section__box-{{ ai_gen_id }} {
+    background-color: {{ block.settings.box_background_color }};
+    border-radius: {{ block.settings.box_border_radius }}px;
+    padding: {{ block.settings.box_padding }}px;
+    text-align: {{ block.settings.box_text_alignment }};
+  }
+
+  .ai-feature-section__box-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    margin-bottom: {{ block.settings.box_image_spacing }}px;
+    border-radius: {{ block.settings.box_image_radius }}px;
+    overflow: hidden;
+  }
+
+  .ai-feature-section__box-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ai-feature-section__box-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: {{ block.settings.image_aspect_ratio }};
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-feature-section__box-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-feature-section__box-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.box_headline_size }}px;
+    color: {{ block.settings.box_headline_color }};
+    margin: 0 0 {{ block.settings.box_headline_spacing }}px;
+    font-weight: 600;
+  }
+
+  .ai-feature-section__box-subheadline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.box_subheadline_size }}px;
+    color: {{ block.settings.box_subheadline_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-feature-section__boxes-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      overflow-x: auto;
+      display: flex;
+      gap: {{ block.settings.box_gap }}px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .ai-feature-section__box-{{ ai_gen_id }} {
+      min-width: 280px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
+
+    .ai-feature-section__headline-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.headline_size }}px * 0.8);
+    }
+
+    .ai-feature-section__subheadline-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subheadline_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<feature-section-{{ ai_gen_id }} class="ai-feature-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-feature-section__container-{{ ai_gen_id }}">
+    <div class="ai-feature-section__header-{{ ai_gen_id }}">
+      {% if block.settings.headline != blank %}
+        <h2 class="ai-feature-section__headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+      {% endif %}
+      {% if block.settings.subheadline != blank %}
+        <p class="ai-feature-section__subheadline-{{ ai_gen_id }}">{{ block.settings.subheadline }}</p>
+      {% endif %}
+    </div>
+
+    <div class="ai-feature-section__boxes-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        {% liquid
+          assign image_key = 'box_' | append: i | append: '_image'
+          assign headline_key = 'box_' | append: i | append: '_headline'
+          assign subheadline_key = 'box_' | append: i | append: '_subheadline'
+          
+          assign box_image = block.settings[image_key]
+          assign box_headline = block.settings[headline_key]
+          assign box_subheadline = block.settings[subheadline_key]
+        %}
+
+        <div class="ai-feature-section__box-{{ ai_gen_id }}">
+          <div class="ai-feature-section__box-image-wrapper-{{ ai_gen_id }}">
+            {% if box_image %}
+              <img
+                src="{{ box_image | image_url: width: 800 }}"
+                alt="{{ box_image.alt | escape }}"
+                loading="lazy"
+                width="{{ box_image.width }}"
+                height="{{ box_image.height }}"
+                class="ai-feature-section__box-image-{{ ai_gen_id }}"
+              >
+            {% else %}
+              <div class="ai-feature-section__box-image-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+          </div>
+
+          {% if box_headline != blank %}
+            <h3 class="ai-feature-section__box-headline-{{ ai_gen_id }}">{{ box_headline }}</h3>
+          {% endif %}
+
+          {% if box_subheadline != blank %}
+            <p class="ai-feature-section__box-subheadline-{{ ai_gen_id }}">{{ box_subheadline }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</feature-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FeatureSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.setupScrollBehavior();
+      }
+
+      setupScrollBehavior() {
+        const boxesContainer = this.querySelector('.ai-feature-section__boxes-{{ ai_gen_id }}');
+        if (!boxesContainer) return;
+
+        if (window.innerWidth <= 749) {
+          boxesContainer.style.scrollBehavior = 'smooth';
+        }
+      }
+    }
+
+    customElements.define('feature-section-{{ ai_gen_id }}', FeatureSection{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Feature boxes",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Our Features"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Sub-headline",
+      "default": "Discover what makes us special"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Headline size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "subheadline_size",
+      "label": "Sub-headline size",
+      "min": 12,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "headline_spacing",
+      "label": "Headline spacing",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "label": "Header bottom spacing",
+      "min": 20,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Box 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_1_headline",
+      "label": "Headline",
+      "default": "Feature One"
+    },
+    {
+      "type": "textarea",
+      "id": "box_1_subheadline",
+      "label": "Sub-headline",
+      "default": "Description of your first feature"
+    },
+    {
+      "type": "header",
+      "content": "Box 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_2_headline",
+      "label": "Headline",
+      "default": "Feature Two"
+    },
+    {
+      "type": "textarea",
+      "id": "box_2_subheadline",
+      "label": "Sub-headline",
+      "default": "Description of your second feature"
+    },
+    {
+      "type": "header",
+      "content": "Box 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "box_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "box_3_headline",
+      "label": "Headline",
+      "default": "Feature Three"
+    },
+    {
+      "type": "textarea",
+      "id": "box_3_subheadline",
+      "label": "Sub-headline",
+      "default": "Description of your third feature"
+    },
+    {
+      "type": "header",
+      "content": "Box style"
+    },
+    {
+      "type": "select",
+      "id": "box_text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "box_headline_size",
+      "label": "Headline size",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "box_subheadline_size",
+      "label": "Sub-headline size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "box_headline_spacing",
+      "label": "Headline spacing",
+      "min": 5,
+      "max": 30,
+      "step": 5,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "box_padding",
+      "label": "Box padding",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "box_border_radius",
+      "label": "Box border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "box_gap",
+      "label": "Gap between boxes",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "box_image_spacing",
+      "label": "Image spacing",
+      "min": 10,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "box_image_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        {
+          "value": "1/1",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "4/3",
+          "label": "Landscape (4:3)"
+        },
+        {
+          "value": "16/9",
+          "label": "Wide (16:9)"
+        },
+        {
+          "value": "3/4",
+          "label": "Portrait (3:4)"
+        }
+      ],
+      "default": "4/3"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Maximum width",
+      "min": 800,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section padding",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "subheadline_color",
+      "label": "Sub-headline",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "box_background_color",
+      "label": "Box background",
+      "default": "#f3f3f3"
+    },
+    {
+      "type": "color",
+      "id": "box_headline_color",
+      "label": "Box headline",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "box_subheadline_color",
+      "label": "Box sub-headline",
+      "default": "#666666"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature boxes"
+    }
+  ]
+}
+{% endschema %}

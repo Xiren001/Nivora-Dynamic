@@ -1,0 +1,337 @@
+{% doc %}
+  @prompt
+    A section divide in two equal parts. on one side there's an image, on the other side there's a numbering, below that, a headline and below that a sub-headline/description. make sure the texts are placed reasonably so that they're not touching the sides of the screen so they're not too wide and they are adjustable and look good whether in desktop Preview or mobile. Also make the position of the image adjustable, so you can choose whether it's under right side of the screen where the left side
+    
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-split-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+  }
+
+  .ai-split-container-{{ ai_gen_id }} {
+    display: flex;
+    width: 100%;
+    min-height: {{ block.settings.min_height }}px;
+  }
+
+  .ai-split-container-{{ ai_gen_id }}.ai-image-right-{{ ai_gen_id }} {
+    flex-direction: row;
+  }
+
+  .ai-split-container-{{ ai_gen_id }}.ai-image-left-{{ ai_gen_id }} {
+    flex-direction: row-reverse;
+  }
+
+  .ai-split-image-column-{{ ai_gen_id }} {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-split-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ai-split-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-split-image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .ai-split-content-column-{{ ai_gen_id }} {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background-color: {{ block.settings.content_background_color }};
+  }
+
+  .ai-split-content-wrapper-{{ ai_gen_id }} {
+    max-width: {{ block.settings.content_max_width }}px;
+    width: 100%;
+  }
+
+  .ai-split-number-{{ ai_gen_id }} {
+    font-size: {{ block.settings.number_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.number_color }};
+    margin-bottom: {{ block.settings.number_spacing }}px;
+    line-height: 1;
+  }
+
+  .ai-split-headline-{{ ai_gen_id }} {
+    font-size: {{ block.settings.headline_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.headline_color }};
+    margin: 0 0 {{ block.settings.headline_spacing }}px;
+    line-height: 1.2;
+  }
+
+  .ai-split-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-split-container-{{ ai_gen_id }},
+    .ai-split-container-{{ ai_gen_id }}.ai-image-right-{{ ai_gen_id }},
+    .ai-split-container-{{ ai_gen_id }}.ai-image-left-{{ ai_gen_id }} {
+      flex-direction: column;
+    }
+
+    .ai-split-content-column-{{ ai_gen_id }} {
+      padding: 30px 20px;
+    }
+
+    .ai-split-number-{{ ai_gen_id }} {
+      font-size: {{ block.settings.number_size | times: 0.8 }}px;
+    }
+
+    .ai-split-headline-{{ ai_gen_id }} {
+      font-size: {{ block.settings.headline_size | times: 0.8 }}px;
+    }
+
+    .ai-split-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<split-section-{{ ai_gen_id }} class="ai-split-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-split-container-{{ ai_gen_id }} ai-image-{{ block.settings.image_position }}-{{ ai_gen_id }}">
+    <div class="ai-split-image-column-{{ ai_gen_id }}">
+      {% if block.settings.image %}
+        <img
+          src="{{ block.settings.image | image_url: width: 1500 }}"
+          alt="{{ block.settings.image.alt | escape }}"
+          loading="lazy"
+          width="{{ block.settings.image.width }}"
+          height="{{ block.settings.image.height }}"
+          class="ai-split-image-{{ ai_gen_id }}"
+        >
+      {% else %}
+        <div class="ai-split-image-placeholder-{{ ai_gen_id }}">
+          {{ 'image' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-split-content-column-{{ ai_gen_id }}">
+      <div class="ai-split-content-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.number != blank %}
+          <div class="ai-split-number-{{ ai_gen_id }}">{{ block.settings.number }}</div>
+        {% endif %}
+
+        {% if block.settings.headline != blank %}
+          <h2 class="ai-split-headline-{{ ai_gen_id }}">{{ block.settings.headline }}</h2>
+        {% endif %}
+
+        {% if block.settings.description != blank %}
+          <div class="ai-split-description-{{ ai_gen_id }}">{{ block.settings.description }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</split-section-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SplitSection{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('split-section-{{ ai_gen_id }}', SplitSection{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Split content section",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Minimum height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "color",
+      "id": "content_background_color",
+      "label": "Content background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Number"
+    },
+    {
+      "type": "text",
+      "id": "number",
+      "label": "Number",
+      "default": "01"
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "label": "Size",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "number_spacing",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Your headline here"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "headline_spacing",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Add your description text here. This area provides additional details about your content."
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#121212"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Split content section"
+    }
+  ]
+}
+{% endschema %}
