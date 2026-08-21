@@ -246,7 +246,7 @@
       "type": "image-with-text",
       "blocks": {
         "heading_94DP8n": {
-          "type":"heading","settings":{"heading":"<strong>MOTHER'S DAY SALE IS LIVE - BUY 1 GET 2 FREE</strong>","heading_size":"h1","dynamic_sale_banner":true
+          "type":"heading","settings":{"heading":"","heading_size":"h1","dynamic_sale_banner":true
           }
         },
         "text_bXNFJ7": {
