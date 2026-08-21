@@ -73,7 +73,8 @@
                   >
                     {%- if block.settings.dynamic_sale_banner -%}
                       {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                      <em>{{ current_sale_name | upcase }} SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>
+                      {%- assign current_sale_name = current_sale_name | upcase -%}
+                      {{ settings.sale_template_image_with_text | replace: '[sale_name]', current_sale_name }}
                     {%- else -%}
                       {{ block.settings.heading }}
                     {%- endif -%}

@@ -44,7 +44,8 @@
             <span>
               {%- if section.blocks.first.settings.dynamic_sale -%}
                 {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                🎁 BUY 1 GET 1 FREE FOR {{ current_sale_name | upcase }}: NOW AVAILABLE
+                {%- assign current_sale_name = current_sale_name | upcase -%}
+                {{ settings.sale_template_announcement_bar | replace: '[sale_name]', current_sale_name }}
               {%- else -%}
                 {{ section.blocks.first.settings.text | escape }}
               {%- endif -%}
@@ -112,7 +113,8 @@
                       <span>
                         {%- if block.settings.dynamic_sale -%}
                           {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                          🎁 BUY 1 GET 1 FREE FOR {{ current_sale_name | upcase }}: NOW AVAILABLE
+                          {%- assign current_sale_name = current_sale_name | upcase -%}
+                          {{ settings.sale_template_announcement_bar | replace: '[sale_name]', current_sale_name }}
                         {%- else -%}
                           {{ block.settings.text | escape }}
                         {%- endif -%}
