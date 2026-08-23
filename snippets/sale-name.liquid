@@ -50,6 +50,7 @@
       assign sale_name = 'Christmas Sale'
   endcase
 
+  assign lang = lang | strip | downcase
   if lang != blank and settings.sale_name_translations != blank
     assign translations = settings.sale_name_translations | parse_json
     assign lang_translations = translations[lang]

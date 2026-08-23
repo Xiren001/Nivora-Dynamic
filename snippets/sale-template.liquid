@@ -8,6 +8,7 @@
 {%- endcomment -%}
 {%- liquid
   assign template_text = settings.sale_template_image_with_text
+  assign lang = lang | strip | downcase
 
   if lang != blank and settings.sale_template_translations != blank
     assign translations = settings.sale_template_translations | parse_json

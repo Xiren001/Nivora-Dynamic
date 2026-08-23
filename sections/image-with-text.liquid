@@ -76,6 +76,7 @@
                       {%- assign current_sale_name = current_sale_name | upcase -%}
                       {%- capture current_template -%}{% render 'sale-template', lang: block.settings.banner_language %}{%- endcapture -%}
                       {{ current_template | replace: '[sale_name]', current_sale_name }}
+                      <!-- DEBUG banner_language="{{ block.settings.banner_language }}" sale_name_translations_blank={{ settings.sale_name_translations == blank }} sale_template_translations_blank={{ settings.sale_template_translations == blank }} -->
                     {%- else -%}
                       {{ block.settings.heading }}
                     {%- endif -%}
