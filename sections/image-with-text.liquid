@@ -67,19 +67,79 @@
             {%- for block in section.blocks -%}
               {% case block.type %}
                 {%- when 'heading' -%}
+                  {%- liquid
+                    assign sale_heading = block.settings.heading
+
+                    if block.settings.dynamic_sale_banner
+                      assign lang = block.settings.banner_language | strip | downcase
+                      assign current_month = 'now' | date: '%-m' | plus: 0
+
+                      case current_month
+                        when 1
+                          assign month_key = 'jan'
+                          assign sale_name = 'New Year Sale'
+                        when 2
+                          assign month_key = 'feb'
+                          assign sale_name = "Valentine's Day"
+                        when 3
+                          assign month_key = 'mar'
+                          assign sale_name = "Women's Day"
+                        when 4
+                          assign month_key = 'apr'
+                          assign sale_name = 'Easter Sale'
+                        when 5
+                          assign month_key = 'may'
+                          assign sale_name = "Mother's Day"
+                        when 6
+                          assign month_key = 'jun'
+                          assign sale_name = "Father's Day"
+                        when 7
+                          assign month_key = 'jul'
+                          assign sale_name = 'Summer Sale'
+                        when 8
+                          assign month_key = 'aug'
+                          assign sale_name = 'Summer Sale'
+                        when 9
+                          assign month_key = 'sep'
+                          assign sale_name = 'Summer Sale'
+                        when 10
+                          assign month_key = 'oct'
+                          assign sale_name = 'Halloween Sale'
+                        when 11
+                          assign month_key = 'nov'
+                          assign sale_name = 'Black Friday'
+                        when 12
+                          assign month_key = 'dec'
+                          assign sale_name = 'Christmas Sale'
+                      endcase
+
+                      assign sale_template = settings.sale_template_image_with_text
+
+                      if lang != blank and settings.sale_name_translations != blank
+                        assign name_translations = settings.sale_name_translations | parse_json
+                        assign name_override = name_translations[lang]
+                        if name_override != blank and name_override[month_key] != blank
+                          assign sale_name = name_override[month_key]
+                        endif
+                      endif
+
+                      if lang != blank and settings.sale_template_translations != blank
+                        assign template_translations = settings.sale_template_translations | parse_json
+                        assign template_override = template_translations[lang]
+                        if template_override != blank
+                          assign sale_template = template_override
+                        endif
+                      endif
+
+                      assign sale_name = sale_name | upcase
+                      assign sale_heading = sale_template | replace: '[sale_name]', sale_name
+                    endif
+                  -%}
                   <h2
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                     {{ block.shopify_attributes }}
                   >
-                    {%- if block.settings.dynamic_sale_banner -%}
-                      {%- capture current_sale_name -%}{% render 'sale-name', lang: block.settings.banner_language %}{%- endcapture -%}
-                      {%- assign current_sale_name = current_sale_name | upcase -%}
-                      {%- capture current_template -%}{% render 'sale-template', lang: block.settings.banner_language %}{%- endcapture -%}
-                      {{ current_template | replace: '[sale_name]', current_sale_name }}
-                      <!-- DEBUG banner_language="{{ block.settings.banner_language }}" sale_name_translations_blank={{ settings.sale_name_translations == blank }} sale_template_translations_blank={{ settings.sale_template_translations == blank }} -->
-                    {%- else -%}
-                      {{ block.settings.heading }}
-                    {%- endif -%}
+                    {{ sale_heading }}
                   </h2>
                 {%- when 'caption' -%}
                   <p
