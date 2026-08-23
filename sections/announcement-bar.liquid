@@ -43,9 +43,9 @@
           <p class="announcement-bar__message h5">
             <span>
               {%- if section.blocks.first.settings.dynamic_sale -%}
-                {%- capture current_sale_name -%}{% render 'sale-name', lang: section.blocks.first.settings.banner_language %}{%- endcapture -%}
+                {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
                 {%- assign current_sale_name = current_sale_name | upcase -%}
-                {%- capture current_template -%}{% render 'sale-template', key: 'announcement_bar', lang: section.blocks.first.settings.banner_language %}{%- endcapture -%}
+                {%- capture current_template -%}{% render 'sale-template', key: 'announcement_bar' %}{%- endcapture -%}
                 {{ current_template | replace: '[sale_name]', current_sale_name }}
               {%- else -%}
                 {{ section.blocks.first.settings.text | escape }}
@@ -113,9 +113,9 @@
                     <p class="announcement-bar__message h5">
                       <span>
                         {%- if block.settings.dynamic_sale -%}
-                          {%- capture current_sale_name -%}{% render 'sale-name', lang: block.settings.banner_language %}{%- endcapture -%}
+                          {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
                           {%- assign current_sale_name = current_sale_name | upcase -%}
-                          {%- capture current_template -%}{% render 'sale-template', key: 'announcement_bar', lang: block.settings.banner_language %}{%- endcapture -%}
+                          {%- capture current_template -%}{% render 'sale-template', key: 'announcement_bar' %}{%- endcapture -%}
                           {{ current_template | replace: '[sale_name]', current_sale_name }}
                         {%- else -%}
                           {{ block.settings.text | escape }}
@@ -274,12 +274,6 @@
           "default": false,
           "label": "Show dynamic seasonal sale message",
           "info": "Overrides the text above with the current seasonal sale name (see snippets/sale-name.liquid)."
-        },
-        {
-          "type": "text",
-          "id": "banner_language",
-          "label": "Dynamic sale language code",
-          "info": "e.g. de, es, br. Leave blank for the English default. Must match a language key in Theme Settings > Dynamic Seasonal Sale > Translations."
         },
         {
           "type": "url",
