@@ -1,22 +1,32 @@
 {%- comment -%}
-  Outputs the name of the currently active seasonal sale based on the calendar month, in the given language.
-  Editable in Theme Settings > Dynamic Seasonal Sale, so one change applies everywhere the "dynamic sale"
-  toggle is used. When `lang` matches a language key in the "sale_name_translations" JSON setting and that
-  language has a value for the current month, that override is used instead of the English default field.
-  Usage: {% render 'sale-name', lang: block.settings.banner_language %}
+  Outputs the name of the currently active seasonal sale based on the calendar month.
+  Schedule (aligned to full calendar months, no gaps/overlaps):
+    Jan New Year Sale | Feb Valentine's Day | Mar Women's Day | Apr Easter Sale
+    May Mother's Day | Jun Father's Day | Jul-Sep Summer Sale | Oct Halloween Sale
+    Nov Black Friday | Dec Christmas Sale
 {%- endcomment -%}
 {%- liquid
-  assign month_key = 'now' | date: '%b' | downcase
-  assign setting_id = 'sale_name_' | append: month_key
-  assign sale_name = settings[setting_id]
-
-  if lang != blank and settings.sale_name_translations != blank
-    assign translations = settings.sale_name_translations | parse_json
-    assign lang_translations = translations[lang]
-    if lang_translations and lang_translations[month_key] != blank
-      assign sale_name = lang_translations[month_key]
-    endif
-  endif
-
-  echo sale_name
+  assign current_month = 'now' | date: '%-m' | plus: 0
+  case current_month
+    when 1
+      echo 'New Year Sale'
+    when 2
+      echo "Valentine's Day"
+    when 3
+      echo "Women's Day"
+    when 4
+      echo 'Easter Sale'
+    when 5
+      echo "Mother's Day"
+    when 6
+      echo "Father's Day"
+    when 7, 8, 9
+      echo 'Summer Sale'
+    when 10
+      echo 'Halloween Sale'
+    when 11
+      echo 'Black Friday'
+    when 12
+      echo 'Christmas Sale'
+  endcase
 -%}
