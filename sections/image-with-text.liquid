@@ -73,7 +73,9 @@
                   >
                     {%- if block.settings.dynamic_sale_banner -%}
                       {%- capture current_sale_name -%}{% render 'sale-name', lang: block.settings.banner_language %}{%- endcapture -%}
-                      <em>{{ current_sale_name | upcase }} SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>
+                      {%- assign current_sale_name = current_sale_name | upcase -%}
+                      {%- capture current_template -%}{% render 'sale-template', lang: block.settings.banner_language %}{%- endcapture -%}
+                      {{ current_template | replace: '[sale_name]', current_sale_name }}
                     {%- else -%}
                       {{ block.settings.heading }}
                     {%- endif -%}
