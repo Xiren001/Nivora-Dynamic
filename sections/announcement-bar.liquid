@@ -41,14 +41,7 @@
             >
           {%- endif -%}
           <p class="announcement-bar__message h5">
-            <span>
-              {%- if section.blocks.first.settings.dynamic_sale -%}
-                {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                🎁 BUY 1 GET 1 FREE FOR {{ current_sale_name | upcase }}: NOW AVAILABLE
-              {%- else -%}
-                {{ section.blocks.first.settings.text | escape }}
-              {%- endif -%}
-            </span>
+            <span>{{ section.blocks.first.settings.text | escape }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {{- 'icon-arrow.svg' | inline_asset_content -}}
             {%- endif -%}
@@ -109,14 +102,7 @@
                       >
                     {%- endif -%}
                     <p class="announcement-bar__message h5">
-                      <span>
-                        {%- if block.settings.dynamic_sale -%}
-                          {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                          🎁 BUY 1 GET 1 FREE FOR {{ current_sale_name | upcase }}: NOW AVAILABLE
-                        {%- else -%}
-                          {{ block.settings.text | escape }}
-                        {%- endif -%}
-                      </span>
+                      <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                       {%- endif -%}
@@ -263,13 +249,6 @@
           "id": "text",
           "default": "t:sections.announcement-bar.blocks.announcement.settings.text.default",
           "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
-        },
-        {
-          "type": "checkbox",
-          "id": "dynamic_sale",
-          "default": false,
-          "label": "Show dynamic seasonal sale message",
-          "info": "Overrides the text above with the current seasonal sale name (see snippets/sale-name.liquid)."
         },
         {
           "type": "url",

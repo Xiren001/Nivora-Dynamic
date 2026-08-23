@@ -71,12 +71,7 @@
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                     {{ block.shopify_attributes }}
                   >
-                    {%- if block.settings.dynamic_sale_banner -%}
-                      {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                      <em>{{ current_sale_name | upcase }} SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>
-                    {%- else -%}
-                      {{ block.settings.heading }}
-                    {%- endif -%}
+                    {{ block.settings.heading }}
                   </h2>
                 {%- when 'caption' -%}
                   <p
@@ -367,13 +362,6 @@
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
-        },
-        {
-          "type": "checkbox",
-          "id": "dynamic_sale_banner",
-          "default": false,
-          "label": "Show dynamic seasonal sale banner",
-          "info": "Overrides the heading text above with the current seasonal sale name (see snippets/sale-name.liquid)."
         }
       ]
     },
