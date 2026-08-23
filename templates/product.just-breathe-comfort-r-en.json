@@ -235,10 +235,10 @@
     "image_with_text_eCRMfk": {
       "type": "image-with-text",
       "blocks": {
-        "heading_94DP8n": {
+        "heading_HARyUH": {
           "type": "heading",
           "settings": {
-            "heading": "<em>MOTHER'S DAY SALE IS LIVE  - </em><strong> BUY 1 GET 1 FREE</strong>",
+            "heading": "Image with text",
             "heading_size": "h1",
             "dynamic_sale_banner": true,
             "banner_language": "de"
@@ -261,7 +261,7 @@
         }
       },
       "block_order": [
-        "heading_94DP8n",
+        "heading_HARyUH",
         "text_bXNFJ7",
         "button_TtgKq4"
       ],
