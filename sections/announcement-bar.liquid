@@ -44,9 +44,7 @@
             <span>
               {%- if section.blocks.first.settings.dynamic_sale -%}
                 {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                {%- assign current_sale_name = current_sale_name | upcase -%}
-                {%- capture current_template -%}{% render 'sale-template', key: 'announcement_bar' %}{%- endcapture -%}
-                {{ current_template | replace: '[sale_name]', current_sale_name }}
+                🎁 BUY 1 GET 1 FREE FOR {{ current_sale_name | upcase }}: NOW AVAILABLE
               {%- else -%}
                 {{ section.blocks.first.settings.text | escape }}
               {%- endif -%}
@@ -114,9 +112,7 @@
                       <span>
                         {%- if block.settings.dynamic_sale -%}
                           {%- capture current_sale_name -%}{% render 'sale-name' %}{%- endcapture -%}
-                          {%- assign current_sale_name = current_sale_name | upcase -%}
-                          {%- capture current_template -%}{% render 'sale-template', key: 'announcement_bar' %}{%- endcapture -%}
-                          {{ current_template | replace: '[sale_name]', current_sale_name }}
+                          🎁 BUY 1 GET 1 FREE FOR {{ current_sale_name | upcase }}: NOW AVAILABLE
                         {%- else -%}
                           {{ block.settings.text | escape }}
                         {%- endif -%}
