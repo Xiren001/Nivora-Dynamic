@@ -8,6 +8,22 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Dynamic Seasonal Sale",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Per-language overrides for the seasonal sale name shown by the image-with-text banner's dynamic sale option. Any language or month left out falls back to the English default (see snippets/sale-name.liquid)."
+      },
+      {
+        "type": "textarea",
+        "id": "sale_name_translations",
+        "label": "Sale name translations (JSON)",
+        "info": "Format: {\"de\": {\"jan\": \"Neujahrsverkauf\", \"feb\": \"...\", ... \"dec\": \"...\"}}. Month keys: jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec.",
+        "default": "{\"de\":{\"jan\":\"Neujahrsverkauf\",\"feb\":\"Valentinstag\",\"mar\":\"Weltfrauentag\",\"apr\":\"Oster-Sale\",\"may\":\"Muttertag\",\"jun\":\"Vatertag\",\"jul\":\"Sommer-Sale\",\"aug\":\"Sommer-Sale\",\"sep\":\"Sommer-Sale\",\"oct\":\"Halloween-Sale\",\"nov\":\"Black Friday\",\"dec\":\"Weihnachts-Sale\"},\"es\":{\"jan\":\"Rebajas de Año Nuevo\",\"feb\":\"San Valentín\",\"mar\":\"Día de la Mujer\",\"apr\":\"Oferta de Pascua\",\"may\":\"Día de la Madre\",\"jun\":\"Día del Padre\",\"jul\":\"Oferta de Verano\",\"aug\":\"Oferta de Verano\",\"sep\":\"Oferta de Verano\",\"oct\":\"Oferta de Halloween\",\"nov\":\"Black Friday\",\"dec\":\"Oferta de Navidad\"}}"
+      }
+    ]
+  },
+  {
     "name": "Selected Variant Images",
     "settings": [
       {

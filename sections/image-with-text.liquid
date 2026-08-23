@@ -71,7 +71,12 @@
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                     {{ block.shopify_attributes }}
                   >
-                    {{ block.settings.heading }}
+                    {%- if block.settings.dynamic_sale_banner -%}
+                      {%- capture current_sale_name -%}{% render 'sale-name', lang: block.settings.banner_language %}{%- endcapture -%}
+                      <em>{{ current_sale_name | upcase }} SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>
+                    {%- else -%}
+                      {{ block.settings.heading }}
+                    {%- endif -%}
                   </h2>
                 {%- when 'caption' -%}
                   <p
@@ -362,6 +367,19 @@
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "dynamic_sale_banner",
+          "default": false,
+          "label": "Show dynamic seasonal sale banner",
+          "info": "Overrides the heading text above with the current seasonal sale name (see snippets/sale-name.liquid)."
+        },
+        {
+          "type": "text",
+          "id": "banner_language",
+          "label": "Dynamic sale language code",
+          "info": "e.g. de, es. Leave blank for the English default. Must match a language key in Theme Settings > Dynamic Seasonal Sale > Translations."
         }
       ]
     },
