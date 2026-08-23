@@ -1575,12 +1575,6 @@
       },
       {
         "type": "text",
-        "id": "sale_template_announcement_bar",
-        "label": "Announcement bar message",
-        "default": "🎁 BUY 1 GET 1 FREE FOR [sale_name] SALE: NOW AVAILABLE"
-      },
-      {
-        "type": "text",
         "id": "sale_template_image_with_text",
         "label": "Image with text heading",
         "info": "HTML tags like <em> and <strong> are supported here, same as the regular heading field.",
