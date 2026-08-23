@@ -1585,6 +1585,28 @@
         "label": "Image with text heading",
         "info": "HTML tags like <em> and <strong> are supported here, same as the regular heading field.",
         "default": "<em>[sale_name] SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>"
+      },
+      {
+        "type": "header",
+        "content": "Translations"
+      },
+      {
+        "type": "paragraph",
+        "content": "Optional per-language overrides for duplicated market templates. Set a block's \"Dynamic sale language code\" setting (e.g. de, es, br) and add a matching key below - any language or field left out falls back to the English defaults above. Must be valid JSON."
+      },
+      {
+        "type": "textarea",
+        "id": "sale_name_translations",
+        "label": "Sale name translations (JSON)",
+        "info": "Format: {\"de\": {\"jan\": \"Neujahrsverkauf\", \"feb\": \"...\", ... \"dec\": \"...\"}}. Month keys: jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec.",
+        "default": "{}"
+      },
+      {
+        "type": "textarea",
+        "id": "sale_template_translations",
+        "label": "Message template translations (JSON)",
+        "info": "Format: {\"de\": {\"announcement_bar\": \"...\", \"image_with_text\": \"...\"}}. Use [sale_name] the same way as the English templates above.",
+        "default": "{}"
       }
     ]
   }

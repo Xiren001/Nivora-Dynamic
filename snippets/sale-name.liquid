@@ -1,34 +1,21 @@
 {%- comment -%}
-  Outputs the name of the currently active seasonal sale based on the calendar month.
-  Editable in Theme Settings > Dynamic Seasonal Sale, so one change applies everywhere
-  the "dynamic sale" toggle is used.
+  Outputs the name of the currently active seasonal sale based on the calendar month, in the given language.
+  Editable in Theme Settings > Dynamic Seasonal Sale, so one change applies everywhere the "dynamic sale"
+  toggle is used. When `lang` matches a language key in the "sale_name_translations" JSON setting and that
+  language has a value for the current month, that override is used instead of the English default field.
+  Usage: {% render 'sale-name', lang: block.settings.banner_language %}
 {%- endcomment -%}
 {%- liquid
-  assign current_month = 'now' | date: '%-m' | plus: 0
-  case current_month
-    when 1
-      echo settings.sale_name_jan
-    when 2
-      echo settings.sale_name_feb
-    when 3
-      echo settings.sale_name_mar
-    when 4
-      echo settings.sale_name_apr
-    when 5
-      echo settings.sale_name_may
-    when 6
-      echo settings.sale_name_jun
-    when 7
-      echo settings.sale_name_jul
-    when 8
-      echo settings.sale_name_aug
-    when 9
-      echo settings.sale_name_sep
-    when 10
-      echo settings.sale_name_oct
-    when 11
-      echo settings.sale_name_nov
-    when 12
-      echo settings.sale_name_dec
-  endcase
+  assign month_key = 'now' | date: '%b' | downcase
+  assign sale_name = settings['sale_name_' | append: month_key]
+
+  if lang != blank and settings.sale_name_translations != blank
+    assign translations = settings.sale_name_translations | parse_json
+    assign lang_translations = translations[lang]
+    if lang_translations and lang_translations[month_key] != blank
+      assign sale_name = lang_translations[month_key]
+    endif
+  endif
+
+  echo sale_name
 -%}
