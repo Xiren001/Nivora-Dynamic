@@ -7,7 +7,8 @@
 {%- endcomment -%}
 {%- liquid
   assign month_key = 'now' | date: '%b' | downcase
-  assign sale_name = settings['sale_name_' | append: month_key]
+  assign setting_id = 'sale_name_' | append: month_key
+  assign sale_name = settings[setting_id]
 
   if lang != blank and settings.sale_name_translations != blank
     assign translations = settings.sale_name_translations | parse_json

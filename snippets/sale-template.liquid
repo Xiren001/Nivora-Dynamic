@@ -6,7 +6,8 @@
   Usage: {% render 'sale-template', key: 'announcement_bar', lang: block.settings.banner_language %}
 {%- endcomment -%}
 {%- liquid
-  assign template_text = settings['sale_template_' | append: key]
+  assign setting_id = 'sale_template_' | append: key
+  assign template_text = settings[setting_id]
 
   if lang != blank and settings.sale_template_translations != blank
     assign translations = settings.sale_template_translations | parse_json
