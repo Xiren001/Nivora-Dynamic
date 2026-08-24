@@ -71,83 +71,93 @@
                     assign sale_heading = block.settings.heading
 
                     if block.settings.dynamic_sale_banner
-                      assign lang = block.settings.banner_language | strip | downcase
+                      assign lang = block.settings.banner_language
                       assign current_month = 'now' | date: '%-m' | plus: 0
 
-                      case current_month
-                        when 1
-                          assign month_key = 'jan'
-                          assign sale_name = 'New Year Sale'
-                        when 2
-                          assign month_key = 'feb'
-                          assign sale_name = "Valentine's Day"
-                        when 3
-                          assign month_key = 'mar'
-                          assign sale_name = "Women's Day"
-                        when 4
-                          assign month_key = 'apr'
-                          assign sale_name = 'Easter Sale'
-                        when 5
-                          assign month_key = 'may'
-                          assign sale_name = "Mother's Day"
-                        when 6
-                          assign month_key = 'jun'
-                          assign sale_name = "Father's Day"
-                        when 7
-                          assign month_key = 'jul'
-                          assign sale_name = 'Summer Sale'
-                        when 8
-                          assign month_key = 'aug'
-                          assign sale_name = 'Summer Sale'
-                        when 9
-                          assign month_key = 'sep'
-                          assign sale_name = 'Summer Sale'
-                        when 10
-                          assign month_key = 'oct'
-                          assign sale_name = 'Halloween Sale'
-                        when 11
-                          assign month_key = 'nov'
-                          assign sale_name = 'Black Friday'
-                        when 12
-                          assign month_key = 'dec'
-                          assign sale_name = 'Christmas Sale'
+                      case lang
+                        when 'de'
+                          assign sale_template = '<em>[sale_name] IST JETZT LIVE</em> - <strong>KAUFE 1, ERHALTE 1 GRATIS</strong>'
+                          case current_month
+                            when 1
+                              assign sale_name = 'Neujahrsverkauf'
+                            when 2
+                              assign sale_name = 'Valentinstag'
+                            when 3
+                              assign sale_name = 'Weltfrauentag'
+                            when 4
+                              assign sale_name = 'Oster-Sale'
+                            when 5
+                              assign sale_name = 'Muttertag'
+                            when 6
+                              assign sale_name = 'Vatertag'
+                            when 7, 8, 9
+                              assign sale_name = 'Sommer-Sale'
+                            when 10
+                              assign sale_name = 'Halloween-Sale'
+                            when 11
+                              assign sale_name = 'Black Friday'
+                            when 12
+                              assign sale_name = 'Weihnachts-Sale'
+                          endcase
+                        when 'es'
+                          assign sale_template = '<em>[sale_name] YA ESTÁ AQUÍ</em> - <strong>COMPRA 1 Y LLÉVATE 1 GRATIS</strong>'
+                          case current_month
+                            when 1
+                              assign sale_name = 'Rebajas de Año Nuevo'
+                            when 2
+                              assign sale_name = 'San Valentín'
+                            when 3
+                              assign sale_name = 'Día de la Mujer'
+                            when 4
+                              assign sale_name = 'Oferta de Pascua'
+                            when 5
+                              assign sale_name = 'Día de la Madre'
+                            when 6
+                              assign sale_name = 'Día del Padre'
+                            when 7, 8, 9
+                              assign sale_name = 'Oferta de Verano'
+                            when 10
+                              assign sale_name = 'Oferta de Halloween'
+                            when 11
+                              assign sale_name = 'Black Friday'
+                            when 12
+                              assign sale_name = 'Oferta de Navidad'
+                          endcase
+                        else
+                          assign sale_template = settings.sale_template_image_with_text
+                          case current_month
+                            when 1
+                              assign sale_name = 'New Year Sale'
+                            when 2
+                              assign sale_name = "Valentine's Day"
+                            when 3
+                              assign sale_name = "Women's Day"
+                            when 4
+                              assign sale_name = 'Easter Sale'
+                            when 5
+                              assign sale_name = "Mother's Day"
+                            when 6
+                              assign sale_name = "Father's Day"
+                            when 7, 8, 9
+                              assign sale_name = 'Summer Sale'
+                            when 10
+                              assign sale_name = 'Halloween Sale'
+                            when 11
+                              assign sale_name = 'Black Friday'
+                            when 12
+                              assign sale_name = 'Christmas Sale'
+                          endcase
                       endcase
-
-                      assign sale_template = settings.sale_template_image_with_text
-
-                      if lang != blank and settings.sale_name_translations != blank
-                        assign name_translations = settings.sale_name_translations | parse_json
-                        assign name_override = name_translations[lang]
-                        if name_override != blank and name_override[month_key] != blank
-                          assign sale_name = name_override[month_key]
-                        endif
-                      endif
-
-                      if lang != blank and settings.sale_template_translations != blank
-                        assign template_translations = settings.sale_template_translations | parse_json
-                        assign template_override = template_translations[lang]
-                        if template_override != blank
-                          assign sale_template = template_override
-                        endif
-                      endif
 
                       assign sale_name = sale_name | upcase
                       assign sale_heading = sale_template | replace: '[sale_name]', sale_name
-                      assign debug_name_blank = 'false'
-                      assign debug_tmpl_blank = 'false'
-                      if settings.sale_name_translations == blank
-                        assign debug_name_blank = 'true'
-                      endif
-                      if settings.sale_template_translations == blank
-                        assign debug_tmpl_blank = 'true'
-                      endif
                     endif
                   -%}
                   <h2
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                     {{ block.shopify_attributes }}
                   >
-                    {{ sale_heading }}{% if block.settings.dynamic_sale_banner %}<span style="font-size: 10px; opacity: 0.6;"> [[DEBUG lang={{ lang }} name_blank={{ debug_name_blank }} tmpl_blank={{ debug_tmpl_blank }}]]</span>{% endif %}
+                    {{ sale_heading }}
                   </h2>
                 {%- when 'caption' -%}
                   <p
@@ -444,13 +454,27 @@
           "id": "dynamic_sale_banner",
           "default": false,
           "label": "Show dynamic seasonal sale banner",
-          "info": "Overrides the heading text above with the current seasonal sale name (see snippets/sale-name.liquid)."
+          "info": "Overrides the heading text above with the current seasonal sale name and message."
         },
         {
-          "type": "text",
+          "type": "select",
           "id": "banner_language",
-          "label": "Dynamic sale language code",
-          "info": "e.g. de, es. Leave blank for the English default. Must match a language key in Theme Settings > Dynamic Seasonal Sale > Translations."
+          "label": "Dynamic sale language",
+          "options": [
+            {
+              "value": "",
+              "label": "English (default)"
+            },
+            {
+              "value": "de",
+              "label": "German"
+            },
+            {
+              "value": "es",
+              "label": "Spanish"
+            }
+          ],
+          "default": ""
         }
       ]
     },
