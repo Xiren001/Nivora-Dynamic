@@ -97,6 +97,56 @@
                         when 'fi'
                           assign sale_template = settings.sale_template_fi
                           assign month_names = settings.sale_name_months_fi | split: ','
+                        when 'ko'
+                          assign sale_template = settings.sale_template_ko
+                          assign month_names = settings.sale_name_months_ko | split: ','
+                        when 'pt'
+                          assign sale_template = settings.sale_template_pt
+                          assign month_names = settings.sale_name_months_pt | split: ','
+                        when 'fr'
+                          assign sale_template = settings.sale_template_fr
+                          assign month_names = settings.sale_name_months_fr | split: ','
+                        when 'pl'
+                          assign sale_template = settings.sale_template_pl
+                          assign month_names = settings.sale_name_months_pl | split: ','
+                        when 'cs'
+                          assign sale_template = settings.sale_template_cs
+                          assign month_names = settings.sale_name_months_cs | split: ','
+                        when 'da'
+                          assign sale_template = settings.sale_template_da
+                          assign month_names = settings.sale_name_months_da | split: ','
+                        when 'et'
+                          assign sale_template = settings.sale_template_et
+                          assign month_names = settings.sale_name_months_et | split: ','
+                        when 'it'
+                          assign sale_template = settings.sale_template_it
+                          assign month_names = settings.sale_name_months_it | split: ','
+                        when 'ja'
+                          assign sale_template = settings.sale_template_ja
+                          assign month_names = settings.sale_name_months_ja | split: ','
+                        when 'lt'
+                          assign sale_template = settings.sale_template_lt
+                          assign month_names = settings.sale_name_months_lt | split: ','
+                        when 'ro'
+                          assign sale_template = settings.sale_template_ro
+                          assign month_names = settings.sale_name_months_ro | split: ','
+                        when 'sk'
+                          assign sale_template = settings.sale_template_sk
+                          assign month_names = settings.sale_name_months_sk | split: ','
+                        when 'sl'
+                          assign sale_template = settings.sale_template_sl
+                          assign month_names = settings.sale_name_months_sl | split: ','
+                        when 'tr'
+                          assign sale_template = settings.sale_template_tr
+                          assign month_names = settings.sale_name_months_tr | split: ','
+                        when 'he'
+                          assign sale_template = settings.sale_template_he
+                          assign month_names = settings.sale_name_months_he | split: ','
+                          assign sale_rtl = true
+                        when 'ar'
+                          assign sale_template = settings.sale_template_ar
+                          assign month_names = settings.sale_name_months_ar | split: ','
+                          assign sale_rtl = true
                       endcase
 
                       if sale_template == blank
@@ -137,6 +187,7 @@
                   -%}
                   <h2
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
+                    {% if sale_rtl %}dir="rtl"{% endif %}
                     {{ block.shopify_attributes }}
                   >
                     {{ sale_heading }}
@@ -474,6 +525,70 @@
             {
               "value": "fi",
               "label": "Finnish"
+            },
+            {
+              "value": "ko",
+              "label": "Korean"
+            },
+            {
+              "value": "pt",
+              "label": "Portuguese (Portugal)"
+            },
+            {
+              "value": "fr",
+              "label": "French"
+            },
+            {
+              "value": "pl",
+              "label": "Polish"
+            },
+            {
+              "value": "cs",
+              "label": "Czech"
+            },
+            {
+              "value": "da",
+              "label": "Danish"
+            },
+            {
+              "value": "et",
+              "label": "Estonian"
+            },
+            {
+              "value": "it",
+              "label": "Italian"
+            },
+            {
+              "value": "ja",
+              "label": "Japanese"
+            },
+            {
+              "value": "lt",
+              "label": "Lithuanian"
+            },
+            {
+              "value": "ro",
+              "label": "Romanian"
+            },
+            {
+              "value": "sk",
+              "label": "Slovak"
+            },
+            {
+              "value": "sl",
+              "label": "Slovenian"
+            },
+            {
+              "value": "tr",
+              "label": "Turkish"
+            },
+            {
+              "value": "he",
+              "label": "Hebrew"
+            },
+            {
+              "value": "ar",
+              "label": "Arabic"
             }
           ],
           "default": ""

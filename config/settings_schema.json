@@ -140,6 +140,262 @@
         "id": "sale_name_months_fi",
         "label": "Sale names by month",
         "default": "Uudenvuoden ale, Ystävänpäivä, Naistenpäivä, Pääsiäisale, Äitienpäivä, Isänpäivä, Kesäale, Kesäale, Kesäale, Halloween-ale, Black Friday, Joulualennus"
+      },
+      {
+        "type": "header",
+        "content": "Korean"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_ko",
+        "label": "Heading template",
+        "default": "<em>[sale_name] 진행중</em> - <strong>1개 구매 시 1개 무료</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_ko",
+        "label": "Sale names by month",
+        "default": "새해 세일, 발렌타인데이, 여성의 날, 이스터 세일, 어머니의 날, 아버지의 날, 서머 세일, 서머 세일, 서머 세일, 할로윈 세일, 블랙 프라이데이, 크리스마스 세일"
+      },
+      {
+        "type": "header",
+        "content": "Portuguese (Portugal)"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_pt",
+        "label": "Heading template",
+        "default": "<em>[sale_name] JÁ COMEÇOU</em> - <strong>COMPRE 1, LEVE 1 GRÁTIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_pt",
+        "label": "Sale names by month",
+        "default": "Promoção de Ano Novo, Dia de São Valentim, Dia da Mulher, Promoção de Páscoa, Dia da Mãe, Dia do Pai, Promoção de Verão, Promoção de Verão, Promoção de Verão, Promoção de Halloween, Black Friday, Promoção de Natal"
+      },
+      {
+        "type": "header",
+        "content": "French"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_fr",
+        "label": "Heading template",
+        "default": "<em>[sale_name] EST LANCÉ</em> - <strong>ACHETEZ-EN 1, RECEVEZ-EN 1 GRATUIT</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_fr",
+        "label": "Sale names by month",
+        "default": "Soldes du Nouvel An, Saint-Valentin, Journée de la Femme, Soldes de Pâques, Fête des Mères, Fête des Pères, Soldes d'Été, Soldes d'Été, Soldes d'Été, Soldes d'Halloween, Black Friday, Soldes de Noël"
+      },
+      {
+        "type": "header",
+        "content": "Polish"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_pl",
+        "label": "Heading template",
+        "default": "<em>[sale_name] JUŻ TRWA</em> - <strong>KUP 1, DRUGI GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_pl",
+        "label": "Sale names by month",
+        "default": "Wyprzedaż Noworoczna, Walentynki, Dzień Kobiet, Wyprzedaż Wielkanocna, Dzień Matki, Dzień Ojca, Wyprzedaż Letnia, Wyprzedaż Letnia, Wyprzedaż Letnia, Wyprzedaż Halloweenowa, Black Friday, Wyprzedaż Świąteczna"
+      },
+      {
+        "type": "header",
+        "content": "Czech"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_cs",
+        "label": "Heading template",
+        "default": "<em>[sale_name] JE TADY</em> - <strong>KUPTE 1, DOSTANETE 1 ZDARMA</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_cs",
+        "label": "Sale names by month",
+        "default": "Novoroční výprodej, Valentýn, Mezinárodní den žen, Velikonoční výprodej, Den matek, Den otců, Letní výprodej, Letní výprodej, Letní výprodej, Halloweenský výprodej, Black Friday, Vánoční výprodej"
+      },
+      {
+        "type": "header",
+        "content": "Danish"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_da",
+        "label": "Heading template",
+        "default": "<em>[sale_name] ER I GANG</em> - <strong>KØB 1, FÅ 1 GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_da",
+        "label": "Sale names by month",
+        "default": "Nytårsudsalg, Valentinsdag, Kvindernes Internationale Kampdag, Påskeudsalg, Mors Dag, Fars Dag, Sommerudsalg, Sommerudsalg, Sommerudsalg, Halloween-udsalg, Black Friday, Juleudsalg"
+      },
+      {
+        "type": "header",
+        "content": "Estonian"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_et",
+        "label": "Heading template",
+        "default": "<em>[sale_name] ON ALANUD</em> - <strong>OSTA 1, SAA 1 TASUTA</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_et",
+        "label": "Sale names by month",
+        "default": "Uue aasta müük, Valentinipäev, Naistepäev, Lihavõttemüük, Emadepäev, Isadepäev, Suvemüük, Suvemüük, Suvemüük, Halloweeni müük, Black Friday, Jõulumüük"
+      },
+      {
+        "type": "header",
+        "content": "Italian"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_it",
+        "label": "Heading template",
+        "default": "<em>[sale_name] SONO ATTIVI</em> - <strong>ACQUISTA 1, RICEVI 1 GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_it",
+        "label": "Sale names by month",
+        "default": "Saldi di Capodanno, San Valentino, Festa della Donna, Saldi di Pasqua, Festa della Mamma, Festa del Papà, Saldi Estivi, Saldi Estivi, Saldi Estivi, Saldi di Halloween, Black Friday, Saldi di Natale"
+      },
+      {
+        "type": "header",
+        "content": "Japanese"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_ja",
+        "label": "Heading template",
+        "default": "<em>[sale_name]開催中</em> - <strong>1点購入でもう1点無料</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_ja",
+        "label": "Sale names by month",
+        "default": "新年セール, バレンタインデー, 国際女性デー, イースターセール, 母の日, 父の日, サマーセール, サマーセール, サマーセール, ハロウィンセール, ブラックフライデー, クリスマスセール"
+      },
+      {
+        "type": "header",
+        "content": "Lithuanian"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_lt",
+        "label": "Heading template",
+        "default": "<em>[sale_name] JAU VYKSTA</em> - <strong>PIRK 1, GAUK 1 NEMOKAMAI</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_lt",
+        "label": "Sale names by month",
+        "default": "Naujųjų metų išpardavimas, Valentino diena, Moterų diena, Velykų išpardavimas, Motinos diena, Tėvo diena, Vasaros išpardavimas, Vasaros išpardavimas, Vasaros išpardavimas, Helovino išpardavimas, Black Friday, Kalėdų išpardavimas"
+      },
+      {
+        "type": "header",
+        "content": "Romanian"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_ro",
+        "label": "Heading template",
+        "default": "<em>[sale_name] A ÎNCEPUT</em> - <strong>CUMPERI 1, PRIMEȘTI 1 GRATUIT</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_ro",
+        "label": "Sale names by month",
+        "default": "Reduceri de Anul Nou, Ziua Îndrăgostiților, Ziua Femeii, Reduceri de Paște, Ziua Mamei, Ziua Tatălui, Reduceri de Vară, Reduceri de Vară, Reduceri de Vară, Reduceri de Halloween, Black Friday, Reduceri de Crăciun"
+      },
+      {
+        "type": "header",
+        "content": "Slovak"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_sk",
+        "label": "Heading template",
+        "default": "<em>[sale_name] JE TU</em> - <strong>KÚP 1 A ZÍSKAJ 1 ZADARMO</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_sk",
+        "label": "Sale names by month",
+        "default": "Novoročný výpredaj, Deň svätého Valentína, Medzinárodný deň žien, Veľkonočný výpredaj, Deň matiek, Deň otcov, Letný výpredaj, Letný výpredaj, Letný výpredaj, Halloweensky výpredaj, Black Friday, Vianočný výpredaj"
+      },
+      {
+        "type": "header",
+        "content": "Slovenian"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_sl",
+        "label": "Heading template",
+        "default": "<em>[sale_name] SE JE ZAČELA</em> - <strong>KUPI 1, DOBI 1 BREZPLAČNO</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_sl",
+        "label": "Sale names by month",
+        "default": "Novoletna razprodaja, Valentinovo, Dan žena, Velikonočna razprodaja, Materinski dan, Očetovski dan, Poletna razprodaja, Poletna razprodaja, Poletna razprodaja, Noč čarovnic razprodaja, Black Friday, Božična razprodaja"
+      },
+      {
+        "type": "header",
+        "content": "Turkish"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_tr",
+        "label": "Heading template",
+        "default": "<em>[sale_name] BAŞLADI</em> - <strong>1 ALANA 1 BEDAVA</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_tr",
+        "label": "Sale names by month",
+        "default": "Yılbaşı İndirimi, Sevgililer Günü, Dünya Kadınlar Günü, Paskalya İndirimi, Anneler Günü, Babalar Günü, Yaz İndirimi, Yaz İndirimi, Yaz İndirimi, Cadılar Bayramı İndirimi, Black Friday, Noel İndirimi"
+      },
+      {
+        "type": "header",
+        "content": "Hebrew"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_he",
+        "label": "Heading template",
+        "default": "<em>[sale_name] כבר כאן</em> - <strong>קנה 1 קבל 1 חינם</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_he",
+        "label": "Sale names by month",
+        "default": "מבצע השנה החדשה, יום האהבה, יום האישה הבינלאומי, מבצע חג הפסחא, יום האם, יום האב, מבצע קיץ, מבצע קיץ, מבצע קיץ, מבצע האלווין, בלאק פריידיי, מבצע חג המולד"
+      },
+      {
+        "type": "header",
+        "content": "Arabic"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_ar",
+        "label": "Heading template",
+        "default": "<em>[sale_name] متوفر الآن</em> - <strong>اشتر 1 واحصل على 1 مجانًا</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_ar",
+        "label": "Sale names by month",
+        "default": "تخفيضات رأس السنة, عيد الحب, اليوم العالمي للمرأة, تخفيضات عيد الفصح, عيد الأم, عيد الأب, تخفيضات الصيف, تخفيضات الصيف, تخفيضات الصيف, تخفيضات الهالوين, الجمعة السوداء, تخفيضات الكريسماس"
       }
     ]
   },
