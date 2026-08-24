@@ -133,13 +133,21 @@
 
                       assign sale_name = sale_name | upcase
                       assign sale_heading = sale_template | replace: '[sale_name]', sale_name
+                      assign debug_name_blank = 'false'
+                      assign debug_tmpl_blank = 'false'
+                      if settings.sale_name_translations == blank
+                        assign debug_name_blank = 'true'
+                      endif
+                      if settings.sale_template_translations == blank
+                        assign debug_tmpl_blank = 'true'
+                      endif
                     endif
                   -%}
                   <h2
                     class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
                     {{ block.shopify_attributes }}
                   >
-                    {{ sale_heading }}
+                    {{ sale_heading }}{% if block.settings.dynamic_sale_banner %}<span style="font-size: 10px; opacity: 0.6;"> [[DEBUG lang={{ lang }} name_blank={{ debug_name_blank }} tmpl_blank={{ debug_tmpl_blank }}]]</span>{% endif %}
                   </h2>
                 {%- when 'caption' -%}
                   <p
