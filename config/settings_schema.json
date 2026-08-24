@@ -12,18 +12,134 @@
     "settings": [
       {
         "type": "paragraph",
-        "content": "Controls the English default for the image-with-text banner's dynamic sale option. German and Spanish use built-in translations - pick the language on the block itself via its \"Dynamic sale language\" dropdown."
+        "content": "Controls the text shown by the image-with-text banner's dynamic sale option. Pick the language on the block itself via its \"Dynamic sale language\" dropdown - each language below is a plain text field, not JSON, so there's no syntax to get wrong."
       },
       {
         "type": "paragraph",
-        "content": "Use [sale_name] anywhere in the template below - it's replaced with the current month's sale name (in capitals)."
+        "content": "In every \"Heading template\" field, use [sale_name] as a placeholder - it's replaced with the current month's sale name (in capitals). Every \"Sale names by month\" field must have exactly 12 comma-separated values, in order: Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec."
+      },
+      {
+        "type": "header",
+        "content": "English (default)"
       },
       {
         "type": "text",
         "id": "sale_template_image_with_text",
-        "label": "Image with text heading (English default)",
+        "label": "Heading template",
         "info": "HTML tags like <em> and <strong> are supported here, same as the regular heading field.",
         "default": "<em>[sale_name] SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>"
+      },
+      {
+        "type": "header",
+        "content": "German"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_de",
+        "label": "Heading template",
+        "default": "<em>[sale_name] IST JETZT LIVE</em> - <strong>KAUFE 1, ERHALTE 1 GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_de",
+        "label": "Sale names by month",
+        "default": "Neujahrsverkauf, Valentinstag, Weltfrauentag, Oster-Sale, Muttertag, Vatertag, Sommer-Sale, Sommer-Sale, Sommer-Sale, Halloween-Sale, Black Friday, Weihnachts-Sale"
+      },
+      {
+        "type": "header",
+        "content": "Spanish"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_es",
+        "label": "Heading template",
+        "default": "<em>[sale_name] YA ESTÁ AQUÍ</em> - <strong>COMPRA 1 Y LLÉVATE 1 GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_es",
+        "label": "Sale names by month",
+        "default": "Rebajas de Año Nuevo, San Valentín, Día de la Mujer, Oferta de Pascua, Día de la Madre, Día del Padre, Oferta de Verano, Oferta de Verano, Oferta de Verano, Oferta de Halloween, Black Friday, Oferta de Navidad"
+      },
+      {
+        "type": "header",
+        "content": "Portuguese (Brazil)"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_br",
+        "label": "Heading template",
+        "default": "<em>[sale_name] JÁ COMEÇOU</em> - <strong>COMPRE 1, LEVE 1 GRÁTIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_br",
+        "label": "Sale names by month",
+        "default": "Promoção de Ano Novo, Dia dos Namorados, Dia da Mulher, Promoção de Páscoa, Dia das Mães, Dia dos Pais, Promoção de Verão, Promoção de Verão, Promoção de Verão, Promoção de Halloween, Black Friday, Promoção de Natal"
+      },
+      {
+        "type": "header",
+        "content": "Dutch"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_nl",
+        "label": "Heading template",
+        "default": "<em>[sale_name] IS NU LIVE</em> - <strong>KOOP 1, KRIJG 1 GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_nl",
+        "label": "Sale names by month",
+        "default": "Nieuwjaarsuitverkoop, Valentijnsdag, Vrouwendag, Paas Uitverkoop, Moederdag, Vaderdag, Zomeruitverkoop, Zomeruitverkoop, Zomeruitverkoop, Halloween Uitverkoop, Black Friday, Kerstuitverkoop"
+      },
+      {
+        "type": "header",
+        "content": "Swedish"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_se",
+        "label": "Heading template",
+        "default": "<em>[sale_name] PÅGÅR NU</em> - <strong>KÖP 1, FÅ 1 GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_se",
+        "label": "Sale names by month",
+        "default": "Nyårsrea, Alla hjärtans dag, Internationella kvinnodagen, Påskrea, Mors dag, Fars dag, Sommarrea, Sommarrea, Sommarrea, Halloweenrea, Black Friday, Julrea"
+      },
+      {
+        "type": "header",
+        "content": "Norwegian"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_no",
+        "label": "Heading template",
+        "default": "<em>[sale_name] ER I GANG</em> - <strong>KJØP 1, FÅ 1 GRATIS</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_no",
+        "label": "Sale names by month",
+        "default": "Nyttårssalg, Valentinsdagen, Kvinnedagen, Påskesalg, Morsdag, Farsdag, Sommersalg, Sommersalg, Sommersalg, Halloween-salg, Black Friday, Julesalg"
+      },
+      {
+        "type": "header",
+        "content": "Finnish"
+      },
+      {
+        "type": "text",
+        "id": "sale_template_fi",
+        "label": "Heading template",
+        "default": "<em>[sale_name] ON KÄYNNISSÄ</em> - <strong>OSTA 1, SAA 1 ILMAISEKSI</strong>"
+      },
+      {
+        "type": "text",
+        "id": "sale_name_months_fi",
+        "label": "Sale names by month",
+        "default": "Uudenvuoden ale, Ystävänpäivä, Naistenpäivä, Pääsiäisale, Äitienpäivä, Isänpäivä, Kesäale, Kesäale, Kesäale, Halloween-ale, Black Friday, Joulualennus"
       }
     ]
   },
