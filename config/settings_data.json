@@ -9,6 +9,7 @@
  */
 {
   "current": {
+    "sale_name_translations": "{\"de\":{\"jan\":\"Neujahrsverkauf\",\"feb\":\"Valentinstag\",\"mar\":\"Weltfrauentag\",\"apr\":\"Oster-Sale\",\"may\":\"Muttertag\",\"jun\":\"Vatertag\",\"jul\":\"Sommer-Sale\",\"aug\":\"Sommer-Sale\",\"sep\":\"Sommer-Sale\",\"oct\":\"Halloween-Sale\",\"nov\":\"Black Friday\",\"dec\":\"Weihnachts-Sale\"},\"es\":{\"jan\":\"Rebajas de Año Nuevo\",\"feb\":\"San Valentín\",\"mar\":\"Día de la Mujer\",\"apr\":\"Oferta de Pascua\",\"may\":\"Día de la Madre\",\"jun\":\"Día del Padre\",\"jul\":\"Oferta de Verano\",\"aug\":\"Oferta de Verano\",\"sep\":\"Oferta de Verano\",\"oct\":\"Oferta de Halloween\",\"nov\":\"Black Friday\",\"dec\":\"Oferta de Navidad\"}}",
     "sale_template_translations": "{\"de\":\"<em>[sale_name] IST JETZT LIVE</em> - <strong>KAUFE 1, ERHALTE 1 GRATIS</strong>\",\"es\":\"<em>[sale_name] YA ESTÁ AQUÍ</em> - <strong>COMPRA 1 Y LLÉVATE 1 GRATIS</strong>\"}",
     "logo": "shopify://shop_images/Nivora_1500_x_560_px_2.svg",
     "logo_width": 120,
