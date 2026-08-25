@@ -18,6 +18,7 @@
           "type": "announcement",
           "settings": {
             "text": "🎁 50% OFF FOR MOTHER'S DAY: NOW AVAILABLE",
+            "dynamic_sale": true,
             "link": ""
           }
         },
@@ -25,6 +26,7 @@
           "type": "announcement",
           "settings": {
             "text": "Already more than 6,300 satisfied customers",
+            "dynamic_sale": false,
             "link": ""
           }
         }
