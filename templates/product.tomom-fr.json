@@ -210,7 +210,9 @@
           "type": "heading",
           "settings": {
             "heading": "Melt Her Heart With Your Family's Love",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "fr"
           }
         },
         "text_Gm6kfK": {
@@ -257,7 +259,9 @@
           "type": "heading",
           "settings": {
             "heading": "Noms gravés, famille unie pour toujours",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "fr"
           }
         },
         "text_qBCYQG": {

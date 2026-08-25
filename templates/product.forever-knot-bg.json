@@ -249,7 +249,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>РАЗПРОДАЖБАТА ЗА СВЕТИ ВАЛЕНТИН Е В ХОД</em> – <strong>КУПИ 1 И ПОЛУЧИ 1 БЕЗПЛАТНО</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

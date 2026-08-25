@@ -249,7 +249,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>VÝPREDAJ NA DEŇ MATIEK JE AKTUÁLNY </em>- <strong>KÚPTE 1, DOSTANETE 1 ZADARMO</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "sk"
           }
         },
         "text_bXNFJ7": {

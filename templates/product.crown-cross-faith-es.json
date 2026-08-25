@@ -249,7 +249,9 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>¡OFERTA ESPECIAL DEL DÍA DE LA MADRE! COMPRA 1 Y LLÉVATE 2 GRATIS.</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_bXNFJ7": {

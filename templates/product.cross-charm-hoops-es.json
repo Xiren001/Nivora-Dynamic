@@ -248,7 +248,9 @@
           "type": "heading",
           "settings": {
             "heading": "Perfecto para regalar",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_yTXi4c": {

@@ -249,7 +249,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>RAZPRODAJA ZA MATERINSKI DAN JE V PROSTEM</em> - <strong>KUPI 1, DOBI 1 GRATIS</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "sl"
           }
         },
         "text_bXNFJ7": {

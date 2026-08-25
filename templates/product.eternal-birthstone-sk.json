@@ -256,7 +256,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>VÝPREDAJ KU DŇU ŽIEN JE TU</em> <em> –</em> <strong>KÚP 1 A ZÍSKAJ 1 ZADARMO</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "sk"
           }
         },
         "text_bXNFJ7": {

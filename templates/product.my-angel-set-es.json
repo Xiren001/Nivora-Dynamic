@@ -89,7 +89,9 @@
           "type": "heading",
           "settings": {
             "heading": "Encuentra consuelo en el dolor",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_MYAWaz": {
@@ -138,7 +140,9 @@
           "type": "heading",
           "settings": {
             "heading": "Está hecho para durar",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_97E9qM": {
@@ -187,7 +191,9 @@
           "type": "heading",
           "settings": {
             "heading": "Manténlas cerca todos los días",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_BgFKQA": {
@@ -236,7 +242,9 @@
           "type": "heading",
           "settings": {
             "heading": "Más de 25.000 mujeres lo compraron, y por algo está por todas partes en tu feed.",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_NFVC4Q": {
@@ -492,7 +500,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>¡LA OFERTA DEL DÍA DE LA MUJER YA ESTÁ ACTIVA –</em> <strong>COMPRA 1 Y LLEVATE 1 GRATIS</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_bXNFJ7": {

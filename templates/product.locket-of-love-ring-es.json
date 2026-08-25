@@ -248,7 +248,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_bXNFJ7": {
@@ -296,7 +298,9 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Una sorpresa con sentimiento</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_nadKeT": {
@@ -335,7 +339,9 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Hecho para durar</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "es"
           }
         },
         "text_PVk7L9": {

@@ -89,7 +89,9 @@
           "type": "heading",
           "settings": {
             "heading": "Finde Trost in der Trauer",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "de"
           }
         },
         "text_MYAWaz": {
@@ -138,7 +140,9 @@
           "type": "heading",
           "settings": {
             "heading": "Es ist für die Ewigkeit gemacht",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "de"
           }
         },
         "text_97E9qM": {
@@ -187,7 +191,9 @@
           "type": "heading",
           "settings": {
             "heading": "Halte sie jeden Tag nah bei dir",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "de"
           }
         },
         "text_BgFKQA": {
@@ -236,7 +242,9 @@
           "type": "heading",
           "settings": {
             "heading": "Mehr als 25.000 Frauen haben es gekauft – und es ist aus gutem Grund überall in deinem Feed zu sehen.",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "de"
           }
         },
         "text_NFVC4Q": {
@@ -496,7 +504,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>¡LA OFERTA DEL DÍA DE LA MUJER YA ESTÁ ACTIVA –</em> <strong>COMPRA 1 Y LLEVATE 1 GRATIS</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "de"
           }
         },
         "text_bXNFJ7": {

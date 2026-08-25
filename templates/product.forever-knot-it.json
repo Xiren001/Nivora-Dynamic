@@ -249,7 +249,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>LA PROMOZIONE PER LA FESTA DELLA MAMMA È INIZIATA:</em> <strong>COMPRA 1 E NE RICEVI 1 GRATIS</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "it"
           }
         },
         "text_bXNFJ7": {

@@ -249,7 +249,9 @@
           "type": "heading",
           "settings": {
             "heading": "<em>OFFRE SPÉCIALE FÊTE DES MÈRES </em>: <strong>1 ARTICLE ACHETÉ = 1 ARTICLE OFFERT</strong>",
-            "heading_size": "h1"
+            "heading_size": "h1",
+            "dynamic_sale_banner": true,
+            "banner_language": "fr"
           }
         },
         "text_bXNFJ7": {
