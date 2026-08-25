@@ -157,28 +157,35 @@
                         assign sale_name = month_names[month_index] | strip
                       else
                         assign sale_template = settings.sale_template_image_with_text
-                        case current_month
-                          when 1
-                            assign sale_name = 'New Year Sale'
-                          when 2
-                            assign sale_name = "Valentine's Day"
-                          when 3
-                            assign sale_name = "Women's Day"
-                          when 4
-                            assign sale_name = 'Easter Sale'
-                          when 5
-                            assign sale_name = "Mother's Day"
-                          when 6
-                            assign sale_name = "Father's Day"
-                          when 7, 8, 9
-                            assign sale_name = 'Summer Sale'
-                          when 10
-                            assign sale_name = 'Halloween Sale'
-                          when 11
-                            assign sale_name = 'Black Friday'
-                          when 12
-                            assign sale_name = 'Christmas Sale'
-                        endcase
+                        if settings.sale_name_months_en != blank
+                          assign en_month_names = settings.sale_name_months_en | split: ','
+                        endif
+                        if en_month_names and en_month_names[month_index] != blank
+                          assign sale_name = en_month_names[month_index] | strip
+                        else
+                          case current_month
+                            when 1
+                              assign sale_name = 'New Year Sale'
+                            when 2
+                              assign sale_name = "Valentine's Day"
+                            when 3
+                              assign sale_name = "Women's Day"
+                            when 4
+                              assign sale_name = 'Easter Sale'
+                            when 5
+                              assign sale_name = "Mother's Day"
+                            when 6
+                              assign sale_name = "Father's Day"
+                            when 7, 8, 9
+                              assign sale_name = 'Summer Sale'
+                            when 10
+                              assign sale_name = 'Halloween Sale'
+                            when 11
+                              assign sale_name = 'Black Friday'
+                            when 12
+                              assign sale_name = 'Christmas Sale'
+                          endcase
+                        endif
                       endif
 
                       assign sale_name = sale_name | upcase

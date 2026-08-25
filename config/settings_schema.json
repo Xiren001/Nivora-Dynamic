@@ -30,6 +30,12 @@
         "default": "<em>[sale_name] SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>"
       },
       {
+        "type": "text",
+        "id": "sale_name_months_en",
+        "label": "Sale names by month",
+        "default": "New Year Sale, Valentine's Day, Women's Day, Easter Sale, Mother's Day, Father's Day, Summer Sale, Summer Sale, Summer Sale, Halloween Sale, Black Friday, Christmas Sale"
+      },
+      {
         "type": "header",
         "content": "German"
       },
