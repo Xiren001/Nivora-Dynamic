@@ -136,7 +136,25 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": false,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "quantity_selector": {
@@ -148,7 +166,9 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
         "collapsible_tab_Y4BabJ": {
@@ -216,6 +236,7 @@
         "constrain_to_viewport": true,
         "media_fit": "cover",
         "gallery_layout": "stacked",
+        "thumbnail_left_gap": 24,
         "media_position": "left",
         "image_zoom": "none",
         "mobile_thumbnails": "hide",
@@ -256,8 +277,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -332,7 +353,7 @@
         "slide_E6eCBR": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363478899.mp4",
+            "video": "shopify://files/videos/0930(10).mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0
@@ -341,7 +362,7 @@
         "slide_mABfLm": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363819244.mp4",
+            "video": "shopify://files/videos/0930(11).mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0
@@ -350,7 +371,7 @@
         "slide_EmMcKE": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363671876.mp4",
+            "video": "shopify://files/videos/0930(12).mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0
@@ -359,7 +380,7 @@
         "slide_yUkkjM": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363725176.mp4",
+            "video": "shopify://files/videos/0930(13).mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0

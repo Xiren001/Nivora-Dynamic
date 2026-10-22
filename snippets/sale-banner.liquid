@@ -1,0 +1,451 @@
+{% comment %}
+  Renders the Sale banner block (product information): up to 3 messages that rotate or sit side by side,
+  each with an optional icon, [highlighted] words, countdown and button.
+  Styling is scoped to #SaleBanner-{block.id}; shared structure and keyframes live in component-sale-banner.css.
+  JS (sale-banner.js) is only loaded when rotation, countdown, typewriter, letter reveal, marquee or dismiss is used.
+
+  Accepts:
+  - block: {Object} block information
+
+  Usage:
+  {% render 'sale-banner', block: block %}
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+  assign banner_id = 'SaleBanner-' | append: block.id
+
+  assign bg_type = s.bg_type
+  assign bg_1 = s.bg_color_1
+  assign bg_2 = s.bg_color_2
+  assign text_color = s.text_color
+  assign hl_color = s.highlight_color
+  assign hl_bg = s.highlight_bg | default: 'transparent'
+  assign global_anim = s.animation
+  assign anim_loop = s.animation_loop
+  assign preset_icon = 'none'
+  assign border_bottom = s.border_bottom
+  assign border_color = s.border_color
+
+  case s.preset
+    when 'flash'
+      assign bg_type = 'solid'
+      assign bg_1 = '#D62828'
+      assign text_color = '#FFFFFF'
+      assign hl_color = '#FFD60A'
+      assign hl_bg = 'transparent'
+      assign global_anim = 'pulse'
+      assign anim_loop = true
+      assign preset_icon = 'fire'
+    when 'shipping'
+      assign bg_type = 'solid'
+      assign bg_1 = '#000000'
+      assign text_color = '#FFFFFF'
+      assign hl_color = '#FFFFFF'
+      assign hl_bg = 'transparent'
+      assign global_anim = 'marquee'
+      assign preset_icon = 'truck'
+    when 'minimal'
+      assign bg_type = 'solid'
+      assign bg_1 = '#FFFFFF'
+      assign text_color = '#121212'
+      assign hl_color = '#121212'
+      assign hl_bg = 'transparent'
+      assign global_anim = 'fade-in'
+      assign border_bottom = true
+      assign border_color = '#E5E5E5'
+  endcase
+
+  case bg_type
+    when 'gradient'
+      assign bg_css = 'linear-gradient(' | append: s.bg_angle | append: 'deg, ' | append: bg_1 | append: ', ' | append: bg_2 | append: ')'
+    when 'animated'
+      assign bg_css = 'linear-gradient(' | append: s.bg_angle | append: 'deg, ' | append: bg_1 | append: ', ' | append: bg_2 | append: ', ' | append: bg_1 | append: ')'
+    when 'image'
+      assign bg_css = bg_1
+    else
+      assign bg_css = bg_1
+  endcase
+
+  case s.font_source
+    when 'heading'
+      assign font_family = 'var(--font-heading-family)'
+      assign font_weight = 'var(--font-heading-weight)'
+    when 'custom'
+      assign font_family = s.custom_font.family | append: ', ' | append: s.custom_font.fallback_families
+      assign font_weight = s.custom_font.weight
+    else
+      assign font_family = 'var(--font-body-family)'
+      assign font_weight = 'var(--font-body-weight)'
+  endcase
+  if s.font_weight != 'theme'
+    assign font_weight = s.font_weight
+  endif
+
+  case s.animation_easing
+    when 'spring'
+      assign easing = 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+    else
+      assign easing = s.animation_easing
+  endcase
+
+  case s.max_width
+    when 'page'
+      assign max_width = 'var(--page-width, 120rem)'
+    when 'custom'
+      assign max_width = s.custom_max_width | append: 'px'
+    else
+      assign max_width = '100%'
+  endcase
+
+  case s.marquee_speed
+    when 'slow'
+      assign marquee_speed = 40
+    when 'fast'
+      assign marquee_speed = 140
+    when 'custom'
+      assign marquee_speed = s.marquee_custom_speed
+    else
+      assign marquee_speed = 80
+  endcase
+
+  assign text_dir = s.text_direction
+  if text_dir == 'auto'
+    assign rtl_locales = 'he,ar,fa,ur,yi' | split: ','
+    if rtl_locales contains request.locale.iso_code
+      assign text_dir = 'rtl'
+    else
+      assign text_dir = ''
+    endif
+  endif
+
+  assign tz_raw = 'now' | date: '%z'
+  assign tz_hours = tz_raw | slice: 0, 3
+  assign tz_minutes = tz_raw | slice: 3, 2
+  assign tz = tz_hours | append: ':' | append: tz_minutes
+
+  assign schedule_start = ''
+  if s.schedule_start != blank
+    assign schedule_start = s.schedule_start | strip | replace: ' ', 'T' | append: ':00' | append: tz
+  endif
+  assign schedule_end = ''
+  if s.schedule_end != blank
+    assign schedule_end = s.schedule_end | strip | replace: ' ', 'T' | append: ':00' | append: tz
+  endif
+
+  assign message_count = 0
+  assign needs_js = false
+  assign first_text = ''
+  for i in (1..3)
+    assign key = 'm' | append: i | append: '_text'
+    if s[key] != blank
+      assign message_count = message_count | plus: 1
+      if first_text == blank
+        assign first_text = s[key] | strip_html | replace: '[', '' | replace: ']', ''
+      endif
+      assign key = 'm' | append: i | append: '_countdown_end'
+      if s[key] != blank
+        assign needs_js = true
+      endif
+      assign key = 'm' | append: i | append: '_animation'
+      assign m_anim = s[key]
+      if m_anim == 'inherit'
+        assign m_anim = global_anim
+      endif
+      if m_anim == 'typewriter' or m_anim == 'letters' or m_anim == 'marquee'
+        assign needs_js = true
+      endif
+    endif
+  endfor
+
+  assign rotate = false
+  if s.display_mode == 'rotate' and message_count > 1
+    assign rotate = true
+    assign needs_js = true
+  endif
+  if s.dismissible
+    assign needs_js = true
+  endif
+-%}
+
+{%- if message_count > 0 -%}
+  {{ 'component-sale-banner.css' | asset_url | stylesheet_tag }}
+  {%- if needs_js -%}
+    <script src="{{ 'sale-banner.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  {% style %}
+    {%- if s.font_source == 'custom' -%}
+      {{ s.custom_font | font_face: font_display: 'swap' }}
+    {%- endif -%}
+    #{{ banner_id }} {
+      --sb-text: {{ text_color }};
+      --sb-hl: {{ hl_color }};
+      --sb-hl-bg: {{ hl_bg }};
+      --sb-hl-weight: {% if s.highlight_bold %}700{% else %}inherit{% endif %};
+      --sb-shadow: {% if s.text_shadow %}0 1px 3px {{ s.text_shadow_color }}{% else %}none{% endif %};
+      --sb-font-family: {{ font_family }};
+      --sb-font-weight: {{ font_weight }};
+      --sb-fs-d: {{ s.font_size_desktop }}px;
+      --sb-fs-m: {{ s.font_size_mobile }}px;
+      --sb-ls: {{ s.letter_spacing }}px;
+      --sb-lh: {{ s.line_height }};
+      --sb-transform: {% if s.uppercase %}uppercase{% else %}none{% endif %};
+      --sb-align: {{ s.text_align }};
+      --sb-duration: {{ s.animation_duration }}s;
+      --sb-delay: {{ s.animation_delay }}s;
+      --sb-ease: {{ easing }};
+      --sb-iter: {% if anim_loop %}infinite{% else %}1{% endif %};
+      --sb-marquee-gap: {{ s.marquee_gap }}px;
+      --sb-marquee-dir: {% if s.marquee_direction == 'ltr' %}reverse{% else %}normal{% endif %};
+      --sb-bg: {{ bg_css }};
+      --sb-overlay: {{ bg_1 }};
+      --sb-overlay-opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
+      --sb-pt-d: {{ s.padding_top_desktop }}px;
+      --sb-pb-d: {{ s.padding_bottom_desktop }}px;
+      --sb-pt-m: {{ s.padding_top_mobile }}px;
+      --sb-pb-m: {{ s.padding_bottom_mobile }}px;
+      --sb-max-width: {{ max_width }};
+      --sb-border-top: {% if s.border_top %}{{ s.border_thickness }}px solid {{ border_color }}{% else %}0{% endif %};
+      --sb-border-bottom: {% if border_bottom %}{{ s.border_thickness }}px solid {{ border_color }}{% else %}0{% endif %};
+      --sb-radius: {{ s.border_radius }}px;
+      --sb-margin-top: {{ s.margin_top }}px;
+      --sb-margin-bottom: {{ s.margin_bottom }}px;
+      --sb-btn-color: {{ s.button_color }};
+      --sb-btn-text: {{ s.button_text_color }};
+      --sb-btn-radius: {{ s.button_radius }}px;
+      --sb-cd-bg: {{ s.countdown_bg }};
+      --sb-cd-text: {{ s.countdown_text }};
+    }
+  {% endstyle %}
+
+  <sale-banner
+    id="{{ banner_id }}"
+    class="sale-banner sale-banner--{% if rotate %}rotate{% else %}inline{% endif %} sale-banner--t-{{ s.rotation_transition }} sale-banner--show-{{ s.show_on }}{% if bg_type == 'animated' %} sale-banner--bg-animated{% endif %}{% if s.marquee_pause_hover %} sale-banner--marquee-pause{% endif %}{% if s.banner_link != blank %} sale-banner--linked{% endif %}"
+    {% if text_dir != blank %}
+      dir="{{ text_dir }}"
+    {% endif %}
+    data-key="{{ block.id }}"
+    data-start="{{ schedule_start }}"
+    data-end="{{ schedule_end }}"
+    data-duration="{{ s.animation_duration }}"
+    data-delay="{{ s.animation_delay }}"
+    data-loop="{{ anim_loop }}"
+    data-autoplay="{{ s.rotation_autoplay }}"
+    data-interval="{{ s.rotation_interval }}"
+    data-pause-hover="{{ s.rotation_pause_hover }}"
+    data-marquee-speed="{{ marquee_speed }}"
+    data-countdown-format="{{ s.countdown_format }}"
+    data-expired="{{ s.countdown_expired }}"
+    data-dismiss-days="{{ s.dismiss_days }}"
+    data-label-days="{{ 'sections.sale_banner.days_short' | t }}"
+    data-label-hours="{{ 'sections.sale_banner.hours_short' | t }}"
+    data-label-minutes="{{ 'sections.sale_banner.minutes_short' | t }}"
+    {{ block.shopify_attributes }}
+  >
+    <div class="sale-banner__inner" role="region" aria-label="{{ 'sections.sale_banner.region' | t | escape }}">
+      {%- if bg_type == 'image' and s.bg_image != blank -%}
+        <div class="sale-banner__bg" aria-hidden="true">
+          {{ s.bg_image | image_url: width: 1500 | image_tag: loading: 'lazy', sizes: '100vw', widths: '375, 750, 1100, 1500', alt: '' }}
+        </div>
+        <div class="sale-banner__overlay" aria-hidden="true"></div>
+      {%- endif -%}
+
+      {%- if s.banner_link != blank -%}
+        <a class="sale-banner__link" href="{{ s.banner_link }}" aria-label="{{ first_text | escape }}"></a>
+      {%- endif -%}
+
+      {%- if rotate and s.rotation_arrows -%}
+        <button type="button" class="sale-banner__arrow sale-banner__arrow--prev" aria-label="{{ 'sections.sale_banner.previous' | t | escape }}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      {%- endif -%}
+
+      <div class="sale-banner__messages" {% if rotate %}aria-live="polite"{% endif %}>
+        {%- assign rendered = 0 -%}
+        {%- for i in (1..3) -%}
+          {%- liquid
+            assign p = 'm' | append: i | append: '_'
+            assign key = p | append: 'text'
+            assign m_text = s[key]
+            if m_text == blank
+              continue
+            endif
+            assign rendered = rendered | plus: 1
+
+            assign key = p | append: 'animation'
+            assign m_anim = s[key]
+            if m_anim == 'inherit'
+              assign m_anim = global_anim
+            endif
+
+            assign key = p | append: 'icon_source'
+            assign m_icon_source = s[key]
+            assign key = p | append: 'icon'
+            assign m_icon = s[key]
+            if m_icon_source == 'none' and preset_icon != 'none'
+              assign m_icon_source = 'library'
+              assign m_icon = preset_icon
+            endif
+            assign key = p | append: 'icon_image'
+            assign m_icon_image = s[key]
+            assign key = p | append: 'icon_emoji'
+            assign m_icon_emoji = s[key]
+            assign key = p | append: 'icon_position'
+            assign m_icon_position = s[key]
+            assign key = p | append: 'icon_size'
+            assign m_icon_size = s[key]
+            assign key = p | append: 'icon_color'
+            assign m_icon_color = s[key] | default: 'currentColor'
+            assign key = p | append: 'icon_animation'
+            assign m_icon_animation = s[key]
+            assign key = p | append: 'icon_gap'
+            assign m_icon_gap = s[key]
+            assign key = p | append: 'countdown_end'
+            assign m_countdown_end = s[key]
+            assign key = p | append: 'expired_text'
+            assign m_expired_text = s[key]
+            assign key = p | append: 'button_label'
+            assign m_button_label = s[key]
+            assign key = p | append: 'button_link'
+            assign m_button_link = s[key]
+
+            assign has_icon = false
+            if m_icon_source == 'library' and m_icon != blank
+              assign has_icon = true
+            elsif m_icon_source == 'image' and m_icon_image != blank
+              assign has_icon = true
+            elsif m_icon_source == 'emoji' and m_icon_emoji != blank
+              assign has_icon = true
+            endif
+
+            assign text_html = m_text | replace: '[', '<mark class="sale-banner__hl">' | replace: ']', '</mark>'
+          -%}
+
+          {%- capture icon_html -%}
+            {%- if has_icon -%}
+              <span class="sale-banner__icon sale-banner__icon--{{ m_icon_animation }}" aria-hidden="true">
+                {%- case m_icon_source -%}
+                  {%- when 'library' -%}
+                    {%- render 'sale-banner-icon', icon: m_icon -%}
+                  {%- when 'image' -%}
+                    {{ m_icon_image | image_url: width: 96 | image_tag: loading: 'lazy', alt: '', width: 48, height: 48 }}
+                  {%- when 'emoji' -%}
+                    <span class="sale-banner__emoji">{{ m_icon_emoji | escape }}</span>
+                {%- endcase -%}
+              </span>
+            {%- endif -%}
+          {%- endcapture -%}
+
+          {%- capture content_html -%}
+            <span class="sale-banner__content">
+              <span class="sale-banner__label">
+                {%- if m_icon_position != 'right' -%}{{ icon_html }}{%- endif -%}
+                <span class="sale-banner__text">{{ text_html }}</span>
+                {%- if m_expired_text != blank -%}
+                  <span class="sale-banner__expired">{{ m_expired_text | escape }}</span>
+                {%- endif -%}
+                {%- if m_icon_position != 'left' -%}{{ icon_html }}{%- endif -%}
+              </span>
+              {%- if m_countdown_end != blank -%}
+                {%- assign countdown_iso = m_countdown_end | strip | replace: ' ', 'T' | append: ':00' | append: tz -%}
+                <span
+                  class="sale-banner__countdown sale-banner__countdown--{{ s.countdown_style }}"
+                  data-countdown="{{ countdown_iso }}"
+                  role="timer"
+                  aria-live="off"
+                >
+                  {%- case s.countdown_format -%}
+                    {%- when 'hms' -%}
+                      <span class="sale-banner__cd-seg">00</span><span class="sale-banner__cd-sep">:</span><span class="sale-banner__cd-seg">00</span><span class="sale-banner__cd-sep">:</span><span class="sale-banner__cd-seg">00</span>
+                    {%- when 'short' -%}
+                      <span class="sale-banner__cd-seg">0{{ 'sections.sale_banner.days_short' | t }}</span><span class="sale-banner__cd-seg">0{{ 'sections.sale_banner.hours_short' | t }}</span><span class="sale-banner__cd-seg">0{{ 'sections.sale_banner.minutes_short' | t }}</span>
+                    {%- else -%}
+                      <span class="sale-banner__cd-seg">00</span><span class="sale-banner__cd-sep">:</span><span class="sale-banner__cd-seg">00</span><span class="sale-banner__cd-sep">:</span><span class="sale-banner__cd-seg">00</span><span class="sale-banner__cd-sep">:</span><span class="sale-banner__cd-seg">00</span>
+                  {%- endcase -%}
+                </span>
+              {%- endif -%}
+              {%- if m_button_label != blank -%}
+                <a
+                  class="sale-banner__button sale-banner__button--{{ s.button_style }} sale-banner__button--hover-{{ s.button_hover }}"
+                  {% if m_button_link != blank %}
+                    href="{{ m_button_link }}"
+                  {% else %}
+                    role="link" aria-disabled="true"
+                  {% endif %}
+                >
+                  {{- m_button_label | escape -}}
+                </a>
+              {%- endif -%}
+            </span>
+          {%- endcapture -%}
+
+          <div
+            class="sale-banner__message sale-banner__message--anim-{{ m_anim }}{% if rendered == 1 %} is-active{% endif %}"
+            style="--sb-icon-size: {{ m_icon_size }}em; --sb-icon-color: {{ m_icon_color }}; --sb-icon-gap: {{ m_icon_gap }}px;"
+            {% if rotate and rendered > 1 %}
+              aria-hidden="true" inert
+            {% endif %}
+          >
+            {%- if m_anim == 'marquee' -%}
+              <div class="sale-banner__marquee">
+                <div class="sale-banner__marquee-track">
+                  <div class="sale-banner__marquee-group">{{ content_html }}</div>
+                </div>
+              </div>
+            {%- else -%}
+              {{ content_html }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if rotate and s.rotation_arrows -%}
+        <button type="button" class="sale-banner__arrow sale-banner__arrow--next" aria-label="{{ 'sections.sale_banner.next' | t | escape }}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      {%- endif -%}
+
+      {%- if s.dismissible -%}
+        <button type="button" class="sale-banner__close" aria-label="{{ 'sections.sale_banner.close' | t | escape }}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+        </button>
+      {%- endif -%}
+
+      {%- if rotate and s.rotation_dots -%}
+        <div class="sale-banner__dots">
+          {%- for n in (1..message_count) -%}
+            <button
+              type="button"
+              class="sale-banner__dot"
+              aria-label="{{ 'sections.sale_banner.go_to' | t: index: n | escape }}"
+              {% if n == 1 %}
+                aria-current="true"
+              {% endif %}
+            ></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </sale-banner>
+
+  {%- unless request.design_mode -%}
+    <script>
+      (function () {
+        var el = document.getElementById('{{ banner_id }}');
+        if (!el) return;
+        var now = Date.now();
+        var start = Date.parse(el.dataset.start);
+        var end = Date.parse(el.dataset.end);
+        if (now < start || now > end) {
+          el.hidden = true;
+          return;
+        }
+        try {
+          var until = Number(localStorage.getItem('sale-banner:' + el.dataset.key));
+          if (until && until > now) el.hidden = true;
+        } catch (e) {}
+      })();
+    </script>
+  {%- endunless -%}
+{%- endif -%}

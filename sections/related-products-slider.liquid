@@ -1,0 +1,1825 @@
+{% comment %}
+  Related Products Slider: product cards in a native scroll-snap slider with hover image swap,
+  quick add, arrows, progress bar or dots, and optional autoplay.
+  Recommendation sources load through the Section Rendering API (product_recommendations_url);
+  manual and collection sources render directly.
+{% endcomment %}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = '#RelatedProductsSlider-' | append: section.id
+  assign source = s.source
+  assign current_id = product.id
+
+  assign is_recs = false
+  if source == 'related' or source == 'complementary'
+    assign is_recs = true
+  endif
+
+  assign list = nil
+  assign show_shell = false
+  if is_recs
+    if recommendations.performed
+      if recommendations.products_count > 0
+        assign list = recommendations.products
+      elsif s.fallback_collection != blank
+        assign list = s.fallback_collection.products
+      endif
+    elsif product != blank
+      assign show_shell = true
+    elsif s.fallback_collection != blank
+      assign list = s.fallback_collection.products
+    endif
+  elsif source == 'manual'
+    assign list = s.product_list
+  elsif s.collection != blank
+    assign list = s.collection.products
+  endif
+
+  # Render one extra card when the current product is unknown (recommendations response); JS trims it.
+  assign render_limit = s.product_count
+  if current_id == blank
+    assign render_limit = s.product_count | plus: 1
+  endif
+
+  case s.aspect_ratio
+    when '4-5'
+      assign ratio = '4 / 5'
+    when '3-4'
+      assign ratio = '3 / 4'
+    when '2-3'
+      assign ratio = '2 / 3'
+    else
+      assign ratio = '1 / 1'
+  endcase
+
+  case s.heading_font
+    when 'body'
+      assign heading_family = 'var(--font-body-family)'
+      assign heading_weight = 'var(--font-body-weight)'
+    when 'custom'
+      assign heading_family = s.heading_custom_font.family | append: ', ' | append: s.heading_custom_font.fallback_families
+      assign heading_weight = s.heading_custom_font.weight
+    else
+      assign heading_family = 'var(--font-heading-family)'
+      assign heading_weight = 'var(--font-heading-weight)'
+  endcase
+  if s.heading_weight != 'theme'
+    assign heading_weight = s.heading_weight
+  endif
+
+  case s.swap_easing
+    when 'spring'
+      assign swap_easing = 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+    else
+      assign swap_easing = s.swap_easing
+  endcase
+
+  assign rtl_locales = 'he,ar,fa,ur,yi' | split: ','
+  assign is_rtl = false
+  if rtl_locales contains request.locale.iso_code
+    assign is_rtl = true
+  endif
+
+  assign color_names = s.swatch_option_names | downcase | remove: ' ' | split: ','
+  assign img_sizes = '(min-width: 990px) calc(100vw / ' | append: s.per_desktop | append: '), (min-width: 750px) calc(100vw / ' | append: s.per_tablet | append: '), calc(100vw / ' | append: s.per_mobile | append: ')'
+  assign swap_enabled = true
+  if s.swap_effect == 'none'
+    assign swap_enabled = false
+  endif
+
+  assign card_count = 0
+-%}
+
+{%- capture cards_html -%}
+  {%- for p in list -%}
+    {%- if p.id == current_id -%}
+      {%- continue -%}
+    {%- endif -%}
+    {%- if card_count >= render_limit -%}
+      {%- break -%}
+    {%- endif -%}
+    {%- liquid
+      assign card_count = card_count | plus: 1
+      assign primary = p.featured_media.preview_image
+      assign secondary = nil
+      if swap_enabled and p.media.size > 1
+        assign secondary = p.media[1].preview_image
+      endif
+
+      assign media_ratio = ''
+      if s.aspect_ratio == 'original' and primary != blank
+        assign media_ratio = primary.aspect_ratio
+      endif
+
+      assign primary_style = ''
+      if primary != blank
+        assign primary_style = 'object-position: ' | append: primary.presentation.focal_point
+      endif
+      assign secondary_style = ''
+      if secondary != blank
+        assign secondary_style = 'object-position: ' | append: secondary.presentation.focal_point
+      endif
+
+      assign on_sale = false
+      if p.compare_at_price > p.price
+        assign on_sale = true
+      endif
+      assign variant = p.selected_or_first_available_variant
+      assign price_min = p.price_min | money
+    -%}
+    <li class="rps__slide" data-product-id="{{ p.id }}">
+      <div class="rps-card">
+        <div
+          class="rps-card__media{% if secondary != blank %} rps-card__media--swap{% endif %}"
+          {% if media_ratio != blank %}
+            style="aspect-ratio: {{ media_ratio }};"
+          {% endif %}
+        >
+          <div class="rps-card__images">
+            {%- if primary != blank -%}
+              {{
+                primary
+                | image_url: width: 1000
+                | image_tag:
+                  widths: '200, 300, 400, 500, 600, 800, 1000',
+                  sizes: img_sizes,
+                  loading: 'lazy',
+                  alt: primary.alt,
+                  class: 'rps-card__img rps-card__img--primary',
+                  style: primary_style,
+                  draggable: 'false'
+              }}
+              {%- if secondary != blank -%}
+                <span aria-hidden="true">
+                {{
+                  secondary
+                  | image_url: width: 1000
+                  | image_tag:
+                    widths: '200, 300, 400, 500, 600, 800, 1000',
+                    sizes: img_sizes,
+                    loading: 'lazy',
+                    alt: '',
+                    class: 'rps-card__img rps-card__img--secondary',
+                    style: secondary_style,
+                    draggable: 'false'
+                }}
+                </span>
+              {%- endif -%}
+            {%- else -%}
+              {{ 'product-apparel-1' | placeholder_svg_tag: 'rps-card__img rps-card__placeholder' }}
+            {%- endif -%}
+          </div>
+
+          {%- if s.show_sale_badge and on_sale and s.sale_badge_text != blank -%}
+            <span class="rps-card__badge">{{ s.sale_badge_text | escape }}</span>
+          {%- endif -%}
+
+          {%- if s.show_quick_add -%}
+            <button
+              type="button"
+              class="rps-card__quick-add"
+              data-variant-id="{{ variant.id }}"
+              {% unless variant.available %}
+                disabled
+              {% endunless %}
+            >
+              {%- if variant.available -%}
+                {{ 'sections.related_products_slider.quick_add' | t }}
+              {%- else -%}
+                {{ 'sections.related_products_slider.sold_out' | t }}
+              {%- endif -%}
+            </button>
+          {%- endif -%}
+        </div>
+
+        <div class="rps-card__info">
+          {%- if s.show_vendor and p.vendor != blank -%}
+            <span class="rps-card__vendor">{{ p.vendor | escape }}</span>
+          {%- endif -%}
+          <h3 class="rps-card__title">
+            <a class="rps-card__link" href="{{ p.url }}" draggable="false">{{ p.title | escape }}</a>
+          </h3>
+          <div class="rps-card__price">
+            {%- if p.price_varies -%}
+              <span>{{ 'products.product.price.from_price_html' | t: price: price_min }}</span>
+            {%- else -%}
+              <span{% if on_sale %} class="rps-card__price--sale"{% endif %}>{{ p.price | money }}</span>
+            {%- endif -%}
+            {%- if s.show_compare_price and on_sale -%}
+              <s class="rps-card__compare">
+                <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+                {{ p.compare_at_price | money -}}
+              </s>
+            {%- endif -%}
+          </div>
+
+          {%- if s.show_swatches -%}
+            {%- for option in p.options_with_values -%}
+              {%- assign option_name = option.name | downcase | remove: ' ' -%}
+              {%- if color_names contains option_name -%}
+                <ul class="rps-card__swatches" role="list" aria-label="{{ option.name | escape }}">
+                  {%- for value in option.values limit: 5 -%}
+                    {%- liquid
+                      if value.swatch.image
+                        assign swatch_url = value.swatch.image | image_url: width: 40
+                        assign swatch_bg = 'url(' | append: swatch_url | append: ') center / cover'
+                      elsif value.swatch.color
+                        assign swatch_bg = value.swatch.color
+                      else
+                        assign swatch_bg = value | downcase | remove: ' '
+                      endif
+                    -%}
+                    <li class="rps-card__swatch" style="background: {{ swatch_bg }};" title="{{ value | escape }}">
+                      <span class="visually-hidden">{{ value | escape }}</span>
+                    </li>
+                  {%- endfor -%}
+                  {%- if option.values.size > 5 -%}
+                    <li class="rps-card__swatch-more">+{{ option.values.size | minus: 5 }}</li>
+                  {%- endif -%}
+                </ul>
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+    </li>
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- capture arrows_html -%}
+  {%- if s.arrows != 'never' -%}
+    <button type="button" class="rps__arrow rps__arrow--prev" aria-label="{{ 'sections.related_products_slider.previous' | t | escape }}" aria-controls="RpsTrack-{{ section.id }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" class="rps__arrow rps__arrow--next" aria-label="{{ 'sections.related_products_slider.next' | t | escape }}" aria-controls="RpsTrack-{{ section.id }}">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  {%- endif -%}
+{%- endcapture -%}
+
+{% style %}
+  {%- if s.heading_font == 'custom' -%}
+    {{ s.heading_custom_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  {%- if card_count == 0 and show_shell == false and request.design_mode == false -%}
+    #shopify-section-{{ section.id }} {
+      display: none;
+    }
+  {%- endif -%}
+
+  {{ sid }} {
+    --rps-dir: {% if is_rtl %}-1{% else %}1{% endif %};
+    --rps-per: {{ s.per_mobile }};
+    --rps-gap: {{ s.gap_mobile }}px;
+    --rps-ratio: {{ ratio }};
+    --rps-radius: {{ s.border_radius }}px;
+    --rps-swap-duration: {{ s.swap_duration }}s;
+    --rps-swap-ease: {{ swap_easing }};
+    --rps-zoom: {{ s.hover_zoom_scale | divided_by: 100.0 }};
+    --rps-arrow-size: {{ s.arrow_size }}px;
+    --rps-arrow-top: 40%;
+    display: block;
+    padding-block: {{ s.padding_top_mobile }}px {{ s.padding_bottom_mobile }}px;
+    {%- if s.background_color != blank %}
+      background: {{ s.background_color }};
+    {%- endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sid }} {
+      --rps-per: {{ s.per_tablet }};
+      --rps-gap: {{ s.gap_desktop }}px;
+      padding-block: {{ s.padding_top_desktop }}px {{ s.padding_bottom_desktop }}px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    {{ sid }} {
+      --rps-per: {{ s.per_desktop }};
+    }
+  }
+
+  {{ sid }} .rps__container--full {
+    padding-inline: {{ s.side_padding }}px;
+  }
+
+  /* Heading */
+  {{ sid }} .rps__header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-block-end: {{ s.heading_spacing }}px;
+  }
+
+  {{ sid }} .rps__heading {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: {{ s.heading_alignment }};
+    gap: 0.45em;
+    margin: 0;
+    font-family: {{ heading_family }};
+    font-weight: {{ heading_weight }};
+    font-size: {{ s.heading_size_mobile }}px;
+    letter-spacing: {{ s.heading_letter_spacing | times: 0.01 }}em;
+    line-height: 1.2;
+    text-transform: {% if s.heading_uppercase %}uppercase{% else %}none{% endif %};
+    {%- if s.heading_color != blank %}
+      color: {{ s.heading_color }};
+    {%- endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sid }} .rps__heading {
+      font-size: {{ s.heading_size_desktop }}px;
+    }
+  }
+
+  {{ sid }} .rps__heading-dot {
+    flex-shrink: 0;
+    width: {{ s.heading_dot_size }}em;
+    height: {{ s.heading_dot_size }}em;
+    border-radius: 50%;
+    background: {{ s.heading_dot_color }};
+  }
+
+  /* Slider */
+  {{ sid }} .rps__slider {
+    position: relative;
+  }
+
+  {{ sid }} .rps__track {
+    display: flex;
+    gap: var(--rps-gap);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+  }
+
+  {{ sid }} .rps__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  {{ sid }} .rps__track.is-dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    cursor: grabbing;
+  }
+
+  {{ sid }} .rps__slide {
+    flex: 0 0 calc((100% - (var(--rps-per) - 1) * var(--rps-gap)) / var(--rps-per));
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  /* Card */
+  {{ sid }} .rps-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    height: 100%;
+  }
+
+  {{ sid }} .rps-card__media {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: var(--rps-ratio);
+    border-radius: var(--rps-radius);
+    background: rgba(var(--color-foreground), 0.04);
+  }
+
+  {{ sid }} .rps-card__images {
+    position: absolute;
+    inset: 0;
+    transition: transform var(--rps-swap-duration) var(--rps-swap-ease);
+  }
+
+  {{ sid }} .rps-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity var(--rps-swap-duration) var(--rps-swap-ease), transform var(--rps-swap-duration) var(--rps-swap-ease);
+    -webkit-user-drag: none;
+  }
+
+  {{ sid }} .rps-card__placeholder {
+    fill: rgba(var(--color-foreground), 0.35);
+  }
+
+  {{ sid }} .rps-card__img--secondary {
+    opacity: 0;
+    {%- case s.swap_effect -%}
+      {%- when 'slide-left' -%}
+        opacity: 1;
+        transform: translateX(calc(var(--rps-dir) * 100%));
+      {%- when 'slide-up' -%}
+        opacity: 1;
+        transform: translateY(100%);
+      {%- when 'zoom' -%}
+        transform: scale(1.12);
+    {%- endcase -%}
+  }
+
+  {%- for state in (1..2) -%}
+    {%- if state == 1 -%}
+      {%- assign active = sid | append: ' .rps-card:hover' -%}
+      @media (hover: hover) {
+    {%- else -%}
+      {%- assign active = sid | append: ' .rps-card.is-swapped' -%}
+    {%- endif %}
+      {{ active }} .rps-card__media--swap .rps-card__img--secondary {
+        opacity: 1;
+        transform: none;
+      }
+      {%- case s.swap_effect -%}
+        {%- when 'slide-left' %}
+          {{ active }} .rps-card__media--swap .rps-card__img--primary { transform: translateX(calc(var(--rps-dir) * -100%)); }
+        {%- when 'slide-up' %}
+          {{ active }} .rps-card__media--swap .rps-card__img--primary { transform: translateY(-100%); }
+        {%- when 'crossfade' %}
+          {{ active }} .rps-card__media--swap .rps-card__img--primary { opacity: 0; }
+      {%- endcase -%}
+      {%- if s.hover_zoom %}
+        {{ active }} .rps-card__images { transform: scale(var(--rps-zoom)); }
+      {%- endif -%}
+    {%- if state == 1 %}
+      }
+    {%- endif -%}
+  {%- endfor %}
+
+  {{ sid }} .rps-card__badge {
+    position: absolute;
+    inset-block-start: 1rem;
+    inset-inline-start: 1rem;
+    z-index: 1;
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    background: {{ s.sale_badge_bg }};
+    color: {{ s.sale_badge_color }};
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  {{ sid }} .rps-card__quick-add {
+    position: absolute;
+    inset-inline: 1rem;
+    inset-block-end: 1rem;
+    z-index: 2;
+    min-height: 4rem;
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 999px;
+    background: {{ s.quick_add_bg }};
+    color: {{ s.quick_add_color }};
+    font: inherit;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  {{ sid }} .rps-card__quick-add[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  {{ sid }} .rps-card__quick-add[aria-busy='true'] {
+    cursor: progress;
+  }
+
+  {{ sid }} .rps-card__quick-add:focus-visible {
+    outline: 2px solid {{ s.quick_add_color }};
+    outline-offset: -4px;
+  }
+
+  @media (hover: hover) {
+    {{ sid }} .rps-card__quick-add {
+      opacity: 0;
+      transform: translateY(0.6rem);
+    }
+
+    {{ sid }} .rps-card:hover .rps-card__quick-add,
+    {{ sid }} .rps-card__quick-add:focus-visible,
+    {{ sid }} .rps-card__quick-add[aria-busy='true'] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  {{ sid }} .rps-card__info {
+    display: flex;
+    flex-direction: column;
+    align-items: {{ s.card_alignment }};
+    gap: 0.4rem;
+    text-align: {{ s.card_alignment }};
+  }
+
+  {{ sid }} .rps-card__vendor {
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  {{ sid }} .rps-card__title {
+    margin: 0;
+    font-family: var(--font-body-family);
+    font-size: {{ s.title_size }}px;
+    font-weight: {{ s.title_weight }};
+    line-height: 1.35;
+    {%- if s.title_color != blank %}
+      color: {{ s.title_color }};
+    {%- endif %}
+  }
+
+  {{ sid }} .rps-card__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  {{ sid }} .rps-card__link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  {{ sid }} .rps-card__link:focus-visible {
+    outline: none;
+  }
+
+  {{ sid }} .rps-card__link:focus-visible::after {
+    outline: 2px solid rgb(var(--color-foreground));
+    outline-offset: 3px;
+    border-radius: var(--rps-radius);
+  }
+
+  {{ sid }} .rps-card__price {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: {{ s.card_alignment }};
+    gap: 0.2rem 0.8rem;
+    font-size: {{ s.price_size }}px;
+    font-weight: {{ s.price_weight }};
+    {%- if s.price_color != blank %}
+      color: {{ s.price_color }};
+    {%- endif %}
+  }
+
+  {{ sid }} .rps-card__compare {
+    font-weight: 400;
+    opacity: 0.6;
+  }
+
+  {{ sid }} .rps-card__swatches {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: {{ s.card_alignment }};
+    gap: 0.5rem;
+    margin: 0.2rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  {{ sid }} .rps-card__swatch {
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+  }
+
+  {{ sid }} .rps-card__swatch-more {
+    font-size: 1.1rem;
+    opacity: 0.7;
+  }
+
+  /* Arrows */
+  {{ sid }} .rps__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--rps-arrow-size);
+    height: var(--rps-arrow-size);
+    padding: 0;
+    border: 0;
+    border-radius: {% if s.arrow_shape == 'circle' %}50%{% else %}0.4rem{% endif %};
+    background: {{ s.arrow_bg }};
+    color: {{ s.arrow_color }};
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  {{ sid }} .rps__arrow svg {
+    width: 45%;
+    height: 45%;
+  }
+
+  {{ sid }}[dir='rtl'] .rps__arrow svg {
+    transform: scaleX(-1);
+  }
+
+  {{ sid }} .rps__arrow:focus-visible {
+    outline: 2px solid rgb(var(--color-foreground));
+    outline-offset: 2px;
+  }
+
+  {{ sid }} .rps__arrow[disabled] {
+    cursor: default;
+    {%- if s.hide_arrows_at_ends %}
+      visibility: hidden;
+      opacity: 0;
+    {%- else %}
+      opacity: 0.35;
+    {%- endif %}
+  }
+
+  {{ sid }} .rps__arrows--top {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  {{ sid }} .rps__slider > .rps__arrow {
+    position: absolute;
+    inset-block-start: var(--rps-arrow-top);
+    z-index: 3;
+    transform: translateY(-50%);
+  }
+
+  {{ sid }} .rps__slider > .rps__arrow--prev {
+    inset-inline-start: 0.8rem;
+  }
+
+  {{ sid }} .rps__slider > .rps__arrow--next {
+    inset-inline-end: 0.8rem;
+  }
+
+  {%- if s.arrows == 'hover' %}
+    @media (hover: hover) {
+      {{ sid }} .rps__arrow:not([disabled]) {
+        opacity: 0;
+      }
+
+      {{ sid }}:hover .rps__arrow:not([disabled]),
+      {{ sid }} .rps__arrow:focus-visible {
+        opacity: 1;
+      }
+    }
+
+    @media (hover: none) {
+      {{ sid }} .rps__arrow {
+        display: none;
+      }
+    }
+  {%- endif %}
+
+  /* Progress bar / dots */
+  {{ sid }} .rps__progress {
+    position: relative;
+    width: {{ s.progress_width }}%;
+    height: {{ s.progress_height }}px;
+    margin: 2.4rem auto 0;
+    overflow: hidden;
+    border-radius: 999px;
+    background: {{ s.progress_track_color }};
+  }
+
+  {{ sid }} .rps__progress-fill {
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+    width: 30%;
+    border-radius: inherit;
+    background: {{ s.progress_fill_color }};
+    transition: inset-inline-start 0.15s linear, width 0.15s linear;
+  }
+
+  {{ sid }} .rps__dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.2rem;
+    margin-block-start: 2rem;
+  }
+
+  {{ sid }} .rps__dot {
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  {{ sid }} .rps__dot::before {
+    content: '';
+    display: block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: auto;
+    border-radius: 50%;
+    background: {{ s.progress_track_color }};
+  }
+
+  {{ sid }} .rps__dot[aria-current='true']::before {
+    background: {{ s.progress_fill_color }};
+  }
+
+  {{ sid }} .rps__dot:focus-visible {
+    outline: 2px solid rgb(var(--color-foreground));
+  }
+
+  {{ sid }} .rps__empty {
+    padding: 2rem;
+    border: 1px dashed rgba(var(--color-foreground), 0.3);
+    text-align: center;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    {{ sid }} .rps__track {
+      scroll-behavior: auto;
+    }
+
+    {{ sid }} .rps-card__img,
+    {{ sid }} .rps-card__images,
+    {{ sid }} .rps-card__quick-add,
+    {{ sid }} .rps__progress-fill {
+      transition: none;
+    }
+  }
+{% endstyle %}
+
+<related-products-slider
+  id="RelatedProductsSlider-{{ section.id }}"
+  class="rps color-{{ s.color_scheme }} gradient"
+  {% if is_rtl %}
+    dir="rtl"
+  {% endif %}
+  {% if show_shell %}
+    data-url="{{ routes.product_recommendations_url }}?product_id={{ product.id }}&section_id={{ section.id }}&limit={{ s.product_count }}&intent={{ source }}"
+  {% endif %}
+  data-product-id="{{ current_id }}"
+  data-limit="{{ s.product_count }}"
+  data-autoplay="{{ s.autoplay }}"
+  data-interval="{{ s.autoplay_interval }}"
+  data-pause-hover="{{ s.autoplay_pause_hover }}"
+  data-loop="{{ s.loop }}"
+  data-tap-swap="{{ s.swap_on_tap }}"
+  data-label-added="{{ 'sections.related_products_slider.added' | t | escape }}"
+  data-label-error="{{ 'sections.related_products_slider.error' | t | escape }}"
+  data-label-go-to="{{ 'sections.related_products_slider.go_to' | t: index: '[index]' | escape }}"
+>
+  {%- if card_count > 0 -%}
+    <div class="rps__container {% if s.full_width %}rps__container--full{% else %}page-width{% endif %}">
+      <div class="rps__header">
+        {%- if s.heading != blank -%}
+          <h2 class="rps__heading" id="RpsHeading-{{ section.id }}">
+            {%- if s.show_heading_dot -%}
+              <span class="rps__heading-dot" aria-hidden="true"></span>
+            {%- endif -%}
+            <span>{{ s.heading | escape }}</span>
+          </h2>
+        {%- endif -%}
+        {%- if s.arrow_position == 'top' and arrows_html != blank -%}
+          <div class="rps__arrows--top">{{ arrows_html }}</div>
+        {%- endif -%}
+      </div>
+
+      <div
+        class="rps__slider"
+        role="region"
+        {% if s.heading != blank %}
+          aria-labelledby="RpsHeading-{{ section.id }}"
+        {% else %}
+          aria-label="{{ 'sections.related_products_slider.region' | t | escape }}"
+        {% endif %}
+      >
+        {%- if s.arrow_position == 'sides' -%}
+          {{ arrows_html }}
+        {%- endif -%}
+        <ul class="rps__track" id="RpsTrack-{{ section.id }}" role="list">
+          {{ cards_html }}
+        </ul>
+      </div>
+
+      {%- case s.navigation -%}
+        {%- when 'progress' -%}
+          <div class="rps__progress" aria-hidden="true"><div class="rps__progress-fill"></div></div>
+        {%- when 'dots' -%}
+          <div class="rps__dots"></div>
+      {%- endcase -%}
+
+      <p class="visually-hidden" aria-live="polite" data-rps-status></p>
+    </div>
+  {%- elsif request.design_mode and show_shell == false -%}
+    <div class="page-width">
+      <p class="rps__empty">{{ 'sections.related_products_slider.empty' | t }}</p>
+    </div>
+  {%- endif -%}
+</related-products-slider>
+
+<script>
+  if (!customElements.get('related-products-slider')) {
+    customElements.define(
+      'related-products-slider',
+      class RelatedProductsSlider extends HTMLElement {
+        connectedCallback() {
+          this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (!this.dataset.url) return this.init();
+
+          new IntersectionObserver(
+            (entries, observer) => {
+              if (!entries[0].isIntersecting) return;
+              observer.disconnect();
+              fetch(this.dataset.url)
+                .then((response) => response.text())
+                .then((text) => {
+                  const html = new DOMParser().parseFromString(text, 'text/html');
+                  const fresh = html.querySelector('related-products-slider');
+                  if (fresh) this.innerHTML = fresh.innerHTML;
+                  this.init();
+                })
+                .catch(() => this.hideSection());
+            },
+            { rootMargin: '0px 0px 400px 0px' }
+          ).observe(this);
+        }
+
+        disconnectedCallback() {
+          this.stopAutoplay();
+          if (this.resizeObserver) this.resizeObserver.disconnect();
+          if (this.visibilityObserver) this.visibilityObserver.disconnect();
+        }
+
+        hideSection() {
+          const section = this.closest('.shopify-section') || this;
+          section.style.display = 'none';
+        }
+
+        init() {
+          this.track = this.querySelector('.rps__track');
+          if (!this.track) return this.hideSection();
+
+          // Exclude the current product and trim to the configured count.
+          const limit = Number(this.dataset.limit) || 8;
+          const currentId = this.dataset.productId;
+          let slides = Array.from(this.track.children);
+          slides.filter((slide) => currentId && slide.dataset.productId === currentId).forEach((slide) => slide.remove());
+          slides = Array.from(this.track.children);
+          slides.slice(limit).forEach((slide) => slide.remove());
+          this.slides = Array.from(this.track.children);
+          if (!this.slides.length) return this.hideSection();
+
+          this.isRtl = getComputedStyle(this).direction === 'rtl';
+          this.loop = this.dataset.loop === 'true';
+          this.prevButtons = Array.from(this.querySelectorAll('.rps__arrow--prev'));
+          this.nextButtons = Array.from(this.querySelectorAll('.rps__arrow--next'));
+          this.progressFill = this.querySelector('.rps__progress-fill');
+          this.dotsWrap = this.querySelector('.rps__dots');
+          this.status = this.querySelector('[data-rps-status]');
+
+          this.prevButtons.forEach((button) => button.addEventListener('click', () => this.go(-1)));
+          this.nextButtons.forEach((button) => button.addEventListener('click', () => this.go(1)));
+
+          let frame;
+          this.track.addEventListener('scroll', () => {
+            cancelAnimationFrame(frame);
+            frame = requestAnimationFrame(() => this.update());
+          });
+          this.resizeObserver = new ResizeObserver(() => {
+            this.buildDots();
+            this.update();
+          });
+          this.resizeObserver.observe(this.track);
+
+          this.initDrag();
+          this.initTapSwap();
+          this.initQuickAdd();
+          this.initAutoplay();
+        }
+
+        get position() {
+          return Math.abs(this.track.scrollLeft);
+        }
+
+        get maxScroll() {
+          return Math.max(0, this.track.scrollWidth - this.track.clientWidth);
+        }
+
+        get pageSize() {
+          const first = this.slides[0];
+          const second = this.slides[1];
+          const step = second ? Math.abs(second.offsetLeft - first.offsetLeft) : first.offsetWidth;
+          return Math.max(1, Math.floor((this.track.clientWidth + 1) / step)) * step;
+        }
+
+        scrollToPosition(position) {
+          const left = Math.min(Math.max(position, 0), this.maxScroll) * (this.isRtl ? -1 : 1);
+          this.track.scrollTo({ left, behavior: this.reducedMotion ? 'auto' : 'smooth' });
+        }
+
+        go(direction, forceLoop = false) {
+          const atStart = this.position <= 2;
+          const atEnd = this.position >= this.maxScroll - 2;
+          if ((this.loop || forceLoop) && direction > 0 && atEnd) return this.scrollToPosition(0);
+          if (this.loop && direction < 0 && atStart) return this.scrollToPosition(this.maxScroll);
+          this.scrollToPosition(this.position + direction * this.pageSize);
+        }
+
+        update() {
+          const max = this.maxScroll;
+          const position = this.position;
+          const atStart = position <= 2;
+          const atEnd = position >= max - 2;
+
+          this.prevButtons.forEach((button) => (button.disabled = !this.loop && atStart));
+          this.nextButtons.forEach((button) => (button.disabled = !this.loop && atEnd));
+
+          if (this.progressFill) {
+            const visible = max > 0 ? (this.track.clientWidth / this.track.scrollWidth) * 100 : 100;
+            const progress = max > 0 ? position / max : 0;
+            this.progressFill.style.width = `${visible}%`;
+            this.progressFill.style.insetInlineStart = `${progress * (100 - visible)}%`;
+          }
+
+          if (this.dots) {
+            const active = Math.round(position / this.pageSize);
+            this.dots.forEach((dot, i) => dot.setAttribute('aria-current', i === active ? 'true' : 'false'));
+          }
+
+          const image = this.slides[0].querySelector('.rps-card__media');
+          if (image) this.style.setProperty('--rps-arrow-top', `${image.offsetHeight / 2}px`);
+        }
+
+        buildDots() {
+          if (!this.dotsWrap) return;
+          const count = this.maxScroll > 0 ? Math.ceil(this.maxScroll / this.pageSize) + 1 : 0;
+          if (this.dots && this.dots.length === count) return;
+          this.dotsWrap.replaceChildren();
+          this.dots = [];
+          for (let i = 0; i < count; i++) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'rps__dot';
+            dot.setAttribute('aria-label', this.dataset.labelGoTo.replace('[index]', i + 1));
+            dot.setAttribute('aria-controls', this.track.id);
+            dot.addEventListener('click', () => this.scrollToPosition(i * this.pageSize));
+            this.dotsWrap.append(dot);
+            this.dots.push(dot);
+          }
+        }
+
+        /* Drag to scroll with a mouse; touch uses native scrolling. */
+        initDrag() {
+          let startX = 0;
+          let startScroll = 0;
+          let pressed = false;
+          let moved = false;
+
+          this.track.addEventListener('pointerdown', (event) => {
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            if (event.target.closest('button')) return;
+            pressed = true;
+            moved = false;
+            startX = event.clientX;
+            startScroll = this.track.scrollLeft;
+          });
+
+          this.track.addEventListener('pointermove', (event) => {
+            if (!pressed) return;
+            const dx = event.clientX - startX;
+            if (!moved) {
+              if (Math.abs(dx) < 6) return;
+              moved = true;
+              this.track.classList.add('is-dragging');
+              this.track.setPointerCapture(event.pointerId);
+            }
+            this.track.scrollLeft = startScroll - dx;
+          });
+
+          const end = (event) => {
+            pressed = false;
+            if (!this.track.classList.contains('is-dragging')) return;
+            this.track.classList.remove('is-dragging');
+            if (this.track.hasPointerCapture(event.pointerId)) this.track.releasePointerCapture(event.pointerId);
+          };
+          this.track.addEventListener('pointerup', end);
+          this.track.addEventListener('pointercancel', end);
+
+          this.track.addEventListener(
+            'click',
+            (event) => {
+              if (!moved) return;
+              event.preventDefault();
+              event.stopPropagation();
+              moved = false;
+            },
+            true
+          );
+        }
+
+        /* Touch: optionally show the second image on the first tap, open the product on the second. */
+        initTapSwap() {
+          if (this.dataset.tapSwap !== 'true' || !window.matchMedia('(hover: none)').matches) return;
+          this.track.addEventListener('click', (event) => {
+            const link = event.target.closest('.rps-card__link');
+            if (!link) return;
+            const card = link.closest('.rps-card');
+            if (!card.querySelector('.rps-card__media--swap') || card.classList.contains('is-swapped')) return;
+            event.preventDefault();
+            this.track.querySelectorAll('.rps-card.is-swapped').forEach((other) => other.classList.remove('is-swapped'));
+            card.classList.add('is-swapped');
+          });
+        }
+
+        initQuickAdd() {
+          this.track.addEventListener('click', (event) => {
+            const button = event.target.closest('.rps-card__quick-add');
+            if (button && !button.disabled) this.quickAdd(button);
+          });
+        }
+
+        async quickAdd(button) {
+          const cart = document.querySelector('cart-drawer') || document.querySelector('cart-notification');
+          const sections =
+            cart && typeof cart.getSectionsToRender === 'function'
+              ? cart.getSectionsToRender().map((section) => section.id)
+              : ['cart-icon-bubble'];
+          const label = button.textContent;
+          button.disabled = true;
+          button.setAttribute('aria-busy', 'true');
+
+          try {
+            const root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+            const response = await fetch(`${root}cart/add.js`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+              body: JSON.stringify({
+                id: Number(button.dataset.variantId),
+                quantity: 1,
+                sections,
+                sections_url: window.location.pathname,
+              }),
+            });
+            const data = await response.json();
+            if (!response.ok || data.status) throw new Error(data.description || data.message);
+
+            if (cart && typeof cart.renderContents === 'function') {
+              cart.classList.remove('is-empty');
+              cart.renderContents(data);
+            } else if (data.sections && data.sections['cart-icon-bubble']) {
+              const bubble = document.getElementById('cart-icon-bubble');
+              const html = new DOMParser().parseFromString(data.sections['cart-icon-bubble'], 'text/html');
+              const fresh = html.querySelector('.shopify-section');
+              if (bubble && fresh) bubble.innerHTML = fresh.innerHTML;
+            }
+            if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+              publish(PUB_SUB_EVENTS.cartUpdate, { source: 'related-products-slider', productVariantId: data.variant_id, cartData: data });
+            }
+            this.announce(this.dataset.labelAdded);
+            button.textContent = this.dataset.labelAdded;
+          } catch (error) {
+            this.announce(error.message || this.dataset.labelError);
+            button.textContent = this.dataset.labelError;
+          } finally {
+            button.removeAttribute('aria-busy');
+            setTimeout(() => {
+              button.textContent = label;
+              button.disabled = false;
+            }, 2000);
+          }
+        }
+
+        announce(message) {
+          if (!this.status) return;
+          this.status.textContent = '';
+          requestAnimationFrame(() => (this.status.textContent = message));
+        }
+
+        initAutoplay() {
+          if (this.dataset.autoplay !== 'true' || this.reducedMotion || this.maxScroll <= 0) return;
+          this.interval = (Number(this.dataset.interval) || 5) * 1000;
+          this.paused = { hover: false, focus: false, offscreen: true };
+
+          if (this.dataset.pauseHover === 'true') {
+            this.addEventListener('mouseenter', () => this.setPaused('hover', true));
+            this.addEventListener('mouseleave', () => this.setPaused('hover', false));
+          }
+          this.addEventListener('focusin', () => this.setPaused('focus', true));
+          this.addEventListener('focusout', (event) => {
+            if (!this.contains(event.relatedTarget)) this.setPaused('focus', false);
+          });
+          this.track.addEventListener('pointerdown', () => this.startAutoplay());
+
+          this.visibilityObserver = new IntersectionObserver(([entry]) => this.setPaused('offscreen', !entry.isIntersecting));
+          this.visibilityObserver.observe(this);
+        }
+
+        setPaused(key, value) {
+          this.paused[key] = value;
+          if (Object.values(this.paused).some(Boolean)) this.stopAutoplay();
+          else this.startAutoplay();
+        }
+
+        startAutoplay() {
+          if (!this.interval || Object.values(this.paused).some(Boolean)) return;
+          this.stopAutoplay();
+          this.timer = setInterval(() => this.go(1, true), this.interval);
+        }
+
+        stopAutoplay() {
+          clearInterval(this.timer);
+        }
+      }
+    );
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Related products slider",
+  "tag": "section",
+  "class": "section section-related-products-slider",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Source",
+      "options": [
+        { "value": "related", "label": "Shopify recommendations (related)" },
+        { "value": "complementary", "label": "Shopify recommendations (complementary)" },
+        { "value": "manual", "label": "Manual product list" },
+        { "value": "collection", "label": "Collection" }
+      ],
+      "default": "related",
+      "info": "Complementary products are set up in the Shopify Search & Discovery app."
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products",
+      "limit": 16,
+      "info": "Used when the source is Manual product list."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Used when the source is Collection."
+    },
+    {
+      "type": "collection",
+      "id": "fallback_collection",
+      "label": "Fallback collection",
+      "info": "Shown when recommendations return no products. The section hides if there are still none."
+    },
+    {
+      "type": "range",
+      "id": "product_count",
+      "label": "Number of products",
+      "min": 2,
+      "max": 16,
+      "step": 1,
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Related products"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_heading_dot",
+      "label": "Show circle before heading",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "heading_dot_size",
+      "label": "Circle size",
+      "min": 0.2,
+      "max": 1.2,
+      "step": 0.1,
+      "unit": "em",
+      "default": 0.5
+    },
+    {
+      "type": "color",
+      "id": "heading_dot_color",
+      "label": "Circle color",
+      "default": "#121212"
+    },
+    {
+      "type": "checkbox",
+      "id": "heading_uppercase",
+      "label": "Uppercase",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Font",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "custom", "label": "Custom font" }
+      ],
+      "default": "body"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_custom_font",
+      "label": "Custom font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Font size (desktop)",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "theme", "label": "Font default" },
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Letter spacing",
+      "info": "Percent of the font size. Negative values make it tighter.",
+      "min": -10,
+      "max": 30,
+      "step": 1,
+      "unit": "%",
+      "default": 8
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "info": "Leave empty to use the color scheme."
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Space below heading",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Card"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "1-1", "label": "Square 1:1" },
+        { "value": "4-5", "label": "Portrait 4:5" },
+        { "value": "3-4", "label": "Portrait 3:4" },
+        { "value": "2-3", "label": "Portrait 2:3" },
+        { "value": "original", "label": "Original" }
+      ],
+      "default": "1-1"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Image corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap between cards (desktop)",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap between cards (mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "select",
+      "id": "card_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Title font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "info": "Leave empty to use the color scheme."
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "label": "Price font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "price_weight",
+      "label": "Price font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "info": "Leave empty to use the color scheme."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_compare_price",
+      "label": "Show compare-at price",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sale_badge",
+      "label": "Show sale badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "sale_badge_text",
+      "label": "Sale badge text",
+      "default": "Sale"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_bg",
+      "label": "Sale badge background",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "sale_badge_color",
+      "label": "Sale badge text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_swatches",
+      "label": "Show color swatches",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "swatch_option_names",
+      "label": "Color option names",
+      "info": "Comma separated option names treated as color, e.g. Color, Colour, Farbe, Couleur.",
+      "default": "Color,Colour"
+    },
+    {
+      "type": "header",
+      "content": "Hover image swap"
+    },
+    {
+      "type": "select",
+      "id": "swap_effect",
+      "label": "Second image effect",
+      "info": "Shows the product's second image on hover.",
+      "options": [
+        { "value": "crossfade", "label": "Crossfade" },
+        { "value": "slide-left", "label": "Slide left" },
+        { "value": "slide-up", "label": "Slide up" },
+        { "value": "zoom", "label": "Zoom-in swap" },
+        { "value": "none", "label": "None" }
+      ],
+      "default": "crossfade"
+    },
+    {
+      "type": "range",
+      "id": "swap_duration",
+      "label": "Duration",
+      "min": 0.2,
+      "max": 1.5,
+      "step": 0.1,
+      "unit": "s",
+      "default": 0.5
+    },
+    {
+      "type": "select",
+      "id": "swap_easing",
+      "label": "Easing",
+      "options": [
+        { "value": "ease", "label": "Ease" },
+        { "value": "ease-in-out", "label": "Ease in-out" },
+        { "value": "linear", "label": "Linear" },
+        { "value": "spring", "label": "Spring" }
+      ],
+      "default": "ease"
+    },
+    {
+      "type": "checkbox",
+      "id": "hover_zoom",
+      "label": "Zoom image on hover",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "hover_zoom_scale",
+      "label": "Zoom amount",
+      "min": 102,
+      "max": 115,
+      "step": 1,
+      "unit": "%",
+      "default": 105
+    },
+    {
+      "type": "checkbox",
+      "id": "swap_on_tap",
+      "label": "Touch devices: show second image on first tap",
+      "info": "The second tap opens the product.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quick_add",
+      "label": "Show quick add button",
+      "info": "Adds the first available variant to the cart.",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "quick_add_bg",
+      "label": "Quick add background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "quick_add_color",
+      "label": "Quick add text color",
+      "default": "#121212"
+    },
+    {
+      "type": "header",
+      "content": "Slider"
+    },
+    {
+      "type": "range",
+      "id": "per_desktop",
+      "label": "Visible cards (desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "per_tablet",
+      "label": "Visible cards (tablet)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "per_mobile",
+      "label": "Visible cards (mobile)",
+      "info": "Use a decimal like 1.5 to let the next card peek in.",
+      "min": 1.2,
+      "max": 2.5,
+      "step": 0.1,
+      "default": 1.5
+    },
+    {
+      "type": "select",
+      "id": "arrows",
+      "label": "Arrows",
+      "options": [
+        { "value": "hover", "label": "Show on hover" },
+        { "value": "always", "label": "Always" },
+        { "value": "never", "label": "Never" }
+      ],
+      "default": "hover"
+    },
+    {
+      "type": "select",
+      "id": "arrow_position",
+      "label": "Arrow position",
+      "options": [
+        { "value": "sides", "label": "Over the slider sides" },
+        { "value": "top", "label": "Top, next to heading" }
+      ],
+      "default": "sides"
+    },
+    {
+      "type": "select",
+      "id": "arrow_shape",
+      "label": "Arrow shape",
+      "options": [
+        { "value": "circle", "label": "Circle" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "circle"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "Arrow size",
+      "min": 28,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "arrow_bg",
+      "label": "Arrow background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow icon color",
+      "default": "#121212"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_arrows_at_ends",
+      "label": "Hide arrows at start and end",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "navigation",
+      "label": "Below the slider",
+      "options": [
+        { "value": "progress", "label": "Progress bar" },
+        { "value": "dots", "label": "Dots" },
+        { "value": "none", "label": "Nothing" }
+      ],
+      "default": "progress"
+    },
+    {
+      "type": "range",
+      "id": "progress_width",
+      "label": "Progress bar width",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "progress_height",
+      "label": "Progress bar height",
+      "min": 1,
+      "max": 8,
+      "step": 1,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "progress_track_color",
+      "label": "Track / inactive dot color",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "color",
+      "id": "progress_fill_color",
+      "label": "Fill / active dot color",
+      "default": "#121212"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_interval",
+      "label": "Autoplay interval",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_pause_hover",
+      "label": "Pause autoplay on hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop",
+      "info": "Arrows jump back to the start at the end.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section style"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave empty to use the color scheme background."
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "side_padding",
+      "label": "Side padding (full width)",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related products",
+      "settings": {
+        "per_desktop": 5,
+        "per_mobile": 1.5,
+        "swap_effect": "crossfade",
+        "navigation": "progress"
+      }
+    }
+  ]
+}
+{% endschema %}

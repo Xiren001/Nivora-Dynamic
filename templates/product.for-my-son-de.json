@@ -93,7 +93,7 @@
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "contentSize": 16,
-            "pattern": "Mehr als 1.000 Bewertungen",
+            "pattern": "4,9/5,0 ([count]+ zufriedene Kunden)",
             "hideText": false,
             "alignment": "",
             "layout": "",
@@ -244,7 +244,7 @@
           "settings": {
             "heading": "<strong>Ein greifbares Symbol für Liebe und Unterstützung</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": "de"
           }
         },

@@ -164,7 +164,7 @@
           "settings": {
             "heading": "Descripción",
             "icon": "none",
-            "content": "<p>Dos pulseras, una sola historia. La Pulsera Duo te permite llevar un nombre, una fecha o una inicial de alguien que siempre está contigo — en tu muñeca, a donde vayas. Una para ti, otra para esa persona: una forma discreta de decir que van juntos.</p><p></p>",
+            "content": "<p>Dos pulseras, una sola historia. La Pulsera Dúo te permite llevar un nombre, una fecha o las iniciales de alguien que siempre está contigo — en tu muñeca, a donde vayas. Una para ti y otra para esa persona: una forma discreta de decir que están juntos.</p>",
             "page": ""
           }
         },
@@ -260,8 +260,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

@@ -1,0 +1,193 @@
+{% doc %}
+  @prompt
+    Create a sticky add-to-cart bar for a Shopify product page (elegant sentimental jewelry brand).
+    
+    Behavior:
+    - Fixed to bottom of viewport, full width, white background, subtle top shadow
+    - Only appears after the user scrolls past the entire product info section (title, price, variants, main Add to Cart); hides again when scrolling back up into it (smooth slide/fade)
+    - Use IntersectionObserver on the product info section, not the button alone
+    - Add to Cart adds the currently selected variant; syncs with variant/option changes on the main form
+    - Hide or disable button when variant is sold out
+    
+    Desktop layout (max-width 1260px, centered, ~16px vertical padding):
+    Left group:
+    - Product thumbnail (~56px square, thin dark border)
+    - Product title: uppercase, 11–12px, letter-spacing ~0.05em, dark gray, single line with ellipsis
+    - Price row below title: sale price (bold, burgundy #7A0A1E), compare-at price (gray, strikethrough), discount pill "SAVE X%" (burgundy background, white bold text, fully rounded, auto-calculated, hidden if no compare-at price)
+    
+    Right:
+    - Button: burgundy (#7A0A1E) background, white text, uppercase, wide letter-spacing, ~48px tall, slight radius
+    - Button content: "Add to Cart" | current price, separated by a thin vertical white divider
+    
+    Mobile:
+    - Show only the button, full width with ~12px side padding
+    - Hide thumbnail, title, and price row
+    - Respect bottom safe-area inset
+    
+    Other:
+    - All text dynamic (product title, variant price, compare-at price, currency via Shopify money filters)
+    - Button label and discount text editable via theme settings / translatable
+    - Colors configurable in theme settings
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign initial_variant = product.selected_or_first_available_variant %}
+
+{% style %}
+  .ai-sticky-cart-{{ ai_gen_id }} {
+    display: block;
+    position: fixed;
+    z-index: 50;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: {{ block.settings.bar_background }};
+    color: {{ block.settings.text_color }};
+    box-shadow: 0 -3px 18px rgba(0, 0, 0, 0.10);
+    transform: translateY(105%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 280ms ease, opacity 280ms ease, visibility 280ms;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .ai-sticky-cart-{{ ai_gen_id }}.is-visible { transform: translateY(0); opacity: 1; visibility: visible; }
+  .ai-sticky-cart-{{ ai_gen_id }}__inner { box-sizing: border-box; width: 100%; max-width: 1260px; min-height: 88px; margin: 0 auto; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .ai-sticky-cart-{{ ai_gen_id }}__product { display: flex; align-items: center; min-width: 0; gap: 14px; }
+  .ai-sticky-cart-{{ ai_gen_id }}__thumb { width: 56px; height: 56px; flex: 0 0 56px; object-fit: cover; border: 1px solid {{ block.settings.text_color }}; box-sizing: border-box; }
+  .ai-sticky-cart-{{ ai_gen_id }}__details { min-width: 0; }
+  .ai-sticky-cart-{{ ai_gen_id }}__title { max-width: 480px; margin: 0 0 7px; overflow: hidden; color: {{ block.settings.text_color }}; font-size: 12px; font-weight: 500; letter-spacing: .05em; line-height: 1.25; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+  .ai-sticky-cart-{{ ai_gen_id }}__prices { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+  .ai-sticky-cart-{{ ai_gen_id }}__price { color: {{ block.settings.accent_color }}; font-weight: 700; }
+  .ai-sticky-cart-{{ ai_gen_id }}__compare { color: #696969; text-decoration: line-through; }
+  .ai-sticky-cart-{{ ai_gen_id }}__save { display: none; padding: 4px 8px; border-radius: 999px; background: {{ block.settings.accent_color }}; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .04em; white-space: nowrap; }
+  .ai-sticky-cart-{{ ai_gen_id }}__button { min-height: 48px; min-width: 300px; padding: 12px 22px; display: flex; justify-content: center; align-items: center; gap: 14px; border: 0; border-radius: 3px; background: {{ block.settings.accent_color }}; color: #fff; font: inherit; cursor: pointer; text-transform: uppercase; letter-spacing: .12em; }
+  .ai-sticky-cart-{{ ai_gen_id }}__button:disabled { opacity: .55; cursor: not-allowed; }
+  .ai-sticky-cart-{{ ai_gen_id }}__divider { height: 20px; width: 1px; background: rgba(255,255,255,.7); }
+  .ai-sticky-cart-{{ ai_gen_id }}__button-price { letter-spacing: .04em; }
+  .ai-sticky-cart-{{ ai_gen_id }}:focus-within { outline: 2px solid {{ block.settings.accent_color }}; outline-offset: -3px; }
+  @media (max-width: 749px) {
+    .ai-sticky-cart-{{ ai_gen_id }}__inner { min-height: auto; padding: 12px; }
+    .ai-sticky-cart-{{ ai_gen_id }}__product { display: none; }
+    .ai-sticky-cart-{{ ai_gen_id }}__button { width: 100%; min-width: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ai-sticky-cart-{{ ai_gen_id }} { transition: none; } }
+{% endstyle %}
+
+<sticky-cart-{{ ai_gen_id }} class="ai-sticky-cart-{{ ai_gen_id }}" data-product-id="{{ product.id }}" data-label="{{ block.settings.button_label | escape }}" data-sold-out="{{ block.settings.sold_out_label | escape }}" {{ block.shopify_attributes }}>
+  <div class="ai-sticky-cart-{{ ai_gen_id }}__inner">
+    <div class="ai-sticky-cart-{{ ai_gen_id }}__product">
+      {% if product.featured_image %}
+        <img class="ai-sticky-cart-{{ ai_gen_id }}__thumb" src="{{ product.featured_image | image_url: width: 112 }}" alt="{{ product.featured_image.alt | default: product.title | escape }}" width="56" height="56" loading="lazy">
+      {% else %}
+        <div class="ai-sticky-cart-{{ ai_gen_id }}__thumb">{{ 'product-apparel-1' | placeholder_svg_tag }}</div>
+      {% endif %}
+      <div class="ai-sticky-cart-{{ ai_gen_id }}__details">
+        <p class="ai-sticky-cart-{{ ai_gen_id }}__title">{{ product.title | escape }}</p>
+        <div class="ai-sticky-cart-{{ ai_gen_id }}__prices">
+          <span class="ai-sticky-cart-{{ ai_gen_id }}__price" data-role="price">{{ initial_variant.price | money }}</span>
+          <span class="ai-sticky-cart-{{ ai_gen_id }}__compare" data-role="compare" {% unless initial_variant.compare_at_price > initial_variant.price %}hidden{% endunless %}>{% if initial_variant.compare_at_price > initial_variant.price %}{{ initial_variant.compare_at_price | money }}{% endif %}</span>
+          <span class="ai-sticky-cart-{{ ai_gen_id }}__save" data-role="save" data-template="{{ block.settings.discount_label | escape }}"></span>
+        </div>
+      </div>
+    </div>
+    <button class="ai-sticky-cart-{{ ai_gen_id }}__button" type="button" data-role="add" {% unless initial_variant.available %}disabled{% endunless %}>
+      <span data-role="label">{% if initial_variant.available %}{{ block.settings.button_label | escape }}{% else %}{{ block.settings.sold_out_label | escape }}{% endif %}</span>
+      <span class="ai-sticky-cart-{{ ai_gen_id }}__divider" aria-hidden="true"></span>
+      <span class="ai-sticky-cart-{{ ai_gen_id }}__button-price" data-role="button-price">{{ initial_variant.price | money }}</span>
+    </button>
+  </div>
+  <script type="application/json" data-variants>{{ product.variants | json }}</script>
+</sticky-cart-{{ ai_gen_id }}>
+
+<script>
+(function() {
+  const tag = 'sticky-cart-{{ ai_gen_id }}';
+  if (customElements.get(tag)) return;
+  class StickyCart extends HTMLElement {
+    connectedCallback() {
+      this.variants = JSON.parse(this.querySelector('[data-variants]').textContent);
+      this.priceNode = this.querySelector('[data-role="price"]');
+      this.compareNode = this.querySelector('[data-role="compare"]');
+      this.saveNode = this.querySelector('[data-role="save"]');
+      this.buttonPrice = this.querySelector('[data-role="button-price"]');
+      this.button = this.querySelector('[data-role="add"]');
+      this.label = this.querySelector('[data-role="label"]');
+      this.root = document.querySelector('product-info');
+      if (!this.root) this.root = document.querySelector('.product__info-wrapper');
+      if (!this.root) this.root = document.querySelector('main');
+      this.observer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        this.classList.toggle('is-visible', !entry.isIntersecting && entry.boundingClientRect.top < 0);
+      }, { threshold: 0 });
+      if (this.root) this.observer.observe(this.root);
+      this.onVariantChange = this.onVariantChange.bind(this);
+      document.addEventListener('change', this.onVariantChange);
+      document.addEventListener('variant:change', this.onVariantChange);
+      this.button.addEventListener('click', () => this.addToCart());
+      this.onVariantChange();
+    }
+    disconnectedCallback() {
+      if (this.observer) this.observer.disconnect();
+      document.removeEventListener('change', this.onVariantChange);
+      document.removeEventListener('variant:change', this.onVariantChange);
+    }
+    onVariantChange() {
+      const idInput = document.querySelector('form[action*="/cart/add"] [name="id"]');
+      if (!idInput) return;
+      const variant = this.variants.find((item) => String(item.id) === String(idInput.value));
+      if (!variant) return;
+      const fmt = (cents) => {
+        const moneyFormat = window.Shopify && Shopify.money_format ? Shopify.money_format : '{{ shop.money_format }}';
+        if (window.Shopify && typeof Shopify.formatMoney === 'function') return Shopify.formatMoney(cents, moneyFormat);
+        return (cents / 100).toLocaleString(undefined, { style: 'currency', currency: '{{ cart.currency.iso_code | default: shop.currency }}' });
+      };
+      this.priceNode.innerHTML = fmt(variant.price);
+      this.buttonPrice.innerHTML = fmt(variant.price);
+      if (variant.compare_at_price && variant.compare_at_price > variant.price) {
+        this.compareNode.innerHTML = fmt(variant.compare_at_price);
+        this.compareNode.hidden = false;
+        const percent = Math.round((variant.compare_at_price - variant.price) * 100 / variant.compare_at_price);
+        this.saveNode.textContent = this.saveNode.dataset.template.replace('[percent]', percent);
+        this.saveNode.style.display = 'inline-block';
+      } else {
+        this.compareNode.hidden = true;
+        this.compareNode.textContent = '';
+        this.saveNode.style.display = 'none';
+      }
+      this.button.disabled = !variant.available;
+      this.label.textContent = variant.available ? this.dataset.label : this.dataset.soldOut;
+      this.currentVariant = variant;
+    }
+    addToCart() {
+      if (!this.currentVariant || !this.currentVariant.available) return;
+      const form = document.querySelector('form[action*="/cart/add"]');
+      if (!form) return;
+      const idInput = form.querySelector('[name="id"]');
+      if (idInput) idInput.value = this.currentVariant.id;
+      if (typeof form.requestSubmit === 'function') form.requestSubmit();
+      else form.submit();
+    }
+  }
+  customElements.define(tag, StickyCart);
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Sticky add to cart",
+  "settings": [
+    { "type": "header", "content": "Labels" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Add to cart" },
+    { "type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "Sold out" },
+    { "type": "text", "id": "discount_label", "label": "Discount label", "default": "SAVE [percent]%", "info": "Use [percent] where the calculated discount should appear." },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#7A0A1E" },
+    { "type": "color", "id": "bar_background", "label": "Bar background", "default": "#FFFFFF" },
+    { "type": "color", "id": "text_color", "label": "Product title", "default": "#343434" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 }
+  ],
+  "presets": [{ "name": "Sticky add to cart" }],
+  "tag": null,
+  "class": "sticky-add-to-cart-block"
+}
+{% endschema %}

@@ -873,6 +873,9 @@
               },
               "options__2": {
                 "label": "Pills"
+              },
+              "options__3": {
+                "label": "Image"
               }
             },
             "swatch_shape": {
@@ -887,6 +890,57 @@
               "options__3": {
                 "label": "None"
               }
+            },
+            "header_image_style": {
+              "content": "Image style"
+            },
+            "image_style_show_step_numbers": {
+              "label": "Show step numbers"
+            },
+            "image_style_accent_color": {
+              "label": "Accent color"
+            },
+            "image_style_border_radius": {
+              "label": "Card border radius"
+            },
+            "image_style_columns": {
+              "label": "Columns per row",
+              "info": "Default column count. Can be overridden per step below."
+            },
+            "image_style_columns_step": {
+              "options__1": {
+                "label": "Use default"
+              }
+            },
+            "image_style_columns_step_1": {
+              "label": "Columns per row – step 1"
+            },
+            "image_style_columns_step_2": {
+              "label": "Columns per row – step 2"
+            },
+            "image_style_columns_step_3": {
+              "label": "Columns per row – step 3"
+            },
+            "image_style_font_size": {
+              "label": "Option name font size"
+            },
+            "image_style_show_price_difference": {
+              "label": "Show price difference"
+            },
+            "image_style_text_only_fallback": {
+              "label": "No image fallback (text only)",
+              "info": "When there's no variant photo, admin swatch, or custom image for a value, show its name as text only instead of falling back to the product's main image."
+            },
+            "header_custom_images": {
+              "content": "Custom images",
+              "info": "Optionally set your own image for a specific option value (e.g. \"Gold\"). This overrides the automatically detected variant photo. Leave blank to use the variant's own photo, or the product's main image, automatically."
+            },
+            "image_override_value": {
+              "label": "Option value",
+              "info": "Must match the option value exactly (e.g. \"Gold\")."
+            },
+            "image_override_image": {
+              "label": "Image"
             }
           }
         },
@@ -2032,6 +2086,9 @@
               },
               "options__2": {
                 "label": "Pills"
+              },
+              "options__3": {
+                "label": "Image"
               }
             },
             "swatch_shape": {
@@ -2046,6 +2103,57 @@
               "options__3": {
                 "label": "None"
               }
+            },
+            "header_image_style": {
+              "content": "Image style"
+            },
+            "image_style_show_step_numbers": {
+              "label": "Show step numbers"
+            },
+            "image_style_accent_color": {
+              "label": "Accent color"
+            },
+            "image_style_border_radius": {
+              "label": "Card border radius"
+            },
+            "image_style_columns": {
+              "label": "Columns per row",
+              "info": "Default column count. Can be overridden per step below."
+            },
+            "image_style_columns_step": {
+              "options__1": {
+                "label": "Use default"
+              }
+            },
+            "image_style_columns_step_1": {
+              "label": "Columns per row – step 1"
+            },
+            "image_style_columns_step_2": {
+              "label": "Columns per row – step 2"
+            },
+            "image_style_columns_step_3": {
+              "label": "Columns per row – step 3"
+            },
+            "image_style_font_size": {
+              "label": "Option name font size"
+            },
+            "image_style_show_price_difference": {
+              "label": "Show price difference"
+            },
+            "image_style_text_only_fallback": {
+              "label": "No image fallback (text only)",
+              "info": "When there's no variant photo, admin swatch, or custom image for a value, show its name as text only instead of falling back to the product's main image."
+            },
+            "header_custom_images": {
+              "content": "Custom images",
+              "info": "Optionally set your own image for a specific option value (e.g. \"Gold\"). This overrides the automatically detected variant photo. Leave blank to use the variant's own photo, or the product's main image, automatically."
+            },
+            "image_override_value": {
+              "label": "Option value",
+              "info": "Must match the option value exactly (e.g. \"Gold\")."
+            },
+            "image_override_image": {
+              "label": "Image"
             }
           }
         },
@@ -2066,7 +2174,13 @@
           "name": "Pickup availability"
         },
         "description": {
-          "name": "Description"
+          "name": "Description",
+          "settings": {
+            "custom_description": {
+              "label": "Custom description",
+              "info": "Replaces the product's description. Leave empty to show the product's description from the admin."
+            }
+          }
         },
         "sku": {
           "name": "SKU",
@@ -2366,6 +2480,779 @@
               "default": "Heading"
             }
           }
+        },
+        "trust_badges": {
+          "name": "Trust badges",
+          "settings": {
+            "paragraph": {
+              "content": "A row of 4 badges (icon + label) with divider lines above and below."
+            },
+            "icon": {
+              "options__1": {
+                "label": "Heart"
+              },
+              "options__2": {
+                "label": "Delivery truck"
+              },
+              "options__3": {
+                "label": "Shield check"
+              },
+              "options__4": {
+                "label": "Diamond"
+              },
+              "options__5": {
+                "label": "Star"
+              },
+              "options__6": {
+                "label": "Lock"
+              },
+              "options__7": {
+                "label": "Gift"
+              },
+              "options__8": {
+                "label": "Package"
+              },
+              "options__9": {
+                "label": "Leaf"
+              },
+              "options__10": {
+                "label": "Return arrow"
+              }
+            },
+            "badge_1_icon": {
+              "label": "Badge 1 icon"
+            },
+            "badge_1_label": {
+              "label": "Badge 1 label",
+              "default": "Heartfelt Gift"
+            },
+            "badge_2_icon": {
+              "label": "Badge 2 icon"
+            },
+            "badge_2_label": {
+              "label": "Badge 2 label",
+              "default": "Free Shipping"
+            },
+            "badge_3_icon": {
+              "label": "Badge 3 icon"
+            },
+            "badge_3_label": {
+              "label": "Badge 3 label",
+              "default": "Money-Back Guarantee"
+            },
+            "badge_4_icon": {
+              "label": "Badge 4 icon"
+            },
+            "badge_4_label": {
+              "label": "Badge 4 label",
+              "default": "Handcrafted Design"
+            },
+            "header_style": {
+              "content": "Style"
+            },
+            "label_font_size": {
+              "label": "Label font size"
+            }
+          }
+        },
+        "icon_with_text_check": {
+          "name": "Icon with text – check grid",
+          "settings": {
+            "paragraph": {
+              "content": "2-column grid of up to 4 features with a check icon. Leave a label empty to hide it. Translate labels with Translate & Adapt."
+            },
+            "label_1": {
+              "label": "Label 1",
+              "default": "Handcrafted quality"
+            },
+            "label_2": {
+              "label": "Label 2",
+              "default": "Hypoallergenic"
+            },
+            "label_3": {
+              "label": "Label 3",
+              "default": "Gift-ready packaging"
+            },
+            "label_4": {
+              "label": "Label 4",
+              "default": "Free shipping"
+            },
+            "header_style": {
+              "content": "Style"
+            },
+            "text_color": {
+              "label": "Text and icon color"
+            },
+            "font_size": {
+              "label": "Font size"
+            }
+          }
+        },
+        "sale_banner": {
+          "name": "Sale banner",
+          "settings": {
+            "intro": {
+              "content": "Up to 3 messages that rotate or sit side by side. Wrap words in [brackets] to highlight them. All text is translatable in Translate & Adapt."
+            },
+            "preset": {
+              "label": "Style preset",
+              "options__1": {
+                "label": "Custom (use settings below)"
+              },
+              "options__2": {
+                "label": "Flash sale"
+              },
+              "options__3": {
+                "label": "Free shipping"
+              },
+              "options__4": {
+                "label": "Minimal"
+              },
+              "info": "Presets override background, text colors, animation and the icon of messages set to \"No icon\"."
+            },
+            "display_mode": {
+              "label": "Display",
+              "options__1": {
+                "label": "Rotate messages"
+              },
+              "options__2": {
+                "label": "Side by side"
+              }
+            },
+            "text_direction": {
+              "label": "Text direction",
+              "options__1": {
+                "label": "Auto (from store language)"
+              },
+              "options__2": {
+                "label": "Left to right"
+              },
+              "options__3": {
+                "label": "Right to left"
+              },
+              "info": "Use \"Right to left\" for Hebrew or Arabic templates on stores whose language is not RTL."
+            },
+            "message_1": {
+              "content": "Message 1"
+            },
+            "message_text": {
+              "label": "Text",
+              "info": "Leave empty to hide this message. Wrap words in [brackets] to highlight."
+            },
+            "m1_text": {
+              "default": "Flash sale: [30% off] everything"
+            },
+            "message_animation": {
+              "label": "Animation",
+              "options__1": {
+                "label": "Same as banner"
+              },
+              "options__2": {
+                "label": "None"
+              },
+              "options__3": {
+                "label": "Fade in"
+              },
+              "options__4": {
+                "label": "Slide up"
+              },
+              "options__5": {
+                "label": "Slide down"
+              },
+              "options__6": {
+                "label": "Slide left"
+              },
+              "options__7": {
+                "label": "Typewriter"
+              },
+              "options__8": {
+                "label": "Marquee (continuous scroll)"
+              },
+              "options__9": {
+                "label": "Bounce"
+              },
+              "options__10": {
+                "label": "Pulse"
+              },
+              "options__11": {
+                "label": "Shake"
+              },
+              "options__12": {
+                "label": "Glow"
+              },
+              "options__13": {
+                "label": "Gradient shimmer"
+              },
+              "options__14": {
+                "label": "Letter-by-letter reveal"
+              },
+              "options__15": {
+                "label": "Flip"
+              },
+              "options__16": {
+                "label": "Zoom in"
+              }
+            },
+            "message_icon_source": {
+              "label": "Icon",
+              "options__1": {
+                "label": "No icon"
+              },
+              "options__2": {
+                "label": "Built-in icon"
+              },
+              "options__3": {
+                "label": "Uploaded image"
+              },
+              "options__4": {
+                "label": "Emoji"
+              }
+            },
+            "message_icon": {
+              "label": "Built-in icon",
+              "options__1": {
+                "label": "Tag"
+              },
+              "options__2": {
+                "label": "Fire"
+              },
+              "options__3": {
+                "label": "Clock"
+              },
+              "options__4": {
+                "label": "Truck"
+              },
+              "options__5": {
+                "label": "Gift"
+              },
+              "options__6": {
+                "label": "Heart"
+              },
+              "options__7": {
+                "label": "Star"
+              },
+              "options__8": {
+                "label": "Percent"
+              },
+              "options__9": {
+                "label": "Sparkle"
+              },
+              "options__10": {
+                "label": "Bell"
+              },
+              "options__11": {
+                "label": "Circle"
+              },
+              "options__12": {
+                "label": "Check"
+              },
+              "options__13": {
+                "label": "Lightning"
+              }
+            },
+            "message_icon_image": {
+              "label": "Icon image"
+            },
+            "message_icon_emoji": {
+              "label": "Emoji"
+            },
+            "message_icon_position": {
+              "label": "Icon position",
+              "options__1": {
+                "label": "Before text"
+              },
+              "options__2": {
+                "label": "After text"
+              },
+              "options__3": {
+                "label": "Both sides"
+              }
+            },
+            "message_icon_size": {
+              "label": "Icon size"
+            },
+            "message_icon_color": {
+              "label": "Icon color",
+              "info": "Leave empty to match the text color."
+            },
+            "message_icon_animation": {
+              "label": "Icon animation",
+              "options__1": {
+                "label": "None"
+              },
+              "options__2": {
+                "label": "Spin"
+              },
+              "options__3": {
+                "label": "Pulse"
+              },
+              "options__4": {
+                "label": "Bounce"
+              },
+              "options__5": {
+                "label": "Wiggle"
+              }
+            },
+            "message_icon_gap": {
+              "label": "Icon and text gap"
+            },
+            "message_countdown_end": {
+              "label": "Countdown end (YYYY-MM-DD HH:MM)",
+              "info": "Optional. Uses the store time zone (Settings > General)."
+            },
+            "message_expired_text": {
+              "label": "Text after countdown ends"
+            },
+            "message_button_label": {
+              "label": "Button label"
+            },
+            "message_button_link": {
+              "label": "Button link"
+            },
+            "message_2": {
+              "content": "Message 2"
+            },
+            "m2_text": {
+              "default": "Free shipping on all orders"
+            },
+            "message_3": {
+              "content": "Message 3"
+            },
+            "header_animation": {
+              "content": "Text animation"
+            },
+            "animation": {
+              "label": "Animation",
+              "options__1": {
+                "label": "None"
+              },
+              "options__2": {
+                "label": "Fade in"
+              },
+              "options__3": {
+                "label": "Slide up"
+              },
+              "options__4": {
+                "label": "Slide down"
+              },
+              "options__5": {
+                "label": "Slide left"
+              },
+              "options__6": {
+                "label": "Typewriter"
+              },
+              "options__7": {
+                "label": "Marquee (continuous scroll)"
+              },
+              "options__8": {
+                "label": "Bounce"
+              },
+              "options__9": {
+                "label": "Pulse"
+              },
+              "options__10": {
+                "label": "Shake"
+              },
+              "options__11": {
+                "label": "Glow"
+              },
+              "options__12": {
+                "label": "Gradient shimmer"
+              },
+              "options__13": {
+                "label": "Letter-by-letter reveal"
+              },
+              "options__14": {
+                "label": "Flip"
+              },
+              "options__15": {
+                "label": "Zoom in"
+              },
+              "info": "Each message can override this."
+            },
+            "animation_duration": {
+              "label": "Duration"
+            },
+            "animation_delay": {
+              "label": "Delay"
+            },
+            "animation_easing": {
+              "label": "Easing",
+              "options__1": {
+                "label": "Ease"
+              },
+              "options__2": {
+                "label": "Linear"
+              },
+              "options__3": {
+                "label": "Ease in-out"
+              },
+              "options__4": {
+                "label": "Spring"
+              }
+            },
+            "animation_loop": {
+              "label": "Loop animation"
+            },
+            "header_marquee": {
+              "content": "Marquee"
+            },
+            "marquee_speed": {
+              "label": "Speed",
+              "options__1": {
+                "label": "Slow"
+              },
+              "options__2": {
+                "label": "Medium"
+              },
+              "options__3": {
+                "label": "Fast"
+              },
+              "options__4": {
+                "label": "Custom"
+              }
+            },
+            "marquee_custom_speed": {
+              "label": "Custom speed (pixels per second)"
+            },
+            "marquee_direction": {
+              "label": "Direction",
+              "options__1": {
+                "label": "Right to left"
+              },
+              "options__2": {
+                "label": "Left to right"
+              },
+              "info": "Flips automatically for right-to-left languages."
+            },
+            "marquee_pause_hover": {
+              "label": "Pause on hover"
+            },
+            "marquee_gap": {
+              "label": "Gap between repeats"
+            },
+            "header_rotation": {
+              "content": "Rotation"
+            },
+            "rotation_autoplay": {
+              "label": "Autoplay"
+            },
+            "rotation_interval": {
+              "label": "Change every"
+            },
+            "rotation_transition": {
+              "label": "Transition",
+              "options__1": {
+                "label": "Fade"
+              },
+              "options__2": {
+                "label": "Slide"
+              },
+              "options__3": {
+                "label": "Slide up"
+              }
+            },
+            "rotation_pause_hover": {
+              "label": "Pause on hover"
+            },
+            "rotation_arrows": {
+              "label": "Show arrows"
+            },
+            "rotation_dots": {
+              "label": "Show dots"
+            },
+            "header_text": {
+              "content": "Text"
+            },
+            "font_source": {
+              "label": "Font",
+              "options__1": {
+                "label": "Theme body font"
+              },
+              "options__2": {
+                "label": "Theme heading font"
+              },
+              "options__3": {
+                "label": "Custom font"
+              }
+            },
+            "custom_font": {
+              "label": "Custom font"
+            },
+            "font_size_desktop": {
+              "label": "Font size (desktop)"
+            },
+            "font_size_mobile": {
+              "label": "Font size (mobile)"
+            },
+            "font_weight": {
+              "label": "Font weight",
+              "options__1": {
+                "label": "Font default"
+              },
+              "options__2": {
+                "label": "Light"
+              },
+              "options__3": {
+                "label": "Regular"
+              },
+              "options__4": {
+                "label": "Medium"
+              },
+              "options__5": {
+                "label": "Semibold"
+              },
+              "options__6": {
+                "label": "Bold"
+              },
+              "options__7": {
+                "label": "Extra bold"
+              }
+            },
+            "letter_spacing": {
+              "label": "Letter spacing"
+            },
+            "line_height": {
+              "label": "Line height"
+            },
+            "uppercase": {
+              "label": "Uppercase"
+            },
+            "text_align": {
+              "label": "Alignment",
+              "options__1": {
+                "label": "Left"
+              },
+              "options__2": {
+                "label": "Center"
+              },
+              "options__3": {
+                "label": "Right"
+              }
+            },
+            "text_color": {
+              "label": "Text color"
+            },
+            "highlight_color": {
+              "label": "Highlight color"
+            },
+            "highlight_bg": {
+              "label": "Highlight background",
+              "info": "Leave empty for no background."
+            },
+            "highlight_bold": {
+              "label": "Bold highlight"
+            },
+            "text_shadow": {
+              "label": "Text shadow"
+            },
+            "text_shadow_color": {
+              "label": "Text shadow color"
+            },
+            "header_countdown": {
+              "content": "Countdown",
+              "info": "Set an end date on a message to show a countdown. Times use the store time zone."
+            },
+            "countdown_format": {
+              "label": "Format",
+              "options__1": {
+                "label": "DD:HH:MM:SS"
+              },
+              "options__2": {
+                "label": "HH:MM:SS"
+              },
+              "options__3": {
+                "label": "2d 4h 12m"
+              }
+            },
+            "countdown_expired": {
+              "label": "When the countdown ends",
+              "options__1": {
+                "label": "Hide the message"
+              },
+              "options__2": {
+                "label": "Show \"Text after countdown ends\""
+              },
+              "info": "The whole banner hides when every message is gone."
+            },
+            "countdown_style": {
+              "label": "Style",
+              "options__1": {
+                "label": "Plain"
+              },
+              "options__2": {
+                "label": "Boxed"
+              },
+              "options__3": {
+                "label": "Pill"
+              }
+            },
+            "countdown_bg": {
+              "label": "Box background"
+            },
+            "countdown_text": {
+              "label": "Countdown text color"
+            },
+            "header_button": {
+              "content": "Button"
+            },
+            "button_style": {
+              "label": "Style",
+              "options__1": {
+                "label": "Solid"
+              },
+              "options__2": {
+                "label": "Outline"
+              },
+              "options__3": {
+                "label": "Text link"
+              }
+            },
+            "button_color": {
+              "label": "Button color"
+            },
+            "button_text_color": {
+              "label": "Button text color"
+            },
+            "button_radius": {
+              "label": "Corner radius"
+            },
+            "button_hover": {
+              "label": "Hover effect",
+              "options__1": {
+                "label": "None"
+              },
+              "options__2": {
+                "label": "Darken"
+              },
+              "options__3": {
+                "label": "Lift"
+              },
+              "options__4": {
+                "label": "Underline"
+              },
+              "options__5": {
+                "label": "Invert colors"
+              }
+            },
+            "header_background": {
+              "content": "Background"
+            },
+            "bg_type": {
+              "label": "Background type",
+              "options__1": {
+                "label": "Solid color"
+              },
+              "options__2": {
+                "label": "Linear gradient"
+              },
+              "options__3": {
+                "label": "Animated gradient"
+              },
+              "options__4": {
+                "label": "Image"
+              }
+            },
+            "bg_color_1": {
+              "label": "Color 1",
+              "info": "Solid color, first gradient color, or image overlay color."
+            },
+            "bg_color_2": {
+              "label": "Color 2"
+            },
+            "bg_angle": {
+              "label": "Gradient angle"
+            },
+            "bg_image": {
+              "label": "Background image"
+            },
+            "overlay_opacity": {
+              "label": "Image overlay opacity"
+            },
+            "header_layout": {
+              "content": "Layout"
+            },
+            "padding_top_desktop": {
+              "label": "Top padding (desktop)"
+            },
+            "padding_bottom_desktop": {
+              "label": "Bottom padding (desktop)"
+            },
+            "padding_top_mobile": {
+              "label": "Top padding (mobile)"
+            },
+            "padding_bottom_mobile": {
+              "label": "Bottom padding (mobile)"
+            },
+            "max_width": {
+              "label": "Content width",
+              "options__1": {
+                "label": "Full"
+              },
+              "options__2": {
+                "label": "Page width"
+              },
+              "options__3": {
+                "label": "Custom"
+              }
+            },
+            "custom_max_width": {
+              "label": "Custom content width"
+            },
+            "border_top": {
+              "label": "Top border"
+            },
+            "border_bottom": {
+              "label": "Bottom border"
+            },
+            "border_color": {
+              "label": "Border color"
+            },
+            "border_thickness": {
+              "label": "Border thickness"
+            },
+            "border_radius": {
+              "label": "Corner radius"
+            },
+            "margin_top": {
+              "label": "Top margin"
+            },
+            "margin_bottom": {
+              "label": "Bottom margin"
+            },
+            "header_visibility": {
+              "content": "Visibility"
+            },
+            "show_on": {
+              "label": "Show on",
+              "options__1": {
+                "label": "All devices"
+              },
+              "options__2": {
+                "label": "Desktop only"
+              },
+              "options__3": {
+                "label": "Mobile only"
+              }
+            },
+            "dismissible": {
+              "label": "Show close button"
+            },
+            "dismiss_days": {
+              "label": "Keep closed for",
+              "info": "0 = shows again on the next page view."
+            },
+            "schedule_start": {
+              "label": "Show from (YYYY-MM-DD HH:MM)",
+              "info": "Optional. Store time zone. The theme editor always shows the banner."
+            },
+            "schedule_end": {
+              "label": "Show until (YYYY-MM-DD HH:MM)"
+            },
+            "banner_link": {
+              "label": "Make whole banner a link"
+            }
+          }
         }
       },
       "settings": {
@@ -2389,7 +3276,14 @@
           },
           "options__4": {
             "label": "Thumbnail carousel"
+          },
+          "options__5": {
+            "label": "Thumbnails (left)"
           }
+        },
+        "thumbnail_left_gap": {
+          "label": "Left thumbnails: space before image",
+          "info": "Only applies when Desktop layout is set to Thumbnails (left)."
         },
         "constrain_to_viewport": {
           "label": "Constrain media to screen height"
@@ -2449,6 +3343,9 @@
           },
           "options__3": {
             "label": "Hide thumbnails"
+          },
+          "options__4": {
+            "label": "Small thumbnails below image"
           }
         },
         "hide_variants": {

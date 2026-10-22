@@ -23,14 +23,45 @@
           assign is_color = true
         endif
 
-        if swatch_count > 0 and block.settings.swatch_shape != 'none'
+        if block.settings.picker_type == 'image'
+          assign picker_type = 'image'
+        elsif swatch_count > 0 and block.settings.swatch_shape != 'none'
           assign picker_type = 'swatch'
         elsif is_color
           assign picker_type = 'swatch'
         endif
+
+        if picker_type == 'image'
+          assign step_columns_key = 'image_style_columns_step_' | append: forloop.index
+          assign step_columns = block.settings[step_columns_key]
+          assign image_columns = block.settings.image_style_columns | default: 2
+          if step_columns != blank and step_columns != 'default'
+            assign image_columns = step_columns
+          endif
+        endif
       -%}
 
-      {%- if picker_type == 'swatch' -%}
+      {%- if picker_type == 'image' -%}
+        <fieldset
+          class="js product-form__input product-form__input--image"
+          style="--image-picker-accent: {{ block.settings.image_style_accent_color | default: '#A8864F' }}; --image-picker-radius: {{ block.settings.image_style_border_radius | default: 8 }}px; --image-picker-columns: {{ image_columns }}; --image-picker-font-size: {{ block.settings.image_style_font_size | default: 14 }}px;"
+        >
+          <legend class="form__label image-picker__legend">
+            {%- if block.settings.image_style_show_step_numbers -%}
+              <span class="image-picker__step-badge">{{ forloop.index }}</span>
+            {%- endif -%}
+            <span class="image-picker__step-title">{{ option.name }}</span>
+          </legend>
+
+          {% render 'product-variant-options',
+            product: product,
+            option: option,
+            block: block,
+            picker_type: picker_type
+          %}
+        </fieldset>
+
+      {%- elsif picker_type == 'swatch' -%}
         <fieldset class="js product-form__input product-form__input--swatch">
           <legend class="form__label">
             {{ option.name }}:

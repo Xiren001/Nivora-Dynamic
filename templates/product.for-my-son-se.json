@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -84,7 +93,7 @@
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "contentSize": 16,
-            "pattern": "Mer än 1 000 recensioner",
+            "pattern": "4,9/5,0 ([count]+ nöjda kunder)",
             "hideText": false,
             "alignment": "",
             "layout": "",
@@ -235,8 +244,8 @@
           "settings": {
             "heading": "En betydelsefull symbol för kärlek och stöd",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "se"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -276,6 +285,51 @@
         "padding_bottom": 4
       }
     },
+    "blocks_3PEJnE": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_XLf6xB": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>Du kanske också gillar</strong>",
+            "subtitle": "Handplockade föremål från vår kollektion",
+            "product_list": [
+              "alltid-din-hjarthalsband",
+              "evig-fodelsestenring",
+              "evig-knut-armband-1",
+              "familjens-hjarta-graverat-halsband",
+              "medicinskt-alertarmband"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_XLf6xB"
+      ],
+      "name": "You may also like",
+      "settings": {}
+    },
     "17341290603fa2426b": {
       "type": "apps",
       "blocks": {
@@ -306,6 +360,7 @@
     "main",
     "related-products",
     "image_with_text_eCRMfk",
+    "blocks_3PEJnE",
     "17341290603fa2426b"
   ]
 }

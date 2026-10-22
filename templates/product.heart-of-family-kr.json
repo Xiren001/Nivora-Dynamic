@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -206,8 +215,8 @@
           "settings": {
             "heading": "Melt Her Heart With Your Family's Love",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "ko"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_Gm6kfK": {
@@ -255,8 +264,8 @@
           "settings": {
             "heading": "각인된 이름처럼 영원히 함께하는 우리 가족",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "ko"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_qBCYQG": {
@@ -295,6 +304,48 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "blocks_zQ8JjK": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_timaEx": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>함께 보면 좋은 상품</strong>",
+            "subtitle": "Nivora가 추천하는 엄선된 컬렉션을 만나보세요.",
+            "product_list": [
+              "아들의-방패-호안석-팔찌",
+              "영원한-매듭-팔찌"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_timaEx"
+      ],
+      "name": "You may also like",
+      "settings": {}
     },
     "related-products": {
       "type": "related-products",
@@ -345,6 +396,7 @@
     "main",
     "image_with_text_KHz8Cx",
     "image_with_text_G8zpBF",
+    "blocks_zQ8JjK",
     "related-products",
     "17341290603fa2426b"
   ]

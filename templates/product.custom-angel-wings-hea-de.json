@@ -235,7 +235,7 @@
           "settings": {
             "heading": "Melt Her Heart With Your Family's Love",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": "de"
           }
         },
@@ -307,7 +307,11 @@
               "deine-immerwahrende-herz-halskette",
               "personalisierte-tennis-halskette",
               "personalisierte-buchstaben-halskette",
-              "halskette-wasser-des-lebens"
+              "halskette-wasser-des-lebens",
+              "an-meine-tochter-armband-fur-immer-verbunden",
+              "armband-mit-gravur-fur-meinen-enkel",
+              "fur-meine-tochter-fur-immer-in-meinem-herzen",
+              "halskette-fur-meine-liebe"
             ],
             "products_to_show": 4,
             "container_width": 1200,

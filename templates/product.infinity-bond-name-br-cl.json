@@ -114,13 +114,13 @@
             "layout": "vertical",
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Lleva su porqué",
+            "heading_1": "Regalo con significado",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Cómoda todo el día",
+            "heading_2": "Hipoalergénica",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Hecha para durar toda una vida"
+            "heading_3": "Hecha para durar toda la vida"
           }
         },
         "text_NnLNAb": {
@@ -155,7 +155,7 @@
           "settings": {
             "heading": "Descripción",
             "icon": "none",
-            "content": "<p>Algunos hombres demuestran su amor con solo estar presentes. Él no habla mucho: solo trabaja, carga con el peso y sigue adelante, incluso cuando nadie lo está mirando. Esta pulsera dice lo que quizás él no dice: que tú lo ves, y que todo lo que está construyendo vale la pena.<br/><br/>En el centro hay un símbolo del infinito grabado con los nombres de los dos, rodeado de cuentas que llevan los nombres de las personas por las que hace todo esto. En los días largos, puede mirar hacia abajo y recordar que no está solo en esto.<br/><br/></p>",
+            "content": "<p>Hay hombres cuya sola presencia es una expresión de amor. Aunque tu esposo no diga mucho y se la pase trabajando, sigue adelante por el bien de la familia, porque eso es lo que hace un hombre. Esta pulsera expresa eso que a veces cuesta decir con palabras: que tú valoras su esfuerzo y que, junto a él, todo sacrificio vale la pena.</p><p><br/>El símbolo del infinito lleva grabados tu nombre y el de él, y cada cuenta tiene grabado el nombre de un hijo. Así, cada vez que vea la pulsera que lleva puesta, los recordará a todos ustedes.</p>",
             "page": ""
           }
         },
@@ -164,7 +164,7 @@
           "settings": {
             "heading": "Material",
             "icon": "none",
-            "content": "<ul><li><strong>Correa de cuero trenzado</strong>: lo bastante suave para usarla todo el día, con un aspecto resistente que le queda bien a cualquier muñeca</li><li><strong>Cuentas de metal: grabadas en profundidad</strong>, no impresas, para que los nombres no se borren ni se desgasten</li><li><strong>Pieza central de infinito esculpida</strong>: con terminación en tono envejecido que le da peso y significado</li><li><strong>Hecha para el uso diario</strong>: preparada para resistir el trabajo, los fines de semana y el día a día</li></ul>",
+            "content": "<ul><li>Correa de cuero trenzado: resistente al uso diario, elegante y masculina</li><li>Cuentas de metal: grabadas bajo relieve, no impresas, para que los nombres no se borren ni se desgasten </li><li>Fina pieza central: con acabado “envejecido” que realza su significado </li><li>Ideal para el uso diario: resistente al ajetreo del día a día</li></ul>",
             "page": ""
           }
         },
@@ -230,16 +230,16 @@
         "heading_hzeJHY": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>Un Regalo Que de Verdad Va a Usar</strong>",
+            "heading": "Un Regalo Único",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_iQVmpQ": {
           "type": "text",
           "settings": {
-            "text": "<p>No es una corbata. No es otro aparato más olvidado en un cajón. Son los nombres de las personas que ama, grabados y cerca, en algo que va a tomar cada mañana y usará con orgullo callado.</p>",
+            "text": "<p>Nada de corbatas ni de ingeniosos aparatos que quedarán guardados en un cajón. Esta pulsera lleva grabados los nombres de sus seres más queridos para que los luzca con orgullo en su muñeca.</p>",
             "text_style": "body"
           }
         }
@@ -292,8 +292,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -340,7 +340,7 @@
         "ai_gen_block_27b352b_rwCMEE": {
           "type": "ai_gen_block_27b352b",
           "settings": {
-            "title": "También Te Puede Gustar",
+            "title": "<strong>También Te Puede Gustar</strong>",
             "subtitle": "Piezas elegidas a mano de nuestra colección",
             "product_list": [
               "pulsera-personalizada-a-mi-esposo-cl",

@@ -1,0 +1,1367 @@
+{% comment %}
+  UGC Marquee: centered heading above one or two rows of customer photos/videos that scroll continuously.
+  The loop is a CSS keyframe on a duplicated track (durations are computed here from widths and speed).
+  JS only handles drag/swipe, the lightbox, and pausing while off-screen / hovered / focused.
+{% endcomment %}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = '#UgcMarquee-' | append: section.id
+
+  assign blocks_total = section.blocks.size
+  assign row_total = 1
+  assign row1_count = blocks_total
+  if s.second_row and blocks_total > 1
+    assign row_total = 2
+    assign row1_count = blocks_total | plus: 1 | divided_by: 2
+  endif
+
+  case s.aspect_ratio
+    when '3-4'
+      assign ratio = '3 / 4'
+    when '1-1'
+      assign ratio = '1 / 1'
+    when '9-16'
+      assign ratio = '9 / 16'
+    else
+      assign ratio = '4 / 5'
+  endcase
+
+  case s.heading_font
+    when 'heading'
+      assign heading_family = 'var(--font-heading-family)'
+      assign heading_weight = 'var(--font-heading-weight)'
+    when 'custom'
+      assign heading_family = s.heading_custom_font.family | append: ', ' | append: s.heading_custom_font.fallback_families
+      assign heading_weight = s.heading_custom_font.weight
+    else
+      assign heading_family = 'var(--font-body-family)'
+      assign heading_weight = 'var(--font-body-weight)'
+  endcase
+  if s.heading_weight != 'theme'
+    assign heading_weight = s.heading_weight
+  endif
+
+  assign rtl_locales = 'he,ar,fa,ur,yi' | split: ','
+  assign is_rtl = false
+  if rtl_locales contains request.locale.iso_code
+    assign is_rtl = true
+  endif
+
+  assign heading_html = s.heading | replace: '</p><p>', '<br>' | remove: '<p>' | remove: '</p>'
+  assign placeholders = 'lifestyle-1,product-1,lifestyle-2,product-2,product-3,product-4,product-5,product-6' | split: ','
+  assign img_sizes = '(min-width: 750px) ' | append: s.image_width_desktop | append: 'px, ' | append: s.image_width_mobile | append: 'px'
+  assign slide_count = 0
+  assign slides_html = ''
+-%}
+
+{% style %}
+  {%- if s.heading_font == 'custom' -%}
+    {{ s.heading_custom_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+
+  {{ sid }} {
+    --ugc-gap-d: {{ s.gap_desktop }}px;
+    --ugc-gap-m: {{ s.gap_mobile }}px;
+    --ugc-w-d: {{ s.image_width_desktop }}px;
+    --ugc-w-m: {{ s.image_width_mobile }}px;
+    --ugc-gap: var(--ugc-gap-m);
+    --ugc-w: var(--ugc-w-m);
+    --ugc-ratio: {{ ratio }};
+    --ugc-radius: {{ s.border_radius }}px;
+    --ugc-fade: {{ s.fade_width }}px;
+    --ugc-shift: {% if is_rtl %}50%{% else %}-50%{% endif %};
+    padding-block: {{ s.padding_top_mobile }}px {{ s.padding_bottom_mobile }}px;
+    {%- if s.background_color != blank %}
+      background: {{ s.background_color }};
+    {%- endif %}
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sid }} {
+      --ugc-gap: var(--ugc-gap-d);
+      --ugc-w: var(--ugc-w-d);
+      padding-block: {{ s.padding_top_desktop }}px {{ s.padding_bottom_desktop }}px;
+    }
+  }
+
+  {{ sid }} .ugc-marquee__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-block-end: {{ s.heading_spacing }}px;
+    text-align: {{ s.heading_alignment }};
+  }
+
+  {{ sid }} .ugc-marquee__heading {
+    margin: 0;
+    font-family: {{ heading_family }};
+    font-weight: {{ heading_weight }};
+    font-size: {{ s.heading_size_mobile }}px;
+    letter-spacing: {{ s.heading_letter_spacing | times: 0.01 }}em;
+    line-height: {{ s.heading_line_height }};
+    {%- if s.heading_color != blank %}
+      color: {{ s.heading_color }};
+    {%- endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sid }} .ugc-marquee__heading {
+      font-size: {{ s.heading_size_desktop }}px;
+    }
+  }
+
+  {{ sid }} .ugc-marquee__subheading {
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  {{ sid }} .ugc-marquee__subheading p {
+    margin: 0;
+  }
+
+  {{ sid }} .ugc-marquee__rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ugc-gap);
+    {%- if s.edge_fade %}
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 var(--ugc-fade), #000 calc(100% - var(--ugc-fade)), transparent);
+      mask-image: linear-gradient(to right, transparent, #000 var(--ugc-fade), #000 calc(100% - var(--ugc-fade)), transparent);
+    {%- endif %}
+  }
+
+  {{ sid }} .ugc-marquee__row {
+    overflow: hidden;
+    padding-block: 1rem;
+    touch-action: pan-y;
+    {%- if s.enable_drag %}
+      cursor: grab;
+    {%- endif %}
+  }
+
+  {{ sid }} .ugc-marquee__row.is-dragging {
+    cursor: grabbing;
+  }
+
+  {{ sid }} .ugc-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: ugc-marquee-scroll var(--ugc-duration-m) linear infinite;
+    animation-direction: var(--ugc-direction, normal);
+  }
+
+  @media screen and (min-width: 750px) {
+    {{ sid }} .ugc-marquee__track {
+      animation-duration: var(--ugc-duration-d);
+    }
+  }
+
+  {%- if s.pause_on_hover %}
+    {{ sid }} .ugc-marquee__row:hover .ugc-marquee__track,
+    {{ sid }} .ugc-marquee__row:focus-within .ugc-marquee__track {
+      animation-play-state: paused;
+    }
+  {%- endif %}
+
+  {{ sid }} .ugc-marquee__set {
+    display: flex;
+    flex-shrink: 0;
+  }
+
+  {{ sid }} .ugc-marquee__item {
+    position: relative;
+    flex: 0 0 var(--ugc-w);
+    width: var(--ugc-w);
+    margin-inline-end: var(--ugc-gap);
+  }
+
+  {{ sid }} .ugc-marquee__card {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    text-decoration: none;
+    cursor: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: var(--ugc-radius);
+    -webkit-user-drag: none;
+    user-select: none;
+    {%- if s.shadow %}
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+    {%- endif %}
+  }
+
+  {{ sid }} a.ugc-marquee__card,
+  {{ sid }} button.ugc-marquee__card {
+    cursor: pointer;
+  }
+
+  {{ sid }} .ugc-marquee__card:focus-visible {
+    outline: 2px solid rgb(var(--color-foreground));
+    outline-offset: 3px;
+  }
+
+  {{ sid }} .ugc-marquee__media {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: var(--ugc-ratio);
+    border-radius: var(--ugc-radius);
+    background: rgba(var(--color-foreground), 0.06);
+    {%- if s.border %}
+      border: 1px solid {{ s.border_color }};
+    {%- endif %}
+  }
+
+  {{ sid }} .ugc-marquee__media img,
+  {{ sid }} .ugc-marquee__media video,
+  {{ sid }} .ugc-marquee__media svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transition: transform 0.5s ease, filter 0.4s ease;
+    {%- if s.grayscale or s.hover_effect == 'grayscale' %}
+      filter: grayscale(1);
+    {%- endif %}
+  }
+
+  {{ sid }} .ugc-marquee__media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    {%- case s.hover_effect -%}
+      {%- when 'zoom' -%}
+        {{ sid }} .ugc-marquee__card:hover .ugc-marquee__media > * { transform: scale(1.06); }
+      {%- when 'lift' -%}
+        {{ sid }} .ugc-marquee__card:hover { transform: translateY(-6px); box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18); }
+      {%- when 'darken' -%}
+        {{ sid }} .ugc-marquee__card:hover .ugc-marquee__media::after { opacity: 1; }
+    {%- endcase -%}
+    {%- if s.grayscale or s.hover_effect == 'grayscale' %}
+      {{ sid }} .ugc-marquee__card:hover .ugc-marquee__media img,
+      {{ sid }} .ugc-marquee__card:hover .ugc-marquee__media video { filter: none; }
+    {%- endif %}
+    {{ sid }} .ugc-marquee__pill { opacity: 0; transform: translateY(4px); }
+    {{ sid }} .ugc-marquee__card:hover .ugc-marquee__pill,
+    {{ sid }} .ugc-marquee__card:focus-visible .ugc-marquee__pill { opacity: 1; transform: none; }
+  }
+
+  {{ sid }} .ugc-marquee__caption {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 1;
+    padding: 2.4rem 1rem 0.8rem;
+    border-end-start-radius: var(--ugc-radius);
+    border-end-end-radius: var(--ugc-radius);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    pointer-events: none;
+  }
+
+  {{ sid }} .ugc-marquee__pill {
+    position: absolute;
+    inset-block-start: 0.8rem;
+    inset-inline: 0.8rem;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #121212;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  {{ sid }} .ugc-marquee__pill-title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  {{ sid }} .ugc-marquee__pill-price {
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+
+  {{ sid }} .ugc-marquee__placeholder {
+    background: rgba(var(--color-foreground), 0.04);
+    fill: rgba(var(--color-foreground), 0.35);
+  }
+
+  /* Lightbox */
+  {{ sid }} .ugc-lightbox {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: rgba(0, 0, 0, 0.92);
+    color: #fff;
+  }
+
+  {{ sid }} .ugc-lightbox[open] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  {{ sid }} .ugc-lightbox::backdrop {
+    background: transparent;
+  }
+
+  {{ sid }} .ugc-lightbox__stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 5.6rem 1.6rem;
+    touch-action: pan-y;
+  }
+
+  {{ sid }} .ugc-lightbox__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 0;
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  {{ sid }} .ugc-lightbox__media {
+    display: block;
+    max-width: min(92vw, 1100px);
+    max-height: calc(100vh - 16rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.6rem;
+  }
+
+  {{ sid }} .ugc-lightbox__caption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1.2rem;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  {{ sid }} .ugc-lightbox__caption a {
+    color: inherit;
+  }
+
+  {{ sid }} .ugc-lightbox__button {
+    position: absolute;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  {{ sid }} .ugc-lightbox__button:hover {
+    background: rgba(255, 255, 255, 0.24);
+  }
+
+  {{ sid }} .ugc-lightbox__button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+
+  {{ sid }} .ugc-lightbox__button svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  {{ sid }} .ugc-lightbox__close {
+    inset-block-start: 1.2rem;
+    inset-inline-end: 1.2rem;
+  }
+
+  {{ sid }} .ugc-lightbox__prev,
+  {{ sid }} .ugc-lightbox__next {
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+  }
+
+  {{ sid }} .ugc-lightbox__prev {
+    inset-inline-start: 1.2rem;
+  }
+
+  {{ sid }} .ugc-lightbox__next {
+    inset-inline-end: 1.2rem;
+  }
+
+  {{ sid }}[dir='rtl'] .ugc-lightbox__prev svg,
+  {{ sid }}[dir='rtl'] .ugc-lightbox__next svg {
+    transform: scaleX(-1);
+  }
+
+  @keyframes ugc-marquee-scroll {
+    to {
+      transform: translateX(var(--ugc-shift));
+    }
+  }
+
+  /* Reduced motion: no auto-scroll, a native horizontally scrollable row instead. */
+  @media (prefers-reduced-motion: reduce) {
+    {{ sid }} .ugc-marquee__track {
+      animation: none;
+    }
+
+    {{ sid }} .ugc-marquee__row {
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin;
+      touch-action: auto;
+      cursor: auto;
+    }
+
+    {{ sid }} .ugc-marquee__set[aria-hidden='true'] {
+      display: none;
+    }
+
+    {{ sid }} .ugc-marquee__item {
+      scroll-snap-align: start;
+    }
+
+    {{ sid }} .ugc-marquee__item:first-child {
+      margin-inline-start: 1.6rem;
+    }
+
+    {{ sid }} .ugc-marquee__card,
+    {{ sid }} .ugc-marquee__media > *,
+    {{ sid }} .ugc-marquee__pill {
+      transition: none;
+    }
+  }
+{% endstyle %}
+
+<ugc-marquee
+  id="UgcMarquee-{{ section.id }}"
+  class="ugc-marquee color-{{ s.color_scheme }} gradient"
+  {% if is_rtl %}
+    dir="rtl"
+  {% endif %}
+  data-drag="{{ s.enable_drag }}"
+  data-pause-hover="{{ s.pause_on_hover }}"
+>
+  {%- if s.heading != blank or s.subheading != blank -%}
+    <div class="ugc-marquee__header page-width">
+      {%- if s.heading != blank -%}
+        <h2 class="ugc-marquee__heading">{{ heading_html }}</h2>
+      {%- endif -%}
+      {%- if s.subheading != blank -%}
+        <div class="ugc-marquee__subheading rte">{{ s.subheading }}</div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if blocks_total > 0 -%}
+    <div class="ugc-marquee__rows{% if s.max_width == 'page' %} page-width{% endif %}">
+      {%- for row in (1..row_total) -%}
+        {%- liquid
+          if row == 1
+            assign r_offset = 0
+            assign r_limit = row1_count
+            assign r_direction = s.direction
+          else
+            assign r_offset = row1_count
+            assign r_limit = blocks_total | minus: row1_count
+            if s.direction == 'left'
+              assign r_direction = 'right'
+            else
+              assign r_direction = 'left'
+            endif
+          endif
+
+          assign set_w_d = s.image_width_desktop | plus: s.gap_desktop | times: r_limit
+          assign set_w_m = s.image_width_mobile | plus: s.gap_mobile | times: r_limit
+          assign copies_d = 2800 | divided_by: set_w_d | plus: 1
+          assign copies_m = 1100 | divided_by: set_w_m | plus: 1
+          assign copies = copies_d | at_least: copies_m | at_most: 12
+          assign duration_d = set_w_d | times: copies | times: 1.0 | divided_by: s.speed_desktop | round: 2
+          assign duration_m = set_w_m | times: copies | times: 1.0 | divided_by: s.speed_mobile | round: 2
+
+          assign real_items = ''
+          assign dup_items = ''
+        -%}
+
+        {%- for block in section.blocks offset: r_offset limit: r_limit -%}
+          {%- liquid
+            assign b = block.settings
+            assign has_media = false
+            if b.video != blank or b.image != blank
+              assign has_media = true
+            endif
+
+            assign item_link = b.link
+            if item_link == blank and b.product != blank and s.enable_lightbox == false
+              assign item_link = b.product.url
+            endif
+
+            assign use_lightbox = false
+            if s.enable_lightbox and item_link == blank and has_media
+              assign use_lightbox = true
+              assign my_index = slide_count
+              assign slide_count = slide_count | plus: 1
+            endif
+
+            assign alt = b.alt
+            if alt == blank and b.image != blank
+              assign alt = b.image.alt
+            endif
+            if alt == blank
+              assign alt = b.caption
+            endif
+            assign accessible_name = alt | default: b.product.title
+            if accessible_name == blank
+              assign accessible_name = 'sections.ugc_marquee.open_media' | t: index: forloop.index
+            endif
+
+            assign media_ratio = ''
+            if s.aspect_ratio == 'original'
+              if b.video != blank
+                assign media_ratio = b.video.aspect_ratio
+              elsif b.image != blank
+                assign media_ratio = b.image.aspect_ratio
+              endif
+            endif
+
+            assign focal_style = ''
+            if b.image != blank
+              assign focal_style = 'object-position: ' | append: b.image.presentation.focal_point
+            endif
+
+            assign placeholder_index = forloop.index0 | modulo: 8
+            assign placeholder_name = placeholders[placeholder_index]
+          -%}
+
+          {%- for pass in (1..2) -%}
+            {%- liquid
+              assign is_dup = false
+              if pass == 2
+                assign is_dup = true
+              endif
+            -%}
+            {%- capture item_html -%}
+              <div class="ugc-marquee__item"{% unless is_dup %} {{ block.shopify_attributes }}{% endunless %}>
+                {%- if item_link != blank -%}
+                  <a class="ugc-marquee__card" href="{{ item_link }}" draggable="false"{% if alt == blank %} aria-label="{{ accessible_name | escape }}"{% endif %}{% if is_dup %} tabindex="-1"{% endif %}>
+                {%- elsif use_lightbox -%}
+                  <button type="button" class="ugc-marquee__card" data-index="{{ my_index }}" aria-label="{{ accessible_name | escape }}" aria-haspopup="dialog"{% if is_dup %} tabindex="-1"{% endif %}>
+                {%- else -%}
+                  <div class="ugc-marquee__card">
+                {%- endif -%}
+                <span class="ugc-marquee__media"{% if media_ratio != blank %} style="aspect-ratio: {{ media_ratio }};"{% endif %}>
+                  {%- if b.video != blank -%}
+                    {{
+                      b.video
+                      | video_tag:
+                        autoplay: true,
+                        loop: true,
+                        muted: true,
+                        playsinline: true,
+                        controls: false,
+                        preload: 'metadata',
+                        image_size: '600x'
+                    }}
+                  {%- elsif b.image != blank -%}
+                    {{
+                      b.image
+                      | image_url: width: 900
+                      | image_tag:
+                        widths: '160, 240, 320, 400, 480, 600, 800',
+                        sizes: img_sizes,
+                        loading: 'lazy',
+                        alt: alt,
+                        draggable: 'false',
+                        style: focal_style
+                    }}
+                  {%- else -%}
+                    {{ placeholder_name | placeholder_svg_tag: 'ugc-marquee__placeholder' }}
+                  {%- endif -%}
+                </span>
+                {%- if b.caption != blank -%}
+                  <span class="ugc-marquee__caption">{{ b.caption | escape }}</span>
+                {%- endif -%}
+                {%- if b.product != blank -%}
+                  <span class="ugc-marquee__pill">
+                    <span class="ugc-marquee__pill-title">{{ b.product.title | escape }}</span>
+                    <span class="ugc-marquee__pill-price">{{ b.product.price | money }}</span>
+                  </span>
+                {%- endif -%}
+                {%- if item_link != blank -%}
+                  </a>
+                {%- elsif use_lightbox -%}
+                  </button>
+                {%- else -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endcapture -%}
+            {%- if is_dup -%}
+              {%- assign dup_items = dup_items | append: item_html -%}
+            {%- else -%}
+              {%- assign real_items = real_items | append: item_html -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if use_lightbox -%}
+            {%- capture slide_html -%}
+              <template data-ugc-slide="{{ my_index }}">
+                <figure class="ugc-lightbox__figure">
+                  {%- if b.video != blank -%}
+                    {{
+                      b.video
+                      | video_tag:
+                        autoplay: true,
+                        loop: true,
+                        muted: true,
+                        playsinline: true,
+                        controls: true,
+                        class: 'ugc-lightbox__media'
+                    }}
+                  {%- else -%}
+                    {{
+                      b.image
+                      | image_url: width: 2000
+                      | image_tag: widths: '800, 1200, 1600, 2000', sizes: '92vw', alt: alt, class: 'ugc-lightbox__media'
+                    }}
+                  {%- endif -%}
+                  {%- if b.caption != blank or b.product != blank -%}
+                    <figcaption class="ugc-lightbox__caption">
+                      {%- if b.caption != blank -%}
+                        <span>{{ b.caption | escape }}</span>
+                      {%- endif -%}
+                      {%- if b.product != blank -%}
+                        <a href="{{ b.product.url }}">{{ b.product.title | escape }} – {{ b.product.price | money }}</a>
+                      {%- endif -%}
+                    </figcaption>
+                  {%- endif -%}
+                </figure>
+              </template>
+            {%- endcapture -%}
+            {%- assign slides_html = slides_html | append: slide_html -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="ugc-marquee__row">
+          <div
+            class="ugc-marquee__track"
+            style="--ugc-duration-d: {{ duration_d }}s; --ugc-duration-m: {{ duration_m }}s; --ugc-direction: {% if r_direction == 'right' %}reverse{% else %}normal{% endif %};"
+          >
+            {%- for copy in (1..copies) -%}
+              {%- if forloop.first -%}
+                <div class="ugc-marquee__set">{{ real_items }}</div>
+              {%- else -%}
+                <div class="ugc-marquee__set" aria-hidden="true">{{ dup_items }}</div>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- for copy in (1..copies) -%}
+              <div class="ugc-marquee__set" aria-hidden="true">{{ dup_items }}</div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- if slide_count > 0 -%}
+    <dialog class="ugc-lightbox" aria-label="{{ 'sections.ugc_marquee.lightbox_label' | t | escape }}">
+      <button type="button" class="ugc-lightbox__button ugc-lightbox__close" aria-label="{{ 'sections.ugc_marquee.close' | t | escape }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/></svg>
+      </button>
+      {%- if slide_count > 1 -%}
+        <button type="button" class="ugc-lightbox__button ugc-lightbox__prev" aria-label="{{ 'sections.ugc_marquee.previous' | t | escape }}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="ugc-lightbox__button ugc-lightbox__next" aria-label="{{ 'sections.ugc_marquee.next' | t | escape }}">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      {%- endif -%}
+      <div class="ugc-lightbox__stage" aria-live="polite"></div>
+    </dialog>
+    <div hidden>{{ slides_html }}</div>
+  {%- endif -%}
+</ugc-marquee>
+
+<script>
+  if (!customElements.get('ugc-marquee')) {
+    customElements.define(
+      'ugc-marquee',
+      class UgcMarquee extends HTMLElement {
+        connectedCallback() {
+          this.state = { hover: false, focus: false, dragging: false, offscreen: false, lightbox: false };
+          this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          this.rows = Array.from(this.querySelectorAll('.ugc-marquee__row'));
+          this.videos = Array.from(this.querySelectorAll('.ugc-marquee__media video'));
+          this.isRtl = this.getAttribute('dir') === 'rtl';
+
+          if (this.dataset.pauseHover === 'true') {
+            this.rows.forEach((row) => {
+              row.addEventListener('mouseenter', () => this.set('hover', true));
+              row.addEventListener('mouseleave', () => this.set('hover', false));
+              row.addEventListener('focusin', () => this.set('focus', true));
+              row.addEventListener('focusout', (event) => {
+                if (!row.contains(event.relatedTarget)) this.set('focus', false);
+              });
+            });
+          }
+
+          if (this.dataset.drag === 'true' && !this.reducedMotion) this.rows.forEach((row) => this.initDrag(row));
+          this.initLightbox();
+
+          this.observer = new IntersectionObserver(([entry]) => this.set('offscreen', !entry.isIntersecting));
+          this.observer.observe(this);
+          this.update();
+        }
+
+        disconnectedCallback() {
+          if (this.observer) this.observer.disconnect();
+        }
+
+        set(key, value) {
+          this.state[key] = value;
+          this.update();
+        }
+
+        animations() {
+          return this.rows.flatMap((row) => row.querySelector('.ugc-marquee__track').getAnimations());
+        }
+
+        update() {
+          const { hover, focus, dragging, offscreen, lightbox } = this.state;
+          const paused = hover || focus || dragging || offscreen || lightbox;
+          this.animations().forEach((animation) => (paused ? animation.pause() : animation.play()));
+
+          const stopVideos = offscreen || lightbox || this.reducedMotion;
+          this.videos.forEach((video) => {
+            if (stopVideos) video.pause();
+            else video.play().catch(() => {});
+          });
+        }
+
+        initDrag(row) {
+          const track = row.querySelector('.ugc-marquee__track');
+          let startX = 0;
+          let startTime = 0;
+          let pressed = false;
+          let moved = false;
+          let animation = null;
+
+          row.addEventListener('pointerdown', (event) => {
+            if (event.button !== 0) return;
+            animation = track.getAnimations()[0];
+            if (!animation) return;
+            startX = event.clientX;
+            pressed = true;
+            moved = false;
+          });
+
+          row.addEventListener('pointermove', (event) => {
+            if (!pressed || !animation) return;
+            const dx = event.clientX - startX;
+            if (!row.classList.contains('is-dragging')) {
+              if (Math.abs(dx) < 6) return;
+              moved = true;
+              startTime = animation.currentTime || 0;
+              row.setPointerCapture(event.pointerId);
+              row.classList.add('is-dragging');
+              this.set('dragging', true);
+            }
+            const duration = animation.effect.getComputedTiming().duration;
+            const distance = track.scrollWidth / 2;
+            if (!duration || !distance) return;
+            const reversed = getComputedStyle(track).animationDirection === 'reverse';
+            const sign = (reversed ? -1 : 1) * (this.isRtl ? -1 : 1);
+            const time = startTime - dx * (duration / distance) * sign;
+            animation.currentTime = ((time % duration) + duration) % duration;
+          });
+
+          const end = (event) => {
+            pressed = false;
+            if (!row.classList.contains('is-dragging')) return;
+            row.classList.remove('is-dragging');
+            if (row.hasPointerCapture(event.pointerId)) row.releasePointerCapture(event.pointerId);
+            animation = null;
+            this.set('dragging', false);
+          };
+          row.addEventListener('pointerup', end);
+          row.addEventListener('pointercancel', end);
+
+          // A drag should not also open a link or the lightbox.
+          row.addEventListener(
+            'click',
+            (event) => {
+              if (moved) {
+                event.preventDefault();
+                event.stopPropagation();
+                moved = false;
+              }
+            },
+            true
+          );
+        }
+
+        initLightbox() {
+          this.dialog = this.querySelector('.ugc-lightbox');
+          if (!this.dialog) return;
+          this.slides = Array.from(this.querySelectorAll('template[data-ugc-slide]'));
+          this.stage = this.dialog.querySelector('.ugc-lightbox__stage');
+
+          this.addEventListener('click', (event) => {
+            const trigger = event.target.closest('button.ugc-marquee__card[data-index]');
+            if (!trigger) return;
+            this.lastTrigger = trigger;
+            this.open(Number(trigger.dataset.index));
+          });
+
+          const step = (direction) => this.show(this.index + direction);
+          this.dialog.querySelector('.ugc-lightbox__close').addEventListener('click', () => this.dialog.close());
+          const prev = this.dialog.querySelector('.ugc-lightbox__prev');
+          const next = this.dialog.querySelector('.ugc-lightbox__next');
+          if (prev) prev.addEventListener('click', () => step(-1));
+          if (next) next.addEventListener('click', () => step(1));
+
+          this.dialog.addEventListener('keydown', (event) => {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+            const forward = event.key === 'ArrowRight' ? 1 : -1;
+            step(this.isRtl ? -forward : forward);
+          });
+
+          let swiped = false;
+          this.dialog.addEventListener('click', (event) => {
+            if (swiped) {
+              swiped = false;
+              return;
+            }
+            if (event.target === this.dialog || event.target === this.stage) this.dialog.close();
+          });
+
+          let swipeX = null;
+          this.stage.addEventListener('pointerdown', (event) => (swipeX = event.clientX));
+          this.stage.addEventListener('pointerup', (event) => {
+            if (swipeX === null) return;
+            const dx = event.clientX - swipeX;
+            swipeX = null;
+            if (Math.abs(dx) < 50) return;
+            swiped = true;
+            const forward = dx < 0 ? 1 : -1;
+            step(this.isRtl ? -forward : forward);
+          });
+
+          this.dialog.addEventListener('close', () => {
+            this.stage.replaceChildren();
+            document.documentElement.style.overflow = '';
+            this.set('lightbox', false);
+            if (this.lastTrigger) this.lastTrigger.focus({ preventScroll: true });
+          });
+        }
+
+        open(index) {
+          this.show(index);
+          document.documentElement.style.overflow = 'hidden';
+          this.dialog.showModal();
+          this.set('lightbox', true);
+        }
+
+        show(index) {
+          const count = this.slides.length;
+          this.index = ((index % count) + count) % count;
+          this.stage.replaceChildren(this.slides[this.index].content.cloneNode(true));
+        }
+      }
+    );
+  }
+</script>
+
+{% schema %}
+{
+  "name": "UGC marquee",
+  "tag": "section",
+  "class": "section section-ugc-marquee",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Seen in action on our<br>300.000+ happy customers</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Font",
+      "options": [
+        { "value": "heading", "label": "Theme heading font" },
+        { "value": "body", "label": "Theme body font" },
+        { "value": "custom", "label": "Custom font" }
+      ],
+      "default": "heading"
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_custom_font",
+      "label": "Custom font",
+      "default": "assistant_n4"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "label": "Font size (desktop)",
+      "min": 16,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 14,
+      "max": 56,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "theme", "label": "Font default" },
+        { "value": "300", "label": "Light" },
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra bold" }
+      ],
+      "default": "theme"
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Letter spacing",
+      "info": "Percent of the font size. Negative values make the heading tighter.",
+      "min": -10,
+      "max": 20,
+      "step": 1,
+      "unit": "%",
+      "default": -2
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "label": "Line height",
+      "min": 0.8,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.1
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "info": "Leave empty to use the color scheme."
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing",
+      "label": "Space between heading and images",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Marquee"
+    },
+    {
+      "type": "range",
+      "id": "speed_desktop",
+      "label": "Speed (desktop)",
+      "info": "Pixels per second.",
+      "min": 10,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "speed_mobile",
+      "label": "Speed (mobile)",
+      "info": "Pixels per second.",
+      "min": 10,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "info": "Flips automatically for right-to-left languages.",
+      "options": [
+        { "value": "left", "label": "Scroll left" },
+        { "value": "right", "label": "Scroll right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_drag",
+      "label": "Drag or swipe to scroll",
+      "info": "Auto-scroll resumes after release.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "second_row",
+      "label": "Show a second row",
+      "info": "Splits the media evenly over two rows scrolling in opposite directions.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "select",
+      "id": "aspect_ratio",
+      "label": "Aspect ratio",
+      "options": [
+        { "value": "4-5", "label": "Portrait 4:5" },
+        { "value": "3-4", "label": "Portrait 3:4" },
+        { "value": "1-1", "label": "Square 1:1" },
+        { "value": "9-16", "label": "Story 9:16" },
+        { "value": "original", "label": "Original" }
+      ],
+      "default": "4-5"
+    },
+    {
+      "type": "range",
+      "id": "image_width_desktop",
+      "label": "Image width (desktop)",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 240
+    },
+    {
+      "type": "range",
+      "id": "image_width_mobile",
+      "label": "Image width (mobile)",
+      "min": 80,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 160
+    },
+    {
+      "type": "range",
+      "id": "gap_desktop",
+      "label": "Gap between images (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap between images (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "border",
+      "label": "Show border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#E5E5E5"
+    },
+    {
+      "type": "checkbox",
+      "id": "shadow",
+      "label": "Show shadow",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "hover_effect",
+      "label": "Hover effect",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "zoom", "label": "Zoom" },
+        { "value": "lift", "label": "Lift" },
+        { "value": "grayscale", "label": "Grayscale to color" },
+        { "value": "darken", "label": "Darken overlay" }
+      ],
+      "default": "zoom"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale",
+      "label": "Grayscale by default",
+      "info": "Images turn to color on hover.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section style"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "info": "Leave empty to use the color scheme background."
+    },
+    {
+      "type": "select",
+      "id": "max_width",
+      "label": "Image row width",
+      "options": [
+        { "value": "full", "label": "Full bleed" },
+        { "value": "page", "label": "Page width" }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "checkbox",
+      "id": "edge_fade",
+      "label": "Fade images at the edges",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "fade_width",
+      "label": "Fade width",
+      "min": 0,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lightbox",
+      "label": "Open media in a lightbox on click",
+      "info": "Media with a link opens the link instead.",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "media",
+      "name": "Media",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Set a focal point on the image to control cropping."
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Shopify-hosted. Plays muted on loop and replaces the image."
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt text",
+          "info": "Describes the image for screen readers. Defaults to the image alt text."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption or customer name"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product tag",
+          "info": "Shows the product title and price on hover."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC strip",
+      "blocks": [
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" }
+      ]
+    },
+    {
+      "name": "Dual row",
+      "settings": {
+        "second_row": true
+      },
+      "blocks": [
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" },
+        { "type": "media" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -37,6 +37,46 @@
     if value.available
       assign option_disabled = false
     endif
+
+    assign value_image = null
+    assign value_price_diff = 0
+    if picker_type == 'image'
+      assign option_index = option.position | minus: 1
+      assign value_min_price = null
+      assign value_name_downcase = value.name | downcase
+
+      for i in (1..8)
+        assign override_value_key = 'image_override_' | append: i | append: '_value'
+        assign override_image_key = 'image_override_' | append: i | append: '_image'
+        assign override_value = block.settings[override_value_key]
+        assign override_value_downcase = override_value | downcase
+        if value_image == null and override_value != blank and override_value_downcase == value_name_downcase
+          assign value_image = block.settings[override_image_key]
+        endif
+      endfor
+
+      for variant in product.variants
+        if variant.options[option_index] == value.name
+          if value_image == null and variant.featured_image
+            assign value_image = variant.featured_image
+          endif
+          if value_min_price == null or variant.price < value_min_price
+            assign value_min_price = variant.price
+          endif
+        endif
+      endfor
+      if value_image == null and value.swatch.image
+        assign value_image = value.swatch.image
+      endif
+      unless block.settings.image_style_text_only_fallback
+        if value_image == null
+          assign value_image = product.featured_image
+        endif
+      endunless
+      if value_min_price
+        assign value_price_diff = value_min_price | minus: product.price_min
+      endif
+    endif
   -%}
 
   {%- capture input_id -%}
@@ -58,7 +98,44 @@
     </span>
   {%- endcapture -%}
 
-  {%- if picker_type == 'swatch' -%}
+  {%- if picker_type == 'image' -%}
+    <input
+      type="radio"
+      id="{{ input_id }}"
+      name="{{ input_name | escape }}"
+      value="{{ value | escape }}"
+      form="{{ product_form_id }}"
+      class="image-swatch-input__radio{% if option_disabled %} disabled{% endif %}"
+      {% if value.selected %}
+        checked
+      {% endif %}
+      {{ input_dataset }}
+    >
+    <label for="{{ input_id }}" class="image-swatch-input__label{% if value_image == null %} image-swatch-input__label--text-only{% endif %}">
+      {%- if value_image -%}
+        <span class="image-swatch-input__image-wrapper">
+          {%- assign value_alt = value | escape -%}
+          {{
+            value_image
+            | image_url: width: 160
+            | image_tag: loading: 'lazy', widths: '80, 120, 160', alt: value_alt, class: 'image-swatch-input__image'
+          }}
+        </span>
+      {%- endif -%}
+      <span class="image-swatch-input__name">
+        {{- value -}}
+      </span>
+      {%- if block.settings.image_style_show_price_difference and value_price_diff != 0 -%}
+        <span class="image-swatch-input__price-diff">
+          {%- if value_price_diff > 0 -%}+{%- endif -%}{{ value_price_diff | money }}
+        </span>
+      {%- endif -%}
+      {%- if option_disabled -%}
+        <span class="image-swatch-input__sold-out">{{ 'products.product.sold_out' | t }}</span>
+      {%- endif -%}
+      {{ label_unavailable }}
+    </label>
+  {%- elsif picker_type == 'swatch' -%}
     {%- capture help_text -%}
       <span class="visually-hidden">{{ value | escape }}</span>
       {{ label_unavailable }}
@@ -67,7 +144,7 @@
       render 'swatch-input',
       id: input_id,
       name: input_name,
-      value: value | escape,
+      value: value,
       swatch: value.swatch,
       product_form_id: product_form_id,
       checked: value.selected,

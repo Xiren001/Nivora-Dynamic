@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -202,8 +211,8 @@
           "settings": {
             "heading": "Seus Nomes, Unidos Em Uma Promessa Eterna",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "br"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_7CDinj": {
@@ -246,7 +255,10 @@
             "product_list": [
               "colar-coracao-da-familia",
               "escudo-do-filho-pulseira-de-olho-de-tigre",
-              "pulseira-no-eterno"
+              "pulseira-no-eterno",
+              "para-meu-filho-pulseira-nunca-sozinho",
+              "colar-abraco-de-almas-gemeas",
+              "colar-coracao-da-familia-com-gravacao"
             ],
             "products_to_show": 4,
             "container_width": 1200,

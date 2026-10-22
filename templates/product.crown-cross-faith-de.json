@@ -113,10 +113,10 @@
             "heading_1": "Symbolisiert Glauben und Hingabe",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Langlebige und hochwertige Verarbeitung",
+            "heading_2": "Nur heute: 1 kaufen, 2 gratis erhalten",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Nur heute: 1 kaufen, 2 gratis erhalten"
+            "heading_3": "Langlebige und hochwertige Verarbeitung"
           }
         },
         "price": {
@@ -248,9 +248,9 @@
         "heading_94DP8n": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>MUTTERTAGSANGEBOT GESTARTET – 1 KAUFEN, 2 GRATIS ERHALTEN</strong>",
+            "heading": "<em>EXKLUSIVE ANGEBOTE SIND LIVE </em>- <strong>NIMM 2, ZAHL 1</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": "de"
           }
         },

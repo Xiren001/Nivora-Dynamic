@@ -230,6 +230,51 @@
         "padding_bottom": 28
       }
     },
+    "blocks_TYYbPg": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_ieGKaY": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>Das könnte Ihnen auch gefallen</strong>",
+            "subtitle": "Handverlesene Stücke aus unserer Kollektion",
+            "product_list": [
+              "gravierte-halskette-herz-der-familie",
+              "graviertes-armband-fur-meinen-mann",
+              "fur-meinen-sohn-graviertes-armband",
+              "knotenarmband-forever",
+              "der-knotenring"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_ieGKaY"
+      ],
+      "name": "You may also like",
+      "settings": {}
+    },
     "17341290603fa2426b": {
       "type": "apps",
       "blocks": {
@@ -259,6 +304,7 @@
     "ss_payment_icons_9hc3pf",
     "main",
     "related-products",
+    "blocks_TYYbPg",
     "17341290603fa2426b"
   ]
 }

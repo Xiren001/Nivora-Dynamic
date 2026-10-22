@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -147,7 +156,7 @@
           "settings": {
             "heading": "Descripción",
             "icon": "none",
-            "content": "<p>Hay palabras que necesitas llevar cerca.<br/><br/>Esta pulsera es más que un accesorio: es un recordatorio diario para no rendirte cuando llega la adversidad. El sutil mensaje encierra un significado poderoso y te ayuda a mantener la concentración en lo que de verdad importa.<br/><br/>Un símbolo de fuerza, valentía y perseverancia, cada día.</p>",
+            "content": "<p>Hay palabras que necesitas llevar cerca.<br/><br/>Esta pulsera es más que un accesorio: es un recordatorio diario de que no debes rendirte cuando llega la adversidad. Este sutil mensaje encierra un significado poderoso y te ayuda a mantener la concentración en lo que de verdad importa.<br/><br/>Un símbolo de fuerza, valentía y perseverancia, todos los días.</p>",
             "page": ""
           }
         },
@@ -353,8 +362,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

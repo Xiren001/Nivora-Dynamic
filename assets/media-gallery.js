@@ -56,6 +56,15 @@ if (!customElements.get('media-gallery')) {
           if (!this.mql.matches || this.elements.thumbnails) {
             activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft });
           }
+
+          if (this.dataset.desktopLayout === 'thumbnail_left' && this.mql.matches) {
+            const header = document.querySelector('sticky-header');
+            const headerOffset = header ? header.getBoundingClientRect().height : 0;
+            const top = activeMedia.getBoundingClientRect().top + window.scrollY - headerOffset - 16;
+            window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+            return;
+          }
+
           const activeMediaRect = activeMedia.getBoundingClientRect();
           // Don't scroll if the image is already in view
           if (activeMediaRect.top > -0.5) return;

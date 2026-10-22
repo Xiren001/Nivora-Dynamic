@@ -415,3 +415,155 @@
     row-gap: var(--grid-desktop-vertical-spacing);
   }
 }
+
+/* ---------- Extra image-with-text options ---------- */
+@media screen and (max-width: 749px) {
+  .iwt--mobile-text-first .image-with-text__text-item {
+    order: -1;
+  }
+}
+
+.iwt__image-link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.iwt-uppercase {
+  text-transform: uppercase;
+}
+
+.iwt-text--small {
+  font-size: 1.4rem;
+}
+
+.iwt-text--medium {
+  font-size: 1.6rem;
+}
+
+.iwt-text--large {
+  font-size: 1.9rem;
+}
+
+.iwt-button--small {
+  min-height: 3.8rem;
+  padding: 0 2rem;
+  font-size: 1.3rem;
+}
+
+.iwt-button--large {
+  min-height: 5.6rem;
+  padding: 0 4.4rem;
+  font-size: 1.7rem;
+}
+
+.image-with-text__content > .iwt-button--full {
+  align-self: stretch;
+  width: 100%;
+}
+
+.iwt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  text-align: start;
+}
+
+.iwt-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  line-height: 1.45;
+}
+
+.iwt-list__icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 1.15em;
+  height: 1.15em;
+  margin-top: 0.15em;
+  color: var(--iwt-icon-color, currentColor);
+}
+
+.iwt-list__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.iwt-image {
+  width: var(--iwt-image-width, 120px);
+  max-width: 100%;
+}
+
+.iwt-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.iwt-rating {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
+}
+
+.iwt-rating__stars {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+
+.iwt-rating__row {
+  display: inline-flex;
+  gap: 0.2rem;
+  white-space: nowrap;
+}
+
+.iwt-rating__row svg {
+  flex: 0 0 auto;
+  width: var(--iwt-star-size, 18px);
+  height: var(--iwt-star-size, 18px);
+  fill: currentColor;
+}
+
+.iwt-rating__row--empty {
+  color: rgba(var(--color-foreground), 0.15);
+}
+
+.iwt-rating__row--full {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+  color: var(--iwt-star-color, #f5b301);
+}
+
+.iwt-rating__text {
+  font-size: 1.4rem;
+}
+
+.iwt-spacer {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  width: 100%;
+}
+
+.image-with-text__content > .iwt-spacer {
+  margin-top: 0;
+}
+
+.image-with-text__content > .iwt-spacer + * {
+  margin-top: 0;
+}
+
+.iwt-spacer__line {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid;
+}

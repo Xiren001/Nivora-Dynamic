@@ -1,0 +1,115 @@
+{% doc %}
+  @prompt
+    A simple, customizable horizontal line separator block. Lets you control
+    line style (solid/dashed/dotted), thickness, color, width, alignment and
+    top/bottom spacing, so it can be dropped into any section as a divider.
+{% enddoc %}
+
+{% assign ls_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .line-separator-{{ ls_id }} {
+    display: flex;
+    width: 100%;
+    padding-top: {{ block.settings.spacing_top }}px;
+    padding-bottom: {{ block.settings.spacing_bottom }}px;
+    justify-content: {{ block.settings.alignment }};
+  }
+
+  .line-separator-{{ ls_id }} hr {
+    margin: 0;
+    width: {{ block.settings.width }}%;
+    border: none;
+    border-top: {{ block.settings.thickness }}px {{ block.settings.line_style }} {{ block.settings.color }};
+  }
+{% endstyle %}
+
+<div class="line-separator-{{ ls_id }}" {{ block.shopify_attributes }}>
+  <hr>
+</div>
+
+{% schema %}
+{
+  "name": "Line separator",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "line_style",
+      "label": "Style",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "dashed", "label": "Dashed" },
+        { "value": "dotted", "label": "Dotted" }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "thickness",
+      "label": "Thickness",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Width",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacing_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "spacing_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Line separator"
+    }
+  ]
+}
+{% endschema %}

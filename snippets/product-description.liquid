@@ -1,0 +1,74 @@
+{% comment %}
+  Renders the product description block. Uses the block's custom description when set,
+  otherwise the product description from the admin. Up to 3 images/videos can be inserted
+  between paragraphs, each placed after the paragraph number set in its "position" setting.
+
+  Accepts:
+  - block: {Object} block information
+  - product: {Object} Product liquid object
+
+  Usage:
+  {% render 'product-description', block: block, product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign description_content = product.description
+  if block.settings.custom_description != blank
+    assign description_content = block.settings.custom_description
+  endif
+  assign description_content = description_content | strip
+
+  assign description_parts = description_content | split: '</p>'
+  assign parts_count = description_parts.size
+
+  assign ends_with_paragraph = false
+  assign description_tail = description_content | slice: -4, 4
+  if description_tail == '</p>'
+    assign ends_with_paragraph = true
+  endif
+
+  capture media_1
+    render 'product-description-media', block: block, index: 1
+  endcapture
+  capture media_2
+    render 'product-description-media', block: block, index: 2
+  endcapture
+  capture media_3
+    render 'product-description-media', block: block, index: 3
+  endcapture
+
+  assign media_1 = media_1 | strip
+  assign media_2 = media_2 | strip
+  assign media_3 = media_3 | strip
+  assign position_1 = block.settings.media_1_position | default: 0
+  assign position_2 = block.settings.media_2_position | default: 0
+  assign position_3 = block.settings.media_3_position | default: 0
+-%}
+
+{%- if description_content != blank or media_1 != blank or media_2 != blank or media_3 != blank -%}
+  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+    {%- for p in (0..parts_count) -%}
+      {%- if p > 0 -%}
+        {%- assign part_index = p | minus: 1 -%}
+        {{- description_parts[part_index] -}}
+        {%- if p < parts_count or ends_with_paragraph -%}</p>{%- endif -%}
+      {%- endif -%}
+
+      {%- if media_1 != blank -%}
+        {%- if position_1 == p or p == parts_count and position_1 > parts_count -%}
+          {{- media_1 -}}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if media_2 != blank -%}
+        {%- if position_2 == p or p == parts_count and position_2 > parts_count -%}
+          {{- media_2 -}}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if media_3 != blank -%}
+        {%- if position_3 == p or p == parts_count and position_3 > parts_count -%}
+          {{- media_3 -}}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -202,8 +211,8 @@
           "settings": {
             "heading": "Jullie namen, verbonden in een eeuwige belofte",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "nl"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_7CDinj": {
@@ -241,7 +250,7 @@
         "ai_gen_block_27b352b_8nV6Nf": {
           "type": "ai_gen_block_27b352b",
           "settings": {
-            "title": "Misschien vind je dit ook leuk",
+            "title": "<strong>Misschien vind je dit ook leuk</strong>",
             "subtitle": "Zorgvuldig geselecteerde stukken uit onze collectie",
             "product_list": [
               "voor-altijd-knoop-armband",

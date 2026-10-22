@@ -114,10 +114,10 @@
             "layout": "vertical",
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Demuestra tu amor fácilmente",
+            "heading_1": "Un regalo con significado",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Un regalo con significado",
+            "heading_2": "Demuestra tu amor fácilmente",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
             "heading_3": "Empaque perfecto, listo para entregar"
@@ -241,8 +241,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

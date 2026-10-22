@@ -4,6 +4,8 @@
   Accepts:
   - product: {Object} Product liquid object
   - variant_images: {Array} Product images associated with a variant
+  - hide_variant_media: {Boolean} When true, dedupes variant-attached media (keeps the active variant's photo visible)
+  - image_style_active: {Boolean} When true, fully excludes variant-attached media (shown in the Image-style variant picker instead)
 
   Usage:
   {% render 'product-media-modal' %}
@@ -33,22 +35,30 @@
       tabindex="0"
     >
       {%- liquid
-        if product.selected_or_first_available_variant.featured_media != null
-          assign media = product.selected_or_first_available_variant.featured_media
-          render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: section.settings.hide_variants
+        assign loop_skip_variant_media = false
+        if hide_variant_media or image_style_active
+          assign loop_skip_variant_media = true
+        endif
+
+        assign featured_media = product.selected_or_first_available_variant.featured_media
+        assign skip_featured_media = false
+        if image_style_active and featured_media and variant_images contains featured_media.src
+          assign skip_featured_media = true
+        endif
+
+        if featured_media != null and skip_featured_media == false
+          render 'product-media', media: featured_media, loop: section.settings.enable_video_looping, variant_image: false
         endif
       -%}
 
       {%- for media in product.media -%}
         {%- liquid
-          if section.settings.hide_variants and variant_images contains media.src or variant_images contains media.id
-            assign variant_image = true
-          else
-            assign variant_image = false
+          if loop_skip_variant_media and variant_images contains media.src
+            continue
           endif
 
-          unless media.id == product.selected_or_first_available_variant.featured_media.id
-            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: variant_image
+          unless media.id == featured_media.id and skip_featured_media == false
+            render 'product-media', media: media, loop: section.settings.enable_video_looping, variant_image: false
           endunless
         -%}
       {%- endfor -%}

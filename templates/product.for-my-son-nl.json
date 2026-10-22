@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -101,10 +110,10 @@
             "layout": "vertical",
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Uniek, hartverwarmend cadeau",
+            "heading_1": "Hoogwaardig leer",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Hoogwaardig leer",
+            "heading_2": "Uniek, hartverwarmend cadeau",
             "icon_3": "truck",
             "heading_3": ""
           }
@@ -235,8 +244,8 @@
           "settings": {
             "heading": "<strong>Een tastbaar symbool van liefde en steun</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "nl"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -276,6 +285,51 @@
         "padding_bottom": 4
       }
     },
+    "blocks_D37bYG": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_YfUGcG": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>Misschien vind je dit ook leuk</strong>",
+            "subtitle": "Zorgvuldig geselecteerde stukken uit onze collectie",
+            "product_list": [
+              "diabetes-alarmarmband",
+              "eeuwige-geboortesteenring",
+              "gegraveerde-armband-voor-mijn-zoon",
+              "geloofsketting-met-kruis-kroon",
+              "gepersonaliseerde-armband-voor-mijn-man"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_YfUGcG"
+      ],
+      "name": "You may also like",
+      "settings": {}
+    },
     "17341290603fa2426b": {
       "type": "apps",
       "blocks": {
@@ -306,6 +360,7 @@
     "main",
     "related-products",
     "image_with_text_eCRMfk",
+    "blocks_D37bYG",
     "17341290603fa2426b"
   ]
 }

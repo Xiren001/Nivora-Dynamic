@@ -1,0 +1,364 @@
+{% comment %}
+  Trust Stack blocks for main-product. One snippet renders all four block types:
+  - trust_shipping:  pill with "Ships by [date]" (JS keeps the date fresh) + country flag
+  - trust_guarantee: centered icon + bold text, optional link or expandable details
+  - trust_payment:   payment icons (store's enabled methods, or a manual list)
+  - trust_warning:   titled notice box with presets (warning / info / success / neutral)
+  Styles are scoped to #TrustStack-{block.id}; shared rules live in component-trust-stack.css.
+
+  Accepts:
+  - block: {Object} block information
+
+  Usage:
+  {% render 'trust-stack', block: block %}
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+  assign ts_id = 'TrustStack-' | append: block.id
+
+  # ---- Show per market ----
+  assign visible = true
+  assign market_list = s.market_countries | upcase | remove: ' ' | split: ','
+  if market_list.size > 0
+    assign current_cc = localization.country.iso_code | upcase
+    if s.market_mode == 'hide'
+      if market_list contains current_cc
+        assign visible = false
+      endif
+    else
+      unless market_list contains current_cc
+        assign visible = false
+      endunless
+    endif
+  endif
+
+  assign is_rtl = false
+  assign rtl_langs = 'he,ar,fa,ur,yi' | split: ','
+  assign lang = request.locale.iso_code | split: '-' | first
+  if rtl_langs contains lang
+    assign is_rtl = true
+  endif
+
+  if s.max_width == 'form'
+    assign max_width = '44rem'
+  else
+    assign max_width = 'none'
+  endif
+-%}
+
+{%- if visible -%}
+  {%- capture icon_shield -%}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.5c0 4.4-3 8.2-7 9.5-4-1.3-7-5.1-7-9.5V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+  {%- capture icon_check -%}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M8 12.3l2.7 2.7L16 9.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+  {%- capture icon_heart -%}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 20s-7.5-4.4-7.5-10A4.3 4.3 0 0112 7.4 4.3 4.3 0 0119.5 10c0 5.6-7.5 10-7.5 10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>{%- endcapture -%}
+  {%- capture icon_star -%}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9L12 3.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>{%- endcapture -%}
+  {%- capture icon_truck -%}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.2v2.8h-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7" cy="17" r="1.8" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="1.8" stroke="currentColor" stroke-width="1.8"/></svg>{%- endcapture -%}
+  {%- capture icon_warning -%}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M12 3.8L2.8 19.5h18.4L12 3.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="16.9" r="1.1" fill="currentColor"/></svg>{%- endcapture -%}
+  {%- capture icon_info -%}<svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="7.8" r="1.1" fill="currentColor"/></svg>{%- endcapture -%}
+  {%- capture icon_chevron -%}<svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+
+  {{ 'component-trust-stack.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+    #{{ ts_id }} {
+      --ts-mt: {{ s.margin_top }}px;
+      --ts-mb: {{ s.margin_bottom }}px;
+      --ts-max: {{ max_width }};
+    }
+  {%- endstyle -%}
+
+  {%- case block.type -%}
+    {%- when 'trust_shipping' -%}
+      {%- liquid
+        # Country: manual override wins, otherwise the shopper's market
+        assign country = localization.country
+        assign override = s.country_override | strip | upcase
+        if override != blank
+          assign match = localization.available_countries | where: 'iso_code', override | first
+          if match
+            assign country = match
+          endif
+        endif
+        assign cc = override | default: country.iso_code | upcase
+        if s.country_display == 'name' and country.iso_code == cc
+          assign country_label = country.name
+        else
+          assign country_label = cc
+        endif
+
+        # Emoji flag: map each letter to its regional indicator symbol
+        assign letters = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ','
+        assign indicators = '🇦,🇧,🇨,🇩,🇪,🇫,🇬,🇭,🇮,🇯,🇰,🇱,🇲,🇳,🇴,🇵,🇶,🇷,🇸,🇹,🇺,🇻,🇼,🇽,🇾,🇿' | split: ','
+        assign emoji_flag = ''
+        assign cc_chars = cc | split: ''
+        for ch in cc_chars
+          for l in letters
+            if l == ch
+              assign emoji_flag = emoji_flag | append: indicators[forloop.index0]
+              break
+            endif
+          endfor
+        endfor
+
+        # Server-side estimate (store timezone); trust-stack.js recalculates on load because pages are cached
+        assign processing = s.processing_days | default: 0
+        assign cutoff = s.cutoff_hour | default: 24
+        assign holidays = s.holidays | newline_to_br | strip_newlines | replace: '<br />', ',' | remove: ' '
+        assign day_s = 'now' | date: '%s' | plus: 0
+        assign hour_now = 'now' | date: '%H' | plus: 0
+        if hour_now >= cutoff
+          assign day_s = day_s | plus: 86400
+        endif
+        assign remaining = processing
+        for i in (1..60)
+          assign ymd = day_s | date: '%Y-%m-%d'
+          assign wd = day_s | date: '%u' | plus: 0
+          assign business = true
+          if s.skip_weekends and wd > 5
+            assign business = false
+          endif
+          if holidays contains ymd
+            assign business = false
+          endif
+          if business
+            if remaining == 0
+              break
+            endif
+            assign remaining = remaining | minus: 1
+          endif
+          assign day_s = day_s | plus: 86400
+        endfor
+        assign server_date = day_s | date: '%a, %b %-d'
+        assign server_ymd = day_s | date: '%Y-%m-%d'
+
+        assign ship_parts = s.ship_text | escape | split: '[date]'
+        assign country_parts = s.country_text | escape | split: '[country]'
+        assign js_locale = request.locale.iso_code
+        unless js_locale contains '-'
+          assign js_locale = js_locale | append: '-' | append: localization.country.iso_code
+        endunless
+      -%}
+      {%- style -%}
+        #{{ ts_id }} {
+          --ts-bg: {{ s.bg_color }};
+          --ts-text: {{ s.text_color }};
+          --ts-strong: {{ s.strong_color }};
+          --ts-dot: {{ s.dot_color }};
+          --ts-radius: {{ s.radius }}px;
+          --ts-size: {{ s.text_size }}px;
+          --ts-pad-y: {{ s.padding_y }}px;
+          --ts-pad-x: {{ s.padding_x }}px;
+          --ts-border: {% if s.border_color != blank and s.border_color != 'rgba(0,0,0,0)' %}1px solid {{ s.border_color }}{% else %}0{% endif %};
+        }
+      {%- endstyle -%}
+      <script src="{{ 'trust-stack.js' | asset_url }}" defer="defer"></script>
+      <div id="{{ ts_id }}" class="ts ts--shipping" {% if is_rtl %}dir="rtl"{% endif %} {{ block.shopify_attributes }}>
+        <div class="ts-ship">
+          {%- if s.ship_text != blank -%}
+            <p class="ts-ship__item ts-ship__start">
+              <span class="ts-dot{% if s.dot_pulse %} ts-dot--pulse{% endif %}" aria-hidden="true"></span>
+              <span>
+                {%- if s.ship_text contains '[date]' -%}
+                  {{- ship_parts[0] -}}
+                  <trust-ship-date
+                    class="ts-ship__date"
+                    data-processing="{{ processing }}"
+                    data-cutoff="{{ cutoff }}"
+                    data-skip-weekends="{{ s.skip_weekends }}"
+                    data-holidays="{{ holidays }}"
+                    data-timezone="{{ s.timezone | strip | escape }}"
+                    data-offset="{{ 'now' | date: '%z' }}"
+                    data-locale="{{ js_locale }}"
+                    data-server-date="{{ server_ymd }}"
+                  >
+                    {{- server_date -}}
+                  </trust-ship-date>
+                  {{- ship_parts[1] -}}
+                {%- else -%}
+                  {{- s.ship_text | escape -}}
+                {%- endif -%}
+              </span>
+            </p>
+          {%- endif -%}
+          {%- if s.country_text != blank and cc != blank -%}
+            <p class="ts-ship__item ts-ship__end">
+              {%- if s.flag_style == 'image' and country.iso_code == cc -%}
+                {{
+                  country
+                  | image_url: width: 48
+                  | image_tag: class: 'ts-flag ts-flag--img', width: 20, height: 15, alt: '', loading: 'lazy'
+                }}
+              {%- elsif s.flag_style != 'none' -%}
+                <span class="ts-flag" aria-hidden="true">{{ emoji_flag }}</span>
+              {%- endif -%}
+              <span>
+                {%- if s.country_text contains '[country]' -%}
+                  {{- country_parts[0] -}}<strong>{{ country_label | escape }}</strong>{{- country_parts[1] -}}
+                {%- else -%}
+                  {{- s.country_text | escape -}}
+                {%- endif -%}
+              </span>
+            </p>
+          {%- endif -%}
+        </div>
+      </div>
+
+    {%- when 'trust_guarantee' -%}
+      {%- style -%}
+        #{{ ts_id }} {
+          --ts-bg: {{ s.bg_color }};
+          --ts-text: {{ s.text_color }};
+          --ts-border: {{ s.border_width }}px {{ s.border_style }} {{ s.border_color }};
+          --ts-radius: {{ s.radius }}px;
+          --ts-size: {{ s.text_size }}px;
+          --ts-weight: {{ s.text_weight }};
+          --ts-icon: {{ s.icon_size }}px;
+          --ts-pad-y: {{ s.padding_y }}px;
+          --ts-pad-x: {{ s.padding_x }}px;
+        }
+      {%- endstyle -%}
+      {%- capture guarantee_head -%}
+        {%- case s.icon -%}
+          {%- when 'shield' -%}<span class="ts-icon">{{ icon_shield }}</span>
+          {%- when 'check' -%}<span class="ts-icon">{{ icon_check }}</span>
+          {%- when 'heart' -%}<span class="ts-icon">{{ icon_heart }}</span>
+          {%- when 'star' -%}<span class="ts-icon">{{ icon_star }}</span>
+          {%- when 'truck' -%}<span class="ts-icon">{{ icon_truck }}</span>
+          {%- when 'custom' -%}
+            {%- if s.custom_icon != blank -%}
+              <span class="ts-icon">{{ s.custom_icon | image_url: width: 96 | image_tag: alt: '', loading: 'lazy', width: s.icon_size, height: s.icon_size }}</span>
+            {%- endif -%}
+        {%- endcase -%}
+        <span class="ts-guarantee__text">{{ s.text | escape }}</span>
+      {%- endcapture -%}
+      <div id="{{ ts_id }}" class="ts ts--guarantee{% if s.shadow %} ts--shadow{% endif %}" {% if is_rtl %}dir="rtl"{% endif %} {{ block.shopify_attributes }}>
+        {%- if s.action == 'expand' and s.details != blank -%}
+          <details class="ts-guarantee ts-guarantee--details">
+            <summary class="ts-guarantee__head">
+              {{ guarantee_head }}
+              <span class="ts-guarantee__chevron">{{ icon_chevron }}</span>
+            </summary>
+            <div class="ts-guarantee__details rte">{{ s.details }}</div>
+          </details>
+        {%- elsif s.action == 'link' and s.link != blank -%}
+          <a class="ts-guarantee ts-guarantee__head ts-guarantee--link" href="{{ s.link }}">{{ guarantee_head }}</a>
+        {%- else -%}
+          <div class="ts-guarantee ts-guarantee__head">{{ guarantee_head }}</div>
+        {%- endif -%}
+      </div>
+
+    {%- when 'trust_payment' -%}
+      {%- liquid
+        if s.source == 'manual' and s.manual_types != blank
+          assign payment_types = s.manual_types | downcase | remove: ' ' | split: ','
+        else
+          assign payment_types = shop.enabled_payment_types
+        endif
+      -%}
+      {%- style -%}
+        #{{ ts_id }} {
+          --ts-pay-h: {{ s.icon_height }}px;
+          --ts-pay-gap: {{ s.gap }}px;
+          --ts-pay-cols: {{ s.max_per_row }};
+          --ts-pay-align: {{ s.alignment }};
+        }
+      {%- endstyle -%}
+      {%- if payment_types.size > 0 -%}
+        <div id="{{ ts_id }}" class="ts ts--payment{% if s.grayscale %} ts--grayscale{% endif %}" {% if is_rtl %}dir="rtl"{% endif %} {{ block.shopify_attributes }}>
+          {%- if s.heading != blank -%}
+            <p class="ts-payment__heading">{{ s.heading | escape }}</p>
+          {%- endif -%}
+          <ul class="ts-payment list-unstyled" role="list" aria-label="{{ 'sections.footer.payment' | t }}">
+            {%- for type in payment_types -%}
+              {%- if type != blank -%}
+                <li class="ts-payment__item">{{ type | payment_type_svg_tag: class: 'ts-payment__icon' }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+      {%- if request.design_mode -%}
+        {%- comment -%} Theme editor only: shows the names to type in 'Manual list' {%- endcomment -%}
+        <div class="ts-payment-help">
+          <strong>Only visible in the theme editor.</strong>
+          Payment names enabled in this store (copy into “Manual list”):
+          <code>{{ shop.enabled_payment_types | join: ', ' | default: 'none enabled' }}</code>
+          Common names: <code>visa, master, american_express, paypal, apple_pay, google_pay, shopify_pay, maestro, klarna, ideal, bancontact, discover, diners_club, jcb, unionpay, venmo, amazon, afterpay, affirm, alipay</code>
+        </div>
+      {%- endif -%}
+
+    {%- when 'trust_warning' -%}
+      {%- liquid
+        assign w_bg = s.bg_color
+        assign w_border = s.border_color
+        assign w_title = s.title_color
+        assign w_body = s.body_color
+        assign w_icon = s.icon
+        case s.preset
+          when 'warning'
+            assign w_bg = '#FFF3F3'
+            assign w_border = '#E5484D'
+            assign w_title = '#C62828'
+            assign w_body = '#4A2323'
+          when 'info'
+            assign w_bg = '#EFF5FF'
+            assign w_border = '#3B82F6'
+            assign w_title = '#1D4ED8'
+            assign w_body = '#1E2F4D'
+          when 'success'
+            assign w_bg = '#EEFAF2'
+            assign w_border = '#22A35A'
+            assign w_title = '#157F3C'
+            assign w_body = '#1F3A2A'
+          when 'neutral'
+            assign w_bg = '#F6F6F6'
+            assign w_border = '#BDBDBD'
+            assign w_title = '#121212'
+            assign w_body = '#4A4A4A'
+        endcase
+      -%}
+      {%- style -%}
+        #{{ ts_id }} {
+          --ts-bg: {{ w_bg }};
+          --ts-border: {{ s.border_width }}px {{ s.border_style }} {{ w_border }};
+          --ts-radius: {{ s.radius }}px;
+          --ts-title: {{ w_title }};
+          --ts-title-size: {{ s.title_size }}px;
+          --ts-body: {{ w_body }};
+          --ts-body-size: {{ s.body_size }}px;
+          --ts-align: {{ s.alignment }};
+          --ts-pad-y: {{ s.padding_y }}px;
+          --ts-pad-x: {{ s.padding_x }}px;
+        }
+      {%- endstyle -%}
+      <div
+        id="{{ ts_id }}"
+        class="ts ts--warning ts--align-{{ s.alignment }}"
+        {% if s.preset == 'warning' %}
+          role="note"
+        {% endif %}
+        {% if is_rtl %}
+          dir="rtl"
+        {% endif %}
+        {{ block.shopify_attributes }}
+      >
+        {%- if s.title != blank -%}
+          <p class="ts-warning__title">
+            {%- case w_icon -%}
+              {%- when 'warning' -%}<span class="ts-icon">{{ icon_warning }}</span>
+              {%- when 'info' -%}<span class="ts-icon">{{ icon_info }}</span>
+              {%- when 'shield' -%}<span class="ts-icon">{{ icon_shield }}</span>
+              {%- when 'custom' -%}
+                {%- if s.custom_icon != blank -%}
+                  <span class="ts-icon">{{ s.custom_icon | image_url: width: 64 | image_tag: alt: '', loading: 'lazy', width: 20, height: 20 }}</span>
+                {%- endif -%}
+            {%- endcase -%}
+            <span>{{ s.title | escape }}</span>
+          </p>
+        {%- endif -%}
+        {%- if s.body != blank -%}
+          <div class="ts-warning__body rte">{{ s.body }}</div>
+        {%- endif -%}
+      </div>
+  {%- endcase -%}
+{%- endif -%}

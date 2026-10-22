@@ -118,7 +118,7 @@
             "heading_1": "Eine ewige Verbindung",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Ihre Liebe immer spüren",
+            "heading_2": "Ihre Liebe kannst du überall fühlen",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
             "heading_3": "Deine Liebsten immer bei dir"
@@ -280,8 +280,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

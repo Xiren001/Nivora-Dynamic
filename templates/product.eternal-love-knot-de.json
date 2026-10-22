@@ -230,8 +230,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -281,11 +281,12 @@
             "title": "<strong>Das könnte dir auch gefallen</strong>",
             "subtitle": "Handverlesene Stücke aus unserer Kollektion.",
             "product_list": [
-              "halskette-bluhende-sonnenblume",
               "halskette-mit-der-ewigen-perle",
-              "halskette-mit-seitlichen-initialen",
               "halskette-wasser-des-lebens",
-              "deine-immerwahrende-herz-halskette"
+              "deine-immerwahrende-herz-halskette",
+              "halskette-fur-meine-liebe",
+              "graviertes-armband-fur-meinen-mann",
+              "fur-meinen-sohn-armband-nie-allein"
             ],
             "products_to_show": 4,
             "container_width": 1200,

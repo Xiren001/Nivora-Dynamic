@@ -124,7 +124,7 @@
             "layout": "vertical",
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Ziemlich persönlich",
+            "heading_1": "Wirklich persönlich&nbsp;",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
             "heading_2": "Für die Ewigkeit gemacht",
@@ -145,7 +145,25 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": false,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "quantity_selector": {
@@ -157,7 +175,9 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
         "collapsible_tab_Y4BabJ": {
@@ -225,6 +245,7 @@
         "constrain_to_viewport": true,
         "media_fit": "cover",
         "gallery_layout": "stacked",
+        "thumbnail_left_gap": 24,
         "media_position": "left",
         "image_zoom": "none",
         "mobile_thumbnails": "hide",
@@ -246,7 +267,7 @@
             "video_aspect_ratio": 100,
             "video_border_radius": 0,
             "heading": "<strong>Ein Geschenk, das sie nie vergessen werden</strong>",
-            "subheading": "<p>Maßgefertigt mit ihrer Initiale, ihrem Geburtsstein und ihrem Sternzeichen – so fühlt sich jedes Detail persönlich, bedeutungsvoll und absolut einzigartig an.</p>",
+            "subheading": "<p>Maßgefertigt mit ihrer Initiale, ihrem Geburtsstein und ihrem Sternzeichen – So fühlt sich jedes Detail persönlich bedeutungsvoll und wirklich einzigartig an.</p>",
             "heading_font": "assistant_n4",
             "heading_size": 40,
             "heading_color": "#121212",
@@ -305,8 +326,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

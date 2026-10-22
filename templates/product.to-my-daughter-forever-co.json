@@ -147,7 +147,7 @@
           "settings": {
             "heading": "Detalles",
             "icon": "none",
-            "content": "<p>Por Qué Le Encantará</p><p>Un mensaje que habla cuando las palabras no alcanzan.<br/><br/>Un recuerdo que atesorará toda la vida.<br/><br/>Perfecto para cumpleaños, momentos especiales o \"sin razón alguna\".<br/><br/>Llega en una elegante caja de regalo, lista para alegrarle el día.</p>",
+            "content": "<p>Por qué le encantará<br/><br/>Un mensaje que expresan más que unas simples palabras.<br/><br/>Un recuerdo que atesorará toda la vida.<br/><br/>Perfecto para cumpleaños, momentos especiales o solo para demostrarle cuánto la amas.<br/><br/>Viene en una elegante caja de regalo, lista para alegrarle el día.</p>",
             "page": ""
           }
         },
@@ -240,8 +240,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

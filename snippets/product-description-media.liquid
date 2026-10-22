@@ -1,0 +1,63 @@
+{% comment %}
+  Renders one image/video slot of the product description block.
+  Priority: uploaded video, then YouTube/Vimeo link, then image.
+
+  Accepts:
+  - block: {Object} block information
+  - index: {Number} media slot number (1-3)
+
+  Usage:
+  {% render 'product-description-media', block: block, index: 1 %}
+{% endcomment %}
+
+{%- liquid
+  assign prefix = 'media_' | append: index
+  assign image_key = prefix | append: '_image'
+  assign video_key = prefix | append: '_video'
+  assign video_url_key = prefix | append: '_video_url'
+
+  assign media_image = block.settings[image_key]
+  assign media_video = block.settings[video_key]
+  assign media_video_url = block.settings[video_url_key]
+-%}
+
+{%- if media_video != blank -%}
+  <div class="product__description-media">
+    {%- if block.settings.media_autoplay -%}
+      {{ media_video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false, image_size: '1100x' }}
+    {%- else -%}
+      {{ media_video | video_tag: controls: true, playsinline: true, image_size: '1100x' }}
+    {%- endif -%}
+  </div>
+{%- elsif media_video_url != blank -%}
+  <div class="product__description-media product__description-media--external">
+    {%- if media_video_url.type == 'youtube' -%}
+      <iframe
+        src="https://www.youtube.com/embed/{{ media_video_url.id }}?rel=0&playsinline=1"
+        title="{{ 'sections.video.load_video' | t: description: 'YouTube' | escape }}"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    {%- elsif media_video_url.type == 'vimeo' -%}
+      <iframe
+        src="https://player.vimeo.com/video/{{ media_video_url.id }}"
+        title="{{ 'sections.video.load_video' | t: description: 'Vimeo' | escape }}"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    {%- endif -%}
+  </div>
+{%- elsif media_image != blank -%}
+  <div class="product__description-media">
+    {{
+      media_image
+      | image_url: width: 1500
+      | image_tag:
+        loading: 'lazy',
+        widths: '375, 550, 750, 1100, 1500',
+        sizes: '(min-width: 990px) 50vw, 100vw'
+    }}
+  </div>
+{%- endif -%}

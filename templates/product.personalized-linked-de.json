@@ -146,7 +146,7 @@
         "collapsible_tab_Y4BabJ": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Details",
+            "heading": "Beschreibung",
             "icon": "none",
             "content": "<p>Manche Verbindungen verblassen nie, sie werden mit der Zeit nur noch tiefer.<br/>Dieses Armband feiert die unzerbrechliche Bindung zwischen Mutter und Tochter – eine sanfte Erinnerung daran, dass ihr, egal wohin das Leben führt, immer ein Teil voneinander sein werdet.<br/>Zwei Geburtssteine, eine gemeinsame Geschichte von Liebe, Wachstum und Zusammengehörigkeit.<br/>Personalisierbar mit zwei Geburtssteinen deiner Wahl – einer für jede von euch.</p>",
             "page": ""
@@ -242,8 +242,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

@@ -14,6 +14,7 @@
       "blocks": {
         "item_4CAnfE": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "icon": "<svg width=\"226\" height=\"167\" viewbox=\"0 0 226 167\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><g filter=\"url(#filter0_d_353_4628)\"><rect x=\"21.3229\" y=\"21.3229\" width=\"182.562\" height=\"124.354\" rx=\"14.5521\" fill=\"white\" stroke=\"#D9D9D9\" stroke-width=\"2.64583\"></rect><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M107.472 103.386V87.4005H115.723C119.104 87.4005 121.957 86.2676 124.283 84.0334L124.842 83.467C129.091 78.8411 128.812 71.6349 124.283 67.3552C122.019 65.0895 118.917 63.8622 115.723 63.9252H102.478V103.386H107.472ZM107.473 82.5544V68.7713H115.849C117.648 68.7713 119.354 69.4636 120.626 70.7224C123.325 73.3657 123.387 77.7713 120.781 80.509C119.509 81.8621 117.71 82.6174 115.849 82.5544H107.473ZM148.136 78.4949C145.996 76.5124 143.08 75.5054 139.389 75.5054C134.643 75.5054 131.076 77.2676 128.719 80.7606L133.123 83.5613C134.736 81.1697 136.939 79.9739 139.73 79.9739C141.498 79.9739 143.204 80.6347 144.538 81.8305C145.841 82.9634 146.585 84.5997 146.585 86.3305V87.4948C144.662 86.4249 142.243 85.8585 139.265 85.8585C135.791 85.8585 132.999 86.6766 130.921 88.3445C128.843 90.0123 127.788 92.2151 127.788 95.0157C127.726 97.5647 128.812 99.9877 130.735 101.624C132.689 103.386 135.171 104.267 138.086 104.267C141.529 104.267 144.259 102.725 146.337 99.6416H146.554V103.386H151.331V86.7396C151.331 83.2466 150.276 80.4774 148.136 78.4949ZM134.582 98.4145C133.558 97.6592 132.938 96.432 132.938 95.1103C132.938 93.6313 133.62 92.404 134.954 91.4285C136.319 90.453 138.026 89.9495 140.042 89.9495C142.834 89.918 145.006 90.5474 146.557 91.8061C146.557 93.946 145.719 95.8026 144.075 97.376C142.586 98.8865 140.569 99.7361 138.46 99.7361C137.064 99.7676 135.699 99.2956 134.582 98.4145ZM162.063 115.25L178.75 76.3865H173.322L165.599 95.7709H165.506L157.596 76.3865H152.168L163.117 101.656L156.914 115.25H162.063Z\" fill=\"#3C4043\"></path><path d=\"M90.2316 83.9389C90.2316 82.3969 90.1075 80.855 89.8594 79.3445H68.7986V88.0612H80.8644C80.3681 90.8619 78.7552 93.3793 76.3978 94.9527V100.617H83.5939C87.8123 96.6835 90.2316 90.8619 90.2316 83.9389Z\" fill=\"#4285F4\"></path><path d=\"M68.7995 106.093C74.8169 106.093 79.9038 104.079 83.5948 100.617L76.3988 94.9528C74.3827 96.3374 71.8082 97.1242 68.7995 97.1242C62.9683 97.1242 58.0365 93.1277 56.2685 87.7781H48.8553V93.6312C52.6395 101.278 60.3628 106.093 68.7995 106.093Z\" fill=\"#34A853\"></path><path d=\"M56.2692 87.7781C55.3385 84.9774 55.3385 81.925 56.2692 79.0929V73.2712H48.8549C45.6595 79.6593 45.6595 87.2117 48.8549 93.5997L56.2692 87.7781Z\" fill=\"#FBBC04\"></path><path d=\"M68.7995 69.7469C71.9943 69.684 75.0651 70.9113 77.3603 73.1455L83.7499 66.663C79.6866 62.8239 74.3517 60.7155 68.7995 60.7785C60.3628 60.7785 52.6395 65.6246 48.8553 73.2714L56.2685 79.1245C58.0365 73.7434 62.9683 69.7469 68.7995 69.7469Z\" fill=\"#EA4335\"></path></g><defs><filter id=\"filter0_d_353_4628\" x=\"0\" y=\"0\" width=\"225.208\" height=\"167\" filterunits=\"userSpaceOnUse\" color-interpolation-filters=\"sRGB\"><feflood flood-opacity=\"0\" result=\"BackgroundImageFix\"></feflood><fecolormatrix in=\"SourceAlpha\" type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0\" result=\"hardAlpha\"></fecolormatrix><feoffset></feoffset><fegaussianblur stddeviation=\"10\"></fegaussianblur><fecomposite in2=\"hardAlpha\" operator=\"out\"></fecomposite><fecolormatrix type=\"matrix\" values=\"0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0\"></fecolormatrix><feblend mode=\"normal\" in2=\"BackgroundImageFix\" result=\"effect1_dropShadow_353_4628\"></feblend><feblend mode=\"normal\" in=\"SourceGraphic\" in2=\"effect1_dropShadow_353_4628\" result=\"shape\"></feblend></filter></defs></svg>"
           }
@@ -67,6 +68,7 @@
         "item_qdnmUL",
         "item_ETWGWx"
       ],
+      "disabled": true,
       "settings": {
         "payment_position": "below_buy",
         "use_payments_store": false,
@@ -104,58 +106,280 @@
             "emptyRatingWidget": false
           }
         },
-        "icon_with_text_RtEwBz": {
-          "type": "icon-with-text",
+        "icon_with_text_check_rXcMzB": {
+          "type": "icon_with_text_check",
           "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Symbolizes faith and devotion",
-            "icon_2": "return",
-            "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Durable and radiant craftsmanship",
-            "icon_3": "truck",
-            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Today Only: Buy 1 Get 2 FREE"
+            "label_1": "TARNISH-FREE",
+            "label_2": "100% WATERPROOF",
+            "label_3": "HYPOALLERGENIC",
+            "label_4": "ONE SIZE FITS ALL",
+            "text_color": "#000000",
+            "font_size": 14
           }
         },
-        "price": {
-          "type": "price",
-          "disabled": true,
-          "settings": {}
+        "sale_banner_qhqXAG": {
+          "type": "sale_banner",
+          "settings": {
+            "preset": "custom",
+            "display_mode": "rotate",
+            "text_direction": "auto",
+            "m1_text": "&nbsp;<strong>Exclusive Offers Are Live</strong>",
+            "m1_animation": "pulse",
+            "m1_icon_source": "emoji",
+            "m1_icon": "fire",
+            "m1_icon_emoji": "",
+            "m1_icon_position": "both",
+            "m1_icon_size": 1.6,
+            "m1_icon_color": "",
+            "m1_icon_animation": "pulse",
+            "m1_icon_gap": 7,
+            "m1_countdown_end": "",
+            "m1_expired_text": "",
+            "m1_button_label": "",
+            "m1_button_link": "",
+            "m2_text": "BUY 1 GET 2 FREE",
+            "m2_animation": "pulse",
+            "m2_icon_source": "emoji",
+            "m2_icon": "truck",
+            "m2_icon_emoji": "",
+            "m2_icon_position": "left",
+            "m2_icon_size": 1.2,
+            "m2_icon_color": "",
+            "m2_icon_animation": "none",
+            "m2_icon_gap": 8,
+            "m2_countdown_end": "",
+            "m2_expired_text": "",
+            "m2_button_label": "",
+            "m2_button_link": "",
+            "m3_text": "&nbsp;BUY 2 GET 4 FREE&nbsp;",
+            "m3_animation": "pulse",
+            "m3_icon_source": "none",
+            "m3_icon": "gift",
+            "m3_icon_emoji": "",
+            "m3_icon_position": "left",
+            "m3_icon_size": 1.2,
+            "m3_icon_color": "",
+            "m3_icon_animation": "none",
+            "m3_icon_gap": 8,
+            "m3_countdown_end": "",
+            "m3_expired_text": "",
+            "m3_button_label": "",
+            "m3_button_link": "",
+            "animation": "fade-in",
+            "animation_duration": 2,
+            "animation_delay": 0,
+            "animation_easing": "ease-in-out",
+            "animation_loop": true,
+            "marquee_speed": "medium",
+            "marquee_custom_speed": 80,
+            "marquee_direction": "rtl",
+            "marquee_pause_hover": true,
+            "marquee_gap": 48,
+            "rotation_autoplay": true,
+            "rotation_interval": 5,
+            "rotation_transition": "fade",
+            "rotation_pause_hover": true,
+            "rotation_arrows": false,
+            "rotation_dots": false,
+            "font_source": "body",
+            "custom_font": "assistant_n4",
+            "font_size_desktop": 14,
+            "font_size_mobile": 13,
+            "font_weight": "800",
+            "letter_spacing": 0.3,
+            "line_height": 1.4,
+            "uppercase": true,
+            "text_align": "center",
+            "text_color": "#ffffff",
+            "highlight_color": "#ffd60a",
+            "highlight_bg": "",
+            "highlight_bold": true,
+            "text_shadow": false,
+            "text_shadow_color": "#000000",
+            "countdown_format": "dhms",
+            "countdown_expired": "hide",
+            "countdown_style": "boxed",
+            "countdown_bg": "#ffffff",
+            "countdown_text": "#000000",
+            "button_style": "solid",
+            "button_color": "#ffffff",
+            "button_text_color": "#121212",
+            "button_radius": 20,
+            "button_hover": "darken",
+            "bg_type": "solid",
+            "bg_color_1": "#000000",
+            "bg_color_2": "#000000",
+            "bg_angle": 90,
+            "overlay_opacity": 40,
+            "padding_top_desktop": 10,
+            "padding_bottom_desktop": 10,
+            "padding_top_mobile": 8,
+            "padding_bottom_mobile": 8,
+            "max_width": "full",
+            "custom_max_width": 800,
+            "border_top": false,
+            "border_bottom": false,
+            "border_color": "#e5e5e5",
+            "border_thickness": 1,
+            "border_radius": 6,
+            "margin_top": 0,
+            "margin_bottom": -14,
+            "show_on": "all",
+            "dismissible": false,
+            "dismiss_days": 7,
+            "schedule_start": "",
+            "schedule_end": "",
+            "banner_link": ""
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "none"
+            "swatch_shape": "none",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": false,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {}
         },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
+          }
+        },
+        "trust_shipping_J4mQgK": {
+          "type": "trust_shipping",
+          "settings": {
+            "ship_text": "Ships by [date]",
+            "country_text": "Fast [country] Shipping",
+            "processing_days": 2,
+            "skip_weekends": true,
+            "cutoff_hour": 14,
+            "holidays": "",
+            "timezone": "",
+            "country_override": "",
+            "country_display": "code",
+            "flag_style": "image",
+            "bg_color": "#f3f4f1",
+            "border_color": "",
+            "text_color": "#3d3d3d",
+            "strong_color": "#121212",
+            "dot_color": "#22a35a",
+            "dot_pulse": true,
+            "radius": 8,
+            "text_size": 13,
+            "padding_y": 10,
+            "padding_x": 18,
+            "max_width": "form",
+            "margin_top": 12,
+            "margin_bottom": 12,
+            "market_countries": "",
+            "market_mode": "show"
+          }
+        },
+        "trust_guarantee_FYmhpG": {
+          "type": "trust_guarantee",
+          "settings": {
+            "text": "Lifetime Guarantee Included",
+            "icon": "shield",
+            "icon_size": 22,
+            "action": "none",
+            "link": "",
+            "details": "<p>Covered for life against manufacturing defects. Contact us and we will repair or replace it.</p>",
+            "bg_color": "#ffffff",
+            "text_color": "#121212",
+            "border_color": "#e2e2e2",
+            "border_width": 1,
+            "border_style": "solid",
+            "radius": 10,
+            "shadow": false,
+            "text_size": 15,
+            "text_weight": "700",
+            "padding_y": 14,
+            "padding_x": 16,
+            "max_width": "form",
+            "margin_top": 12,
+            "margin_bottom": 12,
+            "market_countries": "",
+            "market_mode": "show"
+          }
+        },
+        "trust_payment_ef67Gc": {
+          "type": "trust_payment",
+          "settings": {
+            "heading": "",
+            "source": "manual",
+            "manual_types": "visa, master, apple_pay, google_pay, shopify_pay",
+            "icon_height": 24,
+            "gap": 8,
+            "alignment": "center",
+            "max_per_row": 8,
+            "grayscale": false,
+            "max_width": "form",
+            "margin_top": 12,
+            "margin_bottom": 12,
+            "market_countries": "",
+            "market_mode": "show"
+          }
+        },
+        "trust_warning_ENkFW6": {
+          "type": "trust_warning",
+          "settings": {
+            "title": "Watch Out For Cheap Replicas.",
+            "body": "<p>Only our brand guarantees the highest quality product, worn and trusted by thousands.</p>",
+            "icon": "warning",
+            "preset": "warning",
+            "bg_color": "#fff3f3",
+            "border_color": "#e5484d",
+            "title_color": "#c62828",
+            "body_color": "#4a2323",
+            "border_style": "dashed",
+            "border_width": 1,
+            "radius": 10,
+            "title_size": 15,
+            "body_size": 14,
+            "alignment": "center",
+            "padding_y": 16,
+            "padding_x": 18,
+            "max_width": "form",
+            "margin_top": 12,
+            "margin_bottom": 12,
+            "market_countries": "",
+            "market_mode": "show"
           }
         },
         "collapsible_tab_Y4BabJ": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Will it tarnish or turn my skin green?",
+            "heading": "WILL IT TARNISH OR TURN MY SKIN GREEN?",
             "icon": "none",
-            "content": "<p>No. It's made with Sterling Silver and 14K Gold Plating, so it never fades or stains your skin.</p>",
+            "content": "<p>No. It's made with 925 Sterling Silver and 14K Gold Plating, so it never fades or stains your skin.</p>",
             "page": ""
           }
         },
         "collapsible_tab_pyJdky": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Can I shower or swim with it?",
+            "heading": "CAN I SHOWER OR SWIM WITH IT?",
             "icon": "none",
             "content": "<p>Yes. It's 100% waterproof and safe for showering, swimming, or sweating.</p>",
             "page": ""
@@ -164,16 +388,61 @@
         "collapsible_tab_WBErKc": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "How long is the chain?",
+            "heading": "IS THE CHAIN STRONG?",
             "icon": "none",
-            "content": "<p>The chain is 45cm (18\") long with a 5cm (2\") extender for an adjustable fit.</p>",
+            "content": "<p>Yes. The chain is dainty but durable with a secure clasp and reinforced links.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_tkXwPx": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "ARE THE MATERIALS HIGH QUALITY?",
+            "icon": "none",
+            "content": "<p>It's made from 925 Sterling Silver plated in thick 14K Gold for long-lasting shine and quality.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_7RVTEm": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "IS IT SAFE FOR SENSITIVE SKIN?",
+            "icon": "none",
+            "content": "<p>Yes. It's nickel-free and hypoallergenic so it will not cause irritation or green skin.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_KwAqff": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "HOW LONG IS THE CHAIN?",
+            "icon": "none",
+            "content": "<p>The chain is 18 inches long with a 2-inch extender for an adjustable fit.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_HHjLhy": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "WILL THE CROWN OR CROSS FALL OFF?",
+            "icon": "none",
+            "content": "<p>No. Each piece is securely attached, tested for daily wear, and covered by our lifetime guarantee.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_AUxK3b": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "IS IT GIFT-READY?",
+            "icon": "none",
+            "content": "<p>Yes. It comes with a beautiful and emotional gift card, ready to give.</p>",
             "page": ""
           }
         },
         "collapsible_tab_U8t6ip": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "How long does shipping take?",
+            "heading": "HOW LONG DOES SHIPPING TAKE?",
             "icon": "none",
             "content": "<p>Our shipping times can generally be divided into two parts:<br/><br/>Processing Time: Our processing time consists of production, order verification, product personalization, product quality control and packaging. Due to the large number of orders, this currently accounts for 2-4 working days.</p><p>Once your order has been shipped, it typically arrives within 6-12 business days.<br/><br/>You will receive a tracking number via email once your order has been shipped.</p>",
             "page": ""
@@ -182,9 +451,9 @@
         "collapsible_tab_LWxxBL": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "What's your guarantee?",
+            "heading": "WHAT'S YOUR GUARANTEE?",
             "icon": "none",
-            "content": "<p>We hope you'll be pleased with your new Necklace, however if something isn't quite conform to your satisfaction, we're here to help. If you would like to exchange your order for something else or receive a refund, you can easily return it <strong>within 30 days</strong> of delivery.<br/><br/>We hope you understand that personalized jewelry and earrings cannot be returned unless there is a manufacturing defect. If this is the case please contact our friendly customer service team who will assist you as soon as possible.<br/><br/></p>",
+            "content": "<p>We hope you'll be pleased with your new Necklace, however if something isn't quite conform to your satisfaction, we're here to help. If you would like to exchange your order for something else or receive a refund, you can easily return it&nbsp;<strong>within 30 days</strong>&nbsp;of delivery.<br/><br/>We hope you understand that personalized jewelry and earrings cannot be returned unless there is a manufacturing defect. If this is the case please contact our friendly customer service team who will assist you as soon as possible.<br/><br/></p>",
             "page": ""
           }
         }
@@ -192,20 +461,33 @@
       "block_order": [
         "title",
         "loox_reviews_loox_rating_qkAgh6",
-        "icon_with_text_RtEwBz",
-        "price",
+        "icon_with_text_check_rXcMzB",
+        "sale_banner_qhqXAG",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons_KqEWkh",
+        "trust_shipping_J4mQgK",
+        "trust_guarantee_FYmhpG",
+        "trust_payment_ef67Gc",
+        "trust_warning_ENkFW6",
         "collapsible_tab_Y4BabJ",
         "collapsible_tab_pyJdky",
         "collapsible_tab_WBErKc",
+        "collapsible_tab_tkXwPx",
+        "collapsible_tab_7RVTEm",
+        "collapsible_tab_KwAqff",
+        "collapsible_tab_HHjLhy",
+        "collapsible_tab_AUxK3b",
         "collapsible_tab_U8t6ip",
         "collapsible_tab_LWxxBL"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
-        ".button {font-weight: bold; font-size: 20px;"
+        ".button {font-weight: bold; font-size: 20px;}",
+        ".product__tax {display: none;}",
+        ".note {margin: 0; font-size: 12px; font-weight: bold;}",
+        "div .note {margin: 0 0 5px 0 !important;}",
+        ".kaching-bundles__block-title {display: none;}",
+        ".product-form {margin: 0.2rem 0 0.2rem !important;}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -213,14 +495,48 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "flash",
+        "thumbnail_left_gap": 24,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "fade",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": false,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 10,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 12,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
-        "padding_bottom": 12
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     },
     "related-products": {
@@ -242,23 +558,221 @@
         "padding_bottom": 28
       }
     },
+    "ugc_marquee_dxxyaw": {
+      "type": "ugc-marquee",
+      "blocks": {
+        "media_KBP86g": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_10.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_UkxQUR": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_17.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_RKHcKg": {
+          "type": "media",
+          "settings": {
+            "video": "shopify://files/videos/CCFN-V-2.mp4",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_e9XiCG": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_18.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_c487j3": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_16.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_4yrn79": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_19.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_kaqNg3": {
+          "type": "media",
+          "settings": {
+            "video": "shopify://files/videos/CCFN-V-3.mp4",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_qeKHYw": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_12.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_amVqnC": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_14.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_j6TFLB": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_11.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_fLyAAX": {
+          "type": "media",
+          "settings": {
+            "video": "shopify://files/videos/CCFN-V-1.mp4",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_CEjq6W": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_15.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_XzBUEp": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_13.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_KBP86g",
+        "media_UkxQUR",
+        "media_RKHcKg",
+        "media_e9XiCG",
+        "media_c487j3",
+        "media_4yrn79",
+        "media_kaqNg3",
+        "media_qeKHYw",
+        "media_amVqnC",
+        "media_j6TFLB",
+        "media_fLyAAX",
+        "media_CEjq6W",
+        "media_XzBUEp"
+      ],
+      "name": "UGC strip",
+      "settings": {
+        "heading": "<p>Loved by 87,000+ Christian Women</p>",
+        "subheading": "",
+        "heading_font": "heading",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 40,
+        "heading_size_mobile": 28,
+        "heading_weight": "theme",
+        "heading_letter_spacing": -2,
+        "heading_line_height": 1.1,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 40,
+        "speed_desktop": 40,
+        "speed_mobile": 30,
+        "direction": "left",
+        "pause_on_hover": true,
+        "enable_drag": true,
+        "second_row": false,
+        "aspect_ratio": "4-5",
+        "image_width_desktop": 300,
+        "image_width_mobile": 200,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "border_radius": 12,
+        "border": false,
+        "border_color": "#e5e5e5",
+        "shadow": false,
+        "hover_effect": "zoom",
+        "grayscale": false,
+        "color_scheme": "",
+        "background_color": "",
+        "max_width": "full",
+        "edge_fade": true,
+        "fade_width": 80,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "enable_lightbox": true
+      }
+    },
     "image_with_text_eCRMfk": {
       "type": "image-with-text",
       "blocks": {
         "heading_94DP8n": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>MOTHER'S DAY SALE IS LIVE - BUY 1 GET 2 FREE</strong>",
+            "heading": "<em>EXCLUSIVE OFFERS ARE LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
             "dynamic_sale_banner": true,
-            "banner_language": ""
+            "banner_language": "",
+            "heading_color": "",
+            "heading_weight": "default",
+            "letter_spacing": 0,
+            "heading_uppercase": false
           }
         },
         "text_bXNFJ7": {
           "type": "text",
           "settings": {
             "text": "<p>Bless 2 loved ones and keep one for yourself! <strong>Almost sold out again!</strong></p>",
-            "text_style": "body"
+            "text_style": "body",
+            "body_size": "default",
+            "text_color": ""
           }
         }
       },
@@ -271,135 +785,112 @@
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "center",
         "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
+        "image_fit": "cover",
+        "image_radius": 8,
+        "image_link": "",
+        "full_width": false,
+        "mobile_layout": "image_first",
+        "grid_gap": 0,
+        "content_padding": "default",
+        "content_max_width": 0,
+        "block_spacing": 20,
+        "content_bg": "",
+        "text_color": "",
         "padding_top": 36,
         "padding_bottom": 4
       }
     },
-    "ss_video_slider_acLPbW": {
-      "type": "ss-video-slider",
-      "blocks": {
-        "slide_xMgELm": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/CCFN-V-1.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "title": "",
-            "stars_count": 5
-          }
-        },
-        "slide_WqwTym": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/CCFN-V-2.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "title": "",
-            "stars_count": 5
-          }
-        },
-        "slide_JArkj8": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/CCFN-V-3.mp4",
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "title": "",
-            "stars_count": 5
-          }
-        }
-      },
-      "block_order": [
-        "slide_xMgELm",
-        "slide_WqwTym",
-        "slide_JArkj8"
-      ],
-      "name": "SS - Video slider",
+    "related_products_slider_n6WWUr": {
+      "type": "related-products-slider",
+      "name": "Related products",
       "settings": {
-        "slider_view": 5,
-        "slider_view_mobile": 1.5,
-        "slider_gap": 10,
-        "slider_gap_mobile": 10,
-        "slider_rotate": 0,
-        "card_padding_vertical": 20,
-        "card_padding_vertical_mobile": 20,
-        "card_padding_horizontal": 20,
-        "card_padding_horizontal_mobile": 20,
-        "card_radius": 16,
-        "card_border_thickness": 0,
-        "card_shadow": false,
-        "card_ratio": "portrait",
-        "card_ratio_mobile": "portrait",
-        "card_overlay": 0.2,
-        "content_horizontal_position": "center",
-        "content_horizontal_position_mobile": "center",
-        "content_vertical_position": "end",
-        "content_vertical_position_mobile": "end",
-        "title_custom": false,
-        "title_font": "josefin_sans_n4",
-        "title_size": 16,
-        "title_size_mobile": 16,
-        "title_height": 100,
-        "stars_size": 16,
-        "stars_size_mobile": 16,
-        "stars_mt": 16,
-        "stars_mt_mobile": 16,
-        "hide_stars": false,
-        "use_action": true,
-        "action_size": 40,
-        "action_size_mobile": 40,
-        "action_icon_size": 24,
-        "action_icon_size_mobile": 24,
-        "action_border_thickness": 0,
-        "use_sound": true,
-        "sound_size": 40,
-        "sound_size_mobile": 40,
-        "sound_icon_size": 24,
-        "sound_icon_size_mobile": 24,
-        "sound_border_thickness": 0,
-        "arrow_size": 48,
-        "arrow_size_mobile": 48,
-        "arrow_icon_size": 8,
-        "arrow_icon_size_mobile": 8,
-        "arrow_border_thickness": 0,
-        "arrow_radius": 100,
-        "arrow_hover_effect": "color",
-        "arrow_show_desktop": true,
-        "arrow_show_mobile": false,
-        "card_border_color": "#000000",
-        "card_shadow_color": "#000000",
-        "card_overlay_color": "#000000",
-        "title_color": "#ffffff",
-        "stars_color": "#ffffff",
-        "action_color": "#ffffff",
-        "action_hover_color": "#ffffff",
-        "action_bg_color": "#ffffff",
-        "action_bg_hover_color": "#ffffff",
-        "action_border_color": "#ffffff",
-        "action_border_hover_color": "#ffffff",
-        "arrow_color": "#ffffff",
-        "arrow_hover_color": "#434343",
-        "arrow_bg_color": "#434343",
-        "arrow_bg_hover_color": "#ffffff",
-        "arrow_border_color": "#000000",
-        "arrow_border_hover_color": "#000000",
-        "background_color": "#ffffff",
-        "background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_horizontal": 0,
-        "padding_horizontal_mobile": 0,
-        "full_width": false,
-        "content_width": 120,
-        "border_thickness": 0,
-        "lazy": true
+        "source": "manual",
+        "product_list": [
+          "birthstone-cross-charm-necklace",
+          "charm-cross-necklace",
+          "double-cross-necklace",
+          "pastel-oval-cross-necklace",
+          "virgin-mary-cross-bracelet"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "Related products",
+        "show_heading_dot": false,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 22,
+        "heading_size_mobile": 14,
+        "heading_weight": "600",
+        "heading_letter_spacing": 8,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": false,
+        "sale_badge_text": "Sale",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "17341290603fa2426b": {
@@ -425,14 +916,39 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "blocks_p48wQY": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b5f6c36_LVGkCJ": {
+          "type": "ai_gen_block_b5f6c36",
+          "settings": {
+            "button_label": "Add to cart",
+            "sold_out_label": "Sold out",
+            "discount_label": "SAVE [percent]%",
+            "accent_color": "#000000",
+            "bar_background": "#FFFFFF",
+            "text_color": "#343434",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b5f6c36_LVGkCJ"
+      ],
+      "name": "Sticky add to cart",
+      "settings": {}
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
     "related-products",
+    "ugc_marquee_dxxyaw",
     "image_with_text_eCRMfk",
-    "ss_video_slider_acLPbW",
-    "17341290603fa2426b"
+    "related_products_slider_n6WWUr",
+    "17341290603fa2426b",
+    "blocks_p48wQY"
   ]
 }

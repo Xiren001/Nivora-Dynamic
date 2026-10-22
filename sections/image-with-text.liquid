@@ -1,5 +1,77 @@
 {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign iwt = section.settings
+  assign iwt_has_mobile_image = false
+  if iwt.mobile_image != blank and iwt.image != blank
+    assign iwt_has_mobile_image = true
+  endif
+  case iwt.content_padding
+    when 'none'
+      assign iwt_pad = '0'
+    when 'small'
+      assign iwt_pad = '2rem'
+    when 'medium'
+      assign iwt_pad = '4rem'
+    when 'large'
+      assign iwt_pad = '7rem'
+  endcase
+-%}
+
+{%- style -%}
+  {%- if iwt.block_spacing != 20 -%}
+    #IWT-{{ section.id }} .image-with-text__content > * + * {
+      margin-top: {{ iwt.block_spacing }}px;
+    }
+  {%- endif -%}
+  {%- if iwt_pad -%}
+    #IWT-{{ section.id }} .image-with-text__content {
+      padding: {{ iwt_pad }} calc({{ iwt_pad }} / var(--font-body-scale));
+    }
+  {%- endif -%}
+  {%- if iwt.content_max_width > 0 -%}
+    #IWT-{{ section.id }} .image-with-text__content > * {
+      max-width: {{ iwt.content_max_width }}px;
+    }
+  {%- endif -%}
+  {%- if iwt.image_fit == 'contain' -%}
+    #IWT-{{ section.id }} .image-with-text__media img {
+      object-fit: contain;
+    }
+  {%- endif -%}
+  {%- if iwt.image_radius > 0 -%}
+    #IWT-{{ section.id }} .image-with-text__media-item > *,
+    #IWT-{{ section.id }} .image-with-text__media img {
+      border-radius: {{ iwt.image_radius }}px;
+    }
+  {%- endif -%}
+  {%- if iwt.grid_gap > 0 and iwt.content_layout == 'no-overlap' -%}
+    #IWT-{{ section.id }} .image-with-text__grid.grid {
+      column-gap: {{ iwt.grid_gap }}px;
+      row-gap: {{ iwt.grid_gap }}px;
+      --grid-desktop-horizontal-spacing: {{ iwt.grid_gap }}px;
+    }
+  {%- endif -%}
+  {%- if iwt.content_bg != blank and iwt.content_bg != 'rgba(0,0,0,0)' -%}
+    #IWT-{{ section.id }} .image-with-text__content {
+      background: {{ iwt.content_bg }};
+    }
+  {%- endif -%}
+  {%- if iwt.text_color != blank and iwt.text_color != 'rgba(0,0,0,0)' -%}
+    #IWT-{{ section.id }} .image-with-text__content {
+      --color-foreground: {{ iwt.text_color.red }}, {{ iwt.text_color.green }}, {{ iwt.text_color.blue }};
+      color: {{ iwt.text_color }};
+    }
+  {%- endif -%}
+  {%- if iwt_has_mobile_image and iwt.height == 'adapt' -%}
+    @media screen and (max-width: 749px) {
+      #IWT-{{ section.id }} .image-with-text__media {
+        padding-bottom: {{ 1 | divided_by: iwt.mobile_image.aspect_ratio | times: 100 }}% !important;
+      }
+    }
+  {%- endif -%}
+{%- endstyle -%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -24,8 +96,11 @@
   endif
 -%}
 
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
-  <div class="page-width">
+<div
+  id="IWT-{{ section.id }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}{% if section.settings.mobile_layout == 'text_first' %} iwt--mobile-text-first{% endif %}"
+>
+  <div class="{% unless section.settings.full_width %}page-width{% endunless %}">
     <div class="image-with-text image-with-text--{{ section.settings.content_layout }} isolate{% if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0 %} collapse-borders{% endif %}{% unless section.settings.color_scheme == section.settings.section_color_scheme and settings.media_border_thickness > 0 and settings.text_boxes_shadow_opacity == 0 and settings.text_boxes_border_thickness == 0 or settings.text_boxes_border_opacity == 0 %} collapse-corners{% endunless %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
         <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
@@ -49,13 +124,33 @@
               (min-width: 750px) calc((100vw - 130px) / 2), calc((100vw - 50px) / 2)
             {%- endcapture -%}
               {%- endif -%}
+              {%- liquid
+                assign desktop_image_class = ''
+                if iwt_has_mobile_image
+                  assign desktop_image_class = 'small-hide'
+                endif
+              -%}
               {{
                 section.settings.image
                 | image_url: width: 1500
-                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
+                | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority, class: desktop_image_class
               }}
+              {%- if iwt_has_mobile_image -%}
+                {{
+                  section.settings.mobile_image
+                  | image_url: width: 1500
+                  | image_tag: sizes: '100vw', widths: '375, 550, 750, 1100, 1500', fetchpriority: fetch_priority, class: 'medium-hide large-up-hide'
+                }}
+              {%- endif -%}
             {%- else -%}
               {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+            {%- if section.settings.image_link != blank -%}
+              <a
+                class="iwt__image-link"
+                href="{{ section.settings.image_link }}"
+                aria-label="{{ section.settings.image.alt | default: shop.name | escape }}"
+              ></a>
             {%- endif -%}
           </div>
         </div>
@@ -193,7 +288,8 @@
                     endif
                   -%}
                   <h2
-                    class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}"
+                    class="image-with-text__heading inline-richtext {{ block.settings.heading_size }}{% if block.settings.heading_uppercase %} iwt-uppercase{% endif %}"
+                    style="{% if block.settings.heading_color != blank and block.settings.heading_color != 'rgba(0,0,0,0)' %}color: {{ block.settings.heading_color }};{% endif %}{% if block.settings.heading_weight != blank and block.settings.heading_weight != 'default' %} font-weight: {{ block.settings.heading_weight }};{% endif %}{% if block.settings.letter_spacing != 0 %} letter-spacing: {{ block.settings.letter_spacing | divided_by: 100.0 }}em;{% endif %}"
                     {% if sale_rtl %}dir="rtl"{% endif %}
                     {{ block.shopify_attributes }}
                   >
@@ -202,28 +298,146 @@
                 {%- when 'caption' -%}
                   <p
                     class="image-with-text__text image-with-text__text--caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }} {{ block.settings.text_style }}"
+                    {% if block.settings.caption_color != blank and block.settings.caption_color != 'rgba(0,0,0,0)' %}
+                      style="color: {{ block.settings.caption_color }};"
+                    {% endif %}
                     {{ block.shopify_attributes }}
                   >
                     {{ block.settings.caption | escape }}
                   </p>
                 {%- when 'text' -%}
-                  <div class="image-with-text__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+                  <div
+                    class="image-with-text__text rte {{ block.settings.text_style }}{% if block.settings.body_size != blank and block.settings.body_size != 'default' %} iwt-text--{{ block.settings.body_size }}{% endif %}"
+                    {% if block.settings.text_color != blank and block.settings.text_color != 'rgba(0,0,0,0)' %}
+                      style="color: {{ block.settings.text_color }};"
+                    {% endif %}
+                    {{ block.shopify_attributes }}
+                  >
                     {{ block.settings.text }}
                   </div>
                 {%- when 'button' -%}
                   {%- if block.settings.button_label != blank -%}
+                    {%- liquid
+                      assign b = block.settings
+                      capture button_style
+                        if b.button_bg != blank and b.button_bg != 'rgba(0,0,0,0)'
+                          echo '--color-button: ' | append: b.button_bg.red | append: ', ' | append: b.button_bg.green | append: ', ' | append: b.button_bg.blue | append: '; --alpha-button-background: 1; '
+                        endif
+                        if b.button_text != blank and b.button_text != 'rgba(0,0,0,0)'
+                          echo '--color-button-text: ' | append: b.button_text.red | append: ', ' | append: b.button_text.green | append: ', ' | append: b.button_text.blue | append: '; '
+                        endif
+                      endcapture
+                      if b.button_variant == 'link'
+                        assign button_class = 'link underlined-link iwt-link'
+                      elsif b.button_style_secondary
+                        assign button_class = 'button button--secondary'
+                      else
+                        assign button_class = 'button button--primary'
+                      endif
+                      if b.button_variant != 'link'
+                        if b.button_size != 'default'
+                          assign button_class = button_class | append: ' iwt-button--' | append: b.button_size
+                        endif
+                        if b.button_full_width
+                          assign button_class = button_class | append: ' button--full-width iwt-button--full'
+                        endif
+                      endif
+                    -%}
                     <a
-                      {% if block.settings.button_link == blank %}
+                      {% if b.button_link == blank %}
                         role="link" aria-disabled="true"
                       {% else %}
-                        href="{{ block.settings.button_link }}"
+                        href="{{ b.button_link }}"
+                        {% if b.new_tab %}
+                          target="_blank" rel="noopener"
+                        {% endif %}
                       {% endif %}
-                      class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                      class="{{ button_class }}"
+                      {% if button_style != blank %}
+                        style="{{ button_style | strip }}"
+                      {% endif %}
                       {{ block.shopify_attributes }}
                     >
-                      {{ block.settings.button_label | escape }}
+                      {{ b.button_label | escape }}
                     </a>
                   {%- endif -%}
+                {%- when 'list' -%}
+                  {%- liquid
+                    assign list_items = block.settings.items | newline_to_br | split: '<br />'
+                    case block.settings.icon
+                      when 'check'
+                        assign list_icon = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 10.5l3.2 3.2L15 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                      when 'check_circle'
+                        assign list_icon = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="9" fill="currentColor"/><path d="M6 10.4l2.6 2.6L14 7.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                      when 'star'
+                        assign list_icon = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 2.2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L10 14.6l-4.8 2.5.9-5.4-3.9-3.8 5.4-.8L10 2.2z" fill="currentColor"/></svg>'
+                      when 'arrow'
+                        assign list_icon = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5l4.5 4.5-4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                      when 'dot'
+                        assign list_icon = '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="3.5" fill="currentColor"/></svg>'
+                      else
+                        assign list_icon = ''
+                    endcase
+                  -%}
+                  <ul
+                    class="iwt-list iwt-text--{{ block.settings.text_size }} list-unstyled"
+                    style="--iwt-icon-color: {{ block.settings.icon_color }};{% if block.settings.text_color != blank and block.settings.text_color != 'rgba(0,0,0,0)' %} color: {{ block.settings.text_color }};{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- for item in list_items -%}
+                      {%- assign item_text = item | strip -%}
+                      {%- if item_text != blank -%}
+                        <li class="iwt-list__item">
+                          {%- if list_icon != blank -%}
+                            <span class="iwt-list__icon">{{ list_icon }}</span>
+                          {%- endif -%}
+                          <span>{{ item_text }}</span>
+                        </li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                {%- when 'image' -%}
+                  {%- if block.settings.image != blank -%}
+                    <div class="iwt-image" style="--iwt-image-width: {{ block.settings.width }}px;" {{ block.shopify_attributes }}>
+                      {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+                      {{
+                        block.settings.image
+                        | image_url: width: 800
+                        | image_tag:
+                          loading: 'lazy',
+                          sizes: '(min-width: 750px) 400px, 50vw',
+                          widths: '200, 300, 400, 600, 800',
+                          style: 'border-radius: var(--iwt-image-radius, 0)'
+                      }}
+                      {%- if block.settings.link != blank -%}</a>{%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {%- when 'rating' -%}
+                  {%- liquid
+                    assign rating_percent = block.settings.rating | times: 20
+                    capture star_svg
+                      echo '<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 1.8l2.5 5.1 5.6.8-4 3.9.9 5.6-5-2.6-5 2.6.9-5.6-4-3.9 5.6-.8L10 1.8z"/></svg>'
+                    endcapture
+                  -%}
+                  <div
+                    class="iwt-rating"
+                    style="--iwt-star-color: {{ block.settings.star_color }}; --iwt-star-size: {{ block.settings.star_size }}px;"
+                    {{ block.shopify_attributes }}
+                  >
+                    <span class="iwt-rating__stars" role="img" aria-label="{{ block.settings.rating }} / 5">
+                      <span class="iwt-rating__row iwt-rating__row--empty">{% for i in (1..5) %}{{ star_svg }}{% endfor %}</span>
+                      <span class="iwt-rating__row iwt-rating__row--full" style="width: {{ rating_percent }}%;">{% for i in (1..5) %}{{ star_svg }}{% endfor %}</span>
+                    </span>
+                    {%- if block.settings.text != blank -%}
+                      <span class="iwt-rating__text">{{ block.settings.text }}</span>
+                    {%- endif -%}
+                  </div>
+                {%- when 'spacer' -%}
+                  <div class="iwt-spacer" style="height: {{ block.settings.height }}px;" {{ block.shopify_attributes }}>
+                    {%- if block.settings.show_divider -%}
+                      <hr class="iwt-spacer__line" style="border-color: {{ block.settings.divider_color }};">
+                    {%- endif -%}
+                  </div>
               {%- endcase -%}
             {%- endfor -%}
           </div>
@@ -238,7 +452,10 @@
   "name": "t:sections.image-with-text.name",
   "class": "section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
     {
@@ -426,6 +643,149 @@
     },
     {
       "type": "header",
+      "content": "Image options"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Optional. Shown on phones instead of the image above."
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "default": "cover",
+      "options": [
+        {
+          "value": "cover",
+          "label": "Fill (crop)"
+        },
+        {
+          "value": "contain",
+          "label": "Fit (no crop)"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Image corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "info": "0 uses the theme's media corner radius."
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image link"
+    },
+    {
+      "type": "header",
+      "content": "Layout options"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full page width",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "mobile_layout",
+      "label": "Mobile order",
+      "default": "image_first",
+      "options": [
+        {
+          "value": "image_first",
+          "label": "Image first"
+        },
+        {
+          "value": "text_first",
+          "label": "Text first"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Space between image and text",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "info": "Only for the \"No overlap\" layout."
+    },
+    {
+      "type": "select",
+      "id": "content_padding",
+      "label": "Text box padding",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "Theme default"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Text max width",
+      "min": 0,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 0,
+      "info": "0 = no limit."
+    },
+    {
+      "type": "range",
+      "id": "block_spacing",
+      "label": "Space between blocks",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Custom colors",
+      "info": "Leave empty to use the color scheme."
+    },
+    {
+      "type": "color",
+      "id": "content_bg",
+      "label": "Text box background"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color"
+    },
+    {
+      "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
     },
     {
@@ -599,6 +959,62 @@
             }
           ],
           "default": ""
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "Color"
+        },
+        {
+          "type": "select",
+          "id": "heading_weight",
+          "label": "Weight",
+          "default": "default",
+          "options": [
+            {
+              "value": "default",
+              "label": "Theme default"
+            },
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            },
+            {
+              "value": "800",
+              "label": "Extra bold"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "letter_spacing",
+          "label": "Letter spacing",
+          "min": -5,
+          "max": 30,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "checkbox",
+          "id": "heading_uppercase",
+          "label": "Uppercase",
+          "default": false
         }
       ]
     },
@@ -648,6 +1064,11 @@
           ],
           "default": "medium",
           "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.label"
+        },
+        {
+          "type": "color",
+          "id": "caption_color",
+          "label": "Color"
         }
       ]
     },
@@ -677,6 +1098,35 @@
           ],
           "default": "body",
           "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
+        },
+        {
+          "type": "select",
+          "id": "body_size",
+          "label": "Text size",
+          "default": "default",
+          "options": [
+            {
+              "value": "default",
+              "label": "Theme default"
+            },
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Color"
         }
       ]
     },
@@ -702,6 +1152,233 @@
           "id": "button_style_secondary",
           "default": false,
           "label": "t:sections.image-with-text.blocks.button.settings.outline_button.label"
+        },
+        {
+          "type": "select",
+          "id": "button_variant",
+          "label": "Display as",
+          "default": "button",
+          "options": [
+            {
+              "value": "button",
+              "label": "Button"
+            },
+            {
+              "value": "link",
+              "label": "Text link"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "button_size",
+          "label": "Size",
+          "default": "default",
+          "options": [
+            {
+              "value": "default",
+              "label": "Theme default"
+            },
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "button_full_width",
+          "label": "Full width",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "new_tab",
+          "label": "Open link in new tab",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "button_bg",
+          "label": "Button color",
+          "info": "Leave empty to use the color scheme."
+        },
+        {
+          "type": "color",
+          "id": "button_text",
+          "label": "Button text color"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "name": "Bullet list",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "Items",
+          "info": "One item per line.",
+          "default": "Premium quality materials\nFree shipping on every order\n30-day money-back guarantee"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "check_circle",
+          "options": [
+            {
+              "value": "check_circle",
+              "label": "Check (filled)"
+            },
+            {
+              "value": "check",
+              "label": "Check"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "arrow",
+              "label": "Arrow"
+            },
+            {
+              "value": "dot",
+              "label": "Dot"
+            },
+            {
+              "value": "none",
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon color",
+          "default": "#22A35A"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "Text size",
+          "default": "medium",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "For logos, badges or signatures."
+        },
+        {
+          "type": "range",
+          "id": "width",
+          "label": "Width",
+          "min": 40,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "default": 120
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "rating",
+      "name": "Star rating",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 0.5,
+          "default": 5
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<strong>4.9/5</strong> from 2,000+ happy customers"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star color",
+          "default": "#F5B301"
+        },
+        {
+          "type": "range",
+          "id": "star_size",
+          "label": "Star size",
+          "min": 12,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 18
+        }
+      ]
+    },
+    {
+      "type": "spacer",
+      "name": "Spacer / divider",
+      "settings": [
+        {
+          "type": "range",
+          "id": "height",
+          "label": "Height",
+          "min": 0,
+          "max": 80,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "checkbox",
+          "id": "show_divider",
+          "label": "Show divider line",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "divider_color",
+          "label": "Divider color",
+          "default": "#E2E2E2"
         }
       ]
     }

@@ -230,8 +230,8 @@
           "settings": {
             "heading": "Melt Her Heart With Your Family's Love",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_Gm6kfK": {
@@ -296,7 +296,7 @@
         "ai_gen_block_27b352b_ei3Rk4": {
           "type": "ai_gen_block_27b352b",
           "settings": {
-            "title": "También te puede gustar",
+            "title": "<strong>También te puede gustar</strong>",
             "subtitle": "Piezas seleccionadas a mano de nuestra colección",
             "product_list": [
               "pulsera-del-nudo-eterno"

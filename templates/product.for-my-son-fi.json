@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -84,7 +93,7 @@
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "contentSize": 16,
-            "pattern": "Yli [count]+ arvostelua",
+            "pattern": "4,9/5,0 ([count]+ tyytyväistä asiakasta)",
             "hideText": false,
             "alignment": "",
             "layout": "",
@@ -101,10 +110,10 @@
             "layout": "vertical",
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Ainutlaatuinen, sydämellinen lahja",
+            "heading_1": "Korkealaatuista nahkaa",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Korkealaatuista nahkaa",
+            "heading_2": "Ainutlaatuinen, sydämellinen lahja",
             "icon_3": "truck",
             "heading_3": ""
           }
@@ -235,8 +244,8 @@
           "settings": {
             "heading": "<strong>Käsinkosketeltava rakkauden ja tuen symboli</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "fi"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

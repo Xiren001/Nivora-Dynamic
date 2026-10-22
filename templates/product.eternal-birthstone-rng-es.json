@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -229,8 +238,8 @@
           "settings": {
             "heading": "Melt Her Heart With Your Family's Love",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_Gm6kfK": {
@@ -298,7 +307,12 @@
             "title": "<strong>También te puede gustar</strong>",
             "subtitle": "Piezas seleccionadas a mano de nuestra colección",
             "product_list": [
-              "pulsera-del-nudo-eterno"
+              "pulsera-del-nudo-eterno",
+              "collar-carta-de-amor",
+              "collar-colgante-de-girasol",
+              "collar-con-inicial-rodeo",
+              "collar-con-iniciales-grabadas-willow",
+              "collar-cruz-virgen-maria"
             ],
             "products_to_show": 4,
             "container_width": 1200,

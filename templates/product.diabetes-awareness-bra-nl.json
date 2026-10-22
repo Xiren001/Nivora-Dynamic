@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -104,10 +113,10 @@
             "heading_1": "Stijlvol voor elke dag",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Snelle medische signalering",
+            "heading_2": "Duurzaam en watervast",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Duurzaam & waterbestendig"
+            "heading_3": "Snelle medische signalering"
           }
         },
         "price": {
@@ -139,16 +148,16 @@
           "settings": {
             "heading": "Beschrijving",
             "icon": "none",
-            "content": "<p>Een stijlvolle diabetes-alertarmband, gemaakt voor dagelijkse gemoedsrust. Comfortabel, betekenisvol en ontworpen om belangrijke medische informatie dicht bij je te houden, juist wanneer het er echt toe doet.</p>",
+            "content": "<p>Een stijlvolle diabetes-alarmarmband, gemaakt voor dagelijkse gemoedsrust. Comfortabel, betekenisvol en ontworpen om belangrijke medische informatie dicht bij je te houden, juist wanneer het er echt toe doet.</p>",
             "page": ""
           }
         },
         "collapsible_tab_WBErKc": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "100% waterdicht",
+            "heading": "100% watervast",
             "icon": "none",
-            "content": "<p>Hij is <strong>100% waterdicht</strong>, dus je kunt hem dragen <strong>tijdens het douchen, zwemmen of sporten</strong>, zonder zorgen.</p>",
+            "content": "<p>Hij is <strong>watervast</strong>, dus je kunt hem dragen <strong>tijdens het douchen, zwemmen of sporten</strong>, zonder zorgen.\t</p>",
             "page": ""
           }
         },
@@ -157,7 +166,7 @@
           "settings": {
             "heading": "Verzending",
             "icon": "none",
-            "content": "<p>Onze levertijden bestaan over het algemeen uit twee delen:</p><p>Verwerkingstijd: onze verwerkingstijd bestaat uit productie, controle van de bestelling, personalisatie van het product, kwaliteitscontrole en verpakking. Door het grote aantal bestellingen duurt dit op dit moment 2 tot 4 werkdagen.</p><p>Zodra je bestelling is verzonden, komt deze meestal binnen 6 tot 12 werkdagen aan.</p><p>Je ontvangt een trackingnummer per e-mail zodra je bestelling is verzonden.</p>",
+            "content": "<p>Onze levertijden bestaan over het algemeen uit twee delen:</p><p>Verwerkingstijd: onze verwerkingstijd bestaat uit productie, controle van de bestelling, personalisatie van het product, kwaliteitscontrole en verpakking. Door het grote aantal bestellingen duurt dit op dit moment 2 tot 4 werkdagen.</p><p>Zodra je bestelling is verzonden, komt deze meestal binnen 6 tot 12 werkdagen aan.</p><p>Je ontvangt een track&trace code per e-mail zodra je bestelling is verzonden.</p>",
             "page": ""
           }
         },
@@ -166,7 +175,7 @@
           "settings": {
             "heading": "Garantie",
             "icon": "none",
-            "content": "<p>We hopen dat je blij bent met je nieuwe armband. Mocht er toch iets niet helemaal naar wens zijn, dan helpen we je graag. Wil je je bestelling ruilen voor iets anders of je geld terug, dan kun je deze eenvoudig <strong>binnen 30 dagen</strong> na levering retourneren.</p><p>We hopen dat je begrijpt dat gepersonaliseerde sieraden en oorbellen niet geretourneerd kunnen worden, tenzij er sprake is van een productiefout. Is dat het geval, neem dan contact op met ons vriendelijke klantenserviceteam, dat je zo snel mogelijk verder helpt.</p>",
+            "content": "<p>We hopen dat je blij bent met je nieuwe armband. Mocht er toch iets niet helemaal naar wens zijn, dan helpen we je graag. Wil je je bestelling ruilen voor iets anders of je geld terug, dan kun je deze eenvoudig <strong>binnen 30 dagen</strong> na levering retourneren.</p><p>We hopen dat je begrijpt dat gepersonaliseerde sieraden niet geretourneerd kunnen worden, tenzij er sprake is van een fabricagefout. Is dat het geval, neem dan contact op met ons vriendelijke klantenserviceteam, dat je zo snel mogelijk verder helpt.</p>",
             "page": ""
           }
         }
@@ -216,8 +225,8 @@
           "settings": {
             "heading": "Hij spreekt voor jou wanneer het er het meest toe doet!",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "nl"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_4pF9gb": {

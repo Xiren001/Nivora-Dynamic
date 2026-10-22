@@ -163,7 +163,7 @@
           "settings": {
             "heading": "Beschreibung",
             "icon": "none",
-            "content": "<p>Ein schlichtes und doch kraftvolles Symbol der Verbundenheit. Dieses Partnerarmband-Set trägt ein magnetisches Herz, das sich vereint, sobald ihr zusammenkommt – genau wie du und dein Mensch.<br/><br/>Aus Natursteinen gefertigt, für Komfort und Bedeutung an jedem Tag.<br/><br/>Varianten:</p><ul><li><strong>Howlith & Onyx</strong> – Ruhe & Stärke</li><li><strong>Tigerauge & Onyx </strong>– Selbstvertrauen & Schutz</li><li><strong>Lavastein & Onyx</strong> – Erdung & Widerstandskraft</li><li><strong>Rosenquarz & Onyx</strong> – Liebe & Harmonie</li></ul><p><br/>Trag eure Verbundenheit, wohin ihr auch geht.<br/><br/><br/></p>",
+            "content": "<p>Ein schlichtes und doch kraftvolles Symbol der Verbundenheit. Dieses Partnerarmband-Set trägt ein magnetisches Herz, das sich vereint, sobald ihr zusammenkommt – genau wie du und dein Mensch.<br/><br/>Aus Natursteinen gefertigt, für Komfort und Bedeutung an jedem Tag.<br/><br/>Varianten:</p><ul><li><strong>Howlith & Onyx</strong> – Ruhe & Stärke</li><li><strong>Tigerauge & Onyx </strong>– Selbstvertrauen & Schutz</li><li><strong>Lavastein & Onyx</strong> – Erdung & Widerstandskraft</li><li><strong>Rosenquarz & Onyx</strong> – Liebe & Harmonie</li></ul><p><br/>Trag euer Verbundenheit,immer und überall<br/><br/><br/></p>",
             "page": ""
           }
         },
@@ -326,9 +326,7 @@
           "type": "heading",
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
-            "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "heading_size": "h1"
           }
         },
         "text_bXNFJ7": {

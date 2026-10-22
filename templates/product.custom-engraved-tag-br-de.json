@@ -251,8 +251,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -304,7 +304,11 @@
             "product_list": [
               "collar-grabado-corazon-de-la-familia-ar",
               "collar-inicial-con-corazon-piedra-y-zodiaco-ar",
-              "pulsera-de-ojo-de-tigre-el-escudo-de-tu-hijo"
+              "pulsera-de-ojo-de-tigre-el-escudo-de-tu-hijo",
+              "halskette-fur-meine-liebe",
+              "fur-immer-verbunden-armband-fur-die-tochter",
+              "fur-meinen-sohn-graviertes-armband",
+              "graviertes-armband-fur-meinen-mann"
             ],
             "products_to_show": 4,
             "container_width": 1200,

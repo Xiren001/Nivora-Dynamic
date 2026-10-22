@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -117,7 +126,25 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": false,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "quantity_selector": {
@@ -129,7 +156,9 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
         "icon_with_text_CwzWQr": {
@@ -197,6 +226,40 @@
         "constrain_to_viewport": true,
         "media_fit": "cover",
         "gallery_layout": "stacked",
+        "thumbnail_left_gap": 24,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
         "mobile_thumbnails": "hide",
@@ -225,6 +288,11 @@
         "padding_bottom": 28
       }
     },
+    "blocks_BKfHGV": {
+      "type": "_blocks",
+      "name": "You may also like",
+      "settings": {}
+    },
     "image_with_text_eCRMfk": {
       "type": "image-with-text",
       "blocks": {
@@ -233,8 +301,8 @@
           "settings": {
             "heading": "<strong>Un símbolo tangible de amor y apoyo</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -265,6 +333,52 @@
         "padding_bottom": 4
       }
     },
+    "blocks_Gjh7wU": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_hMttmn": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>También te puede gustar</strong>",
+            "subtitle": "Piezas seleccionadas de nuestra colección",
+            "product_list": [
+              "anillo-ajustable-con-inicial",
+              "anillo-ajustable-con-inicial-whisper",
+              "collar-colgante-de-girasol",
+              "collar-con-inicial-rodeo",
+              "collar-con-iniciales-grabadas-willow",
+              "collar-cruz-virgen-maria"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_hMttmn"
+      ],
+      "name": "You may also like",
+      "settings": {}
+    },
     "17341290603fa2426b": {
       "type": "apps",
       "blocks": {
@@ -294,7 +408,9 @@
     "ss_payment_icons_9hc3pf",
     "main",
     "related-products",
+    "blocks_BKfHGV",
     "image_with_text_eCRMfk",
+    "blocks_Gjh7wU",
     "17341290603fa2426b"
   ]
 }

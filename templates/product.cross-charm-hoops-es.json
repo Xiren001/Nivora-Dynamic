@@ -249,8 +249,8 @@
           "settings": {
             "heading": "Perfecto para regalar",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_yTXi4c": {
@@ -281,6 +281,52 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "blocks_wxqbg6": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_waUD3F": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>También te puede interesar</strong>",
+            "subtitle": "Piezas cuidadosamente seleccionadas de nuestra colección",
+            "product_list": [
+              "collar-de-nombres-familiares-herencia",
+              "collar-de-doble-cruz",
+              "collar-cruz-virgen-maria",
+              "collar-de-cruz-con-corona-de-fe",
+              "collar-inicial-corazon-entero",
+              "collar-mariposa-azul-radiante"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_waUD3F"
+      ],
+      "name": "You may also like",
+      "settings": {}
     },
     "blocks_NW8MDi": {
       "type": "_blocks",
@@ -346,6 +392,7 @@
     "177522398105f9198d",
     "main",
     "image_with_text_UBKMqB",
+    "blocks_wxqbg6",
     "blocks_NW8MDi",
     "blocks_Fk3ffE",
     "blocks_PdDaQc",

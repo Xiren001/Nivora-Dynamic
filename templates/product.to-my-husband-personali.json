@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -99,26 +108,51 @@
           "type": "price",
           "settings": {}
         },
-        "icon_with_text_RtEwBz": {
-          "type": "icon-with-text",
+        "custom_liquid_bGYg9E": {
+          "type": "custom_liquid",
           "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Durable & Safe",
-            "icon_2": "return",
-            "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Meaningful Gift",
-            "icon_3": "truck",
-            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Personalized Connection"
+            "custom_liquid": "<p style=\"font-size:11px;color:#888;margin: 0;margin-top: -20px;\">Lowest price in the last 30 days</p>"
+          }
+        },
+        "trust_badges_awkGXU": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1_icon": "heart",
+            "badge_1_label": "Heartfelt Gift",
+            "badge_2_icon": "shipping",
+            "badge_2_label": "Free Shipping",
+            "badge_3_icon": "guarantee",
+            "badge_3_label": "Money-Back Guarantee",
+            "badge_4_icon": "diamond",
+            "badge_4_label": "Handcrafted Design",
+            "label_font_size": 12
           }
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "image",
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": true,
+            "image_override_1_value": "Black",
+            "image_override_1_image": "shopify://shop_images/Noah_Riley_Infinity_Bracelet.png",
+            "image_override_2_value": "Silver",
+            "image_override_2_image": "shopify://shop_images/Engraved_Silver_Infinity_Bracelet.png",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "quantity_selector": {
@@ -130,34 +164,42 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
-        "collapsible_tab_Y4BabJ": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Description",
-            "icon": "none",
-            "content": "<p>This handcrafted bracelet is more than a gift; it's a deep <strong>expression of love, support, and recognition.</strong></p><p>Engraved with your names, this bracelet is a powerful reminder that your love is infinite.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_U8t6ip": {
+        "collapsible_tab_VtwDjp": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Shipping",
-            "icon": "none",
-            "content": "<p>Our shipping times can generally be divided into two parts:<br/><br/>Processing Time: Our processing time consists of production, order verification, product personalization, product quality control and packaging. Due to the large number of orders, this currently accounts for 2-4 working days.</p><p>Once your order has been shipped, it typically arrives within 6-12 business days.<br/><br/>You will receive a tracking number via email once your order has been shipped.</p>",
+            "icon": "truck",
+            "content": "<p>Our shipping times can generally be divided into two parts:<br/><br/><strong>Processing Time</strong>: Our processing time consists of production, order verification, product personalization, product quality control and packaging. Due to the large number of orders, this currently accounts for <strong>10-12 working days</strong></p><p>Once your order has been shipped, it typically arrives within 6-12 business days.<br/><br/>You will receive a tracking number via email once your order has been shipped.</p>",
             "page": ""
           }
         },
-        "collapsible_tab_LWxxBL": {
+        "collapsible_tab_XzdKKX": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Guarantee",
-            "icon": "none",
-            "content": "<p>We hope you'll be pleased with your new Necklace, however if something isn't quite conform to your satisfaction, we're here to help. If you would like to exchange your order for something else or receive a refund, you can easily return it <strong>within 30 days</strong> of delivery.<br/><br/>We hope you understand that personalized jewelry and earrings cannot be returned unless there is a manufacturing defect. If this is the case please contact our friendly customer service team who will assist you as soon as possible.</p>",
+            "icon": "box",
+            "content": "<p>We hope you'll be pleased with your new purchase. However, if something isn't quite to your satisfaction, we're here to help. If you would like to exchange your order for something else or receive a refund, you can easily return it within <strong>30 days</strong> of delivery.</p><p>We hope you understand that personalized or custom-made items cannot be returned unless there is a manufacturing defect. If this is the case, please contact our friendly customer service team who will assist you as soon as possible.</p>",
             "page": ""
+          }
+        },
+        "description_cFwAee": {
+          "type": "description",
+          "settings": {
+            "custom_description": "<h2><em><strong><br/>Your Love, Wrapped Around His Wrist</strong></em></h2><p>A handcrafted Infinity Bracelet engraved with both your names, so he carries your love everywhere he goes.<br/><br/>Every glance at his wrist is a quiet reminder that what you share has no end.</p><h2><em>Two Names, One Endless Loop</em></h2><p>Your names sit side by side on the infinity symbol, joined in a promise that never runs out.<br/><br/>It's not just something he wears; it's your story, made to stay with him.</p><h2><em>Show Him How Much He Means to You</em></h2><p>For the partner who shows up, holds you up, and makes life better, this is your way of saying \"I see you, and I'm grateful for you.\"</p><h2><em>A Reminder That You're Always in His Corner</em></h2><p>On the hard days and the good ones, it tells him you're right there with him, steady, loyal, and never letting go.</p><h2><em>Product Details:</em></h2><ul><li>Handcrafted leather bracelet</li><li>Stands strong against time, free from rust and tarnish.</li><li>Each box carries a full emotional journey with: Bracelet, gift box and message card</li><li>Handcrafted by skilled artisans, focusing on quality and detail</li></ul>",
+            "media_1_video": "shopify://files/videos/ec021739c2a748bc81f2070b6b52cb50.mp4",
+            "media_1_video_url": "",
+            "media_1_position": 1,
+            "media_2_image": "shopify://shop_images/Matte_Black_vs_Silver_Infinity_Bracelet.png",
+            "media_2_video_url": "",
+            "media_2_position": 3,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
           }
         }
       },
@@ -165,13 +207,14 @@
         "title",
         "loox_reviews_loox_rating_qkAgh6",
         "price",
-        "icon_with_text_RtEwBz",
+        "custom_liquid_bGYg9E",
+        "trust_badges_awkGXU",
         "variant_picker",
         "quantity_selector",
         "buy_buttons_KqEWkh",
-        "collapsible_tab_Y4BabJ",
-        "collapsible_tab_U8t6ip",
-        "collapsible_tab_LWxxBL"
+        "collapsible_tab_VtwDjp",
+        "collapsible_tab_XzdKKX",
+        "description_cFwAee"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
@@ -184,56 +227,82 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 24,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
       }
     },
-    "image_with_text_U8Bkye": {
-      "type": "image-with-text",
+    "blocks_c4cEHd": {
+      "type": "_blocks",
       "blocks": {
-        "heading_9VctMz": {
-          "type": "heading",
+        "ai_gen_block_3ae7b4f_Ckyg4B": {
+          "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/To_My_Husband_Gift_Box.png",
+            "mobile_image": "shopify://shop_images/To_My_Husband_Gift_Box.png",
+            "eyebrow": "One Endless Loop",
             "heading": "Your Names, Linked In A Forever Promise",
-            "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": ""
-          }
-        },
-        "text_7CDinj": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Your names, beautifully engraved on the Infinity Bracelet, are a symbol of your unbreakable bond and the promise of forever.</p><p>This handcrafted bracelet is more than an accessory; it's a tangible expression of your deep, unwavering love.</p>",
-            "text_style": "body"
-          }
+            "body": "<p>Your names, beautifully engraved on the Infinity Bracelet, are a symbol of your unbreakable bond and the promise of forever.</p><p>This handcrafted bracelet is more than an accessory; it's a tangible expression of your deep, unwavering love.</p>",
+            "button_label": "Discover the collection",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
+            "background_color": "#ffffff",
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "heading_9VctMz",
-        "text_7CDinj"
+        "ai_gen_block_3ae7b4f_Ckyg4B"
       ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/ezgif-40e56953f1566f2f.gif",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+      "name": "Sentimental image text",
+      "settings": {}
     },
     "blocks_9HmUHU": {
       "type": "_blocks",
@@ -321,14 +390,38 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "blocks_JKDCTc": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b5f6c36_tmpFVh": {
+          "type": "ai_gen_block_b5f6c36",
+          "settings": {
+            "button_label": "Add to cart",
+            "sold_out_label": "Sold out",
+            "discount_label": "SAVE [percent]%",
+            "accent_color": "#000000",
+            "bar_background": "#FFFFFF",
+            "text_color": "#343434",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b5f6c36_tmpFVh"
+      ],
+      "name": "Sticky add to cart",
+      "settings": {}
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
-    "image_with_text_U8Bkye",
+    "blocks_c4cEHd",
     "blocks_9HmUHU",
     "related-products",
-    "17341290603fa2426b"
+    "17341290603fa2426b",
+    "blocks_JKDCTc"
   ]
 }

@@ -9,13 +9,15 @@
  */
 {
   "current": {
+    "sale_template_image_with_text": "<em>[sale_name] IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
     "logo": "shopify://shop_images/Nivora_1500_x_560_px_2.svg",
     "logo_width": 120,
+    "favicon": "shopify://shop_images/Nivora_1500_x_560_px_1_2.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
     "body_scale": 100,
-    "page_width": 1200,
+    "page_width": 1300,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
@@ -127,8 +129,6 @@
     "show_cart_note": false,
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
-    "sale_name_translations": "{\"de\":{\"jan\":\"Neujahrsverkauf\",\"feb\":\"Valentinstag\",\"mar\":\"Weltfrauentag\",\"apr\":\"Oster-Sale\",\"may\":\"Muttertag\",\"jun\":\"Vatertag\",\"jul\":\"Sommer-Sale\",\"aug\":\"Sommer-Sale\",\"sep\":\"Sommer-Sale\",\"oct\":\"Halloween-Sale\",\"nov\":\"Black Friday\",\"dec\":\"Weihnachts-Sale\"},\"es\":{\"jan\":\"Rebajas de Año Nuevo\",\"feb\":\"San Valentín\",\"mar\":\"Día de la Mujer\",\"apr\":\"Oferta de Pascua\",\"may\":\"Día de la Madre\",\"jun\":\"Día del Padre\",\"jul\":\"Oferta de Verano\",\"aug\":\"Oferta de Verano\",\"sep\":\"Oferta de Verano\",\"oct\":\"Oferta de Halloween\",\"nov\":\"Black Friday\",\"dec\":\"Oferta de Navidad\"}}",
-    "sale_template_translations": "{\"de\":\"<em>[sale_name] IST JETZT LIVE</em> - <strong>KAUFE 1, ERHALTE 1 GRATIS</strong>\",\"es\":\"<em>[sale_name] YA ESTÁ AQUÍ</em> - <strong>COMPRA 1 Y LLÉVATE 1 GRATIS</strong>\"}",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -173,6 +173,11 @@
       "17453258828962521766": {
         "type": "shopify://apps/captain-protection/blocks/app/a7ef2f88-bc96-4a68-ba4e-f042ccbc8beb",
         "disabled": false,
+        "settings": {}
+      },
+      "4061484991452085298": {
+        "type": "shopify://apps/commslayer-helpdesk-chat/blocks/chat-widget/e555a08e-ceaa-4a9b-ab9f-a58bccbfc762",
+        "disabled": true,
         "settings": {}
       }
     },

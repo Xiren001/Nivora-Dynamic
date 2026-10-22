@@ -241,8 +241,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -293,7 +293,11 @@
             "subtitle": "Piezas seleccionadas de nuestra colección",
             "product_list": [
               "anillo-de-iniciales-ajustable-whisper-1",
-              "para-mi-hijo-pulsera-grabada-mx"
+              "para-mi-hijo-pulsera-grabada-mx",
+              "anillo-ajustable-con-inicial-y-piedra-de-nacimiento",
+              "collar-abrazo-de-almas-gemelas-mx",
+              "collar-cubano-personalizado-multinombre",
+              "collar-de-iniciales-laterales-mx"
             ],
             "products_to_show": 4,
             "container_width": 1200,

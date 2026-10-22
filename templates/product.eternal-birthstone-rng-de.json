@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -149,13 +158,13 @@
             "page": ""
           }
         },
-        "collapsible_tab_U8t6ip": {
+        "collapsible_tab_P3iXL6": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Größentabelle",
             "icon": "none",
             "content": "<p>Messen Sie den Innendurchmesser eines Rings, der auf den gewünschten Finger passt, und verwenden Sie dann die untenstehende Tabelle, um Ihre Größe zu bestimmen. Alternativ, wenn Sie Ihre Größe bereits in einer anderen Region kennen, verwenden Sie die Tabelle, um sie umzurechnen.</p>",
-            "page": "ring-size-chart"
+            "page": "birthstone"
           }
         },
         "collapsible_tab_LWxxBL": {
@@ -196,7 +205,7 @@
         "quantity_selector",
         "buy_buttons_KqEWkh",
         "collapsible_tab_mkj6rW",
-        "collapsible_tab_U8t6ip",
+        "collapsible_tab_P3iXL6",
         "collapsible_tab_LWxxBL",
         "collapsible_tab_tJNHP8",
         "collapsible_tab_bzxbxM"
@@ -230,8 +239,8 @@
           "settings": {
             "heading": "Melt Her Heart With Your Family's Love",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_Gm6kfK": {

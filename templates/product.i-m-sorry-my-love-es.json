@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -225,9 +234,7 @@
           "type": "heading",
           "settings": {
             "heading": "Melt Her Heart With Your Family's Love",
-            "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "heading_size": "h1"
           }
         },
         "text_Gm6kfK": {

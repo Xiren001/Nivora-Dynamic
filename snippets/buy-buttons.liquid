@@ -69,12 +69,17 @@
             if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
               assign quantity_rule_soldout = true
             endif
+            assign add_to_cart_label = 'products.product.add_to_cart' | t
+            if block.settings.add_to_cart_label != blank
+              assign add_to_cart_label = block.settings.add_to_cart_label
+            endif
           -%}
           <button
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
             name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}{% if block.settings.elegant_button %} product-form__submit--elegant{% endif %}"
+            data-add-label="{{ add_to_cart_label | escape }}"
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -82,15 +87,21 @@
               disabled
             {% endif %}
           >
-            <span>
+            <span class="product-form__submit-label">
               {%- if product.selected_or_first_available_variant == null -%}
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-                {{ 'products.product.add_to_cart' | t }}
+                {{ add_to_cart_label }}
               {%- endif -%}
             </span>
+            {%- if block.settings.elegant_button -%}
+              <span class="product-form__submit-divider" aria-hidden="true"></span>
+              <span class="product-form__submit-price" id="ProductSubmitPrice-{{ section_id }}">
+                {{- product.selected_or_first_available_variant.price | money -}}
+              </span>
+            {%- endif -%}
             {%- render 'loading-spinner' -%}
           </button>
           {%- if show_dynamic_checkout -%}
@@ -105,7 +116,7 @@
         <button
           type="submit"
           name="add"
-          class="product-form__submit button button--full-width button--primary"
+          class="product-form__submit button button--full-width button--primary{% if block.settings.elegant_button %} product-form__submit--elegant{% endif %}"
           disabled
         >
           {{ 'products.product.sold_out' | t }}

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -219,9 +228,9 @@
         "heading_94DP8n": {
           "type": "heading",
           "settings": {
-            "heading": "<em>MUTTERTAGS-SALE LÄUFT</em><strong> – KAUFE 1, BEKOMME 1 GRATIS</strong>",
+            "heading": "<em>EXKLUSIVE ANGEBOTE SIND LIVE</em> - <strong>NIMM 2, ZAHL 1</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": "de"
           }
         },

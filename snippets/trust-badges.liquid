@@ -1,0 +1,35 @@
+{% comment %}
+  Renders a minimal row of 4 trust badges (icon + label) with divider lines above and below.
+  Icon and label are editable per badge; label font size is editable for the whole row.
+
+  Accepts:
+  - block: {Object} block information
+
+  Usage:
+  {% render 'trust-badges', block: block %}
+{% endcomment %}
+
+<div
+  class="trust-badges"
+  style="--trust-badge-font-size: {{ block.settings.label_font_size | default: 12 }}px;"
+  {{ block.shopify_attributes }}
+>
+  <ul class="trust-badges__list list-unstyled" role="list">
+    <li class="trust-badges__item">
+      <span class="trust-badges__icon">{{ 'icon-trust-' | append: block.settings.badge_1_icon | append: '.svg' | inline_asset_content }}</span>
+      <span class="trust-badges__label">{{ block.settings.badge_1_label | escape }}</span>
+    </li>
+    <li class="trust-badges__item">
+      <span class="trust-badges__icon">{{ 'icon-trust-' | append: block.settings.badge_2_icon | append: '.svg' | inline_asset_content }}</span>
+      <span class="trust-badges__label">{{ block.settings.badge_2_label | escape }}</span>
+    </li>
+    <li class="trust-badges__item">
+      <span class="trust-badges__icon">{{ 'icon-trust-' | append: block.settings.badge_3_icon | append: '.svg' | inline_asset_content }}</span>
+      <span class="trust-badges__label">{{ block.settings.badge_3_label | escape }}</span>
+    </li>
+    <li class="trust-badges__item">
+      <span class="trust-badges__icon">{{ 'icon-trust-' | append: block.settings.badge_4_icon | append: '.svg' | inline_asset_content }}</span>
+      <span class="trust-badges__label">{{ block.settings.badge_4_label | escape }}</span>
+    </li>
+  </ul>
+</div>

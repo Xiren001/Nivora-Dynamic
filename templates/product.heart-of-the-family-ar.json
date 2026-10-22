@@ -231,8 +231,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -284,7 +284,9 @@
             "product_list": [
               "pulsera-de-ojo-de-tigre-el-escudo-de-tu-hijo",
               "collar-inicial-con-corazon-piedra-y-zodiaco-ar",
-              "pulsera-personalizada-para-mi-esposo"
+              "pulsera-personalizada-para-mi-esposo",
+              "pulsera-de-piedras-de-nacimiento-enlazadas-1",
+              "pulsera-para-mi-hija-conexion-eterna-ar"
             ],
             "products_to_show": 4,
             "container_width": 1200,

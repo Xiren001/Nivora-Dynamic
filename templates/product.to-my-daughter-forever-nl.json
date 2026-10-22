@@ -157,7 +157,7 @@
             "heading": "Materiaal",
             "icon": "none",
             "content": "<ul><li>14K witgoudkleurige of 18K geelgoudkleurige afwerking</li><li>Ronde geslepen zirkonia-steen van 6,5 mm</li><li>Afmetingen hanger: 2,2 cm hoog × 1,8 cm breed</li><li>Verstelbare kettinglengte: 45,7 – 55,9 cm</li><li>Stevige karabijnsluiting</li></ul>",
-            "page": "material-to-my-daughter"
+            "page": "material-to-my-daughter-nl-be"
           }
         },
         "collapsible_tab_ckkHGy": {
@@ -240,8 +240,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "nl"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

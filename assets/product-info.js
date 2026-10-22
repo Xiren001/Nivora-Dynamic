@@ -175,7 +175,9 @@ if (!customElements.get('product-info')) {
             return;
           }
 
-          this.updateMedia(html, variant?.featured_media?.id);
+          if (!this.querySelector('.product-form__input--image')) {
+            this.updateMedia(html, variant?.featured_media?.id);
+          }
 
           const updateSourceFromDestination = (id, shouldHide = (source) => false) => {
             const source = html.getElementById(`${id}-${this.sectionId}`);
@@ -187,6 +189,7 @@ if (!customElements.get('product-info')) {
           };
 
           updateSourceFromDestination('price');
+          updateSourceFromDestination('ProductSubmitPrice');
           updateSourceFromDestination('Sku', ({ classList }) => classList.contains('hidden'));
           updateSourceFromDestination('Inventory', ({ innerText }) => innerText === '');
           updateSourceFromDestination('Volume');
@@ -414,3 +417,23 @@ if (!customElements.get('product-info')) {
     }
   );
 }
+
+// Measure sticky product columns so tall ones pin by their bottom edge instead of their top
+(() => {
+  if (window.productStickyColumnsInit || !('ResizeObserver' in window)) return;
+  window.productStickyColumnsInit = true;
+
+  const observer = new ResizeObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.style.setProperty('--sticky-column-height', `${entry.target.offsetHeight}px`);
+    });
+  });
+  const observeAll = () => document.querySelectorAll('.product__column-sticky').forEach((el) => observer.observe(el));
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observeAll);
+  } else {
+    observeAll();
+  }
+  document.addEventListener('shopify:section:load', observeAll);
+})();

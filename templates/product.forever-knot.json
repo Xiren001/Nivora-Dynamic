@@ -104,8 +104,20 @@
             "emptyRatingWidget": false
           }
         },
+        "icon_with_text_check_GiPRay": {
+          "type": "icon_with_text_check",
+          "settings": {
+            "label_1": "Handcrafted quality",
+            "label_2": "Hypoallergenic",
+            "label_3": "Gift-ready packaging",
+            "label_4": "Free shipping",
+            "text_color": "#000000",
+            "font_size": 14
+          }
+        },
         "icon_with_text_RtEwBz": {
           "type": "icon-with-text",
+          "disabled": true,
           "settings": {
             "layout": "vertical",
             "icon_1": "heart",
@@ -128,52 +140,171 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": false,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
+        "custom_liquid_nnqhCn": {
+          "type": "custom_liquid",
           "disabled": true,
-          "settings": {}
+          "settings": {
+            "custom_liquid": "<p style=\"display: flex; align-items: center; gap: 6px; margin: 8px 0; font-size: 13px; color: #3A3A3A;\">\n  <svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" aria-hidden=\"true\" style=\"flex-shrink: 0;\">\n    <circle cx=\"8\" cy=\"8\" r=\"7\" fill=\"#000\"/>\n  </svg>\n  <span>This product was bought <strong>3,162</strong> times this week!</span>\n</p>"
+          }
+        },
+        "sale_banner_DBTrPV": {
+          "type": "sale_banner",
+          "settings": {
+            "preset": "custom",
+            "display_mode": "rotate",
+            "text_direction": "auto",
+            "m1_text": "&nbsp;<strong>Exclusive Offers Are Live</strong>",
+            "m1_animation": "pulse",
+            "m1_icon_source": "emoji",
+            "m1_icon": "fire",
+            "m1_icon_emoji": "",
+            "m1_icon_position": "both",
+            "m1_icon_size": 1.6,
+            "m1_icon_color": "",
+            "m1_icon_animation": "pulse",
+            "m1_icon_gap": 7,
+            "m1_countdown_end": "",
+            "m1_expired_text": "",
+            "m1_button_label": "",
+            "m1_button_link": "",
+            "m2_text": "BUY 1 GET 1 FREE",
+            "m2_animation": "pulse",
+            "m2_icon_source": "emoji",
+            "m2_icon": "truck",
+            "m2_icon_emoji": "",
+            "m2_icon_position": "left",
+            "m2_icon_size": 1.2,
+            "m2_icon_color": "",
+            "m2_icon_animation": "none",
+            "m2_icon_gap": 8,
+            "m2_countdown_end": "",
+            "m2_expired_text": "",
+            "m2_button_label": "",
+            "m2_button_link": "",
+            "m3_text": "",
+            "m3_animation": "inherit",
+            "m3_icon_source": "library",
+            "m3_icon": "gift",
+            "m3_icon_emoji": "",
+            "m3_icon_position": "left",
+            "m3_icon_size": 1.2,
+            "m3_icon_color": "",
+            "m3_icon_animation": "none",
+            "m3_icon_gap": 8,
+            "m3_countdown_end": "",
+            "m3_expired_text": "",
+            "m3_button_label": "",
+            "m3_button_link": "",
+            "animation": "fade-in",
+            "animation_duration": 2,
+            "animation_delay": 0,
+            "animation_easing": "ease-in-out",
+            "animation_loop": true,
+            "marquee_speed": "medium",
+            "marquee_custom_speed": 80,
+            "marquee_direction": "rtl",
+            "marquee_pause_hover": true,
+            "marquee_gap": 48,
+            "rotation_autoplay": true,
+            "rotation_interval": 5,
+            "rotation_transition": "fade",
+            "rotation_pause_hover": true,
+            "rotation_arrows": false,
+            "rotation_dots": false,
+            "font_source": "body",
+            "custom_font": "assistant_n4",
+            "font_size_desktop": 14,
+            "font_size_mobile": 13,
+            "font_weight": "800",
+            "letter_spacing": 0.3,
+            "line_height": 1.4,
+            "uppercase": true,
+            "text_align": "center",
+            "text_color": "#ffffff",
+            "highlight_color": "#ffd60a",
+            "highlight_bg": "",
+            "highlight_bold": true,
+            "text_shadow": false,
+            "text_shadow_color": "#000000",
+            "countdown_format": "dhms",
+            "countdown_expired": "hide",
+            "countdown_style": "boxed",
+            "countdown_bg": "#ffffff",
+            "countdown_text": "#000000",
+            "button_style": "solid",
+            "button_color": "#ffffff",
+            "button_text_color": "#121212",
+            "button_radius": 20,
+            "button_hover": "darken",
+            "bg_type": "solid",
+            "bg_color_1": "#000000",
+            "bg_color_2": "#000000",
+            "bg_angle": 90,
+            "overlay_opacity": 40,
+            "padding_top_desktop": 10,
+            "padding_bottom_desktop": 10,
+            "padding_top_mobile": 8,
+            "padding_bottom_mobile": 8,
+            "max_width": "full",
+            "custom_max_width": 800,
+            "border_top": false,
+            "border_bottom": false,
+            "border_color": "#e5e5e5",
+            "border_thickness": 1,
+            "border_radius": 6,
+            "margin_top": 0,
+            "margin_bottom": -14,
+            "show_on": "all",
+            "dismissible": false,
+            "dismiss_days": 7,
+            "schedule_start": "",
+            "schedule_end": "",
+            "banner_link": ""
+          }
         },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "collapsible_tab_Y4BabJ": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Will it fit me?",
-            "icon": "none",
-            "content": "<p>Yes! It’s <em>one size fits all</em> — the bracelet measures <strong>6.5\" + 1.5\" adjustable</strong>, offering a comfortable and flexible fit.</p><p><strong>98% of customers report a perfect fit</strong>, whether they prefer a snug or relaxed feel.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_pyJdky": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Will it tarnish or turn my skin green?",
-            "icon": "none",
-            "content": "<p>No. It’s made from <strong>polished 316L stainless steel</strong> with a <strong>real 14K gold finish</strong>, so it <strong>won’t fade, tarnish, or stain your skin</strong> — even with daily wear.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_WBErKc": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Can I shower or swim with it?",
-            "icon": "none",
-            "content": "<p>Absolutely. It’s <strong>100% waterproof</strong>, so you can wear it while <strong>showering, swimming, or exercising </strong>without worry.</p>",
-            "page": ""
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
         "collapsible_tab_U8t6ip": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "How long does shipping take?",
+            "heading": "Specifications",
+            "icon": "none",
+            "content": "<ul><li>Premium Stainless Steel + 18k gold PVD coating</li><li>Length: 6.5\" + 1.5\" extender</li><li>Waterproof & Sweatproof : Shower, swim and exercise with it, the color remains perfect</li><li>Hypoallergenic & Lead-free</li><li>Innovative anti-tarnish protective coating</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_QeWkHq": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
             "icon": "none",
             "content": "<p>Our shipping times can generally be divided into two parts:<br/><br/>Processing Time: Our processing time consists of production, order verification, product personalization, product quality control and packaging. Due to the large number of orders, this currently accounts for 2-4 working days.</p><p>Once your order has been shipped, it typically arrives within 6-12 business days.<br/><br/>You will receive a tracking number via email once your order has been shipped.</p>",
             "page": ""
@@ -182,30 +313,48 @@
         "collapsible_tab_LWxxBL": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "What's your guarantee?",
+            "heading": "Lifetime Guarantee",
             "icon": "none",
-            "content": "<p>We hope you'll be pleased with your new Necklace, however if something isn't quite conform to your satisfaction, we're here to help. If you would like to exchange your order for something else or receive a refund, you can easily return it <strong>within 30 days</strong> of delivery.<br/><br/>We hope you understand that personalized jewelry and earrings cannot be returned unless there is a manufacturing defect. If this is the case please contact our friendly customer service team who will assist you as soon as possible.</p>",
+            "content": "<p>We hope you'll be pleased with your new Necklace, however if something isn't quite conform to your satisfaction, we're here to help. If you would like to exchange your order for something else or receive a refund, you can easily return it&nbsp;<strong>within 30 days</strong>&nbsp;of delivery.<br/><br/>We hope you understand that personalized jewelry and earrings cannot be returned unless there is a manufacturing defect. If this is the case please contact our friendly customer service team who will assist you as soon as possible.</p>",
             "page": ""
+          }
+        },
+        "description_AUaNC8": {
+          "type": "description",
+          "settings": {
+            "custom_description": "",
+            "media_1_video_url": "",
+            "media_1_position": 1,
+            "media_2_video_url": "",
+            "media_2_position": 2,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
           }
         }
       },
       "block_order": [
         "title",
         "loox_reviews_loox_rating_qkAgh6",
+        "icon_with_text_check_GiPRay",
         "icon_with_text_RtEwBz",
         "price",
         "variant_picker",
-        "quantity_selector",
+        "custom_liquid_nnqhCn",
+        "sale_banner_DBTrPV",
         "buy_buttons_KqEWkh",
-        "collapsible_tab_Y4BabJ",
-        "collapsible_tab_pyJdky",
-        "collapsible_tab_WBErKc",
         "collapsible_tab_U8t6ip",
-        "collapsible_tab_LWxxBL"
+        "collapsible_tab_QeWkHq",
+        "collapsible_tab_LWxxBL",
+        "description_AUaNC8"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
-        ".button {font-weight: bold; font-size: 20px;"
+        ".button {font-weight: bold; font-size: 20px;}",
+        ".product__tax {display: none;}",
+        ".note {margin: 0; font-size: 12px; font-weight: bold;}",
+        "div .note {margin: 0 0 5px 0 !important;}",
+        ".kaching-bundles__block-title {display: none;}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -213,13 +362,14 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 24,
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
       }
     },
@@ -242,15 +392,472 @@
         "padding_bottom": 28
       }
     },
+    "ugc_marquee_xKiWqR": {
+      "type": "ugc-marquee",
+      "blocks": {
+        "media_fYchWT": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_7dc6aa9e-d67d-4116-b960-9f7b1986ea94.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_eGbgmm": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_9.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_djYhtm": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_4_02356f31-b4bd-4ad4-8ef5-716f8b6de458.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_DHbQ8T": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_5_dcfc2590-f340-43a8-acdd-0a2bd3979e4c.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_TBRQht": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_7_acfad936-7cb6-4268-b882-801afa83e0ae.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_TcXKbL": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_8.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_GwPghT": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_3_4adb4dac-5897-4d5f-b6c8-8ceb0b96c5ac.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_yxQMyK": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_1_fcec203f-4d60-4233-bd02-5c1c29d1d0e2.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_YT7pP4": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_6_dd31cd6f-ebf3-4524-b1c5-5a4aae8afe79.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        },
+        "media_H8gNtU": {
+          "type": "media",
+          "settings": {
+            "image": "shopify://shop_images/Nivora_2_79b84d97-9880-4177-8a33-5d5d5efbdb88.png",
+            "alt": "",
+            "link": "",
+            "caption": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "media_fYchWT",
+        "media_eGbgmm",
+        "media_djYhtm",
+        "media_DHbQ8T",
+        "media_TBRQht",
+        "media_TcXKbL",
+        "media_GwPghT",
+        "media_yxQMyK",
+        "media_YT7pP4",
+        "media_H8gNtU"
+      ],
+      "custom_css": [
+        ".ugc-marquee__header {padding-top: 60px;}"
+      ],
+      "name": "UGC strip",
+      "settings": {
+        "heading": "<p>Seen in action on our<br/>300,000+ happy customers</p>",
+        "subheading": "",
+        "heading_font": "heading",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 40,
+        "heading_size_mobile": 28,
+        "heading_weight": "theme",
+        "heading_letter_spacing": -2,
+        "heading_line_height": 1.1,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 40,
+        "speed_desktop": 40,
+        "speed_mobile": 30,
+        "direction": "left",
+        "pause_on_hover": true,
+        "enable_drag": true,
+        "second_row": false,
+        "aspect_ratio": "3-4",
+        "image_width_desktop": 300,
+        "image_width_mobile": 200,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "border_radius": 8,
+        "border": false,
+        "border_color": "#e5e5e5",
+        "shadow": false,
+        "hover_effect": "zoom",
+        "grayscale": false,
+        "color_scheme": "",
+        "background_color": "",
+        "max_width": "full",
+        "edge_fade": true,
+        "fade_width": 30,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "enable_lightbox": true
+      }
+    },
+    "related_products_slider_Ad4EXg": {
+      "type": "related-products-slider",
+      "name": "Related products",
+      "settings": {
+        "source": "manual",
+        "product_list": [
+          "soulmates-hug-necklace",
+          "forever-knot-bracelet-2-0",
+          "dont-let-the-hard-days-win-bracelet",
+          "nivora-hug-ring",
+          "the-knot-ring",
+          "custom-engraved-tag-bracelet",
+          "personalized-engraved-bracelet",
+          "nivora-duo-bracelet",
+          "birthstone-zodiac-heart-initial-necklace",
+          "heart-initial-necklace"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "Related products",
+        "show_heading_dot": true,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 45,
+        "heading_size_mobile": 24,
+        "heading_weight": "500",
+        "heading_letter_spacing": 5,
+        "heading_color": "#000000",
+        "heading_alignment": "flex-start",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": true,
+        "sale_badge_text": "",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
+    },
+    "blocks_QGiUBm": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_F4FirY": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>You May Also Like</strong>",
+            "subtitle": "Handpicked pieces from our collection",
+            "product_list": [
+              "custom-angel-wings-heart-photo-necklace-cz",
+              "braided-leather-bracelet-with-custom-beads",
+              "custom-engraved-tag-bracelet",
+              "custom-multi-name-cuban-chain-necklace",
+              "custom-pearl-name-necklace",
+              "custom-pet-portrait-necklace",
+              "custom-photo-keychain-with-engraved-text",
+              "forever-connected-sons-customized-bracelet"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 25,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_F4FirY"
+      ],
+      "disabled": true,
+      "name": "You may also like",
+      "settings": {}
+    },
+    "faq_accordion_UH6dif": {
+      "type": "faq-accordion",
+      "blocks": {
+        "question_7NFCgq": {
+          "type": "question",
+          "settings": {
+            "question": "Will my jewelry tarnish or turn my skin green?",
+            "answer": "<p>Our pieces are made for everyday wear and designed to resist fading, tarnishing, and discoloration. Most styles are crafted from polished 316L stainless steel with a 18K gold plated finish. You can find the exact materials of each piece on its product page.</p>",
+            "category": ""
+          }
+        },
+        "question_JVjEdg": {
+          "type": "question",
+          "settings": {
+            "question": "Can I wear it in the water or in the shower?",
+            "answer": "<p>Yes. Our jewelry is designed to be worn during everyday activities, including showering, swimming, and exercising. After exposure to chlorine or salt water, we recommend rinsing it with fresh water and gently drying it to keep the finish looking its best.</p>",
+            "category": ""
+          }
+        },
+        "question_kQ8G9m": {
+          "type": "question",
+          "settings": {
+            "question": "Is it safe for sensitive skin?",
+            "answer": "<p>Our pieces are made with skin-friendly materials and are suitable for most sensitive skin. Since individual sensitivities can vary, we recommend checking the materials listed on each product page, particularly if you have a known metal allergy.</p>",
+            "category": ""
+          }
+        },
+        "question_HVBXBm": {
+          "type": "question",
+          "settings": {
+            "question": "How do I find the right size or fit?",
+            "answer": "<p>Exact measurements and sizing information are included on every product page. Bracelets marked as adjustable can be tightened or loosened for a comfortable fit, while necklace lengths and earring dimensions are clearly listed.</p>",
+            "category": ""
+          }
+        },
+        "question_3bqKBV": {
+          "type": "question",
+          "settings": {
+            "question": "How durable is the jewelry?",
+            "answer": "<p>Yes. Each piece is designed for regular wear using durable materials and secure clasps. As with any jewelry, avoid pulling, bending, or crushing delicate chains and components.</p>",
+            "category": ""
+          }
+        },
+        "question_fyFYMK": {
+          "type": "question",
+          "settings": {
+            "question": "How long does delivery take, and can I track my order?",
+            "answer": "<p>Orders are usually processed within 1–3 business days. Standard tracked delivery typically takes 5–15 business days, depending on your location. Once your order ships, you will receive a tracking link by email.</p>",
+            "category": ""
+          }
+        },
+        "question_68c9z9": {
+          "type": "question",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a 30-day resolution window for eligible orders. Conditions may vary depending on the item or promotion, so please review our Return and Refund Policy or contact our support team before sending anything back.</p>",
+            "category": ""
+          }
+        },
+        "question_UW8g79": {
+          "type": "question",
+          "settings": {
+            "question": "Something went wrong with my order. What should I do?",
+            "answer": "<p>If your jewelry arrives damaged, you receive the wrong item, or your order does not arrive, contact our support team. We will review the issue and arrange a replacement or refund when applicable.</p>",
+            "category": ""
+          }
+        },
+        "question_wBqPYk": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer a guarantee?",
+            "answer": "<p>Yes. Every piece is covered by our Lifetime Color Guarantee. If the color ever fades or tarnishes under normal wear, contact our support team with your order details and a photo, and we’ll make it right.</p>",
+            "category": ""
+          }
+        }
+      },
+      "block_order": [
+        "question_7NFCgq",
+        "question_JVjEdg",
+        "question_kQ8G9m",
+        "question_HVBXBm",
+        "question_3bqKBV",
+        "question_fyFYMK",
+        "question_68c9z9",
+        "question_UW8g79",
+        "question_wBqPYk"
+      ],
+      "name": "FAQ – minimal",
+      "settings": {
+        "source": "blocks",
+        "faq_page": "",
+        "heading": "FAQs",
+        "subheading": "",
+        "layout": "stacked",
+        "max_width": 800,
+        "heading_font": "heading",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 36,
+        "heading_size_mobile": 28,
+        "heading_weight": "theme",
+        "heading_letter_spacing": -1,
+        "heading_line_height": 1.2,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 32,
+        "item_style": "lines",
+        "question_size": 16,
+        "question_weight": "500",
+        "question_color": "",
+        "question_uppercase": false,
+        "question_padding_top": 20,
+        "question_padding_bottom": 20,
+        "answer_size": 15,
+        "answer_color": "",
+        "answer_line_height": 1.6,
+        "answer_padding_top": 0,
+        "answer_padding_bottom": 20,
+        "icon": "chevron",
+        "icon_position": "right",
+        "icon_size": 18,
+        "icon_color": "",
+        "icon_rotate": true,
+        "divider_top": true,
+        "divider_between": true,
+        "divider_bottom": true,
+        "divider_color": "#e5e5e5",
+        "divider_thickness": 1,
+        "card_bg": "#ffffff",
+        "card_radius": 8,
+        "card_gap": 12,
+        "hover_style": "none",
+        "question_hover_color": "#8a6d3b",
+        "open_mode": "multiple",
+        "first_open": false,
+        "animation_duration": 0.3,
+        "animation_easing": "ease",
+        "show_search": false,
+        "show_tabs": false,
+        "enable_schema": true,
+        "show_cta": true,
+        "cta_text": "Still have questions?",
+        "cta_button_label": "Contact us",
+        "cta_button_link": "shopify://pages/contact",
+        "cta_button_style": "solid",
+        "cta_button_color": "#121212",
+        "cta_button_text_color": "#ffffff",
+        "cta_button_radius": 4,
+        "color_scheme": "",
+        "background_color": "",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
     "image_with_text_eCRMfk": {
       "type": "image-with-text",
       "blocks": {
         "heading_94DP8n": {
           "type": "heading",
           "settings": {
-            "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
+            "heading": "<em>EXCLUSIVE OFFERS ARE LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": ""
           }
         },
@@ -266,20 +873,133 @@
         "heading_94DP8n",
         "text_bXNFJ7"
       ],
+      "disabled": true,
+      "custom_css": [
+        ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
+        ".button {font-weight: bold; font-size: 20px;}",
+        ".product__tax {display: none;}",
+        ".note {margin: 0; font-size: 12px; font-weight: bold;}",
+        "div .note {margin: 0 0 5px 0 !important;}"
+      ],
       "settings": {
         "image": "shopify://shop_images/image_2168.png",
-        "height": "adapt",
+        "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "section_color_scheme": "",
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 36,
-        "padding_bottom": 4
+        "padding_bottom": 36
+      }
+    },
+    "image_feature_marquee_FxDywk": {
+      "type": "image-feature-marquee",
+      "blocks": {
+        "feature_heiWyN": {
+          "type": "feature",
+          "settings": {
+            "text": "Waterproof & Tarnish-Free",
+            "icon_source": "library",
+            "icon": "droplet"
+          }
+        },
+        "feature_tt3EVB": {
+          "type": "feature",
+          "settings": {
+            "text": "Hypoallergenic",
+            "icon_source": "library",
+            "icon": "sparkle"
+          }
+        },
+        "feature_Hwy3Tm": {
+          "type": "feature",
+          "settings": {
+            "text": "Lifetime Guarantee",
+            "icon_source": "library",
+            "icon": "heart"
+          }
+        }
+      },
+      "block_order": [
+        "feature_heiWyN",
+        "feature_tt3EVB",
+        "feature_Hwy3Tm"
+      ],
+      "name": "Lifestyle + benefits",
+      "settings": {
+        "show_image": true,
+        "media_type": "image",
+        "image": "shopify://shop_images/ChatGPT_Image_Oct_1_2026_02_50_24_AM.png",
+        "external_video": "",
+        "image_alt": "",
+        "above_the_fold": false,
+        "height_mode": "fixed",
+        "height_unit": "vh",
+        "height_desktop_vh": 80,
+        "height_mobile_vh": 40,
+        "height_desktop_px": 600,
+        "height_mobile_px": 420,
+        "aspect_ratio": "16-9",
+        "image_width": "full",
+        "image_radius": 0,
+        "parallax": false,
+        "image_link": "",
+        "show_overlay": false,
+        "overlay_color": "#000000",
+        "overlay_opacity": 30,
+        "overlay_gradient": false,
+        "show_content": false,
+        "heading": "",
+        "body": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "solid",
+        "button_text_color": "#121212",
+        "button_radius": 0,
+        "content_position": "center-center",
+        "content_color": "#ffffff",
+        "text_shadow": true,
+        "heading_size_desktop": 52,
+        "heading_size_mobile": 32,
+        "body_size_desktop": 17,
+        "body_size_mobile": 15,
+        "marquee_position": "below",
+        "speed_desktop": 50,
+        "speed_mobile": 35,
+        "direction": "left",
+        "pause_on_hover": true,
+        "icon_size": 1.4,
+        "icon_color": "",
+        "icon_gap": 10,
+        "text_uppercase": true,
+        "text_font": "body",
+        "text_custom_font": "assistant_n4",
+        "text_size_desktop": 14,
+        "text_size_mobile": 12,
+        "text_weight": "500",
+        "text_letter_spacing": 8,
+        "text_color": "#3a3a3a",
+        "item_gap_desktop": 56,
+        "item_gap_mobile": 32,
+        "separator": "none",
+        "marquee_bg": "#f7f2ee",
+        "marquee_padding_top_desktop": 22,
+        "marquee_padding_bottom_desktop": 22,
+        "marquee_padding_top_mobile": 16,
+        "marquee_padding_bottom_mobile": 16,
+        "marquee_border_top": false,
+        "marquee_border_bottom": false,
+        "marquee_border_color": "#e6ddd5",
+        "marquee_border_thickness": 1,
+        "color_scheme": "",
+        "media_marquee_gap": 0,
+        "margin_top": 0,
+        "margin_bottom": 40
       }
     },
     "17341290603fa2426b": {
@@ -311,7 +1031,12 @@
     "ss_payment_icons_9hc3pf",
     "main",
     "related-products",
+    "ugc_marquee_xKiWqR",
+    "related_products_slider_Ad4EXg",
+    "blocks_QGiUBm",
+    "faq_accordion_UH6dif",
     "image_with_text_eCRMfk",
+    "image_feature_marquee_FxDywk",
     "17341290603fa2426b"
   ]
 }

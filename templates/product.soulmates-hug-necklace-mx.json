@@ -156,7 +156,7 @@
           "settings": {
             "heading": "Descripción",
             "icon": "none",
-            "content": "<p>Algunos vínculos se expresan mejor en un solo gesto eterno: un abrazo que dice todo lo que las palabras no pueden. Este dije muestra dos figuras entrelazadas fundidas en un abrazo tierno, elaborado en cálido oro de 18k y plata de ley para lograr un llamativo contraste de dos tonos.<br/><br/>Elige el diseño «<strong>Mamá e hijo</strong>» para celebrar el amor incondicional entre un padre o una madre y su pequeño, o el diseño «<strong>Pareja</strong>» para simbolizar dos almas entrelazadas para siempre.<br/><br/>Para llevar cerca del corazón, es un recordatorio de las personas a las que nos mantenemos unidas: perfecto para ti o como un regalo lleno de cariño para alguien cuyo abrazo nunca querrías soltar.<br/><br/></p>",
+            "content": "<p>Algunos vínculos se expresan mejor con un detalle que dure para siempre: un abrazo que diga todo lo que las palabras no pueden. Este dije muestra dos figuras entrelazadas fundidas en un tierno abrazo, está elaborado en oro cálido de 18k y plata de ley para lograr un llamativo contraste de dos tonos.<br/><br/>Elige el diseño <strong>«Mamá e hijo»</strong> para celebrar el amor incondicional entre un padre o una madre y su pequeño o pequeña, o el diseño <strong>«Pareja»</strong> para simbolizar dos almas entrelazadas para siempre.<br/><br/>Para llevar cerca del corazón, es un recordatorio de las personas a las que nos mantenemos unidas: perfecto para ti o como un regalo lleno de cariño para alguien cuyo abrazo nunca querrías soltar.</p>",
             "page": ""
           }
         },
@@ -174,7 +174,7 @@
           "settings": {
             "heading": "Garantía",
             "icon": "none",
-            "content": "<p>Esperamos que estés contento con tu nueva compra. Sin embargo, si algo no es del todo de tu agrado, estamos aquí para ayudarte. Si deseas cambiar tu pedido por otra cosa o recibir un reembolso, puedes devolverlo fácilmente dentro de los <strong>30 días</strong> posteriores a la entrega.<br/><br/>Esperamos que comprendas que los artículos personalizados o hechos a medida no se pueden devolver, a menos que exista un defecto de fabricación. Si es el caso, comunícate con nuestro amable equipo de atención al cliente, que te ayudará lo antes posible.<br/><br/></p>",
+            "content": "<p>Esperamos que todo sea de tu agrado con tu nueva compra. Sin embargo, si algo no así, estamos aquí para ayudarte. Si deseas cambiar tu pedido por otra cosa o recibir un reembolso, puedes devolverlo fácilmente dentro de los <strong>30 días</strong> posteriores a la entrega.<br/><br/>Esperamos que comprendas que los artículos personalizados o hechos a medida no se pueden devolver, a menos que exista un defecto de fabricación. Si es el caso, comunícate con nuestro amable equipo de atención al cliente, que te ayudará lo antes posible.<br/><br/></p>",
             "page": ""
           }
         }
@@ -280,8 +280,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

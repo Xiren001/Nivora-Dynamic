@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -104,10 +113,10 @@
             "heading_1": "Stilvoll für den Alltag",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Schnelle medizinische Erkennung",
+            "heading_2": "Langlebig & Wasserabweisend",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Langlebig & Wasserabweisend"
+            "heading_3": "Schnelle medizinische Erkennung"
           }
         },
         "price": {
@@ -212,7 +221,7 @@
           "settings": {
             "heading": "Es spricht für Sie, wenn es am meisten darauf ankommt!",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": "de"
           }
         },

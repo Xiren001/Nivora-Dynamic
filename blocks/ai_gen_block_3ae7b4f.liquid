@@ -1,0 +1,201 @@
+{% doc %}
+  @prompt
+    Create an image-with-text section for a Shopify product page (elegant sentimental jewelry brand).
+    
+    Layout (desktop):
+    - Two columns, 50/50, full width, no gap
+    - Left: full-bleed image, cover fit, ~680px tall (or aspect ratio setting), no radius
+    - Right: white background, text block vertically centered, left-aligned, max-width ~400px, left padding ~80px
+    - Thin 1px light-gray (#E5E5E5) divider lines above and below the section
+    
+    Text block:
+    - Eyebrow/subheading: uppercase, 10–11px, letter-spacing ~0.1em, dark gray
+    - Heading: uppercase, 24–26px, light/regular weight, letter-spacing ~0.08em, dark gray, ~16px below eyebrow
+    - Body: 15–16px, regular weight, line-height ~1.75, dark gray, supports multiple paragraphs (~16px spacing), ~24px below heading
+    - Optional button (hidden if empty)
+    
+    Mobile:
+    - Stack: image on top (~4:5 or square), text below
+    - Text padding ~24px sides, ~40px top/bottom
+    
+    Theme settings:
+    - Image picker (separate optional mobile image)
+    - Image position: left / right
+    - Eyebrow, heading, rich-text body, optional button label + link (all translatable)
+    - Text alignment, background color, text color
+    - Image height / aspect ratio
+    - Toggle top/bottom dividers
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% assign image_alt = block.settings.image.alt | default: block.settings.heading | escape %}
+
+{% style %}
+  .ai-story-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    color: {{ block.settings.text_color }};
+    background: {{ block.settings.background_color }};
+    {% if block.settings.show_top_divider %}border-top: 1px solid #E5E5E5;{% endif %}
+    {% if block.settings.show_bottom_divider %}border-bottom: 1px solid #E5E5E5;{% endif %}
+  }
+  .ai-story-{{ ai_gen_id }}__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .ai-story-{{ ai_gen_id }}--image-right .ai-story-{{ ai_gen_id }}__media { order: 2; }
+  .ai-story-{{ ai_gen_id }}--image-right .ai-story-{{ ai_gen_id }}__content { order: 1; }
+  .ai-story-{{ ai_gen_id }}__media {
+    position: relative;
+    min-width: 0;
+    height: {{ block.settings.image_height }}px;
+    overflow: hidden;
+    background: #f3f3f3;
+  }
+  .ai-story-{{ ai_gen_id }}__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: {{ block.settings.image_position }};
+  }
+  .ai-story-{{ ai_gen_id }}__placeholder { width: 100%; height: 100%; }
+  .ai-story-{{ ai_gen_id }}__placeholder svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .ai-story-{{ ai_gen_id }}__empty-state {
+    position: absolute;
+    inset: auto 16px 16px;
+    color: #444444;
+    font-size: 13px;
+    text-align: center;
+  }
+  .ai-story-{{ ai_gen_id }}__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 64px 8%;
+  }
+  .ai-story-{{ ai_gen_id }}__copy {
+    width: 100%;
+    max-width: 400px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+  .ai-story-{{ ai_gen_id }}__eyebrow {
+    margin: 0;
+    color: inherit;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+  .ai-story-{{ ai_gen_id }}__heading {
+    margin: 16px 0 0;
+    color: inherit;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+  .ai-story-{{ ai_gen_id }}__body {
+    margin-top: 24px;
+    color: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+  .ai-story-{{ ai_gen_id }}__body p { margin: 0 0 16px; }
+  .ai-story-{{ ai_gen_id }}__body p:last-child { margin-bottom: 0; }
+  .ai-story-{{ ai_gen_id }}__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    margin-top: 28px;
+    padding: 12px 24px;
+    border: 1px solid {{ block.settings.text_color }};
+    color: {{ block.settings.text_color }};
+    background: transparent;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .ai-story-{{ ai_gen_id }}__button:hover { color: {{ block.settings.background_color }}; background: {{ block.settings.text_color }}; }
+  .ai-story-{{ ai_gen_id }}__button:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+  @media screen and (max-width: 749px) {
+    .ai-story-{{ ai_gen_id }}__inner { grid-template-columns: 1fr; width: 100%; }
+    .ai-story-{{ ai_gen_id }}--image-right .ai-story-{{ ai_gen_id }}__media,
+    .ai-story-{{ ai_gen_id }}--image-right .ai-story-{{ ai_gen_id }}__content { order: initial; }
+    .ai-story-{{ ai_gen_id }}__media { height: auto; aspect-ratio: {{ block.settings.mobile_aspect_ratio }}; }
+    .ai-story-{{ ai_gen_id }}__media img { position: absolute; inset: 0; }
+    .ai-story-{{ ai_gen_id }}__content { padding: 40px 24px; }
+    .ai-story-{{ ai_gen_id }}__copy { max-width: 520px; margin: 0 auto; }
+    .ai-story-{{ ai_gen_id }}__heading { font-size: 23px; }
+  }
+{% endstyle %}
+
+<div class="ai-story-{{ ai_gen_id }}{% if block.settings.image_side == 'right' %} ai-story-{{ ai_gen_id }}--image-right{% endif %}" {{ block.shopify_attributes }}>
+  <div class="ai-story-{{ ai_gen_id }}__inner">
+    <div class="ai-story-{{ ai_gen_id }}__media">
+      {% if block.settings.image != blank %}
+        <picture>
+          {% if block.settings.mobile_image != blank %}
+            <source media="(max-width: 749px)" srcset="{{ block.settings.mobile_image | image_url: width: 1000 }}">
+          {% endif %}
+          <img src="{{ block.settings.image | image_url: width: 1800 }}" alt="{{ image_alt }}" loading="lazy" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+        </picture>
+      {% else %}
+        <div class="ai-story-{{ ai_gen_id }}__placeholder">
+          {{ 'image' | placeholder_svg_tag }}
+          <div class="ai-story-{{ ai_gen_id }}__empty-state">Add an image to tell your story.</div>
+        </div>
+      {% endif %}
+    </div>
+    <div class="ai-story-{{ ai_gen_id }}__content">
+      <div class="ai-story-{{ ai_gen_id }}__copy">
+        {% if block.settings.eyebrow != blank %}<p class="ai-story-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+        {% if block.settings.heading != blank %}<h2 class="ai-story-{{ ai_gen_id }}__heading">{{ block.settings.heading | escape }}</h2>{% endif %}
+        {% if block.settings.body != blank %}<div class="ai-story-{{ ai_gen_id }}__body">{{ block.settings.body }}</div>{% endif %}
+        {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+          <a class="ai-story-{{ ai_gen_id }}__button" href="{{ block.settings.button_link }}">{{ block.settings.button_label | escape }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Sentimental image text",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Made to hold close" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A story in every detail" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Create a keepsake that celebrates the people and moments closest to your heart.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Discover the collection" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "select", "id": "image_side", "label": "Image position", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
+    { "type": "select", "id": "image_position", "label": "Image focal point", "options": [{ "value": "center center", "label": "Center" }, { "value": "center top", "label": "Top" }, { "value": "center bottom", "label": "Bottom" }, { "value": "left center", "label": "Left" }, { "value": "right center", "label": "Right" }], "default": "center center" },
+    { "type": "range", "id": "image_height", "label": "Desktop image height", "min": 400, "max": 900, "step": 20, "unit": "px", "default": 680 },
+    { "type": "select", "id": "mobile_aspect_ratio", "label": "Mobile image ratio", "options": [{ "value": "4 / 5", "label": "Portrait (4:5)" }, { "value": "1 / 1", "label": "Square" }], "default": "4 / 5" },
+    { "type": "select", "id": "text_alignment", "label": "Text alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" }], "default": "left" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FFFFFF" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#333333" },
+    { "type": "checkbox", "id": "show_top_divider", "label": "Show top divider", "default": true },
+    { "type": "checkbox", "id": "show_bottom_divider", "label": "Show bottom divider", "default": true }
+  ],
+  "presets": [{ "name": "Sentimental image text" }],
+  "tag": null,
+  "class": "sentimental-image-text"
+}
+{% endschema %}

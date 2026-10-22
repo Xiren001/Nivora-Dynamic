@@ -146,7 +146,7 @@
         "collapsible_tab_Y4BabJ": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Details",
+            "heading": "Detalles",
             "icon": "none",
             "content": "<p>Algunas conexiones nunca se desvanecen, solo se vuelven más profundas con el tiempo.<br/>Esta pulsera celebra el vínculo inquebrantable entre madre e hija: un dulce recordatorio de que, sin importar a dónde las lleve la vida, siempre serán parte la una de la otra.<br/>Dos piedras de nacimiento, una historia compartida de amor, crecimiento y pertenencia.<br/>Personalizable con dos piedras de nacimiento de tu elección: una para cada una.</p>",
             "page": ""
@@ -157,7 +157,7 @@
           "settings": {
             "heading": "Material",
             "icon": "none",
-            "content": "<ul><li>Material: Latón con baño de oro o plata.</li><li>Tamaño: 6\" + 2\" de extensión ajustable (se adapta cómodamente a la mayoría de las muñecas).</li><li>Personalizable con dos piedras de nacimiento de tu elección: una para cada una.</li><li>Sin níquel e hipoalergénica, diseñada para un brillo duradero.</li><li>Incluye una tarjeta con el mensaje <em>\"Mother & Daughter\"</em> (Madre e hija) de regalo y una caja lista para regalar.</li></ul>",
+            "content": "<ul><li>Material: latón con baño de oro o plata.</li><li>Tamaño: 6\" + 2\" de extensión ajustable (se adapta cómodamente a la mayoría de las muñecas).</li><li>Personalizable con dos piedras de nacimiento de tu elección: una para cada una.</li><li>Sin níquel e hipoalergénica, diseñada para un brillo duradero.</li><li>Incluye una tarjeta con el mensaje <em>\"Mother & Daughter\"</em> (Madre e hija) de regalo y una caja lista para regalar.</li></ul>",
             "page": ""
           }
         },
@@ -242,8 +242,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

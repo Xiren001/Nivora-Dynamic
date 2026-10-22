@@ -120,7 +120,7 @@
             "heading_2": "Elegantes & zeitloses Design",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Tiefe emotionale Bedeutung"
+            "heading_3": "Echte emotionale Bedeutung"
           }
         },
         "text_NnLNAb": {
@@ -240,9 +240,7 @@
           "type": "heading",
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
-            "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "heading_size": "h1"
           }
         },
         "text_bXNFJ7": {

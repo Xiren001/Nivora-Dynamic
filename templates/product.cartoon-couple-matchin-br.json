@@ -256,8 +256,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "br"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -332,7 +332,7 @@
         "slide_E6eCBR": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363478899.mp4",
+            "video": "shopify://files/videos/1_cc1f1bba-623d-4416-973d-b8db2da6151d.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0
@@ -341,7 +341,7 @@
         "slide_mABfLm": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363819244.mp4",
+            "video": "shopify://files/videos/2_68073edd-bec9-42d0-b151-f3a7a6031558.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0
@@ -350,7 +350,7 @@
         "slide_EmMcKE": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363671876.mp4",
+            "video": "shopify://files/videos/3_2ef629c7-198e-4057-8965-64ffb8833034.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0
@@ -359,7 +359,7 @@
         "slide_yUkkjM": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/ssstik.io_@keymatch.us_1786363725176.mp4",
+            "video": "shopify://files/videos/4_8b90a569-c531-447f-98d6-8a15c87e2c10.mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
             "title": "",
             "stars_count": 0

@@ -114,7 +114,7 @@
             "layout": "vertical",
             "icon_1": "heart",
             "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Elegant und minimalistisch",
+            "heading_1": "Elegant und klar",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
             "heading_2": "Wasserfest und strapazierfähig",
@@ -147,12 +147,13 @@
           "settings": {
             "heading": "Beschreibung",
             "icon": "none",
-            "content": "<p>Sichern Sie sich eine ganz besondere Halskette, die nur für Sie angefertigt wird. Wählen Sie beliebige Buchstaben oder Symbole, und wir fertigen in Handarbeit eine wunderschöne Halskette, die perfekt zu Ihnen oder einem geliebten Menschen passt.</p><p>Maximal 6 Initialen/Symbole pro Halskette. Bestellen Sie eine zweite Kette für den angesagten Layering-Look, falls Sie mehr Initialen/Symbole benötigen.</p><p>Das Design wird komplett in GROSSBUCHSTABEN angefertigt.</p>",
+            "content": "<p>Eine reduzierte <strong>Kette mit seitlich getragenen Initialen</strong>, von Hand graviert mit bis zu 7 Buchstaben oder Symbolen. Sie liegt flach an der Kette an – für einen klaren, modernen Look.<br/><br/>Gefertigt aus <strong>Edelstahl </strong>– nickelfrei, hypoallergen, wasserfest und anlaufbeständig, sodass die Farbe nie verblasst. Längenverstellbare Kette.<br/><br/>Für Monogramm-Liebhaber, Familien-Initialen-Sets, den Muttertag, Jahrestage, den Abschluss und passende Mutter-Tochter-Stücke.<br/><br/></p>",
             "page": ""
           }
         },
         "collapsible_tab_WBErKc": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "100 % wasserfest",
             "icon": "none",
@@ -162,6 +163,7 @@
         },
         "collapsible_tab_pyJdky": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Kettenlänge",
             "icon": "none",
@@ -183,7 +185,7 @@
           "settings": {
             "heading": "Garantie",
             "icon": "none",
-            "content": "<p>Wir hoffen, dass Sie mit Ihrer neuen Halskette rundum zufrieden sind. Sollte jedoch etwas nicht ganz Ihren Vorstellungen entsprechen, sind wir gerne für Sie da. Wenn Sie Ihre Bestellung gegen einen anderen Artikel umtauschen oder eine Rückerstattung erhalten möchten, können Sie diese problemlos <strong>innerhalb von 30 Tagen</strong> nach der Lieferung zurücksenden.</p><p>Wir bitten um Ihr Verständnis, dass personalisierter Schmuck und Ohrringe von der Rückgabe ausgeschlossen sind, es sei denn, es liegt ein Herstellungsfehler vor. Sollte dies der Fall sein, wenden Sie sich bitte an unseren freundlichen Kundenservice, der Ihnen so schnell wie möglich weiterhelfen wird.</p>",
+            "content": "<p>Wir hoffen,dass Sie mit Ihrer neuen Halskette ewig zufrieden sind. Sollte jedoch etwas nicht ganz Ihren Vorstellungen entsprechen, sind wir gerne für Sie da. Wenn Sie Ihre Bestellung gegen einen anderen Artikel umtauschen oder eine Rückerstattung erhalten möchten, können Sie diese problemlos innerhalb von <strong>30 Tagen</strong> nach der Lieferung zurücksenden.</p><p>Wir bitten um Ihr Verständnis, dass personalisierter Schmuck und Ohrringe von der Rückgabe ausgeschlossen sind, es sei denn, es liegt ein Herstellungsfehler vor. Sollte dies der Fall sein, wenden Sie sich bitte an unseren freundlichen Kundenservice, der Ihnen so schnell wie möglich weiterhelfen wird.</p>",
             "page": ""
           }
         }

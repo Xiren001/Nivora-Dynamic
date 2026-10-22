@@ -120,7 +120,7 @@
             "heading_2": "Fortalece el vínculo entre padre e hija",
             "icon_3": "truck",
             "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Un recuerdo que atesorará para siempre"
+            "heading_3": "Un recuerdo que atesorará por siempre"
           }
         },
         "variant_picker": {
@@ -147,7 +147,7 @@
           "settings": {
             "heading": "Detalles",
             "icon": "none",
-            "content": "<p>Por Qué Le Encantará</p><p>Un mensaje que habla cuando las palabras no alcanzan.<br/><br/>Un recuerdo que atesorará toda la vida.<br/><br/>Perfecto para cumpleaños, momentos especiales o \"sin razón alguna\".<br/><br/>Llega en una elegante caja de regalo, lista para alegrarle el día.</p>",
+            "content": "<p>Por qué le encantará:</p><p>Un mensaje que habla cuando las palabras no alcanzan.<br/><br/>Un recuerdo que atesorará toda la vida.<br/><br/>Perfecto para cumpleaños, momentos especiales o \"sin razón alguna\".<br/><br/>Llega en una elegante caja de regalo, lista para alegrarle el día.</p>",
             "page": ""
           }
         },
@@ -165,7 +165,7 @@
           "settings": {
             "heading": "Envío",
             "icon": "none",
-            "content": "<p>Nuestros tiempos de envío se pueden dividir, en general, en dos partes:</p><p>Tiempo de Procesamiento: Nuestro tiempo de procesamiento incluye la producción, la verificación del pedido, la personalización del producto, el control de calidad y el empaque. Debido al gran número de pedidos, actualmente esto toma de 2 a 4 días hábiles.<br/><br/>Una vez enviado tu pedido, normalmente llega en un plazo de 6 a 12 días hábiles.</p><p>Recibirás un número de seguimiento por correo electrónico en cuanto tu pedido haya sido enviado.</p>",
+            "content": "<p>Nuestros tiempos de envío se dividen, en general, en dos partes:</p><p>Tiempo de Procesamiento: Nuestro tiempo de procesamiento incluye la producción, la verificación del pedido, la personalización del producto, el control de calidad y el empaque. Debido al gran número de pedidos, actualmente esto toma de 2 a 4 días hábiles.<br/><br/>Una vez enviado tu pedido, normalmente llega en un plazo de 6 a 12 días hábiles.</p><p>Recibirás un número de seguimiento por correo electrónico en cuanto tu pedido haya sido enviado.</p>",
             "page": ""
           }
         },
@@ -240,8 +240,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "es"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {

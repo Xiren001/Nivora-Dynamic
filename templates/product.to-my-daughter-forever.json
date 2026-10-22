@@ -156,7 +156,7 @@
           "settings": {
             "heading": "Material",
             "icon": "none",
-            "content": "<ul><li>14k White Gold Finish or 18k Yellow Gold Finish</li><li>6.5mm Round-Cut Cubic Zirconia Stone<br/>Pendant Dimensions: 0.8” (2.2 cm) H × 0.7” (1.8 cm) W</li><li>Adjustable Chain Length: 18\" – 22\" (45.7 – 55.9 cm)</li><li>Secure Lobster Clasp Closure</li></ul>",
+            "content": "<ul><li>14k White Gold Finish or 18k Yellow Gold Finish</li><li>6.5mm Round-Cut Cubic Zirconia Stone</li><li>Pendant Dimensions: 0.8” (2.2 cm) H × 0.7” (1.8 cm) W</li><li>Adjustable Chain Length: 18\" – 22\" (45.7 – 55.9 cm)</li><li>Secure Lobster Clasp Closure</li></ul>",
             "page": "material-to-my-daughter"
           }
         },
@@ -240,7 +240,7 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": ""
           }
         },

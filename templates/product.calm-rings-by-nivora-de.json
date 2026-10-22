@@ -289,7 +289,7 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
+            "dynamic_sale_banner": false,
             "banner_language": "de"
           }
         },
@@ -337,8 +337,8 @@
         "ai_gen_block_27b352b_rwCMEE": {
           "type": "ai_gen_block_27b352b",
           "settings": {
-            "title": "<strong>You May Also Like</strong>",
-            "subtitle": "Handpicked pieces from our collection",
+            "title": "<strong>Das könnte Ihnen auch gefallen</strong>",
+            "subtitle": "Handverlesene Stücke aus unserer Kollektion",
             "product_list": [
               "gravierte-halskette-herz-der-familie",
               "knotenarmband-forever",

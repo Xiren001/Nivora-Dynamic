@@ -83,22 +83,49 @@
 </style>
 
 <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-        var productForm = document.querySelector('#ss-payment-icons');
-      
-        if (!productForm){
-          var productForm = document.querySelector('{% if section.settings.payment_position == "below_title" or section.settings.payment_position == "above_title" %}.product__title{% elsif section.settings.payment_position == "below_description" %}.product__description{% else %}.button--add-to-cart, .product .product-form, .product-single__add-to-cart, .shopify-payment-button, .shopify-payment-button__button, .ProductForm__BuyButtons, .add-to-cart{% endif %}');
-          if (!productForm) return;
+    (function () {
+        // Moves the icons next to the product form. The list lives outside this section,
+        // so it is removed again when the section is hidden/removed and re-inserted when
+        // the section (or the product section it sits in) is re-rendered in the theme editor.
+        var sectionId = '{{ section.id }}';
+        var listId = 'ss-payment-list-' + sectionId;
+        var templateId = 'ss-payment-icons-template-' + sectionId;
+
+        function unmount() {
+            document.querySelectorAll('#' + listId).forEach(function (el) { el.remove(); });
         }
 
-        const templateContent =  document.querySelector('#ss-payment-icons-template-{{ section.id }}').content
-        
-        productForm.insertAdjacentElement('{% if section.settings.payment_position == "below_buy" or section.settings.payment_position == "below_title" or section.settings.payment_position == "below_description" %}afterend{% else %}beforebegin{% endif %}', templateContent.firstElementChild)
-        
-    })
+        function mount() {
+            var template = document.getElementById(templateId);
+            unmount();
+            if (!template || !template.content.firstElementChild) return;
+
+            var target = document.querySelector('#ss-payment-icons') || document.querySelector(template.dataset.target);
+            if (!target) return;
+            target.insertAdjacentElement(template.dataset.position, template.content.firstElementChild.cloneNode(true));
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', mount);
+        } else {
+            mount();
+        }
+
+        if (window.Shopify && Shopify.designMode && !window['ssPaymentIconsEditor' + sectionId]) {
+            window['ssPaymentIconsEditor' + sectionId] = true;
+            document.addEventListener('shopify:section:load', function () { mount(); });
+            document.addEventListener('shopify:section:unload', function (event) {
+                if (event.detail && event.detail.sectionId === sectionId) unmount();
+            });
+        }
+    })();
 </script>
 
-<template id="ss-payment-icons-template-{{ section.id }}">
+<template
+    id="ss-payment-icons-template-{{ section.id }}"
+    data-target="{% if section.settings.payment_position == "below_title" or section.settings.payment_position == "above_title" %}.product__title{% elsif section.settings.payment_position == "below_description" %}.product__description{% else %}.button--add-to-cart, .product .product-form, .product-single__add-to-cart, .shopify-payment-button, .shopify-payment-button__button, .ProductForm__BuyButtons, .add-to-cart{% endif %}"
+    data-position="{% if section.settings.payment_position == "below_buy" or section.settings.payment_position == "below_title" or section.settings.payment_position == "below_description" %}afterend{% else %}beforebegin{% endif %}"
+>
     <ul 
       id="ss-payment-list-{{ section.id }}" 
       class="ss-payment-list"

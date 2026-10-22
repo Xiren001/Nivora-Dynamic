@@ -1,0 +1,642 @@
+/* Sale banner (product information block). Per-instance values are set as custom properties on #SaleBanner-{block.id}. */
+.sale-banner {
+  --sb-dir: 1;
+  display: block;
+  margin-block: var(--sb-margin-top, 0) var(--sb-margin-bottom, 0);
+  color: var(--sb-text);
+}
+
+.sale-banner[dir='rtl'],
+[dir='rtl'] .sale-banner {
+  --sb-dir: -1;
+}
+
+.sale-banner[hidden] {
+  display: none !important;
+}
+
+.product__info-container > .sale-banner {
+  margin-block: var(--sb-margin-top, 0) var(--sb-margin-bottom, 0);
+}
+
+@media screen and (max-width: 749px) {
+  .sale-banner--show-desktop {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .sale-banner--show-mobile {
+    display: none;
+  }
+}
+
+.sale-banner__inner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.8rem;
+  overflow: hidden;
+  padding-block: var(--sb-pt-m) var(--sb-pb-m);
+  padding-inline: 1.2rem;
+  background: var(--sb-bg);
+  border-block-start: var(--sb-border-top);
+  border-block-end: var(--sb-border-bottom);
+  border-radius: var(--sb-radius);
+}
+
+@media screen and (min-width: 750px) {
+  .sale-banner__inner {
+    padding-block: var(--sb-pt-d) var(--sb-pb-d);
+  }
+}
+
+.sale-banner--bg-animated .sale-banner__inner {
+  background-size: 300% 300%;
+  animation: sb-bg-shift 8s ease infinite;
+}
+
+.sale-banner__bg,
+.sale-banner__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sale-banner__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sale-banner__overlay {
+  background: var(--sb-overlay);
+  opacity: var(--sb-overlay-opacity);
+}
+
+.sale-banner__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.sale-banner__link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+}
+
+/* Messages */
+.sale-banner__messages {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: var(--sb-max-width);
+  margin-inline: auto;
+  font-family: var(--sb-font-family);
+  font-weight: var(--sb-font-weight);
+  font-size: var(--sb-fs-m);
+  letter-spacing: var(--sb-ls);
+  line-height: var(--sb-lh);
+  text-transform: var(--sb-transform);
+  text-align: var(--sb-align);
+  text-shadow: var(--sb-shadow);
+}
+
+@media screen and (min-width: 750px) {
+  .sale-banner__messages {
+    font-size: var(--sb-fs-d);
+  }
+}
+
+.sale-banner--linked .sale-banner__messages {
+  pointer-events: none;
+}
+
+.sale-banner--linked .sale-banner__messages a,
+.sale-banner--linked .sale-banner__messages button {
+  pointer-events: auto;
+}
+
+.sale-banner__message {
+  display: flex;
+  justify-content: var(--sb-align);
+  min-width: 0;
+}
+
+.sale-banner__message[hidden] {
+  display: none;
+}
+
+.sale-banner--inline .sale-banner__messages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: var(--sb-align);
+  gap: 0.6rem 2.4rem;
+}
+
+.sale-banner--inline .sale-banner__message--anim-marquee {
+  flex: 1 1 100%;
+}
+
+/* Rotation: all messages share one grid cell so the tallest reserves the height (no layout shift). */
+.sale-banner--rotate .sale-banner__messages {
+  display: grid;
+}
+
+.sale-banner--rotate .sale-banner__message {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.45s ease, transform 0.45s ease, visibility 0s linear 0.45s;
+}
+
+.sale-banner--rotate .sale-banner__message.is-active {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.sale-banner--rotate.sale-banner--t-slide .sale-banner__message {
+  transform: translateX(calc(var(--sb-dir) * 100%));
+}
+
+.sale-banner--rotate.sale-banner--t-slide .sale-banner__message.is-leaving {
+  transform: translateX(calc(var(--sb-dir) * -100%));
+}
+
+.sale-banner--rotate.sale-banner--t-slide-up .sale-banner__message {
+  transform: translateY(100%);
+}
+
+.sale-banner--rotate.sale-banner--t-slide-up .sale-banner__message.is-leaving {
+  transform: translateY(-100%);
+}
+
+.sale-banner--rotate .sale-banner__messages .sale-banner__message.is-active {
+  transform: none;
+}
+
+.sale-banner__content {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: var(--sb-align);
+  gap: 0.4em 0.6em;
+  max-width: 100%;
+}
+
+.sale-banner__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sb-icon-gap, 8px);
+  min-width: 0;
+}
+
+.sale-banner__text {
+  display: inline-block;
+  min-width: 0;
+}
+
+.sale-banner__text p {
+  margin: 0;
+}
+
+.sale-banner__text a {
+  color: inherit;
+}
+
+.sale-banner__hl {
+  color: var(--sb-hl);
+  background: var(--sb-hl-bg);
+  font-weight: var(--sb-hl-weight);
+  padding: 0 0.2em;
+  border-radius: 0.2em;
+}
+
+.sale-banner__expired {
+  display: none;
+}
+
+.sale-banner__message.is-expired .sale-banner__text,
+.sale-banner__message.is-expired .sale-banner__countdown {
+  display: none;
+}
+
+.sale-banner__message.is-expired .sale-banner__expired {
+  display: inline-block;
+}
+
+/* Icon */
+.sale-banner__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--sb-icon-size, 1.2em);
+  height: var(--sb-icon-size, 1.2em);
+  color: var(--sb-icon-color, currentColor);
+  line-height: 1;
+}
+
+.sale-banner__icon svg,
+.sale-banner__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sale-banner__emoji {
+  font-size: calc(var(--sb-icon-size, 1.2em) * 0.85);
+  text-shadow: none;
+}
+
+.sale-banner__icon--spin {
+  animation: sb-spin 2.4s linear infinite;
+}
+
+.sale-banner__icon--pulse {
+  animation: sb-pulse 1.4s ease-in-out infinite;
+}
+
+.sale-banner__icon--bounce {
+  animation: sb-bounce 1.6s ease infinite;
+}
+
+.sale-banner__icon--wiggle {
+  animation: sb-wiggle 1.2s ease-in-out infinite;
+}
+
+/* Countdown */
+.sale-banner__countdown {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sale-banner__cd-seg {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.sale-banner__countdown--plain {
+  color: var(--sb-cd-text);
+}
+
+.sale-banner__countdown--boxed .sale-banner__cd-seg,
+.sale-banner__countdown--pill .sale-banner__cd-seg {
+  padding: 0.15em 0.4em;
+  background: var(--sb-cd-bg);
+  color: var(--sb-cd-text);
+  border-radius: 0.25em;
+  text-shadow: none;
+}
+
+.sale-banner__countdown--pill .sale-banner__cd-seg {
+  padding-inline: 0.6em;
+  border-radius: 999px;
+}
+
+/* Button */
+.sale-banner__button {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35em 1em;
+  border: 1px solid transparent;
+  border-radius: var(--sb-btn-radius);
+  font-size: 0.9em;
+  font-weight: 600;
+  line-height: 1.3;
+  text-decoration: none;
+  text-shadow: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sale-banner__button--solid {
+  background: var(--sb-btn-color);
+  border-color: var(--sb-btn-color);
+  color: var(--sb-btn-text);
+}
+
+.sale-banner__button--outline {
+  background: transparent;
+  border-color: var(--sb-btn-color);
+  color: var(--sb-btn-color);
+}
+
+.sale-banner__button--text {
+  padding-inline: 0;
+  background: none;
+  color: var(--sb-btn-color);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.sale-banner__button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.sale-banner__button--hover-darken:hover {
+  filter: brightness(0.88);
+}
+
+.sale-banner__button--hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+.sale-banner__button--hover-underline:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.sale-banner__button--text.sale-banner__button--hover-underline:hover {
+  text-decoration-thickness: 2px;
+}
+
+.sale-banner__button--solid.sale-banner__button--hover-invert:hover {
+  background: var(--sb-btn-text);
+  color: var(--sb-btn-color);
+}
+
+.sale-banner__button--outline.sale-banner__button--hover-invert:hover {
+  background: var(--sb-btn-color);
+  color: var(--sb-btn-text);
+}
+
+/* Controls */
+.sale-banner__arrow,
+.sale-banner__close {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.8rem;
+  height: 2.8rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.sale-banner__arrow:hover,
+.sale-banner__close:hover {
+  opacity: 1;
+}
+
+.sale-banner__arrow svg,
+.sale-banner__close svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.sale-banner__arrow:focus-visible,
+.sale-banner__close:focus-visible,
+.sale-banner__dot:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
+.sale-banner[dir='rtl'] .sale-banner__arrow svg,
+[dir='rtl'] .sale-banner .sale-banner__arrow svg {
+  transform: scaleX(-1);
+}
+
+.sale-banner__dots {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-basis: 100%;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.sale-banner__dot {
+  width: 2rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.sale-banner__dot::before {
+  content: '';
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin: auto;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.sale-banner__dot[aria-current='true']::before {
+  opacity: 1;
+  transform: scale(1.25);
+}
+
+.sale-banner__dot[hidden] {
+  display: none;
+}
+
+/* Text animations: the active (or every inline) message plays its animation. */
+.sale-banner__label {
+  animation-duration: var(--sb-duration);
+  animation-timing-function: var(--sb-ease);
+  animation-delay: var(--sb-delay);
+  animation-iteration-count: var(--sb-iter);
+  animation-fill-mode: both;
+}
+
+.sale-banner--rotate .sale-banner__message:not(.is-active) .sale-banner__label,
+.sale-banner--rotate .sale-banner__message:not(.is-active) .sale-banner__text,
+.sale-banner--rotate .sale-banner__message:not(.is-active) .sale-banner__char {
+  animation-name: none !important;
+}
+
+.sale-banner__message--anim-fade-in .sale-banner__label { animation-name: sb-fade-in; }
+.sale-banner__message--anim-slide-up .sale-banner__label { animation-name: sb-slide-up; }
+.sale-banner__message--anim-slide-down .sale-banner__label { animation-name: sb-slide-down; }
+.sale-banner__message--anim-slide-left .sale-banner__label { animation-name: sb-slide-left; }
+.sale-banner__message--anim-bounce .sale-banner__label { animation-name: sb-bounce; }
+.sale-banner__message--anim-pulse .sale-banner__label { animation-name: sb-pulse; }
+.sale-banner__message--anim-shake .sale-banner__label { animation-name: sb-shake; }
+.sale-banner__message--anim-flip .sale-banner__label { animation-name: sb-flip; transform-origin: 50% 50%; }
+.sale-banner__message--anim-zoom-in .sale-banner__label { animation-name: sb-zoom-in; }
+
+.sale-banner__message--anim-glow .sale-banner__text {
+  animation: sb-glow var(--sb-duration) var(--sb-ease) var(--sb-delay) var(--sb-iter) both;
+}
+
+.sale-banner__message--anim-shimmer .sale-banner__text {
+  background: linear-gradient(90deg, var(--sb-text) 0 35%, var(--sb-hl) 50%, var(--sb-text) 65% 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  animation: sb-shimmer var(--sb-duration) linear var(--sb-delay) var(--sb-iter) both;
+}
+
+.sale-banner__message--anim-shimmer .sale-banner__hl {
+  background: none;
+  color: transparent;
+}
+
+.sale-banner__char {
+  display: inline-block;
+  animation: sb-letter var(--sb-duration) var(--sb-ease) calc(var(--sb-delay) + var(--i, 0) * 40ms) var(--sb-iter) both;
+}
+
+.sale-banner__text.is-typing::after {
+  content: '';
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  margin-inline-start: 1px;
+  vertical-align: -0.1em;
+  background: currentColor;
+  animation: sb-caret 0.8s steps(1) infinite;
+}
+
+/* Marquee */
+.sale-banner__marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.sale-banner__marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.sale-banner__marquee-group {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.sale-banner__marquee .sale-banner__content {
+  flex-wrap: nowrap;
+  padding-inline-end: var(--sb-marquee-gap);
+  white-space: nowrap;
+}
+
+.sale-banner__marquee.is-ready .sale-banner__marquee-track {
+  animation: sb-marquee var(--sb-marquee-duration, 20s) linear infinite;
+  animation-direction: var(--sb-marquee-dir, normal);
+}
+
+.sale-banner--marquee-pause .sale-banner__marquee:hover .sale-banner__marquee-track,
+.sale-banner--marquee-pause .sale-banner__marquee:focus-within .sale-banner__marquee-track {
+  animation-play-state: paused;
+}
+
+.sale-banner__message--anim-marquee .sale-banner__label {
+  animation: none;
+}
+
+/* Keyframes */
+@keyframes sb-fade-in { from { opacity: 0; } }
+@keyframes sb-slide-up { from { opacity: 0; transform: translateY(0.8em); } }
+@keyframes sb-slide-down { from { opacity: 0; transform: translateY(-0.8em); } }
+@keyframes sb-slide-left { from { opacity: 0; transform: translateX(calc(var(--sb-dir) * 1.5em)); } }
+@keyframes sb-zoom-in { from { opacity: 0; transform: scale(0.6); } }
+@keyframes sb-flip { from { opacity: 0; transform: perspective(400px) rotateX(90deg); } }
+@keyframes sb-letter { from { opacity: 0; transform: translateY(0.4em); } }
+
+@keyframes sb-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-0.35em); }
+  60% { transform: translateY(-0.18em); }
+}
+
+@keyframes sb-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+@keyframes sb-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+@keyframes sb-glow {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 0.5em var(--sb-hl), 0 0 1em var(--sb-hl); }
+}
+
+@keyframes sb-shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: 0 0; }
+}
+
+@keyframes sb-marquee {
+  to { transform: translateX(calc(var(--sb-dir) * -50%)); }
+}
+
+@keyframes sb-spin { to { transform: rotate(360deg); } }
+
+@keyframes sb-wiggle {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(-12deg); }
+  75% { transform: rotate(12deg); }
+}
+
+@keyframes sb-bg-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes sb-caret { 50% { opacity: 0; } }
+
+/* Reduced motion: static text, no transitions or scrolling. */
+@media (prefers-reduced-motion: reduce) {
+  .sale-banner *,
+  .sale-banner__inner {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .sale-banner__message--anim-shimmer .sale-banner__text {
+    background: none;
+    color: inherit;
+  }
+
+  .sale-banner__message--anim-shimmer .sale-banner__hl {
+    background: var(--sb-hl-bg);
+    color: var(--sb-hl);
+  }
+
+  .sale-banner__marquee-group ~ .sale-banner__marquee-group,
+  .sale-banner__marquee-group > .sale-banner__content ~ .sale-banner__content {
+    display: none;
+  }
+
+  .sale-banner__marquee-track {
+    width: auto;
+  }
+
+  .sale-banner__marquee .sale-banner__content {
+    flex-wrap: wrap;
+    padding-inline-end: 0;
+    white-space: normal;
+  }
+}

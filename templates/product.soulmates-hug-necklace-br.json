@@ -156,7 +156,7 @@
           "settings": {
             "heading": "Descrição",
             "icon": "none",
-            "content": "<p>Alguns laços são melhor expressos em um único gesto atemporal — um abraço que diz tudo o que as palavras não conseguem. Este pingente traz duas figuras entrelaçadas em um abraço terno, feito em quente ouro 18k e prata de lei para um marcante contraste em dois tons.<br/><br/>Escolha o design \"<strong>Mãe e filho</strong>\" para celebrar o amor incondicional entre um pai ou uma mãe e seu pequeno, ou o design \"<strong>Casal</strong>\" para simbolizar duas almas entrelaçadas para sempre.<br/><br/>Usado perto do coração, é um lembrete silencioso das pessoas que nos mantêm unidos — perfeito para você ou como um presente cheio de carinho para alguém cujo abraço você nunca quer soltar.<br/><br/></p>",
+            "content": "<p>Alguns laços são melhor expressos em um único gesto atemporal — um abraço que diz tudo o que as palavras não conseguem. Este pingente retrata duas figuras envolvidas em um abraço terno, confeccionado em ouro 18k e prata de lei, criando um marcante contraste entre os dois tons.<br/><br/>Escolha o design \"<strong>Mãe e filho</strong>\" para celebrar o amor incondicional entre um pai ou uma mãe e seu pequeno, ou o design \"<strong>Casal</strong>\" para simbolizar duas almas entrelaçadas para sempre.<br/><br/>Usado perto do coração, é um lembrete silencioso das pessoas que nos mantêm unidos — perfeito para você ou como um presente cheio de carinho para alguém cujo abraço você nunca quer soltar.<br/><br/></p>",
             "page": ""
           }
         },
@@ -279,9 +279,7 @@
           "type": "heading",
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
-            "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "br"
+            "heading_size": "h1"
           }
         },
         "text_bXNFJ7": {

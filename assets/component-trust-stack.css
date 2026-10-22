@@ -1,0 +1,297 @@
+/* Trust Stack blocks (snippets/trust-stack.liquid). Values come from custom
+   properties set per block on #TrustStack-{block.id}. Logical properties only,
+   so everything mirrors under dir="rtl". */
+
+.product__info-container > .ts,
+.ts {
+  max-width: var(--ts-max, none);
+  margin-block: var(--ts-mt, 0) var(--ts-mb, 0);
+}
+
+.ts p {
+  margin: 0;
+}
+
+.ts-icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: var(--ts-icon, 2rem);
+  height: var(--ts-icon, 2rem);
+}
+
+.ts-icon svg,
+.ts-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ---------- Shipping row ---------- */
+.ts-ship {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem 1.6rem;
+  padding: var(--ts-pad-y, 10px) var(--ts-pad-x, 18px);
+  border: var(--ts-border, 0);
+  border-radius: var(--ts-radius, 999px);
+  background: var(--ts-bg, #f3f4f1);
+  color: var(--ts-text, #3d3d3d);
+  font-size: var(--ts-size, 13px);
+  line-height: 1.4;
+}
+
+.ts-ship__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 0;
+}
+
+.ts-ship strong,
+.ts-ship__date {
+  color: var(--ts-strong, #121212);
+  font-weight: 700;
+}
+
+/* Reserve room for the date so swapping in the localized value doesn't shift the row */
+.ts-ship__date {
+  display: inline-block;
+  min-width: 8.5ch;
+}
+
+.ts-dot {
+  position: relative;
+  flex: 0 0 auto;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: var(--ts-dot, #22a35a);
+}
+
+.ts-dot--pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: ts-pulse 1.8s ease-out infinite;
+}
+
+@keyframes ts-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.ts-flag {
+  flex: 0 0 auto;
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+.ts-flag--img {
+  display: block;
+  width: 2rem;
+  height: 1.5rem;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Guarantee box ---------- */
+.ts-guarantee {
+  display: block;
+  border: var(--ts-border, 1px solid #e5e5e5);
+  border-radius: var(--ts-radius, 10px);
+  background: var(--ts-bg, #fff);
+  color: var(--ts-text, #121212);
+  text-decoration: none;
+}
+
+.ts--shadow .ts-guarantee {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
+.ts-guarantee__head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: var(--ts-pad-y, 14px) var(--ts-pad-x, 16px);
+  font-size: var(--ts-size, 15px);
+  font-weight: var(--ts-weight, 700);
+  line-height: 1.35;
+  text-align: center;
+}
+
+a.ts-guarantee--link:hover .ts-guarantee__text {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.ts-guarantee--details summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.ts-guarantee--details summary::-webkit-details-marker {
+  display: none;
+}
+
+.ts-guarantee__chevron {
+  display: inline-grid;
+  width: 1.4rem;
+  height: 1.4rem;
+  transition: transform 0.2s ease;
+}
+
+.ts-guarantee__chevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+.ts-guarantee--details[open] .ts-guarantee__chevron {
+  transform: rotate(180deg);
+}
+
+.ts-guarantee__details {
+  padding: 0 var(--ts-pad-x, 16px) var(--ts-pad-y, 14px);
+  font-size: calc(var(--ts-size, 15px) * 0.9);
+  line-height: 1.55;
+  text-align: center;
+}
+
+.ts-guarantee__details > :first-child {
+  margin-top: 0;
+}
+
+.ts-guarantee__details > :last-child {
+  margin-bottom: 0;
+}
+
+.ts-guarantee :focus-visible,
+a.ts-guarantee:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* ---------- Payment icons ---------- */
+.ts-payment__heading {
+  margin-block-end: 0.8rem !important;
+  font-size: 1.3rem;
+  text-align: var(--ts-pay-align, start);
+  opacity: 0.8;
+}
+
+.ts-payment {
+  display: grid;
+  grid-template-columns: repeat(var(--ts-pay-cols, 8), max-content);
+  justify-content: var(--ts-pay-align, start);
+  gap: var(--ts-pay-gap, 8px);
+  margin: 0;
+  padding: 0;
+}
+
+.ts-payment__item {
+  display: flex;
+}
+
+.ts-payment__icon {
+  display: block;
+  width: auto;
+  height: var(--ts-pay-h, 24px);
+}
+
+.ts--grayscale .ts-payment__icon {
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+
+.ts--grayscale .ts-payment__item:hover .ts-payment__icon {
+  filter: none;
+  opacity: 1;
+}
+
+.ts-payment-help {
+  margin-block-start: 0.8rem;
+  padding: 0.8rem 1rem;
+  border: 1px dashed #b0b0b0;
+  border-radius: 6px;
+  background: #fafafa;
+  color: #555;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.ts-payment-help code {
+  display: block;
+  margin-block: 0.3rem 0.6rem;
+  color: #121212;
+  word-break: break-word;
+  user-select: all;
+}
+
+/* ---------- Warning box ---------- */
+.ts--warning {
+  padding: var(--ts-pad-y, 16px) var(--ts-pad-x, 18px);
+  border: var(--ts-border, 1px dashed #e5484d);
+  border-radius: var(--ts-radius, 10px);
+  background: var(--ts-bg, #fff3f3);
+  text-align: var(--ts-align, start);
+}
+
+.ts-warning__title {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ts-title, #c62828);
+  font-size: var(--ts-title-size, 15px);
+  font-weight: 700;
+  line-height: 1.35;
+  --ts-icon: 1.3em;
+}
+
+.ts--align-center .ts-warning__title {
+  justify-content: center;
+}
+
+.ts--align-end .ts-warning__title {
+  justify-content: flex-end;
+}
+
+.ts-warning__body {
+  margin-block-start: 0.6rem;
+  color: var(--ts-body, #4a2323);
+  font-size: var(--ts-body-size, 14px);
+  line-height: 1.55;
+}
+
+.ts-warning__body > :first-child {
+  margin-top: 0;
+}
+
+.ts-warning__body > :last-child {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ts-dot--pulse::after {
+    animation: none;
+    display: none;
+  }
+
+  .ts-guarantee__chevron,
+  .ts--grayscale .ts-payment__icon {
+    transition: none;
+  }
+}

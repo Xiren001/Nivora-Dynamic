@@ -1,0 +1,184 @@
+{% layout none %}
+{% capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture %}
+{% assign pageUrl = contentForQuerystring | split:'"pageurl":"' | last | split:'"' | first | split:'.myshopify.com' | last |
+    replace:'\/','/' | 
+    replace:'%20',' ' | 
+    replace:'\u0026','&' |
+    split: "?" | last
+%}
+{% assign parts = pageUrl | split:'&' %}
+{% assign option_set_ids = null %}
+{% for part in parts %}
+    {% assign keyAndValue = part | split:'=' %}
+    {% if keyAndValue.size == 2 %}
+        {% if keyAndValue[0] == 'ymq-option-set-ids' %}
+            {% assign option_set_ids = keyAndValue[1] | split:',' %}
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% if option_set_ids %}
+    {% assign new_option_set_ids = '' %}
+    {% for option_set_id in option_set_ids %}
+        {% assign ymq_template_options_new = 'ymq_template_options_new_' | append: option_set_id %}
+        {% if shop.metafields.ymq_option[ymq_template_options_new] %}
+            {% assign new_option_set_ids = new_option_set_ids | append: ymq_template_options_new | append: "," %}
+        {% endif %}
+    {% endfor %}
+    {% assign new_option_set_ids_last = new_option_set_ids | slice: -1 %}
+    {% if new_option_set_ids != '' and new_option_set_ids_last == ',' %}
+        {% assign trimmed_length = new_option_set_ids.size | minus: 1 %}
+        {% assign new_option_set_ids = new_option_set_ids | slice: 0, trimmed_length %}
+    {% endif %}
+    {% assign new_option_set_ids = new_option_set_ids | split: "," %}
+    [
+        {% for option_set_id in new_option_set_ids %}
+            {
+                "id": {{option_set_id | json  }},
+                "data": {{ shop.metafields.ymq_option[option_set_id] }}
+            }
+            {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ]
+{% else %}
+    {% paginate search.results by 10000 %}
+    [
+        {% for item in search.results %}
+            {
+                "id": {{ item.id | json }},
+                "title": {{ item.title | json }},
+                "images": {{ item.images | json }},
+                "featured_image": {{ item.featured_image | json }},
+                "tags": {{ item.tags | json }},
+                "handle": {{ item.handle | json }},
+                "type": {{ item.type | json }},
+                "vendor": {{ item.vendor| json }},
+                "content": {{ item.content| json }},
+                "description": {{ item.description| json }},
+                "variants": [
+                    {% for variant in item.variants %}
+                        {
+                            "id": {{ variant.id | json }},
+                            "title": {{ variant.title | json }},
+                            "price": {{ variant.price | json }},
+                            "sku": {{ variant.sku | json }},
+                            "featured_image": {{ variant.featured_image | json }},
+                            "compare_at_price": {{ variant.compare_at_price | json }},
+                            "available": {{ variant.available | json }},
+                            "inventory_management": {{ variant.inventory_management | json }},
+                            "inventory_policy": {{ variant.inventory_policy | json }},
+                            "inventory_quantity": {{ variant.inventory_quantity | json }},
+                            "options": {{ variant.options | json }},
+                            "requires_selling_plan": {{ variant.requires_selling_plan | json }},
+                            "quantity_rule": {{ variant.quantity_rule | json }},
+                            "unit_price": {{ variant.unit_price | json }},
+                            "base_measure": {{ variant.unit_price_measurement.reference_value | json }},
+                            "quantity_value": {{ variant.unit_price_measurement.quantity_value | json }},
+                            "weight": {{ variant.weight | json }},
+                            "weight_in_unit": {{ variant.weight_in_unit | json }},
+                            "weight_unit": {{ variant.weight_unit | json }},
+                            "taxable": {{ variant.taxable | json }}
+                        }
+                        {% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                ],
+                "first_available_variant": {{ item.first_available_variant | json }},
+                "options": {{ item.options | json }},
+                "options_by_name": {{ item.options_by_name | json }},
+                "options_with_values": [
+                    {% for product_option in item.options_with_values %}
+                        {
+                            "name": {{ product_option.name | json }},
+                            "position": {{ product_option.position | json }},
+                            "selected_value": {{ product_option.selected_value | json }},
+                            "selected_value": {{ product_option.selected_value | json }},
+                            "values": [
+                                {% for product_option_value in product_option.values %}
+                                    {
+                                        "available": {{ product_option_value.available | json }},
+                                        "id": {{ product_option_value.id | json }},
+                                        "name": {{ product_option_value.name | json }},
+                                        "product_url": {{ product_option_value.product_url | json }},
+                                        "selected": {{ product_option_value.selected | json }},
+                                        "swatch": {{ product_option_value.swatch | json }},
+                                        "featured_image": {{ product_option_value.variant.featured_image | json }},
+                                        "available": {{ product_option_value.variant.available | json }}
+                                    }
+                                    {% unless forloop.last %},{% endunless %}
+                                {% endfor %}
+                            ]
+                        }
+                        {% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                ],
+                "available": {{ item.available | json }},
+                "gift_card": {{ item.gift_card | json }},
+                "has_only_default_variant": {{ item.has_only_default_variant | json }},
+                "requires_selling_plan": {{ item.requires_selling_plan | json }},
+                "selling_plan_groups": {{ item.selling_plan_groups | json }},
+                "compare_at_price_max": {{ item.compare_at_price_max | json }},
+                "compare_at_price_min": {{ item.compare_at_price_min | json }},
+                "price": {{ item.price | json }},
+                "compare_at_price": {{ item.compare_at_price | json }},
+                "price_max": {{ item.price_max | json }},
+                "price_min": {{ item.price_min | json }},
+                "collections": [
+                    {% for collection in item.collections %}
+                        {
+                            "id": {{ collection.id | json }},
+                            "title": {{ collection.title | json }},
+                            "tags": {{ collection.tags | json }}
+                        }
+                        {% unless forloop.last %},{% endunless %}
+                    {% endfor %}
+                ],
+                {% if item.metafields.ymq_option.ymq_product_options %}
+                    "ymq_product_options": {{ item.metafields.ymq_option.ymq_product_options }},
+                {% else %}
+                    "ymq_product_options": {},
+                {% endif %}
+
+                {% if item.metafields.ymq_option.ymq_status %}
+                    {% assign aaa = item.metafields.ymq_option.ymq_status | json %}
+                    {% if aaa == '{"error":"json not allowed for this object"}' %}
+                        {% assign aaa = item.metafields.ymq_option.ymq_status  %}
+                    {% endif %}
+                    "ymq_status": {{ aaa }},
+                {% else %}
+                    "ymq_status": {},
+                {% endif %}
+
+                {% if item.metafields.ymq_option.ymq_variantjson %}
+                    {% assign aaa = item.metafields.ymq_option.ymq_variantjson | json %}
+                    {% if aaa == '{"error":"json not allowed for this object"}' %}
+                        {% assign aaa = item.metafields.ymq_option.ymq_variantjson  %}
+                    {% endif %}
+                    "ymq_variantjson": {{ aaa }},
+                {% else %}
+                    "ymq_variantjson": {},
+                {% endif %}
+
+                {% if item.metafields.ymq_option.data %}
+                    {% assign aaa = item.metafields.ymq_option.data | json %}
+                    {% if aaa == '{"error":"json not allowed for this object"}' %}
+                        {% assign aaa = item.metafields.ymq_option.data  %}
+                    {% endif %}
+                    "ymq_option_data": {{ aaa }},
+                {% else %}
+                    "ymq_option_data": {},
+                {% endif %}
+
+                {% if item.metafields.ymq_option.condition %}
+                    {% assign aaa = item.metafields.ymq_option.condition | json %}
+                    {% if aaa == '{"error":"json not allowed for this object"}' %}
+                        {% assign aaa = item.metafields.ymq_option.condition  %}
+                    {% endif %}
+                    "ymq_option_condition": {{ aaa }}
+                {% else %}
+                    "ymq_option_condition": {}
+                {% endif %}
+            }
+            {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ]
+    {% endpaginate %}
+{% endif %}

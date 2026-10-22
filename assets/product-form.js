@@ -121,7 +121,7 @@ if (!customElements.get('product-form')) {
           if (text) this.submitButtonText.textContent = text;
         } else {
           this.submitButton.removeAttribute('disabled');
-          this.submitButtonText.textContent = window.variantStrings.addToCart;
+          this.submitButtonText.textContent = this.submitButton.dataset.addLabel || window.variantStrings.addToCart;
         }
       }
 

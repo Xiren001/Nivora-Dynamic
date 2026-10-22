@@ -231,8 +231,8 @@
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
             "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "br"
+            "dynamic_sale_banner": false,
+            "banner_language": ""
           }
         },
         "text_bXNFJ7": {
@@ -284,7 +284,10 @@
             "product_list": [
               "colar-coracao-da-familia",
               "escudo-do-filho-pulseira-de-olho-de-tigre",
-              "pulseira-no-eterno"
+              "pulseira-no-eterno",
+              "nivora-pulseira-pedra-de-nascimento",
+              "nivora-anel-abraco",
+              "nivora-pulseira-do-amor"
             ],
             "products_to_show": 4,
             "container_width": 1200,

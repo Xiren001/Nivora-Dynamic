@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -239,7 +248,7 @@
         "heading_94DP8n": {
           "type": "heading",
           "settings": {
-            "heading": "<em>특별 이벤트 진행 중</em> – <strong>1개 구매 시 1개 무료</strong>",
+            "heading": "<em>단독 특가 진행 중</em> - <strong>1+1 이벤트</strong>",
             "heading_size": "h1",
             "dynamic_sale_banner": true,
             "banner_language": "ko"
@@ -273,6 +282,48 @@
         "padding_bottom": 4
       }
     },
+    "blocks_yWEzhG": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_27b352b_fYaBCU": {
+          "type": "ai_gen_block_27b352b",
+          "settings": {
+            "title": "<strong>함께 보면 좋은 상품</strong>",
+            "subtitle": "Nivora가 추천하는 엄선된 컬렉션을 만나보세요.",
+            "product_list": [
+              "가족의-심장-목걸이",
+              "아들의-방패-호안석-팔찌"
+            ],
+            "products_to_show": 4,
+            "container_width": 1200,
+            "products_per_row": 4,
+            "products_per_row_tablet": 3,
+            "grid_gap": 30,
+            "section_padding_top": 60,
+            "section_padding_bottom": 60,
+            "header_spacing": 40,
+            "background_color": "#ffffff",
+            "image_border_radius": 0,
+            "title_size": 28,
+            "title_color": "#121212",
+            "subtitle_size": 14,
+            "subtitle_color": "#666666",
+            "product_title_size": 16,
+            "product_title_color": "#121212",
+            "product_price_size": 15,
+            "product_price_color": "#121212",
+            "sale_price_color": "#d82c0d",
+            "link_hover_color": "#666666"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_27b352b_fYaBCU"
+      ],
+      "name": "You may also like",
+      "settings": {}
+    },
     "17341290603fa2426b": {
       "type": "apps",
       "blocks": {
@@ -303,6 +354,7 @@
     "main",
     "related-products",
     "image_with_text_eCRMfk",
+    "blocks_yWEzhG",
     "17341290603fa2426b"
   ]
 }

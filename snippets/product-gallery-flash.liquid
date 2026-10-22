@@ -1,0 +1,467 @@
+{% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+{% comment %}
+  Desktop-only product media gallery (phones get 'product-media-gallery'):
+  large main image with a thumbnail strip, plus a
+  configurable switch transition (white flash, fade, crossfade, slide,
+  zoom-fade). Used by main-product when Desktop layout = "Main image +
+  thumbnails (flash)". Pairs with 'product-gallery-flash.js' / '.css'.
+
+  Accepts:
+  - variant_images: {Array} Product image srcs attached to a variant
+  - hide_variant_media: {Boolean} Hide variant images except the selected variant's
+  - image_style_active: {Boolean} Hide all variant images (shown in the Image-style picker instead)
+
+  Usage:
+  {% render 'product-gallery-flash', variant_images: variant_images, hide_variant_media: hide_variant_media, image_style_active: image_style_active %}
+{% endcomment %}
+
+{%- liquid
+  assign s = section.settings
+  assign pgf_id = 'ProductGalleryFlash-' | append: section.id
+  assign current_variant = product.selected_or_first_available_variant
+  assign featured_media = current_variant.featured_media | default: product.featured_media
+
+  assign skip_variant_media = false
+  if hide_variant_media or image_style_active
+    assign skip_variant_media = true
+  endif
+
+  assign total = 0
+  assign active_index = 1
+  assign active_ratio = 1
+  for media in product.media
+    if skip_variant_media and variant_images contains media.src
+      if image_style_active or media.id != featured_media.id
+        continue
+      endif
+    endif
+    assign total = total | plus: 1
+    if media.id == featured_media.id
+      assign active_index = total
+      assign active_ratio = media.preview_image.aspect_ratio | default: 1
+    endif
+  endfor
+  if total == 0 and product.media.size > 0
+    assign skip_variant_media = false
+    assign total = product.media.size
+    assign active_index = 1
+    assign active_ratio = product.media.first.preview_image.aspect_ratio | default: 1
+  endif
+  if active_index == 1 and featured_media == null
+    assign active_ratio = product.media.first.preview_image.aspect_ratio | default: 1
+  endif
+
+  case s.pgf_aspect_ratio
+    when 'portrait'
+      assign stage_ratio = 0.8
+    when 'tall'
+      assign stage_ratio = 0.75
+    when 'original'
+      assign stage_ratio = active_ratio
+    else
+      assign stage_ratio = 1
+  endcase
+
+  if s.media_size == 'large'
+    assign media_width = 0.65
+  elsif s.media_size == 'medium'
+    assign media_width = 0.55
+  else
+    assign media_width = 0.45
+  endif
+
+  assign thumb_max = s.pgf_thumb_max | default: 0
+  assign has_overflow = false
+  if thumb_max > 0 and total > thumb_max
+    assign has_overflow = true
+    assign overflow_count = total | minus: thumb_max | plus: 1
+  endif
+
+  # Visible thumbnail columns (N). With fewer thumbs than N, 'stretch' uses one column per thumb so they fill the row
+  assign thumbs_rendered = total
+  if has_overflow
+    assign thumbs_rendered = thumb_max
+  endif
+  assign thumb_cols = s.pgf_thumb_per_row | default: 5
+  if s.pgf_thumb_fill == 'stretch'
+    assign thumb_cols = thumb_cols | at_most: thumbs_rendered | at_least: 1
+  endif
+
+  assign is_rtl = false
+  assign rtl_langs = 'he,ar,fa,ur,yi' | split: ','
+  assign lang = request.locale.iso_code | split: '-' | first
+  if rtl_langs contains lang
+    assign is_rtl = true
+  endif
+
+  assign show_sale_badge = false
+  if s.pgf_badge_sale and current_variant.compare_at_price > current_variant.price
+    assign show_sale_badge = true
+  endif
+  assign show_new_badge = false
+  if s.pgf_badge_new
+    if product.tags contains 'new' or product.tags contains 'New' or product.tags contains 'NEW'
+      assign show_new_badge = true
+    endif
+  endif
+
+  assign first_3d_model = product.media | where: 'media_type', 'model' | first
+-%}
+
+{%- capture main_sizes -%}
+  (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | times: media_width | round }}px, (min-width: 990px) calc({{ media_width | times: 100 }}vw - 10rem), (min-width: 750px) calc((100vw - 11.5rem) / 2), calc(100vw - 3rem)
+{%- endcapture -%}
+
+{%- capture chevron -%}
+  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{%- endcapture -%}
+
+{{ 'product-gallery-flash.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-gallery-flash.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  #{{ pgf_id }} {
+    --pgf-ratio: {{ stage_ratio }};
+    --pgf-gap: {{ s.pgf_gap }}px;
+    --pgf-main-radius: {{ s.pgf_main_radius }}px;
+    --pgf-media-bg: {{ s.pgf_media_bg | default: 'transparent' }};
+    --pgf-flash-color: {{ s.pgf_flash_color | default: '#ffffff' }};
+    --pgf-zoom: {{ s.pgf_zoom_level | divided_by: 10.0 }};
+    --pgf-thumb-cols: {{ thumb_cols }};
+    --pgf-thumb-gap: {{ s.pgf_thumb_gap }}px;
+    --pgf-thumb-radius: {{ s.pgf_thumb_radius }}px;
+    --pgf-thumb-active-color: {{ s.pgf_thumb_active_color }};
+    --pgf-thumb-active-width: {{ s.pgf_thumb_active_width }}px;
+    --pgf-thumb-inactive-opacity: {{ s.pgf_thumb_inactive_opacity | divided_by: 100.0 }};
+    --pgf-badge-bg: {{ s.pgf_badge_bg }};
+    --pgf-badge-text: {{ s.pgf_badge_text }};
+  }
+{%- endstyle -%}
+
+<product-gallery-flash
+  id="{{ pgf_id }}"
+  class="pgf pgf--thumbs-{% if s.pgf_show_thumbs and total > 1 %}{{ s.pgf_thumb_position }}{% else %}hidden{% endif %} pgf--arrows-{{ s.pgf_arrows }}{% if s.enable_sticky_info %} product__column-sticky{% endif %}"
+  role="region"
+  aria-roledescription="carousel"
+  aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
+  {% if is_rtl %}
+    dir="rtl"
+  {% endif %}
+  data-section="{{ section.id }}"
+  data-transition="{{ s.pgf_transition }}"
+  data-duration="{{ s.pgf_duration }}"
+  data-easing="{{ s.pgf_easing }}"
+  data-flash-opacity="{{ s.pgf_flash_opacity | divided_by: 100.0 }}"
+  data-trigger="{{ s.pgf_thumb_trigger }}"
+  data-ratio-mode="{{ s.pgf_aspect_ratio }}"
+  data-zoom="{{ s.pgf_hover_zoom }}"
+  data-zoom-level="{{ s.pgf_zoom_level | divided_by: 10.0 }}"
+  {% if s.pgf_autoplay and total > 1 %}
+    data-autoplay="{{ s.pgf_autoplay_interval | times: 1000 }}"
+    {% if s.pgf_autoplay_pause_hover %}
+      data-pause-hover
+    {% endif %}
+  {% endif %}
+  data-active-index="{{ active_index | minus: 1 }}"
+>
+  <div class="visually-hidden" role="status" aria-live="polite" data-pgf-status></div>
+
+  <div class="pgf__main">
+    <div class="pgf__stage" data-pgf-stage tabindex="-1">
+      {%- assign i = 0 -%}
+      {%- assign lb_i = 0 -%}
+      {%- for media in product.media -%}
+        {%- liquid
+          if skip_variant_media and variant_images contains media.src
+            if image_style_active or media.id != featured_media.id
+              continue
+            endif
+          endif
+          assign i = i | plus: 1
+          assign is_active = false
+          if i == active_index
+            assign is_active = true
+          endif
+          if is_active
+            assign loading = 'eager'
+          else
+            assign loading = 'lazy'
+          endif
+          assign media_alt = media.alt | default: product.title
+        -%}
+        <div
+          class="pgf__slide{% if is_active %} is-active{% endif %}"
+          id="{{ pgf_id }}-slide-{{ media.id }}"
+          data-pgf-slide
+          data-media-id="{{ section.id }}-{{ media.id }}"
+          data-type="{{ media.media_type }}"
+          data-ratio="{{ media.preview_image.aspect_ratio | default: 1 }}"
+          {% if media.media_type == 'image' %}
+            data-zoom-src="{{ media | image_url: width: 2400 }}"
+          {% endif %}
+          role="group"
+          aria-roledescription="slide"
+          aria-label="{{ i }} / {{ total }}"
+          {% unless is_active %}
+            aria-hidden="true" inert
+          {% endunless %}
+        >
+          {%- if media.media_type == 'image' -%}
+            {%- if s.pgf_lightbox -%}
+              <button
+                type="button"
+                class="pgf__img-wrap"
+                data-pgf-open="{{ lb_i }}"
+                aria-haspopup="dialog"
+                aria-label="{{ 'products.product.media.open_lightbox' | t: index: i, total: total }}"
+              >
+            {%- else -%}
+              <div class="pgf__img-wrap">
+            {%- endif -%}
+            {%- if is_active -%}
+              {{
+                media
+                | image_url: width: 1946
+                | image_tag:
+                  class: 'pgf__img',
+                  loading: loading,
+                  fetchpriority: 'high',
+                  sizes: main_sizes,
+                  widths: '360, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+                  alt: media_alt
+              }}
+            {%- else -%}
+              {{
+                media
+                | image_url: width: 1946
+                | image_tag:
+                  class: 'pgf__img',
+                  loading: loading,
+                  sizes: main_sizes,
+                  widths: '360, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+                  alt: media_alt
+              }}
+            {%- endif -%}
+            {%- if s.pgf_lightbox -%}
+              </button>
+            {%- else -%}
+              </div>
+            {%- endif -%}
+            {%- assign lb_i = lb_i | plus: 1 -%}
+          {%- else -%}
+            {%- if media.media_type == 'model' -%}
+              <product-model class="deferred-media" data-media-id="{{ media.id }}">
+            {%- else -%}
+              <deferred-media class="deferred-media" data-media-id="{{ media.id }}">
+            {%- endif -%}
+            <button id="Deferred-Poster-PGF-{{ section.id }}-{{ media.id }}" class="deferred-media__poster" type="button">
+              <span class="deferred-media__poster-button motion-reduce">
+                {%- if media.media_type == 'model' -%}
+                  <span class="visually-hidden">{{ 'products.product.media.play_model' | t }}</span>
+                  <span class="svg-wrapper">{{- 'icon-3d-model.svg' | inline_asset_content -}}</span>
+                {%- else -%}
+                  <span class="visually-hidden">{{ 'products.product.media.play_video' | t }}</span>
+                  <span class="svg-wrapper">{{- 'icon-play.svg' | inline_asset_content -}}</span>
+                {%- endif -%}
+              </span>
+              {{
+                media.preview_image
+                | image_url: width: 1946
+                | image_tag:
+                  loading: loading,
+                  sizes: main_sizes,
+                  widths: '360, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946',
+                  alt: media_alt
+              }}
+            </button>
+            <template>
+              {%- liquid
+                case media.media_type
+                  when 'external_video'
+                    assign video_class = 'js-' | append: media.host
+                    if media.host == 'youtube'
+                      echo media | external_video_url: autoplay: true, loop: s.enable_video_looping, playlist: media.external_id | external_video_tag: class: video_class, loading: 'lazy'
+                    else
+                      echo media | external_video_url: autoplay: true, loop: s.enable_video_looping | external_video_tag: class: video_class, loading: 'lazy'
+                    endif
+                  when 'video'
+                    echo media | media_tag: image_size: '2048x', autoplay: true, loop: s.enable_video_looping, controls: true, preload: 'none'
+                  when 'model'
+                    echo media | media_tag: image_size: '2048x', toggleable: true
+                endcase
+              -%}
+            </template>
+            {%- if media.media_type == 'model' -%}
+              </product-model>
+            {%- else -%}
+              </deferred-media>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+
+      <div class="pgf__flash" data-pgf-flash aria-hidden="true"></div>
+      {%- if s.pgf_hover_zoom == 'lens' -%}
+        <div class="pgf__lens" data-pgf-lens aria-hidden="true"></div>
+      {%- endif -%}
+    </div>
+
+    {%- if show_sale_badge or show_new_badge or s.pgf_badge_custom != blank or s.pgf_badge_sale -%}
+      <div class="pgf__badges pgf__badges--{{ s.pgf_badge_position }}">
+        {%- if s.pgf_badge_sale -%}
+          <span class="pgf__badge" data-pgf-sale-badge {% unless show_sale_badge %}hidden{% endunless %}>
+            {{- 'products.product.media.badge_sale' | t -}}
+          </span>
+        {%- endif -%}
+        {%- if show_new_badge -%}
+          <span class="pgf__badge">{{ 'products.product.media.badge_new' | t }}</span>
+        {%- endif -%}
+        {%- if s.pgf_badge_custom != blank -%}
+          <span class="pgf__badge">{{ s.pgf_badge_custom | escape }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if total > 1 -%}
+      <button type="button" class="pgf__arrow pgf__arrow--prev" data-pgf-prev aria-label="{{ 'products.product.media.previous_image' | t }}">
+        {{ chevron }}
+      </button>
+      <button type="button" class="pgf__arrow pgf__arrow--next" data-pgf-next aria-label="{{ 'products.product.media.next_image' | t }}">
+        {{ chevron }}
+      </button>
+    {%- endif -%}
+  </div>
+
+  {%- if total > 1 -%}
+    <div class="pgf__thumbs">
+      <ul class="pgf__thumb-list" data-pgf-thumbs>
+        {%- assign i = 0 -%}
+        {%- for media in product.media -%}
+          {%- liquid
+            if skip_variant_media and variant_images contains media.src
+              if image_style_active or media.id != featured_media.id
+                continue
+              endif
+            endif
+            assign i = i | plus: 1
+            if has_overflow and i > thumb_max
+              break
+            endif
+            assign is_overflow_tile = false
+            if has_overflow and i == thumb_max
+              assign is_overflow_tile = true
+            endif
+            case media.media_type
+              when 'video', 'external_video'
+                assign thumb_label = 'products.product.media.view_video' | t: index: i, total: total
+              when 'model'
+                assign thumb_label = 'products.product.media.view_model' | t: index: i, total: total
+              else
+                assign thumb_label = 'products.product.media.view_image' | t: index: i, total: total
+            endcase
+            if is_overflow_tile
+              assign thumb_label = 'products.product.media.more_media' | t: total: overflow_count
+            endif
+          -%}
+          <li class="pgf__thumb-item">
+            <button
+              type="button"
+              class="pgf__thumb"
+              data-pgf-thumb="{{ i | minus: 1 }}"
+              {% if is_overflow_tile %}
+                data-pgf-overflow
+              {% endif %}
+              aria-label="{{ thumb_label | escape }}"
+              aria-controls="{{ pgf_id }}-slide-{{ media.id }}"
+              {% if i == active_index or is_overflow_tile and active_index >= thumb_max %}
+                aria-current="true"
+              {% endif %}
+            >
+              {{
+                media.preview_image
+                | image_url: width: 280
+                | image_tag:
+                  loading: 'lazy',
+                  sizes: '(min-width: 750px) 200px, 33vw',
+                  widths: '80, 120, 160, 200, 280',
+                  alt: ''
+              }}
+              {%- if is_overflow_tile -%}
+                <span class="pgf__thumb-more" aria-hidden="true">+{{ overflow_count }}</span>
+              {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+                <span class="pgf__thumb-icon" aria-hidden="true">{{- 'icon-play.svg' | inline_asset_content -}}</span>
+              {%- elsif media.media_type == 'model' -%}
+                <span class="pgf__thumb-icon" aria-hidden="true">{{- 'icon-3d-model.svg' | inline_asset_content -}}</span>
+              {%- endif -%}
+            </button>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+  {%- endif -%}
+
+  {%- if first_3d_model -%}
+    <button
+      class="button button--full-width product__xr-button"
+      type="button"
+      aria-label="{{ 'products.product.xr_button_label' | t }}"
+      data-shopify-xr
+      data-shopify-model3d-id="{{ first_3d_model.id }}"
+      data-shopify-title="{{ product.title | escape }}"
+      data-shopify-xr-hidden
+    >
+      <span class="svg-wrapper">{{- 'icon-3d-model.svg' | inline_asset_content -}}</span>
+      {{ 'products.product.xr_button' | t }}
+    </button>
+  {%- endif -%}
+
+  {%- if s.pgf_lightbox -%}
+    <dialog
+      class="pgf-lightbox"
+      data-pgf-lightbox
+      aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
+      {% if is_rtl %}
+        dir="rtl"
+      {% endif %}
+    >
+      <div class="pgf-lightbox__counter" aria-hidden="true" data-pgf-lb-counter></div>
+      <button type="button" class="pgf-lightbox__btn pgf-lightbox__close" data-pgf-lb-close aria-label="{{ 'accessibility.close' | t }}">
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </button>
+      <div class="pgf-lightbox__stage" data-pgf-lb-stage>
+        {%- assign i = 0 -%}
+        {%- for media in product.media -%}
+          {%- liquid
+            if skip_variant_media and variant_images contains media.src
+              if image_style_active or media.id != featured_media.id
+                continue
+              endif
+            endif
+            if media.media_type != 'image'
+              continue
+            endif
+            assign media_alt = media.alt | default: product.title
+          -%}
+          <div class="pgf-lightbox__slide" data-pgf-lb-slide data-media-id="{{ section.id }}-{{ media.id }}">
+            {{
+              media
+              | image_url: width: 3000
+              | image_tag:
+                loading: 'lazy',
+                sizes: '100vw',
+                widths: '750, 1100, 1500, 2000, 2500, 3000',
+                alt: media_alt
+            }}
+          </div>
+        {%- endfor -%}
+      </div>
+      <button type="button" class="pgf-lightbox__btn pgf-lightbox__prev" data-pgf-lb-prev aria-label="{{ 'products.product.media.previous_image' | t }}">
+        {{ chevron }}
+      </button>
+      <button type="button" class="pgf-lightbox__btn pgf-lightbox__next" data-pgf-lb-next aria-label="{{ 'products.product.media.next_image' | t }}">
+        {{ chevron }}
+      </button>
+    </dialog>
+  {%- endif -%}
+</product-gallery-flash>

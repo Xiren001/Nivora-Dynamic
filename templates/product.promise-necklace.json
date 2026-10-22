@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "ss_payment_icons_9hc3pf": {
@@ -213,9 +222,7 @@
           "type": "heading",
           "settings": {
             "heading": "WHAT MAKES THIS NECKLACE SPECIAL?",
-            "heading_size": "h2",
-            "dynamic_sale_banner": true,
-            "banner_language": ""
+            "heading_size": "h2"
           }
         },
         "text_bXNFJ7": {
@@ -253,9 +260,7 @@
           "type": "heading",
           "settings": {
             "heading": "MADE TO LAST",
-            "heading_size": "h2",
-            "dynamic_sale_banner": true,
-            "banner_language": ""
+            "heading_size": "h2"
           }
         },
         "text_XXEq7b": {
@@ -293,9 +298,7 @@
           "type": "heading",
           "settings": {
             "heading": "OUR MISSION",
-            "heading_size": "h2",
-            "dynamic_sale_banner": true,
-            "banner_language": ""
+            "heading_size": "h2"
           }
         },
         "text_WCGN4J": {

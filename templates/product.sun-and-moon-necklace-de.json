@@ -173,7 +173,7 @@
           "settings": {
             "heading": "Garantie",
             "icon": "none",
-            "content": "<p>Wir hoffen, dass du mit deinem neuen Kauf zufrieden bist. Falls aber etwas nicht ganz deinen Vorstellungen entspricht, sind wir für dich da. Wenn du deine Bestellung gegen etwas anderes eintauschen oder eine Rückerstattung erhalten möchtest, kannst du sie innerhalb von <strong>30 Tagen</strong> nach Erhalt problemlos zurücksenden.<br/><br/>Wir bitten um dein Verständnis, dass personalisierte oder maßgefertigte Artikel nicht zurückgegeben werden können, sofern kein Herstellungsfehler vorliegt. Sollte dies der Fall sein, wende dich bitte an unser freundliches Kundenserviceteam, das dir schnellstmöglich weiterhilft.<br/><br/></p>",
+            "content": "<p>Wir hoffen, dass du mit deinem neuen Kauf zufrieden bist. Falls etwas nicht ganz deinen Vorstellungen entspricht, sind wir für dich da. Wenn du deine Bestellung gegen etwas anderes eintauschen oder eine Rückerstattung erhalten möchtest, kannst du sie innerhalb von <strong>30 Tagen</strong> nach Erhalt problemlos zurücksenden.<br/><br/>Wir bitten um dein Verständnis, dass personalisierte oder maßgefertigte Artikel nicht zurückgegeben werden können, sofern kein Herstellungsfehler vorliegt. Sollte dies der Fall sein, wende dich bitte an unser freundliches Kundenserviceteam, das dir schnellstmöglich weiterhilft.<br/><br/></p>",
             "page": ""
           }
         }
@@ -278,9 +278,7 @@
           "type": "heading",
           "settings": {
             "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
-            "heading_size": "h1",
-            "dynamic_sale_banner": true,
-            "banner_language": "de"
+            "heading_size": "h1"
           }
         },
         "text_bXNFJ7": {

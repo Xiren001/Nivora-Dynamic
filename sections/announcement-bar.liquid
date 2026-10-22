@@ -81,7 +81,7 @@
     when 'tr'
       assign sale_template = settings.sale_template_tr
       assign month_names = settings.sale_name_months_tr | split: ','
-    when 'he'
+    when 'he', 'he-il'
       assign sale_template = settings.sale_template_he
       assign month_names = settings.sale_name_months_he | split: ','
       assign dynamic_sale_rtl = true
