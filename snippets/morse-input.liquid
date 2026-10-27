@@ -64,8 +64,8 @@
     --mi-label-font-size: {{ s.label_font_size | default: 16 }}px;
     --mi-morse-color: {{ morse_color }};
     --mi-morse-bg: {{ s.morse_bg | default: 'transparent' }};
-    --mi-morse-font-size: {{ s.morse_font_size | default: 22 }}px;
-    --mi-morse-spacing: {{ s.morse_letter_spacing | default: 2 }}px;
+    --mi-morse-font-size: {{ s.morse_font_size | default: 16 }}px;
+    --mi-morse-spacing: {{ s.morse_letter_spacing | default: 0 }}px;
     --mi-morse-font: {% if s.morse_font == 'theme' %}var(--font-body-family){% else %}ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace{% endif %};
     --mi-spacing-top: {{ s.spacing_top | default: 0 }}px;
     --mi-spacing-bottom: {{ s.spacing_bottom | default: 0 }}px;
