@@ -1,0 +1,174 @@
+{% comment %}
+  Renders the "Name input + Morse code" block (product information): a text field where the customer
+  types a name, with a live Morse code translation underneath. Both values are sent with the
+  product form as line item properties, so they appear in the cart and on the order.
+  Several blocks can be added; each one can be shown or hidden based on the selected variant options.
+  Styling is scoped to #MorseInput-{block.id}; logic lives in morse-input.js.
+
+  Accepts:
+  - block: {Object} block information
+  - product_form_id: {String} id of the product form the inputs belong to
+
+  Usage:
+  {% render 'morse-input', block: block, product_form_id: product_form_id %}
+{% endcomment %}
+
+{%- liquid
+  assign s = block.settings
+  assign morse_id = 'MorseInput-' | append: block.id
+  assign field_id = morse_id | append: '-field'
+
+  assign name_key = s.name_property | strip | default: 'Name'
+  assign morse_key = s.morse_property | strip | default: 'Morse code'
+  if s.morse_in_order == 'hidden'
+    assign morse_key = '_' | append: morse_key
+  endif
+
+  assign accent = s.accent_color | default: '#a8864f'
+  assign morse_color = s.morse_color | default: accent
+  assign max_chars = s.max_chars | default: 10
+  assign min_chars = s.min_chars | default: 0
+  if min_chars > max_chars
+    assign min_chars = max_chars
+  endif
+
+  assign conditions = ''
+  for i in (1..3)
+    assign option_key = 'cond_' | append: i | append: '_option'
+    assign operator_key = 'cond_' | append: i | append: '_operator'
+    assign value_key = 'cond_' | append: i | append: '_value'
+    if s[option_key] != 'none' and s[option_key] != blank
+      assign entry = s[option_key] | append: '|' | append: s[operator_key] | append: '|' | append: s[value_key]
+      assign conditions = conditions | append: entry | append: '~~'
+    endif
+  endfor
+  assign conditions = conditions | split: '~~'
+-%}
+
+{{ 'component-morse-input.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'morse-input.js' | asset_url }}" defer="defer"></script>
+
+<morse-input
+  id="{{ morse_id }}"
+  class="morse-input morse-input--{{ s.preview_style | default: 'line' }} morse-input--align-{{ s.morse_align | default: 'center' }}"
+  data-form-id="{{ product_form_id }}"
+  data-section-id="{{ section.id }}"
+  style="
+    --mi-accent: {{ accent }};
+    --mi-field-bg: {{ s.field_bg | default: '#ffffff' }};
+    --mi-field-text: {{ s.field_text | default: '#121212' }};
+    --mi-field-border: {{ s.field_border | default: '#d9d9d9' }};
+    --mi-radius: {{ s.field_radius | default: 8 }}px;
+    --mi-field-height: {{ s.field_height | default: 48 }}px;
+    --mi-field-font-size: {{ s.field_font_size | default: 16 }}px;
+    --mi-label-font-size: {{ s.label_font_size | default: 16 }}px;
+    --mi-morse-color: {{ morse_color }};
+    --mi-morse-bg: {{ s.morse_bg | default: 'transparent' }};
+    --mi-morse-font-size: {{ s.morse_font_size | default: 22 }}px;
+    --mi-morse-spacing: {{ s.morse_letter_spacing | default: 2 }}px;
+    --mi-morse-font: {% if s.morse_font == 'theme' %}var(--font-body-family){% else %}ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace{% endif %};
+    --mi-spacing-top: {{ s.spacing_top | default: 0 }}px;
+    --mi-spacing-bottom: {{ s.spacing_bottom | default: 0 }}px;
+  "
+  {{ block.shopify_attributes }}
+>
+  <label class="morse-input__label" for="{{ field_id }}">
+    {%- if s.show_step_badge -%}
+      <span class="morse-input__badge">{{ s.step_number | escape }}</span>
+    {%- endif -%}
+    <span class="morse-input__title">{{ s.label | escape }}</span>
+    {%- if s.required -%}
+      <span class="morse-input__required" aria-hidden="true">*</span>
+    {%- endif -%}
+  </label>
+
+  {%- if s.help_text != blank -%}
+    <p class="morse-input__help" id="{{ morse_id }}-help">{{ s.help_text | escape }}</p>
+  {%- endif -%}
+
+  <div class="morse-input__field-wrap">
+    <input
+      type="text"
+      id="{{ field_id }}"
+      class="morse-input__field"
+      name="properties[{{ name_key | escape }}]"
+      form="{{ product_form_id }}"
+      placeholder="{{ s.placeholder | escape }}"
+      maxlength="{{ max_chars }}"
+      autocomplete="off"
+      autocorrect="off"
+      spellcheck="false"
+      {% if s.text_case == 'upper' %}
+        autocapitalize="characters"
+      {% else %}
+        autocapitalize="words"
+      {% endif %}
+      {% if s.required %}
+        aria-required="true"
+      {% endif %}
+      aria-describedby="{% if s.help_text != blank %}{{ morse_id }}-help {% endif %}{{ morse_id }}-error"
+      data-morse-name
+    >
+    {%- if s.show_counter -%}
+      <span class="morse-input__counter" aria-hidden="true" data-morse-counter>0/{{ max_chars }}</span>
+    {%- endif -%}
+  </div>
+
+  <p class="morse-input__error" id="{{ morse_id }}-error" role="alert" data-morse-error hidden></p>
+
+  {%- if s.morse_in_order != 'none' -%}
+    <input
+      type="hidden"
+      name="properties[{{ morse_key | escape }}]"
+      form="{{ product_form_id }}"
+      disabled
+      data-morse-value
+    >
+  {%- endif -%}
+
+  {%- if s.show_morse -%}
+    <div class="morse-input__preview">
+      {%- if s.morse_label != blank -%}
+        <span class="morse-input__preview-label">{{ s.morse_label | escape }}</span>
+      {%- endif -%}
+      <div class="morse-input__code" aria-live="polite" data-morse-output>
+        <span class="morse-input__empty">{{ s.morse_empty | escape }}</span>
+      </div>
+    </div>
+  {%- endif -%}
+
+  <script type="application/json" data-morse-config>
+    {
+      "required": {{ s.required | json }},
+      "min": {{ min_chars | json }},
+      "max": {{ max_chars | json }},
+      "allowLetters": {{ s.allow_letters | json }},
+      "allowNumbers": {{ s.allow_numbers | json }},
+      "allowSpaces": {{ s.allow_spaces | json }},
+      "allowPunctuation": {{ s.allow_punctuation | json }},
+      "convertAccents": {{ s.convert_accents | json }},
+      "textCase": {{ s.text_case | default: 'as_typed' | json }},
+      "dot": {{ s.dot_symbol | default: '•' | json }},
+      "dash": {{ s.dash_symbol | default: '—' | json }},
+      "letterGap": {{ s.letter_gap | default: 'space' | json }},
+      "wordGap": {{ s.word_gap | default: 'slash' | json }},
+      "orderSymbols": {{ s.order_symbols | default: 'plain' | json }},
+      "previewStyle": {{ s.preview_style | default: 'line' | json }},
+      "emptyText": {{ s.morse_empty | json }},
+      "messages": {
+        "required": {{ s.required_message | default: 'Please fill in this field' | json }},
+        "min": {{ s.min_message | default: 'Please enter at least [min] characters' | json }},
+        "invalid": {{ s.invalid_message | default: 'This character is not allowed' | json }}
+      },
+      "conditionAction": {{ s.condition_action | default: 'show' | json }},
+      "conditionLogic": {{ s.condition_logic | default: 'all' | json }},
+      "conditions": [
+        {%- for c in conditions -%}
+          {%- assign parts = c | split: '|' -%}
+          { "option": {{ parts[0] | plus: 0 }}, "operator": {{ parts[1] | json }}, "value": {{ parts[2] | default: '' | json }} }
+          {%- unless forloop.last -%},{%- endunless -%}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+</morse-input>

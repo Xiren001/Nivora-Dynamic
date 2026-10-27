@@ -797,6 +797,8 @@
                 {% render 'icon-with-text-check', block: block %}
               {%- when 'sale_banner' -%}
                 {% render 'sale-banner', block: block %}
+              {%- when 'morse_input' -%}
+                {% render 'morse-input', block: block, product_form_id: product_form_id %}
               {%- when 'trust_shipping', 'trust_guarantee', 'trust_payment', 'trust_warning' -%}
                 {% render 'trust-stack', block: block %}
             {%- endcase -%}
@@ -871,6 +873,681 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "morse_input",
+      "name": "Name input + Morse code",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "The customer types a name and sees it in Morse code. Both are added to the cart item and the order. Add this block several times for several names."
+        },
+        {
+          "type": "header",
+          "content": "Text"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Title",
+          "default": "Enter your name"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_step_badge",
+          "label": "Show step number",
+          "default": false,
+          "info": "Matches the numbered steps of the image variant picker."
+        },
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step number",
+          "default": "3"
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Placeholder",
+          "default": "e.g. Emma"
+        },
+        {
+          "type": "text",
+          "id": "help_text",
+          "label": "Help text"
+        },
+        {
+          "type": "header",
+          "content": "Rules"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Required",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "required_message",
+          "label": "Message when empty",
+          "default": "Please enter a name"
+        },
+        {
+          "type": "range",
+          "id": "min_chars",
+          "label": "Minimum characters",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "ch",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "min_message",
+          "label": "Message when too short",
+          "default": "Please enter at least [min] characters",
+          "info": "[min] is replaced by the minimum."
+        },
+        {
+          "type": "range",
+          "id": "max_chars",
+          "label": "Character limit",
+          "min": 1,
+          "max": 40,
+          "step": 1,
+          "unit": "ch",
+          "default": 10
+        },
+        {
+          "type": "checkbox",
+          "id": "show_counter",
+          "label": "Show character counter",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Allowed characters"
+        },
+        {
+          "type": "checkbox",
+          "id": "allow_letters",
+          "label": "Letters (A–Z)",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "allow_numbers",
+          "label": "Numbers (0–9)",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "allow_spaces",
+          "label": "Spaces",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "allow_punctuation",
+          "label": "Punctuation",
+          "default": false,
+          "info": "Only signs that exist in Morse code: . , ? ! ' \" / ( ) & : ; = + - _ $ @"
+        },
+        {
+          "type": "checkbox",
+          "id": "convert_accents",
+          "label": "Turn accented letters into plain letters",
+          "default": true,
+          "info": "é → e, ü → u, ß → ss. Morse code has no accents."
+        },
+        {
+          "type": "select",
+          "id": "text_case",
+          "label": "Letter case",
+          "options": [
+            {
+              "value": "as_typed",
+              "label": "As typed"
+            },
+            {
+              "value": "capitalize",
+              "label": "Capitalize each word"
+            },
+            {
+              "value": "upper",
+              "label": "ALL CAPITALS"
+            }
+          ],
+          "default": "capitalize"
+        },
+        {
+          "type": "text",
+          "id": "invalid_message",
+          "label": "Message for a character that isn't allowed",
+          "default": "Only letters and spaces are allowed"
+        },
+        {
+          "type": "header",
+          "content": "Morse code"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_morse",
+          "label": "Show Morse code preview",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "morse_label",
+          "label": "Preview title",
+          "default": "Your Morse code"
+        },
+        {
+          "type": "text",
+          "id": "morse_empty",
+          "label": "Text before anything is typed",
+          "default": "Your Morse code will appear here"
+        },
+        {
+          "type": "select",
+          "id": "preview_style",
+          "label": "Preview style",
+          "options": [
+            {
+              "value": "line",
+              "label": "One line"
+            },
+            {
+              "value": "letters",
+              "label": "Letter under each code"
+            }
+          ],
+          "default": "line"
+        },
+        {
+          "type": "select",
+          "id": "dot_symbol",
+          "label": "Dot symbol",
+          "options": [
+            {
+              "value": "•",
+              "label": "•"
+            },
+            {
+              "value": "·",
+              "label": "·"
+            },
+            {
+              "value": "●",
+              "label": "●"
+            },
+            {
+              "value": ".",
+              "label": "."
+            }
+          ],
+          "default": "•"
+        },
+        {
+          "type": "select",
+          "id": "dash_symbol",
+          "label": "Dash symbol",
+          "options": [
+            {
+              "value": "—",
+              "label": "—"
+            },
+            {
+              "value": "–",
+              "label": "–"
+            },
+            {
+              "value": "▬",
+              "label": "▬"
+            },
+            {
+              "value": "-",
+              "label": "-"
+            }
+          ],
+          "default": "—"
+        },
+        {
+          "type": "select",
+          "id": "letter_gap",
+          "label": "Between letters",
+          "options": [
+            {
+              "value": "space",
+              "label": "Space"
+            },
+            {
+              "value": "wide",
+              "label": "Wide space"
+            },
+            {
+              "value": "bar",
+              "label": "Bar ( | )"
+            }
+          ],
+          "default": "space"
+        },
+        {
+          "type": "select",
+          "id": "word_gap",
+          "label": "Between words",
+          "options": [
+            {
+              "value": "slash",
+              "label": "Slash ( / )"
+            },
+            {
+              "value": "wide",
+              "label": "Wide space"
+            },
+            {
+              "value": "bar",
+              "label": "Double bar ( || )"
+            }
+          ],
+          "default": "slash"
+        },
+        {
+          "type": "header",
+          "content": "Order"
+        },
+        {
+          "type": "text",
+          "id": "name_property",
+          "label": "Name field title in the order",
+          "default": "Name",
+          "info": "Use a different title for each block, e.g. Name 1, Name 2."
+        },
+        {
+          "type": "text",
+          "id": "morse_property",
+          "label": "Morse code field title in the order",
+          "default": "Morse code"
+        },
+        {
+          "type": "select",
+          "id": "morse_in_order",
+          "label": "Morse code in the order",
+          "options": [
+            {
+              "value": "visible",
+              "label": "Show in cart, checkout and order"
+            },
+            {
+              "value": "hidden",
+              "label": "Order admin only (hidden from the customer)"
+            },
+            {
+              "value": "none",
+              "label": "Don't save"
+            }
+          ],
+          "default": "visible"
+        },
+        {
+          "type": "select",
+          "id": "order_symbols",
+          "label": "Morse code symbols in the order",
+          "options": [
+            {
+              "value": "plain",
+              "label": "Standard ( . and - )"
+            },
+            {
+              "value": "display",
+              "label": "Same as the preview"
+            }
+          ],
+          "default": "plain"
+        },
+        {
+          "type": "header",
+          "content": "Show only for some variants"
+        },
+        {
+          "type": "paragraph",
+          "content": "Leave every rule on \"Not used\" to always show the field. A hidden field is never required and isn't added to the order."
+        },
+        {
+          "type": "select",
+          "id": "condition_action",
+          "label": "When the rules match",
+          "options": [
+            {
+              "value": "show",
+              "label": "Show this field"
+            },
+            {
+              "value": "hide",
+              "label": "Hide this field"
+            }
+          ],
+          "default": "show"
+        },
+        {
+          "type": "select",
+          "id": "condition_logic",
+          "label": "Combine rules with",
+          "options": [
+            {
+              "value": "all",
+              "label": "AND (all rules must match)"
+            },
+            {
+              "value": "any",
+              "label": "OR (any rule can match)"
+            }
+          ],
+          "default": "all"
+        },
+        {
+          "type": "select",
+          "id": "cond_1_option",
+          "label": "Rule 1: option",
+          "options": [
+            {
+              "value": "none",
+              "label": "Not used"
+            },
+            {
+              "value": "1",
+              "label": "Option 1 (first in the picker)"
+            },
+            {
+              "value": "2",
+              "label": "Option 2"
+            },
+            {
+              "value": "3",
+              "label": "Option 3"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "select",
+          "id": "cond_1_operator",
+          "label": "Rule 1: match",
+          "options": [
+            {
+              "value": "is",
+              "label": "is"
+            },
+            {
+              "value": "is_not",
+              "label": "is not"
+            },
+            {
+              "value": "contains",
+              "label": "contains"
+            }
+          ],
+          "default": "is"
+        },
+        {
+          "type": "text",
+          "id": "cond_1_value",
+          "label": "Rule 1: value",
+          "info": "Spelled exactly as the option value in this template's language. Separate several values with a comma."
+        },
+        {
+          "type": "select",
+          "id": "cond_2_option",
+          "label": "Rule 2: option",
+          "options": [
+            {
+              "value": "none",
+              "label": "Not used"
+            },
+            {
+              "value": "1",
+              "label": "Option 1 (first in the picker)"
+            },
+            {
+              "value": "2",
+              "label": "Option 2"
+            },
+            {
+              "value": "3",
+              "label": "Option 3"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "select",
+          "id": "cond_2_operator",
+          "label": "Rule 2: match",
+          "options": [
+            {
+              "value": "is",
+              "label": "is"
+            },
+            {
+              "value": "is_not",
+              "label": "is not"
+            },
+            {
+              "value": "contains",
+              "label": "contains"
+            }
+          ],
+          "default": "is"
+        },
+        {
+          "type": "text",
+          "id": "cond_2_value",
+          "label": "Rule 2: value",
+          "info": "Spelled exactly as the option value in this template's language. Separate several values with a comma."
+        },
+        {
+          "type": "select",
+          "id": "cond_3_option",
+          "label": "Rule 3: option",
+          "options": [
+            {
+              "value": "none",
+              "label": "Not used"
+            },
+            {
+              "value": "1",
+              "label": "Option 1 (first in the picker)"
+            },
+            {
+              "value": "2",
+              "label": "Option 2"
+            },
+            {
+              "value": "3",
+              "label": "Option 3"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "select",
+          "id": "cond_3_operator",
+          "label": "Rule 3: match",
+          "options": [
+            {
+              "value": "is",
+              "label": "is"
+            },
+            {
+              "value": "is_not",
+              "label": "is not"
+            },
+            {
+              "value": "contains",
+              "label": "contains"
+            }
+          ],
+          "default": "is"
+        },
+        {
+          "type": "text",
+          "id": "cond_3_value",
+          "label": "Rule 3: value",
+          "info": "Spelled exactly as the option value in this template's language. Separate several values with a comma."
+        },
+        {
+          "type": "header",
+          "content": "Design"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent color",
+          "default": "#A8864F"
+        },
+        {
+          "type": "range",
+          "id": "label_font_size",
+          "label": "Title size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "field_bg",
+          "label": "Field background",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "field_text",
+          "label": "Field text",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "field_border",
+          "label": "Field border",
+          "default": "#D9D9D9"
+        },
+        {
+          "type": "range",
+          "id": "field_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 8
+        },
+        {
+          "type": "range",
+          "id": "field_height",
+          "label": "Field height",
+          "min": 36,
+          "max": 70,
+          "step": 2,
+          "unit": "px",
+          "default": 48
+        },
+        {
+          "type": "range",
+          "id": "field_font_size",
+          "label": "Field text size",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "color",
+          "id": "morse_color",
+          "label": "Morse code color (empty = accent color)"
+        },
+        {
+          "type": "color",
+          "id": "morse_bg",
+          "label": "Morse code background",
+          "default": "#F8F5EF"
+        },
+        {
+          "type": "range",
+          "id": "morse_font_size",
+          "label": "Morse code size",
+          "min": 12,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "default": 22
+        },
+        {
+          "type": "range",
+          "id": "morse_letter_spacing",
+          "label": "Morse code spacing",
+          "min": 0,
+          "max": 10,
+          "step": 1,
+          "unit": "px",
+          "default": 2
+        },
+        {
+          "type": "select",
+          "id": "morse_font",
+          "label": "Morse code font",
+          "options": [
+            {
+              "value": "monospace",
+              "label": "Monospace (even spacing)"
+            },
+            {
+              "value": "theme",
+              "label": "Theme font"
+            }
+          ],
+          "default": "monospace"
+        },
+        {
+          "type": "select",
+          "id": "morse_align",
+          "label": "Morse code alignment",
+          "options": [
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "spacing_top",
+          "label": "Space above",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "spacing_bottom",
+          "label": "Space below",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        }
+      ]
     },
     {
       "type": "text",

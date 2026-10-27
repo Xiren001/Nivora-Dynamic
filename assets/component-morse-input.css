@@ -1,0 +1,199 @@
+/* Name input + Morse code block. Per-block values come from CSS variables set on #MorseInput-{block.id}. */
+.morse-input {
+  display: block;
+  margin-top: var(--mi-spacing-top, 0);
+  margin-bottom: var(--mi-spacing-bottom, 0);
+}
+
+.morse-input[hidden] {
+  display: none;
+}
+
+.morse-input--editor-hidden {
+  opacity: 0.45;
+  outline: 1px dashed rgba(var(--color-foreground), 0.4);
+  outline-offset: 0.4rem;
+}
+
+.morse-input__label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.morse-input__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background-color: var(--mi-accent);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.morse-input__title {
+  font-size: var(--mi-label-font-size);
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+.morse-input__required {
+  color: var(--mi-accent);
+  font-weight: 600;
+}
+
+.morse-input__help {
+  margin: -0.4rem 0 0.8rem;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.morse-input__field-wrap {
+  position: relative;
+}
+
+.morse-input .morse-input__field {
+  display: block;
+  width: 100%;
+  height: var(--mi-field-height);
+  padding: 0 1.4rem;
+  border: 1px solid var(--mi-field-border);
+  border-radius: var(--mi-radius);
+  background-color: var(--mi-field-bg);
+  color: var(--mi-field-text);
+  font-family: inherit;
+  font-size: var(--mi-field-font-size);
+  letter-spacing: 0.04em;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.morse-input__field-wrap:has(.morse-input__counter) .morse-input__field {
+  padding-right: 6rem;
+}
+
+.morse-input .morse-input__field::placeholder {
+  color: var(--mi-field-text);
+  opacity: 0.45;
+}
+
+.morse-input .morse-input__field:focus,
+.morse-input .morse-input__field:focus-visible {
+  outline: none;
+  border-color: var(--mi-accent);
+  box-shadow: 0 0 0 1px var(--mi-accent);
+}
+
+.morse-input--invalid .morse-input__field {
+  border-color: rgb(var(--color-error, 216, 44, 13));
+}
+
+.morse-input__counter {
+  position: absolute;
+  top: 50%;
+  right: 1.4rem;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--mi-field-text);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.morse-input__error {
+  margin: 0.6rem 0 0;
+  font-size: 1.3rem;
+  line-height: 1.4;
+  color: rgb(var(--color-error, 216, 44, 13));
+}
+
+.morse-input__preview {
+  margin-top: 1.2rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: var(--mi-radius);
+  background-color: var(--mi-morse-bg);
+  text-align: var(--mi-morse-align, center);
+}
+
+.morse-input--align-left .morse-input__preview {
+  --mi-morse-align: left;
+}
+
+.morse-input__preview-label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.morse-input__code {
+  min-height: calc(var(--mi-morse-font-size) * 1.4);
+  color: var(--mi-morse-color);
+  font-family: var(--mi-morse-font);
+  font-size: var(--mi-morse-font-size);
+  line-height: 1.4;
+  letter-spacing: var(--mi-morse-spacing);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.morse-input__empty {
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+  letter-spacing: normal;
+  color: rgba(var(--color-foreground), 0.5);
+}
+
+.morse-input--letters .morse-input__code {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.4rem;
+  white-space: normal;
+}
+
+.morse-input--letters.morse-input--align-left .morse-input__code {
+  justify-content: flex-start;
+}
+
+.morse-input__cell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.morse-input__cell-code {
+  white-space: nowrap;
+}
+
+.morse-input__cell-letter {
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: normal;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.morse-input__word-gap {
+  width: 1.2rem;
+}
+
+@media screen and (max-width: 749px) {
+  .morse-input__badge {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.1rem;
+  }
+}
