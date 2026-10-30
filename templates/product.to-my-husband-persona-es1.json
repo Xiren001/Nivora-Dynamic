@@ -108,26 +108,54 @@
           "type": "price",
           "settings": {}
         },
-        "icon_with_text_RtEwBz": {
-          "type": "icon-with-text",
+        "custom_liquid_bGYg9E": {
+          "type": "custom_liquid",
           "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Duradera y segura",
-            "icon_2": "return",
-            "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Un regalo con significado",
-            "icon_3": "truck",
-            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Conexión personalizada"
+            "custom_liquid": "<p style=\"font-size:11px;color:#888;margin: 0;margin-top: -20px;\">Precio más bajo de los últimos 30 días</p>"
+          }
+        },
+        "trust_badges_awkGXU": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1_icon": "heart",
+            "badge_1_label": "Regalo con Corazón",
+            "badge_2_icon": "shipping",
+            "badge_2_label": "Envío Gratis",
+            "badge_3_icon": "guarantee",
+            "badge_3_label": "Garantía de Devolución",
+            "badge_4_icon": "diamond",
+            "badge_4_label": "Diseño Artesanal",
+            "label_font_size": 12
           }
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "image",
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": true,
+            "image_override_1_value": "Black",
+            "image_override_1_image": "shopify://shop_images/Noah_Riley_Infinity_Bracelet.png",
+            "image_override_2_value": "Silver",
+            "image_override_2_image": "shopify://shop_images/Engraved_Silver_Infinity_Bracelet.png",
+            "image_override_3_value": "Negro",
+            "image_override_4_value": "Plata",
+            "image_override_5_value": "Plateado",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": "",
+            "image_override_3_image": "shopify://shop_images/Noah_Riley_Infinity_Bracelet.png",
+            "image_override_4_image": "shopify://shop_images/Engraved_Silver_Infinity_Bracelet.png",
+            "image_override_5_image": "shopify://shop_images/Engraved_Silver_Infinity_Bracelet.png"
           }
         },
         "quantity_selector": {
@@ -139,34 +167,42 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
-        "collapsible_tab_Y4BabJ": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Descripción",
-            "icon": "none",
-            "content": "<p>Esta pulsera hecha a mano es mucho más que un regalo: es una profunda expresión de amor, apoyo y reconocimiento.<br/><br/>Grabada con vuestros nombres, esta pulsera es un poderoso recordatorio de que vuestro amor es infinito.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_U8t6ip": {
+        "collapsible_tab_VtwDjp": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Envío",
-            "icon": "none",
+            "icon": "truck",
             "content": "<p>Nuestros plazos de envío se dividen, por lo general, en dos partes:<br/><br/>Tiempo de preparación: incluye la producción, la verificación del pedido, la personalización del producto, el control de calidad y el embalaje. Debido al gran volumen de pedidos, actualmente supone entre 2 y 4 días laborables.<br/><br/>Una vez enviado tu pedido, suele llegar en un plazo de 6 a 12 días laborables.<br/><br/>Recibirás un número de seguimiento por correo electrónico en cuanto se haya enviado tu pedido.</p>",
             "page": ""
           }
         },
-        "collapsible_tab_LWxxBL": {
+        "collapsible_tab_XzdKKX": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Garantía",
-            "icon": "none",
+            "icon": "box",
             "content": "<p>Esperamos que disfrutes de tu nueva pulsera; no obstante, si algo no acaba de encajar con lo que esperabas, estamos aquí para ayudarte. Si quieres cambiar tu pedido por otra cosa o recibir un reembolso, puedes devolverlo fácilmente en un plazo de 30 días desde la entrega.<br/><br/>Esperamos que entiendas que la joyería personalizada no admite devoluciones, salvo que exista un defecto de fabricación. Si es el caso, ponte en contacto con nuestro amable equipo de atención al cliente, que te atenderá lo antes posible.</p>",
             "page": ""
+          }
+        },
+        "description_cFwAee": {
+          "type": "description",
+          "settings": {
+            "custom_description": "<h2><em><strong><br/>Tu Amor, Alrededor de Su Muñeca</strong></em></h2><p>Una pulsera de infinito hecha a mano y grabada con vuestros dos nombres, para que lleve tu amor allá donde vaya.<br/><br/>Cada vez que mire su muñeca, recordará en silencio que lo que compartís no tiene fin.</p><h2><em>Dos Nombres, Un Lazo Infinito</em></h2><p>Vuestros nombres, uno junto al otro sobre el símbolo del infinito, unidos en una promesa que nunca se acaba.<br/><br/>No es solo algo que lleva puesto; es vuestra historia, hecha para quedarse con él.</p><h2><em>Demuéstrale Cuánto Significa Para Ti</em></h2><p>Para la pareja que siempre está ahí, que te sostiene y que hace la vida mejor, esta es tu manera de decirle: «Te veo, y te agradezco que estés a mi lado.»</p><h2><em>Un Recordatorio de Que Siempre Estás a Su Lado</em></h2><p>En los días difíciles y en los buenos, le recuerda que estás ahí con él: firme, leal y sin soltarle nunca.</p><h2><em>Detalles del Producto:</em></h2><ul><li>Pulsera de cuero hecha a mano</li><li>Resiste el paso del tiempo, sin óxido ni deslustre.</li><li>Cada caja es todo un viaje emocional con: pulsera, caja de regalo y tarjeta con mensaje</li><li>Hecha a mano por artesanos expertos, con atención a la calidad y al detalle</li></ul>",
+            "media_1_video": "shopify://files/videos/ec021739c2a748bc81f2070b6b52cb50.mp4",
+            "media_1_video_url": "",
+            "media_1_position": 1,
+            "media_2_image": "shopify://shop_images/Matte_Black_vs_Silver_Infinity_Bracelet.png",
+            "media_2_video_url": "",
+            "media_2_position": 3,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
           }
         }
       },
@@ -174,13 +210,14 @@
         "title",
         "loox_reviews_loox_rating_qkAgh6",
         "price",
-        "icon_with_text_RtEwBz",
+        "custom_liquid_bGYg9E",
+        "trust_badges_awkGXU",
         "variant_picker",
         "quantity_selector",
         "buy_buttons_KqEWkh",
-        "collapsible_tab_Y4BabJ",
-        "collapsible_tab_U8t6ip",
-        "collapsible_tab_LWxxBL"
+        "collapsible_tab_VtwDjp",
+        "collapsible_tab_XzdKKX",
+        "description_cFwAee"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
@@ -193,98 +230,165 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 24,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
       }
     },
-    "image_with_text_U8Bkye": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_9VctMz": {
-          "type": "heading",
-          "settings": {
-            "heading": "Vuestros nombres, unidos en una promesa eterna",
-            "heading_size": "h1"
-          }
-        },
-        "text_7CDinj": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Vuestros nombres, bellamente grabados en la pulsera de infinito, son el símbolo de vuestro vínculo inquebrantable y de la promesa de un para siempre.<br/><br/>Esta pulsera hecha a mano es mucho más que un accesorio: es la expresión tangible de vuestro amor profundo e incondicional.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_9VctMz",
-        "text_7CDinj"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "image": "shopify://shop_images/ezgif-40e56953f1566f2f.gif",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "blocks_9HmUHU": {
+    "blocks_c4cEHd": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_27b352b_8nV6Nf": {
-          "type": "ai_gen_block_27b352b",
+        "ai_gen_block_3ae7b4f_Ckyg4B": {
+          "type": "ai_gen_block_3ae7b4f",
           "settings": {
-            "title": "<strong>También te puede interesar</strong>",
-            "subtitle": "Piezas seleccionadas de nuestra colección",
-            "product_list": [
-              "anillo-de-iniciales-ajustable-whisper-2",
-              "el-corazon-de-la-familia-collar",
-              "pulsera-de-alerta-medica-1",
-              "pulsera-personalizada-piedras-de-nacimiento"
-            ],
-            "products_to_show": 4,
-            "container_width": 1200,
-            "products_per_row": 4,
-            "products_per_row_tablet": 3,
-            "grid_gap": 30,
-            "section_padding_top": 35,
-            "section_padding_bottom": 35,
-            "header_spacing": 40,
+            "eyebrow": "Un Lazo Infinito",
+            "heading": "Vuestros nombres, unidos en una promesa eterna",
+            "body": "<p>Vuestros nombres, bellamente grabados en la pulsera de infinito, son el símbolo de vuestro vínculo inquebrantable y de la promesa de un para siempre.<br/><br/>Esta pulsera hecha a mano es mucho más que un accesorio: es la expresión tangible de vuestro amor profundo e incondicional.</p>",
+            "button_label": "Descubre la colección",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
             "background_color": "#ffffff",
-            "image_border_radius": 0,
-            "title_size": 28,
-            "title_color": "#121212",
-            "subtitle_size": 14,
-            "subtitle_color": "#666666",
-            "product_title_size": 16,
-            "product_title_color": "#121212",
-            "product_price_size": 15,
-            "product_price_color": "#121212",
-            "sale_price_color": "#d82c0d",
-            "link_hover_color": "#666666"
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_27b352b_8nV6Nf"
+        "ai_gen_block_3ae7b4f_Ckyg4B"
       ],
-      "name": "You may also like",
+      "name": "Sentimental image text",
       "settings": {}
+    },
+    "related_products_slider_QprbTe": {
+      "type": "related-products-slider",
+      "name": "Related products",
+      "settings": {
+        "source": "manual",
+        "product_list": [
+          "anillo-de-iniciales-ajustable-whisper-2",
+          "el-corazon-de-la-familia-collar",
+          "pulsera-de-alerta-medica-1",
+          "pulsera-personalizada-piedras-de-nacimiento"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "También te puede interesar",
+        "show_heading_dot": false,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 22,
+        "heading_size_mobile": 14,
+        "heading_weight": "600",
+        "heading_letter_spacing": 8,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": false,
+        "sale_badge_text": "Oferta",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
     },
     "related-products": {
       "type": "related-products",
@@ -328,14 +432,38 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "blocks_JKDCTc": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b5f6c36_tmpFVh": {
+          "type": "ai_gen_block_b5f6c36",
+          "settings": {
+            "button_label": "Añadir al carrito",
+            "sold_out_label": "Agotado",
+            "discount_label": "AHORRA [percent]%",
+            "accent_color": "#000000",
+            "bar_background": "#ffffff",
+            "text_color": "#343434",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b5f6c36_tmpFVh"
+      ],
+      "name": "Sticky add to cart",
+      "settings": {}
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
-    "image_with_text_U8Bkye",
-    "blocks_9HmUHU",
+    "blocks_c4cEHd",
+    "related_products_slider_QprbTe",
     "related-products",
-    "17341290603fa2426b"
+    "17341290603fa2426b",
+    "blocks_JKDCTc"
   ]
 }
