@@ -117,10 +117,10 @@
         "trust_badges_gXiPHp": {
           "type": "trust_badges",
           "settings": {
-            "badge_1_icon": "heart",
-            "badge_1_label": "Regalo con Corazón",
-            "badge_2_icon": "shipping",
-            "badge_2_label": "Envío Gratis",
+            "badge_1_icon": "leaf",
+            "badge_1_label": "Seguro para la Piel",
+            "badge_2_icon": "heart",
+            "badge_2_label": "Regalo con Corazón",
             "badge_3_icon": "guarantee",
             "badge_3_label": "Garantía de Devolución",
             "badge_4_icon": "diamond",
@@ -148,15 +148,15 @@
             "image_override_2_value": "Silver",
             "image_override_2_image": "shopify://shop_images/Nivora_6_0372b567-3c49-428c-b700-6a4598582a8f.png",
             "image_override_3_value": "Oro",
-            "image_override_4_value": "Dorado",
-            "image_override_5_value": "Plata",
-            "image_override_6_value": "Plateado",
-            "image_override_7_value": "",
-            "image_override_8_value": "",
             "image_override_3_image": "shopify://shop_images/Nivora_5_9739d2d1-c074-44d8-92ef-7df8448495ed.png",
+            "image_override_4_value": "Dorado",
             "image_override_4_image": "shopify://shop_images/Nivora_5_9739d2d1-c074-44d8-92ef-7df8448495ed.png",
+            "image_override_5_value": "Plata",
             "image_override_5_image": "shopify://shop_images/Nivora_6_0372b567-3c49-428c-b700-6a4598582a8f.png",
-            "image_override_6_image": "shopify://shop_images/Nivora_6_0372b567-3c49-428c-b700-6a4598582a8f.png"
+            "image_override_6_value": "Plateado",
+            "image_override_6_image": "shopify://shop_images/Nivora_6_0372b567-3c49-428c-b700-6a4598582a8f.png",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "buy_buttons_KqEWkh": {
@@ -349,8 +349,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_za5nr2za5nr2za5n.png",
-            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_za5nr2za5nr2za5n.png",
+            "image": "shopify://shop_images/3_da5980a7-953d-4c27-a439-d1182eefbf32.png",
+            "mobile_image": "shopify://shop_images/3_da5980a7-953d-4c27-a439-d1182eefbf32.png",
             "eyebrow": "Cerca del corazón",
             "heading": "Nombres grabados, familia unida para siempre",
             "body": "<p>Imagina su sorpresa al ver un collar con los nombres de sus seres queridos. Es más que un regalo, es un mensaje de amor que puede llevar puesto todos los días.</p>",

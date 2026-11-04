@@ -2524,14 +2524,14 @@
             },
             "badge_1_label": {
               "label": "Badge 1 label",
-              "default": "Heartfelt Gift"
+              "default": "Skin Safe"
             },
             "badge_2_icon": {
               "label": "Badge 2 icon"
             },
             "badge_2_label": {
               "label": "Badge 2 label",
-              "default": "Free Shipping"
+              "default": "Heartfelt Gift"
             },
             "badge_3_icon": {
               "label": "Badge 3 icon"

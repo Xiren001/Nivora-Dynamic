@@ -117,10 +117,10 @@
         "trust_badges_awkGXU": {
           "type": "trust_badges",
           "settings": {
-            "badge_1_icon": "heart",
-            "badge_1_label": "Herzliches Geschenk",
-            "badge_2_icon": "shipping",
-            "badge_2_label": "Kostenloser Versand",
+            "badge_1_icon": "leaf",
+            "badge_1_label": "Hautfreundlich",
+            "badge_2_icon": "heart",
+            "badge_2_label": "Herzliches Geschenk",
             "badge_3_icon": "guarantee",
             "badge_3_label": "Geld-zurück-Garantie",
             "badge_4_icon": "diamond",
@@ -148,13 +148,13 @@
             "image_override_2_value": "Silver",
             "image_override_2_image": "shopify://shop_images/Engraved_Silver_Infinity_Bracelet.png",
             "image_override_3_value": "Schwarz",
+            "image_override_3_image": "shopify://shop_images/Noah_Riley_Infinity_Bracelet.png",
             "image_override_4_value": "Silber",
+            "image_override_4_image": "shopify://shop_images/Engraved_Silver_Infinity_Bracelet.png",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
-            "image_override_8_value": "",
-            "image_override_3_image": "shopify://shop_images/Noah_Riley_Infinity_Bracelet.png",
-            "image_override_4_image": "shopify://shop_images/Engraved_Silver_Infinity_Bracelet.png"
+            "image_override_8_value": ""
           }
         },
         "quantity_selector": {
@@ -279,11 +279,11 @@
         "ai_gen_block_3ae7b4f_Ckyg4B": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
-            "image": "shopify://shop_images/2.jpg",
-            "mobile_image": "shopify://shop_images/2.jpg",
+            "image": "shopify://shop_images/2_730419f2-3812-4933-a4dc-88e4196612e9.jpg",
+            "mobile_image": "shopify://shop_images/2_730419f2-3812-4933-a4dc-88e4196612e9.jpg",
             "eyebrow": "Ein endloses Band",
             "heading": "Ihre Namen, vereint in einem ewigen Versprechen",
-            "body": "<p>Ihre Namen, wunderschön in das Infinity-Armband eingraviert, sind ein Symbol für Ihre unzerbrechliche Verbundenheit und ein Versprechen für die Ewigkeit. </p><p>Dieses handgefertigte Armband ist mehr als nur ein Accessoire; es ist ein greifbarer Ausdruck Ihrer tiefen, unerschütterlichen Liebe.</p>",
+            "body": "<p>Ihre Namen, wunderschön in das Infinity-Armband eingraviert, sind ein Symbol für Ihre unzerbrechliche Verbundenheit und ein Versprechen für die Ewigkeit.&nbsp;</p><p>Dieses handgefertigte Armband ist mehr als nur ein Accessoire; es ist ein greifbarer Ausdruck Ihrer tiefen, unerschütterlichen Liebe.</p>",
             "button_label": "Kollektion entdecken",
             "button_link": "",
             "desktop_width_percent": 100,
