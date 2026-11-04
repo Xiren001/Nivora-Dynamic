@@ -190,8 +190,8 @@
             "line_height": 1.4,
             "uppercase": true,
             "text_align": "center",
-            "text_color": "#ffffff",
-            "highlight_color": "#ffd60a",
+            "text_color": "#121212",
+            "highlight_color": "#a8864f",
             "highlight_bg": "",
             "highlight_bold": true,
             "text_shadow": false,
@@ -207,8 +207,8 @@
             "button_radius": 20,
             "button_hover": "darken",
             "bg_type": "solid",
-            "bg_color_1": "#000000",
-            "bg_color_2": "#000000",
+            "bg_color_1": "#f8f5ef",
+            "bg_color_2": "#f8f5ef",
             "bg_angle": 90,
             "overlay_opacity": 40,
             "padding_top_desktop": 10,
@@ -780,6 +780,7 @@
         "heading_94DP8n",
         "text_bXNFJ7"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/CCFN-P-1.png",
         "height": "adapt",
@@ -807,17 +808,51 @@
         "padding_bottom": 4
       }
     },
+    "blocks_kMTr8n": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3ae7b4f_YpwEKB": {
+          "type": "ai_gen_block_3ae7b4f",
+          "settings": {
+            "image": "shopify://shop_images/CCFN-P-1.png",
+            "mobile_image": "shopify://shop_images/CCFN-P-1.png",
+            "eyebrow": "Made to be worn every day",
+            "heading": "EXCLUSIVE OFFERS ARE LIVE - BUY 1 GET 1 FREE",
+            "body": "<p>Bless 2 loved ones and keep one for yourself! <strong>Almost sold out again!</strong></p>",
+            "button_label": "Discover the collection",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
+            "background_color": "#ffffff",
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3ae7b4f_YpwEKB"
+      ],
+      "name": "Sentimental image text",
+      "settings": {}
+    },
     "related_products_slider_n6WWUr": {
       "type": "related-products-slider",
       "name": "Related products",
       "settings": {
         "source": "manual",
         "product_list": [
-          "birthstone-cross-charm-necklace",
-          "charm-cross-necklace",
-          "double-cross-necklace",
-          "pastel-oval-cross-necklace",
-          "virgin-mary-cross-bracelet"
+          "forever-knot-bracelet",
+          "to-the-best-mom-engraved-necklace",
+          "sons-shield-tiger-eye-protection-bracelet",
+          "to-my-husband-personalized-bracelet",
+          "crown-cross-faith-necklace",
+          "infinity-bond-name-bracelet"
         ],
         "collection": "",
         "fallback_collection": "",
@@ -927,7 +962,7 @@
             "sold_out_label": "Sold out",
             "discount_label": "SAVE [percent]%",
             "accent_color": "#000000",
-            "bar_background": "#FFFFFF",
+            "bar_background": "#ffffff",
             "text_color": "#343434",
             "desktop_width_percent": 100
           },
@@ -947,6 +982,7 @@
     "related-products",
     "ugc_marquee_dxxyaw",
     "image_with_text_eCRMfk",
+    "blocks_kMTr8n",
     "related_products_slider_n6WWUr",
     "17341290603fa2426b",
     "blocks_p48wQY"
