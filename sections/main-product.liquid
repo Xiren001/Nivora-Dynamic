@@ -364,9 +364,20 @@
                   assign qp_accent = '#A8864F'
                   assign qp_radius = 8
                   assign qp_step = 0
+                  assign qp_layout = block.settings.layout | default: 'compact'
+                  assign qp_seen_self = false
+                  assign qp_has_buy_after = false
                   for qp_block in section.blocks
                     if qp_block.id == block.id
-                      break
+                      assign qp_seen_self = true
+                      continue
+                    endif
+                    if qp_seen_self
+                      if qp_block.type == 'buy_buttons'
+                        assign qp_has_buy_after = true
+                        break
+                      endif
+                      continue
                     endif
                     if qp_block.type == 'variant_picker'
                       assign qp_accent = qp_block.settings.image_style_accent_color | default: '#A8864F'
@@ -380,11 +391,16 @@
                       endif
                     endif
                   endfor
+                  # "Beside button" needs an Add to cart block after this one, otherwise fall back to compact
+                  if qp_layout == 'beside_button' and qp_has_buy_after == false
+                    assign qp_layout = 'compact'
+                  endif
                 -%}
                 {{ 'component-quantity-picker.css' | asset_url | stylesheet_tag }}
+                {%- capture qp_markup -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
-                  class="product-form__input product-form__quantity quantity-picker{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
+                  class="product-form__input product-form__quantity quantity-picker quantity-picker--{{ qp_layout }}{% if block.settings.show_label == false %} quantity-picker--no-label{% endif %}{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
                   style="--qp-accent: {{ qp_accent }}; --qp-radius: {{ qp_radius }}px;"
                   {{ block.shopify_attributes }}
                 >
@@ -598,6 +614,15 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
+                {%- endcapture -%}
+                {%- liquid
+                  if qp_layout == 'beside_button'
+                    # Rendered inside the Add to cart row by the buy_buttons block
+                    assign qp_inline_markup = qp_markup
+                  else
+                    echo qp_markup
+                  endif
+                -%}
               {%- when 'popup' -%}
                 <modal-opener
                   class="product-popup-modal__opener quick-add-hidden"
@@ -627,7 +652,8 @@
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
-                  show_pickup_availability: true
+                  show_pickup_availability: true,
+                  quantity_markup: qp_inline_markup
                 -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
@@ -1691,7 +1717,28 @@
     {
       "type": "quantity_selector",
       "name": "t:sections.main-product.blocks.quantity_selector.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Layout",
+          "options": [
+            { "value": "compact", "label": "Compact" },
+            { "value": "full_width", "label": "Full width" },
+            { "value": "beside_button", "label": "Beside Add to cart button" }
+          ],
+          "default": "compact",
+          "info": "\"Beside Add to cart button\" needs the Buy buttons block to come after this block."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_label",
+          "label": "Show label",
+          "default": true,
+          "visible_if": "{{ block.settings.layout != 'beside_button' }}"
+        }
+      ]
     },
     {
       "type": "variant_picker",

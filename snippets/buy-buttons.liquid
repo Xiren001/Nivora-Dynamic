@@ -74,6 +74,10 @@
               assign add_to_cart_label = block.settings.add_to_cart_label
             endif
           -%}
+          {%- if quantity_markup != blank -%}
+            <div class="product-form__buttons-row">
+              {{ quantity_markup }}
+          {%- endif -%}
           <button
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
@@ -104,6 +108,9 @@
             {%- endif -%}
             {%- render 'loading-spinner' -%}
           </button>
+          {%- if quantity_markup != blank -%}
+            </div>
+          {%- endif -%}
           {%- if show_dynamic_checkout -%}
             {{ form | payment_button }}
           {%- endif -%}

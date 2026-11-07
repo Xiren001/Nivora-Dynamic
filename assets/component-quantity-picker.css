@@ -151,3 +151,72 @@
 .product--no-media .quantity-picker .quantity__label.form__label {
   justify-content: center;
 }
+
+/* Layout: hidden label (kept for screen readers) */
+.quantity-picker--no-label .quantity__label.form__label,
+.quantity-picker--beside_button .quantity__label.form__label {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Layout: full width (same max width as the Add to cart button) */
+.quantity-picker--full_width,
+.quantity-picker--full_width .price-per-item__container {
+  width: 100%;
+  max-width: 44rem;
+}
+
+.quantity-picker--full_width .quantity {
+  width: 100%;
+}
+
+.quantity-picker--full_width .quantity__input {
+  flex-grow: 1;
+}
+
+/* Layout: beside the Add to cart button */
+.product-form__buttons-row {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-form__buttons-row .quantity-picker--beside_button {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.product-form__buttons-row .quantity-picker--beside_button .price-per-item__container {
+  height: 100%;
+}
+
+.product-form__buttons-row .quantity-picker--beside_button .quantity {
+  width: 13.6rem;
+  height: 100%;
+  min-height: 4.6rem;
+}
+
+.product-form__buttons-row .product-form__submit {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .product-form__buttons-row .quantity-picker--beside_button .quantity {
+    width: 12rem;
+  }
+
+  .product-form__buttons-row .quantity-picker--beside_button .quantity__button {
+    width: 3rem;
+    height: 3rem;
+  }
+}
