@@ -153,6 +153,13 @@
             "image_override_8_value": ""
           }
         },
+        "quantity_selector_cXGEpG": {
+          "type": "quantity_selector",
+          "settings": {
+            "layout": "beside_button",
+            "show_label": true
+          }
+        },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
@@ -184,8 +191,9 @@
           "type": "description",
           "settings": {
             "custom_description": "<h2><em>EVERY YEAR YOU PROMISE THIS CHRISTMAS WILL FEEL MAGICAL… AND EVERY YEAR THERE'S JUST NO TIME.</em></h2><p>The lights get tangled. The ladder stays in the garage. The walls stay bare.</p><p>But the magic was never about hours of decorating. It's about the moment the room changes and everyone looks up.</p><p>Plug it in, switch it on, and watch a festive Christmas scene spread across your walls and ceiling.</p><p>Family movie nights, gift opening, holiday photos, quiet evenings when the house finally <em>feels</em> like Christmas.</p><p>No ladders, no strings of lights across the room. Just one compact light on a table or shelf.</p><p>USB-powered holiday projection night light, about 11 cm (4.3 in) tall. Fills a room from 1.6–9.8 ft away. A Christmas gift that creates an experience, not just another decoration.</p>",
+            "media_1_image": "shopify://shop_images/imgi_135_5c15d4767e6ba5cf2751f6c77f90f0cb62cd2793-1600.png",
             "media_1_video_url": "",
-            "media_1_position": 5,
+            "media_1_position": 12,
             "media_2_video_url": "",
             "media_2_position": 2,
             "media_3_video_url": "",
@@ -201,6 +209,7 @@
         "custom_liquid_RTfLHt",
         "trust_badges_gXiPHp",
         "variant_picker",
+        "quantity_selector_cXGEpG",
         "buy_buttons_KqEWkh",
         "collapsible_tab_8ncE3A",
         "collapsible_tab_ChtBDy",
@@ -342,6 +351,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/1_0dc9e6db-87e4-41ae-94b0-06294935c8a9.png",
+            "mobile_image": "shopify://shop_images/1_0dc9e6db-87e4-41ae-94b0-06294935c8a9.png",
             "eyebrow": "One light, a whole room of Christmas",
             "heading": "Don't Just Decorate the Room. Transform It.",
             "body": "<p>Imagine their faces when the walls and ceiling light up with Christmas. It's more than a night light, it's a holiday moment the whole family will remember.</p>",
