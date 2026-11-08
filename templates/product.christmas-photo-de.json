@@ -128,6 +128,24 @@
             "label_font_size": 12
           }
         },
+        "quantity_selector_D64PgV": {
+          "type": "quantity_selector",
+          "settings": {
+            "layout": "beside_button",
+            "show_label": true
+          }
+        },
+        "portrait_personalizer_personalizer_KG8gAU": {
+          "type": "shopify://apps/portrait-personalizer/blocks/personalizer/01a1b4f4-7987-71aa-9c11-55882a24ee49",
+          "settings": {
+            "required": true,
+            "accent": "#0aa6c2",
+            "good_example": "shopify://shop_images/imgi_2_photo-upload-guidelines_-_Copy.jpg",
+            "bad_example": "shopify://shop_images/imgi_2_photo-upload-guidelines_1db8ec3c-4cfc-4ea5-9ba0-0f8c103003a5.jpg",
+            "replace_gallery": true,
+            "gallery_selector": ".product__media-wrapper"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -185,7 +203,7 @@
           "settings": {
             "custom_description": "<h2><em>JEDES WEIHNACHTEN VERSAMMELN SICH DIE GLEICHEN GESICHTER UM DEN BAUM… BIS IN EINEM JAHR EIN STUHL LEER BLEIBT.</em></h2><p>Die Jahre vergehen schneller, als wir je erwarten.</p><p>Kinder werden groß, Zuhause verändern sich, und die Menschen, die wir lieben, können nicht immer im Dezember bei uns sein.</p><p>Doch manche Momente verdienen es, jedes Jahr aufs Neue zurückzukehren.</p><p>Wenn es Ihnen schwerfällt, in Worte zu fassen, wie viel sie Ihnen bedeuten, lassen Sie dieses Geschenk für Sie sprechen.</p><p>Dieser Ornament-Anhänger bewahrt das Foto der Menschen, des Tages oder der Erinnerung, die Sie niemals verlieren möchten.</p><p>Personalisiert mit Ihrem eigenen Foto. Ein Andenken, das jedes Weihnachten aus der Schachtel geholt wird und seinen Platz am Baum einnimmt, genau dort, wo es hingehört.</p>",
             "media_1_video_url": "",
-            "media_1_position": 5,
+            "media_1_position": 9,
             "media_2_video_url": "",
             "media_2_position": 2,
             "media_3_video_url": "",
@@ -200,6 +218,8 @@
         "price",
         "custom_liquid_RTfLHt",
         "trust_badges_gXiPHp",
+        "quantity_selector_D64PgV",
+        "portrait_personalizer_personalizer_KG8gAU",
         "variant_picker",
         "buy_buttons_KqEWkh",
         "collapsible_tab_8ncE3A",
@@ -342,6 +362,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_d5gfxjd5gfxjd5gf.jpg",
+            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_d5gfxjd5gfxjd5gf.jpg",
             "eyebrow": "Gemacht, um jedes Jahr zurückzukehren",
             "heading": "Ihre schönste Erinnerung, zu Weihnachten zu Hause",
             "body": "<p>Stellen Sie sich ihr Gesicht vor, wenn sie ihr Lieblingsfoto als Weihnachtsschmuck auspacken. Es ist mehr als eine Dekoration – es ist eine Erinnerung, die sie jedes Weihnachten an den Baum hängen werden.</p>",

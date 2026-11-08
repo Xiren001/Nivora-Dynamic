@@ -104,6 +104,10 @@
             "emptyRatingWidget": false
           }
         },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
         "icon_with_text_RtEwBz": {
           "type": "icon-with-text",
           "settings": {
@@ -113,20 +117,35 @@
             "heading_1": "Cuero de alta calidad",
             "icon_2": "return",
             "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Regalo único y conmovedor",
+            "heading_2": "&nbsp;Inoxidable y sin níquel&nbsp;",
             "icon_3": "truck",
-            "heading_3": ""
+            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
+            "heading_3": "Regalo único y conmovedor&nbsp;"
           }
-        },
-        "price": {
-          "type": "price",
-          "settings": {}
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
+            "picker_type": "dropdown",
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": false,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "quantity_selector": {
@@ -138,7 +157,9 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
         "icon_with_text_CwzWQr": {
@@ -156,11 +177,10 @@
         },
         "collapsible_tab_Y4BabJ": {
           "type": "collapsible_tab",
-          "disabled": true,
           "settings": {
-            "heading": "Tamaño",
+            "heading": "Descripción",
             "icon": "none",
-            "content": "<p>Nuestra pulsera mide 21 cm de largo, lo que la hace ideal para la mayoría de tamaños de muñeca.</p><p>Para tallas personalizadas, por favor contáctanos aquí: <strong>support@nivora.co.za</strong></p>",
+            "content": "<p>Un regalo lleno de significado, creado para recordarle a tu hijo que nunca está solo. Esta pulsera de cuero trenzado combina un estilo atemporal con una calidad duradera, elaborada en auténtica piel de vaca y con un resistente cierre de acero inoxidable. Presentada en una elegante caja de regalo, es una pieza lista para regalar que lleva amor, fuerza y unión allá donde vaya.</p>",
             "page": ""
           }
         },
@@ -168,7 +188,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Envío",
-            "icon": "truck",
+            "icon": "none",
             "content": "<p>Nuestros tiempos de envío suelen dividirse en dos partes:<br/><br/>Tiempo de preparación: incluye la producción, la verificación del pedido, la personalización del producto, el control de calidad y el empaquetado. Debido al gran volumen de pedidos, actualmente supone entre 2 y 4 días laborables.<br/><br/>Una vez enviado tu pedido, suele llegar en un plazo de 6 a 12 días laborables.<br/><br/>Recibirás un número de seguimiento por correo electrónico en cuanto se envíe tu pedido.</p>",
             "page": ""
           }
@@ -177,7 +197,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Devolución",
-            "icon": "return",
+            "icon": "none",
             "content": "<p>Esperamos que disfrutes de tu nueva pulsera, pero si algo no acaba de convencerte, estamos aquí para ayudarte. Si quieres cambiar tu pedido por otro artículo o recibir un reembolso, puedes devolverlo fácilmente en un plazo de <strong>30 días</strong> desde la entrega.<br/><br/>Esperamos que comprendas que las joyas personalizadas no admiten devolución, salvo que exista un defecto de fabricación. Si es tu caso, ponte en contacto con nuestro amable equipo de atención al cliente, que te ayudará lo antes posible.</p>",
             "page": ""
           }
@@ -186,8 +206,8 @@
       "block_order": [
         "title",
         "loox_reviews_loox_rating_kcfPge",
-        "icon_with_text_RtEwBz",
         "price",
+        "icon_with_text_RtEwBz",
         "variant_picker",
         "quantity_selector",
         "buy_buttons_KqEWkh",
@@ -211,6 +231,40 @@
         "constrain_to_viewport": true,
         "media_fit": "cover",
         "gallery_layout": "stacked",
+        "thumbnail_left_gap": 24,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
         "mobile_thumbnails": "hide",
@@ -248,14 +302,20 @@
             "heading": "<strong>Un símbolo tangible de amor y apoyo</strong>",
             "heading_size": "h1",
             "dynamic_sale_banner": false,
-            "banner_language": ""
+            "banner_language": "",
+            "heading_color": "",
+            "heading_weight": "default",
+            "letter_spacing": 0,
+            "heading_uppercase": false
           }
         },
         "text_bXNFJ7": {
           "type": "text",
           "settings": {
             "text": "<p>Es su recordatorio diario de tu amor y apoyo infinitos, rodeándole la muñeca.<br/><br/>Regálale algo que lo dice todo sin necesidad de decir una sola palabra. Una forma sutil pero poderosa de decir: «Te quiero, estoy orgulloso/a de ti y siempre estaré aquí».</p>",
-            "text_style": "body"
+            "text_style": "body",
+            "body_size": "default",
+            "text_color": ""
           }
         },
         "button_zykxmQ": {
@@ -263,7 +323,13 @@
           "settings": {
             "button_label": "Comprar ahora",
             "button_link": "https://thenivora.es/products/para-mi-hijo-pulsera-grabada-es",
-            "button_style_secondary": false
+            "button_style_secondary": false,
+            "button_variant": "button",
+            "button_size": "default",
+            "button_full_width": false,
+            "new_tab": false,
+            "button_bg": "",
+            "button_text": ""
           }
         }
       },
@@ -272,6 +338,7 @@
         "text_bXNFJ7",
         "button_zykxmQ"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/REC-20241220194113-ezgif.com-video-to-gif-converter.webp",
         "height": "adapt",
@@ -284,6 +351,17 @@
         "color_scheme": "scheme-2",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
+        "image_fit": "cover",
+        "image_radius": 0,
+        "image_link": "",
+        "full_width": false,
+        "mobile_layout": "image_first",
+        "grid_gap": 0,
+        "content_padding": "default",
+        "content_max_width": 0,
+        "block_spacing": 20,
+        "content_bg": "",
+        "text_color": "",
         "padding_top": 36,
         "padding_bottom": 4
       }

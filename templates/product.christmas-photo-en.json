@@ -153,6 +153,24 @@
             "image_override_8_value": ""
           }
         },
+        "portrait_personalizer_personalizer_FpJAnq": {
+          "type": "shopify://apps/portrait-personalizer/blocks/personalizer/01a1b4f4-7987-71aa-9c11-55882a24ee49",
+          "settings": {
+            "required": true,
+            "accent": "#0aa6c2",
+            "good_example": "shopify://shop_images/imgi_2_photo-upload-guidelines_-_Copy.jpg",
+            "bad_example": "shopify://shop_images/imgi_2_photo-upload-guidelines_1db8ec3c-4cfc-4ea5-9ba0-0f8c103003a5.jpg",
+            "replace_gallery": true,
+            "gallery_selector": ".product__media-wrapper"
+          }
+        },
+        "quantity_selector_HdFJhz": {
+          "type": "quantity_selector",
+          "settings": {
+            "layout": "beside_button",
+            "show_label": true
+          }
+        },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
@@ -185,7 +203,7 @@
           "settings": {
             "custom_description": "<h2><em>EVERY CHRISTMAS, THE SAME FACES GATHER AROUND THE TREE… UNTIL ONE YEAR, SOMEONE'S CHAIR IS EMPTY.</em></h2><p>The years move faster than we ever expect.</p><p>Kids grow up, homes change, and the people we love can't always be there in December.</p><p>But some moments deserve to come back every single year.</p><p>If it's hard to put into words how much they mean to you, let this say it for you.</p><p>This ornament holds the photo of the people, the day or the memory you never want to lose.</p><p>Personalized with your own photo. A keepsake that comes out of the box every Christmas and takes its place on the tree, right where it belongs.</p>",
             "media_1_video_url": "",
-            "media_1_position": 5,
+            "media_1_position": 8,
             "media_2_video_url": "",
             "media_2_position": 2,
             "media_3_video_url": "",
@@ -201,6 +219,8 @@
         "custom_liquid_RTfLHt",
         "trust_badges_gXiPHp",
         "variant_picker",
+        "portrait_personalizer_personalizer_FpJAnq",
+        "quantity_selector_HdFJhz",
         "buy_buttons_KqEWkh",
         "collapsible_tab_8ncE3A",
         "collapsible_tab_ChtBDy",
@@ -342,6 +362,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_d5gfxjd5gfxjd5gf.jpg",
+            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_d5gfxjd5gfxjd5gf.jpg",
             "eyebrow": "Made to bring back every year",
             "heading": "Your Favorite Memory, Home for Christmas",
             "body": "<p>Imagine their face when they unwrap their favorite photo turned into an ornament. It's more than a decoration, it's a memory they'll hang on the tree every Christmas.</p>",
@@ -349,8 +371,8 @@
             "button_link": "",
             "desktop_width_percent": 100,
             "image_side": "left",
-            "image_position": "center center",
-            "image_height": 680,
+            "image_position": "center top",
+            "image_height": 600,
             "mobile_aspect_ratio": "1 / 1",
             "text_alignment": "center",
             "background_color": "#ffffff",

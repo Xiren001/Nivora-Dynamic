@@ -82,14 +82,6 @@
         "bg_color": ""
       }
     },
-    "178334961515e74470": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "17833507668ed9208a": {
-      "type": "_blocks",
-      "settings": {}
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -452,8 +444,6 @@
   },
   "order": [
     "ss_payment_icons_9hc3pf",
-    "178334961515e74470",
-    "17833507668ed9208a",
     "main",
     "related-products",
     "image_with_text_eCRMfk",
