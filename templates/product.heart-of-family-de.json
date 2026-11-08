@@ -138,7 +138,7 @@
             "image_style_border_radius": 8,
             "image_style_columns": "2",
             "image_style_columns_step_1": "default",
-            "image_style_columns_step_2": "3",
+            "image_style_columns_step_2": "default",
             "image_style_columns_step_3": "default",
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
@@ -152,11 +152,11 @@
             "image_override_4_value": "Silber",
             "image_override_4_image": "shopify://shop_images/Nivora_6_0372b567-3c49-428c-b700-6a4598582a8f.png",
             "image_override_5_value": "Weiße Standardbox",
-            "image_override_6_value": "Luxus-LED-Box",
-            "image_override_7_value": "",
-            "image_override_8_value": "",
             "image_override_5_image": "shopify://shop_images/gf.avif",
-            "image_override_6_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp"
+            "image_override_6_value": "Luxus-LED-Box",
+            "image_override_6_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "buy_buttons_KqEWkh": {

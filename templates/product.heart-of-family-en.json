@@ -138,7 +138,7 @@
             "image_style_border_radius": 8,
             "image_style_columns": "2",
             "image_style_columns_step_1": "default",
-            "image_style_columns_step_2": "3",
+            "image_style_columns_step_2": "default",
             "image_style_columns_step_3": "default",
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
