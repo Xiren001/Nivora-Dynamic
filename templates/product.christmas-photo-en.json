@@ -117,14 +117,14 @@
         "trust_badges_gXiPHp": {
           "type": "trust_badges",
           "settings": {
-            "badge_1_icon": "leaf",
-            "badge_1_label": "Skin Safe",
-            "badge_2_icon": "heart",
-            "badge_2_label": "Heartfelt Gift",
+            "badge_1_icon": "heart",
+            "badge_1_label": "Personalized With Your Photo",
+            "badge_2_icon": "star",
+            "badge_2_label": "Treasured Keepsake",
             "badge_3_icon": "guarantee",
             "badge_3_label": "Money-Back Guarantee",
-            "badge_4_icon": "diamond",
-            "badge_4_label": "Handcrafted Design",
+            "badge_4_icon": "gift",
+            "badge_4_label": "Gift-Ready",
             "label_font_size": 12
           }
         },
