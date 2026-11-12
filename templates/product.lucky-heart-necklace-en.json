@@ -195,6 +195,15 @@
             "media_3_position": 3,
             "media_autoplay": true
           }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Design:</strong> Four hearts that click together into a four-leaf clover</li><li><strong>Chain:</strong> 16\" plus a 2\" extender</li><li><strong>Material:</strong> Hypoallergenic, tarnish-free and water-safe</li><li><strong>Colors:</strong> Silver, gold or rose gold</li></ul>",
+            "page": ""
+          }
         }
       },
       "block_order": [
@@ -205,6 +214,7 @@
         "trust_badges_gXiPHp",
         "variant_picker",
         "buy_buttons_KqEWkh",
+        "collapsible_tab_matsz1",
         "collapsible_tab_8ncE3A",
         "collapsible_tab_ChtBDy",
         "description_fkQwXV"

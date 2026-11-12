@@ -192,6 +192,15 @@
             "media_3_position": 3,
             "media_autoplay": true
           }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> 14K gold-plated alloy</li><li><strong>Design:</strong> Silhouette of a man or woman embracing a dog or cat</li><li><strong>Chain:</strong> Adjustable length</li></ul>",
+            "page": ""
+          }
         }
       },
       "block_order": [
@@ -202,6 +211,7 @@
         "trust_badges_gXiPHp",
         "variant_picker",
         "buy_buttons_KqEWkh",
+        "collapsible_tab_matsz1",
         "collapsible_tab_8ncE3A",
         "collapsible_tab_ChtBDy",
         "description_fkQwXV"

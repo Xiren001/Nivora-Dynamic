@@ -192,6 +192,15 @@
             "media_3_position": 3,
             "media_autoplay": true
           }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> 14K white gold or 18K yellow gold over stainless steel</li><li><strong>Stone:</strong> 6mm round-cut cubic zirconia</li><li><strong>Pendant:</strong> 15.7mm high, 6mm wide</li><li><strong>Chain:</strong> Adjustable 18–22\" (45.7–55.9 cm), lobster clasp</li><li><strong>Includes:</strong> Keepsake message card, soft-touch box or LED mahogany box</li></ul>",
+            "page": ""
+          }
         }
       },
       "block_order": [
@@ -202,6 +211,7 @@
         "trust_badges_gXiPHp",
         "variant_picker",
         "buy_buttons_KqEWkh",
+        "collapsible_tab_matsz1",
         "collapsible_tab_8ncE3A",
         "collapsible_tab_ChtBDy",
         "description_fkQwXV"
