@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Perlen:</strong> Ebenholz, 10 mm</li><li><strong>Medaille:</strong> St.-Benedikt-Medaille mit der vollständigen lateinischen Inschrift</li><li><strong>Anhänger:</strong> Kruzifix</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Material & Größe",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Perlen:</strong> Ebenholz, 10 mm</li><li><strong>Medaille:</strong> St.-Benedikt-Medaille mit der vollständigen lateinischen Inschrift</li><li><strong>Anhänger:</strong> Kruzifix</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_flyto6flyto6flyt.jpg",
+            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_flyto6flyto6flyt.jpg",
             "eyebrow": "Ein Gebet zum Festhalten",
             "heading": "Glaube, der sie überallhin begleitet",
             "body": "<p>Natürliche Holzperlen, die St.-Benedikt-Medaille mit ihrem jahrhundertealten lateinischen Segen und ein Kruzifix mit Christus, gemacht für jeden Tag. Tragen Sie es als Erinnerung, Ihre Familie in Ihre Gebete einzuschließen, oder schenken Sie es einem geliebten Menschen, damit er diesen Segen immer bei sich trägt.</p>",

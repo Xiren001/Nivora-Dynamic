@@ -85,6 +85,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "quantity_selector_rPYY6k": {
+          "type": "quantity_selector",
+          "settings": {
+            "layout": "beside_button",
+            "show_label": true
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -162,6 +169,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiales y medidas",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Dijes:</strong> Medalla Milagrosa y una cruz dorada</li><li><strong>Cadena:</strong> 50 cm (20\")</li><li><strong>Incluye:</strong> Estuche para joyería</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -192,18 +208,10 @@
             "media_3_position": 3,
             "media_autoplay": true
           }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materiales y medidas",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Dijes:</strong> Medalla Milagrosa y una cruz dorada</li><li><strong>Cadena:</strong> 50 cm (20\")</li><li><strong>Incluye:</strong> Estuche para joyería</li></ul>",
-            "page": ""
-          }
         }
       },
       "block_order": [
+        "quantity_selector_rPYY6k",
         "title",
         "loox_reviews_loox_rating_rpp9ad",
         "price",
@@ -352,6 +360,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_qb6fdhqb6fdhqb6f.jpg",
+            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_qb6fdhqb6fdhqb6f.jpg",
             "eyebrow": "Cerca del corazón",
             "heading": "Protección a donde vayas",
             "body": "<p>La Medalla Milagrosa y una cruz dorada, juntas en una cadena de 50 cm para llevarlas todos los días. Llega en un estuche para joyería, lista para regalar a alguien para quien su fe lo es todo.</p>",

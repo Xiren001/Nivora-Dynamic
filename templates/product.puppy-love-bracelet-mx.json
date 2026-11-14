@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiales y medidas",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Base de acero inoxidable, con baño de oro de 18K, plata u oro rosa</li><li><strong>Piedras:</strong> Zirconias, en una pulsera mitad cristales, mitad cadena</li><li><strong>Dije:</strong> En forma de hueso, grabado con el nombre de tu mascota (máx. 10 caracteres)</li><li><strong>Tamaño:</strong> Largo ajustable con extensión</li><li><strong>Acabado:</strong> Resistente al agua y no pierde su brillo</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materiales y medidas",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Base de acero inoxidable, con baño de oro de 18K, plata u oro rosa</li><li><strong>Piedras:</strong> Zirconias, en una pulsera mitad cristales, mitad cadena</li><li><strong>Dije:</strong> En forma de hueso, grabado con el nombre de tu mascota (máx. 10 caracteres)</li><li><strong>Tamaño:</strong> Largo ajustable con extensión</li><li><strong>Acabado:</strong> Resistente al agua y no pierde su brillo</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
+            "mobile_image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
             "eyebrow": "Para cada mamá perruna",
             "heading": "Su nombre, siempre contigo",
             "body": "<p>Una delicada pulsera con un dije de huesito grabado con el nombre de tu mejor amigo, en oro, plata u oro rosa. Está hecha para usarse todos los días, para que te acompañe a donde vayas.</p>",

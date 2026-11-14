@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Edelstahl, mit 18K Gold, Silber oder Roségold überzogen</li><li><strong>Steine:</strong> Zirkonia, auf einem Band halb aus Kristallen, halb aus Kette</li><li><strong>Anhänger:</strong> In Knochenform, graviert mit dem Namen Ihres Haustiers (max. 10 Zeichen)</li><li><strong>Größe:</strong> Verstellbare Länge mit Verlängerungskette</li><li><strong>Oberfläche:</strong> Wasserfest und anlaufbeständig</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Material & Größe",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Edelstahl, mit 18K Gold, Silber oder Roségold überzogen</li><li><strong>Steine:</strong> Zirkonia, auf einem Band halb aus Kristallen, halb aus Kette</li><li><strong>Anhänger:</strong> In Knochenform, graviert mit dem Namen Ihres Haustiers (max. 10 Zeichen)</li><li><strong>Größe:</strong> Verstellbare Länge mit Verlängerungskette</li><li><strong>Oberfläche:</strong> Wasserfest und anlaufbeständig</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
+            "mobile_image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
             "eyebrow": "Für jede Hundemama",
             "heading": "Sein Name, immer bei Ihnen",
             "body": "<p>Ein zartes Armband mit einem Knochen-Anhänger, graviert mit dem Namen Ihres besten Freundes, in Gold, Silber oder Roségold. Gemacht für jeden Tag, damit er Sie überallhin begleitet.</p>",

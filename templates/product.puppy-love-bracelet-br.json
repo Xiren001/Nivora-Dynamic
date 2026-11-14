@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiais e Tamanho",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Base de aço inoxidável, banhada a ouro 18K, prata ou ouro rosé</li><li><strong>Pedras:</strong> Zircônias, em uma pulseira metade cristais, metade corrente</li><li><strong>Pingente:</strong> Em formato de osso, gravado com o nome do seu pet (máx. 10 caracteres)</li><li><strong>Tamanho:</strong> Comprimento ajustável com extensor</li><li><strong>Acabamento:</strong> À prova d’água e não escurece</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materiais e Tamanho",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Base de aço inoxidável, banhada a ouro 18K, prata ou ouro rosé</li><li><strong>Pedras:</strong> Zircônias, em uma pulseira metade cristais, metade corrente</li><li><strong>Pingente:</strong> Em formato de osso, gravado com o nome do seu pet (máx. 10 caracteres)</li><li><strong>Tamanho:</strong> Comprimento ajustável com extensor</li><li><strong>Acabamento:</strong> À prova d’água e não escurece</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
+            "mobile_image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
             "eyebrow": "Para toda mãe de pet",
             "heading": "O nome dele, sempre com você",
             "body": "<p>Uma pulseira delicada com um pingente de ossinho gravado com o nome do seu melhor amigo, em ouro, prata ou ouro rosé. Feita para usar todos os dias, para que ele esteja com você aonde quer que vá.</p>",

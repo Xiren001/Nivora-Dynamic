@@ -144,9 +144,13 @@
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
             "image_override_1_value": "18K White Gold Finish",
+            "image_override_1_image": "shopify://shop_images/Gemini_Generated_Image_yn1z9dyn1z9dyn1z.jpg",
             "image_override_2_value": "18K Yellow Gold Finish",
+            "image_override_2_image": "shopify://shop_images/Gemini_Generated_Image_d32h2rd32h2rd32h.jpg",
             "image_override_3_value": "Wooden Gift Box",
+            "image_override_3_image": "shopify://shop_images/gf.avif",
             "image_override_4_value": "Luxury Mahogany Box (w/LED)",
+            "image_override_4_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
@@ -160,6 +164,15 @@
             "show_gift_card_recipient": true,
             "elegant_button": true,
             "add_to_cart_label": ""
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> 925er Silber mit 18K-Vergoldung</li><li><strong>Design:</strong> Unendlichkeitsherzen, rundum mit Zirkonia besetzt</li><li><strong>Anhänger:</strong> 14 mm lang, 7 mm breit</li><li><strong>Kette:</strong> 15 cm (6\") plus 5 cm (2\") Verlängerung</li><li><strong>Oberfläche:</strong> Wasserfest</li><li><strong>Inklusive:</strong> Personalisierte Geschenkkarte, Garantiekarte (1 Jahr), Holzbox (oder LED-Mahagonibox)</li></ul>",
+            "page": ""
           }
         },
         "collapsible_tab_8ncE3A": {
@@ -191,15 +204,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Material & Größe",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> 925er Silber mit 18K-Vergoldung</li><li><strong>Design:</strong> Unendlichkeitsherzen, rundum mit Zirkonia besetzt</li><li><strong>Anhänger:</strong> 14 mm lang, 7 mm breit</li><li><strong>Kette:</strong> 15 cm (6\") plus 5 cm (2\") Verlängerung</li><li><strong>Oberfläche:</strong> Wasserfest</li><li><strong>Inklusive:</strong> Personalisierte Geschenkkarte, Garantiekarte (1 Jahr), Holzbox (oder LED-Mahagonibox)</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +356,7 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_5ak0sx5ak0sx5ak0.jpg",
             "eyebrow": "Von Mama, mit all meiner Liebe",
             "heading": "Eine Umarmung zum Tragen",
             "body": "<p>Ineinander verschlungene Unendlichkeitsherzen mit funkelnden Steinen, mit 18K-Weißgold- oder Gelbgold-Finish. Dazu gibt es eine herzliche Botschaftskarte von Mama, in einer Geschenkbox aus Holz oder einer Mahagonibox mit LED-Licht.</p>",

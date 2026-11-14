@@ -144,9 +144,13 @@
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
             "image_override_1_value": "18K White Gold Finish",
+            "image_override_1_image": "shopify://shop_images/Gemini_Generated_Image_yn1z9dyn1z9dyn1z.jpg",
             "image_override_2_value": "18K Yellow Gold Finish",
+            "image_override_2_image": "shopify://shop_images/Gemini_Generated_Image_d32h2rd32h2rd32h.jpg",
             "image_override_3_value": "Wooden Gift Box",
+            "image_override_3_image": "shopify://shop_images/gf.avif",
             "image_override_4_value": "Luxury Mahogany Box (w/LED)",
+            "image_override_4_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
@@ -160,6 +164,15 @@
             "show_gift_card_recipient": true,
             "elegant_button": true,
             "add_to_cart_label": ""
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiales y medidas",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Plata 925 con baño de oro de 18K</li><li><strong>Diseño:</strong> Corazones infinitos rodeados de zirconias</li><li><strong>Dije:</strong> 14 mm de largo, 7 mm de ancho</li><li><strong>Cadena:</strong> 15 cm (6\") más 5 cm (2\") de extensión</li><li><strong>Acabado:</strong> Resistente al agua</li><li><strong>Incluye:</strong> Tarjeta de regalo personalizada, tarjeta de garantía de 1 año, caja de madera (o caja de caoba con LED)</li></ul>",
+            "page": ""
           }
         },
         "collapsible_tab_8ncE3A": {
@@ -191,15 +204,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materiales y medidas",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Plata 925 con baño de oro de 18K</li><li><strong>Diseño:</strong> Corazones infinitos rodeados de zirconias</li><li><strong>Dije:</strong> 14 mm de largo, 7 mm de ancho</li><li><strong>Cadena:</strong> 15 cm (6\") más 5 cm (2\") de extensión</li><li><strong>Acabado:</strong> Resistente al agua</li><li><strong>Incluye:</strong> Tarjeta de regalo personalizada, tarjeta de garantía de 1 año, caja de madera (o caja de caoba con LED)</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +356,7 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_5ak0sx5ak0sx5ak0.jpg",
             "eyebrow": "De mamá, con todo mi amor",
             "heading": "Un abrazo que puede llevar puesto",
             "body": "<p>Corazones infinitos entrelazados con piedras brillantes, con acabado en oro blanco u oro amarillo de 18K. Incluye una tierna tarjeta con mensaje de mamá, en una caja de regalo de madera o en una caja de caoba con luz LED.</p>",

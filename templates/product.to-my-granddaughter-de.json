@@ -144,9 +144,13 @@
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
             "image_override_1_value": "14K White Gold",
+            "image_override_1_image": "shopify://shop_images/Gemini_Generated_Image_6ux6x56ux6x56ux6.jpg",
             "image_override_2_value": "18k Yellow Gold",
+            "image_override_2_image": "shopify://shop_images/3e2ff5f3-9dc6-44ad-b0ea-e4548adbbd87.webp",
             "image_override_3_value": "Standard Box",
+            "image_override_3_image": "shopify://shop_images/gf.avif",
             "image_override_4_value": "Premium Mahogany LED Box",
+            "image_override_4_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
@@ -160,6 +164,15 @@
             "show_gift_card_recipient": true,
             "elegant_button": true,
             "add_to_cart_label": ""
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> 14K Weißgold oder 18K Gelbgold auf Edelstahl</li><li><strong>Stein:</strong> Rund geschliffener Zirkonia, 6 mm</li><li><strong>Anhänger:</strong> 15,7 mm hoch, 6 mm breit</li><li><strong>Kette:</strong> Verstellbar 45,7–55,9 cm (18–22\"), Karabinerverschluss</li><li><strong>Inklusive:</strong> Erinnerungskarte mit Botschaft, Soft-Touch-Box oder LED-Mahagonibox</li></ul>",
+            "page": ""
           }
         },
         "collapsible_tab_8ncE3A": {
@@ -191,15 +204,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Material & Größe",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> 14K Weißgold oder 18K Gelbgold auf Edelstahl</li><li><strong>Stein:</strong> Rund geschliffener Zirkonia, 6 mm</li><li><strong>Anhänger:</strong> 15,7 mm hoch, 6 mm breit</li><li><strong>Kette:</strong> Verstellbar 45,7–55,9 cm (18–22\"), Karabinerverschluss</li><li><strong>Inklusive:</strong> Erinnerungskarte mit Botschaft, Soft-Touch-Box oder LED-Mahagonibox</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +356,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Granddaughter_s_Heartfelt_Jewelry_Gift.png",
+            "mobile_image": "shopify://shop_images/Granddaughter_s_Heartfelt_Jewelry_Gift.png",
             "eyebrow": "Von Opa, in Liebe",
             "heading": "Ein Versprechen zum Tragen",
             "body": "<p>Ein offener Herzanhänger mit einem einzelnen funkelnden Stein, mit 14K-Weißgold- oder 18K-Gelbgold-Finish. Geliefert mit einer herzlichen Erinnerungskarte von Opa, in einer Standard-Geschenkbox oder einer Mahagonibox mit LED-Licht.</p>",

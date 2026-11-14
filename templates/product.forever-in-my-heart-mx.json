@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiales y medidas",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Aleación bañada en oro de 14K</li><li><strong>Diseño:</strong> Silueta de un hombre o una mujer abrazando a un perro o un gato</li><li><strong>Cadena:</strong> Largo ajustable</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materiales y medidas",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Aleación bañada en oro de 14K</li><li><strong>Diseño:</strong> Silueta de un hombre o una mujer abrazando a un perro o un gato</li><li><strong>Cadena:</strong> Largo ajustable</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Cozy_Embrace_with_a_Bow_Pendant.png",
+            "mobile_image": "shopify://shop_images/Cozy_Embrace_with_a_Bow_Pendant.png",
             "eyebrow": "Para cada mamá y papá de mascota",
             "heading": "Un abrazo para siempre",
             "body": "<p>Un delicado dije que te muestra con tu mascota en un abrazo lleno de amor, disponible como hombre o mujer con perro o gato. Úsalo para celebrar al compañero que está a tu lado, o para mantener cerca el recuerdo de un mejor amigo.</p>",

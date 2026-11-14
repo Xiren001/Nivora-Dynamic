@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiales y medidas",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Cuentas:</strong> Madera de ébano, 10 mm</li><li><strong>Medalla:</strong> Medalla de San Benito con la inscripción latina completa</li><li><strong>Colgante:</strong> Crucifijo</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materiales y medidas",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Cuentas:</strong> Madera de ébano, 10 mm</li><li><strong>Medalla:</strong> Medalla de San Benito con la inscripción latina completa</li><li><strong>Colgante:</strong> Crucifijo</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_flyto6flyto6flyt.jpg",
+            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_flyto6flyto6flyt.jpg",
             "eyebrow": "Una oración que puedes sostener",
             "heading": "Una fe que los acompaña a todas partes",
             "body": "<p>Cuentas de madera natural, la medalla de San Benito con su bendición latina centenaria y un crucifijo de Cristo, hecha para llevar a diario. Llévala como recordatorio para tener siempre a tu familia en tus oraciones, o regálasela a alguien que quieres para que lleve esa bendición consigo.</p>",

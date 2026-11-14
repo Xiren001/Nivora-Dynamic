@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Legierung mit 14K-Vergoldung</li><li><strong>Design:</strong> Silhouette einer Frau oder eines Mannes, die einen Hund oder eine Katze umarmt</li><li><strong>Kette:</strong> Verstellbare Länge</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Material & Größe",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Legierung mit 14K-Vergoldung</li><li><strong>Design:</strong> Silhouette einer Frau oder eines Mannes, die einen Hund oder eine Katze umarmt</li><li><strong>Kette:</strong> Verstellbare Länge</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Cozy_Embrace_with_a_Bow_Pendant.png",
+            "mobile_image": "shopify://shop_images/Cozy_Embrace_with_a_Bow_Pendant.png",
             "eyebrow": "Für alle Tiereltern",
             "heading": "Eine Umarmung für immer",
             "body": "<p>Ein zarter Anhänger, der Sie und Ihr Haustier in einer liebevollen Umarmung zeigt, erhältlich als Frau oder Mann mit Hund oder Katze. Tragen Sie ihn, um den Begleiter an Ihrer Seite zu feiern oder die Erinnerung an einen besten Freund nah bei sich zu behalten.</p>",
