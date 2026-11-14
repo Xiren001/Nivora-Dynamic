@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Beads:</strong> Ebony wood, 10mm</li><li><strong>Medal:</strong> St. Benedict medal with the full Latin inscription</li><li><strong>Charm:</strong> Crucifix</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Beads:</strong> Ebony wood, 10mm</li><li><strong>Medal:</strong> St. Benedict medal with the full Latin inscription</li><li><strong>Charm:</strong> Crucifix</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_flyto6flyto6flyt.jpg",
+            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_flyto6flyto6flyt.jpg",
             "eyebrow": "A prayer you can hold",
             "heading": "Faith that goes with them, everywhere",
             "body": "<p>Natural wood beads, the St. Benedict medal with its centuries-old Latin blessing, and a crucifix of Christ, made for daily wear. Wear it as a reminder to keep your family in your prayers, or give it to someone you love so they carry that blessing with them.</p>",

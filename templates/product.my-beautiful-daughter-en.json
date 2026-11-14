@@ -144,9 +144,13 @@
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
             "image_override_1_value": "18K White Gold Finish",
+            "image_override_1_image": "shopify://shop_images/Gemini_Generated_Image_yn1z9dyn1z9dyn1z.jpg",
             "image_override_2_value": "18K Yellow Gold Finish",
+            "image_override_2_image": "shopify://shop_images/Gemini_Generated_Image_d32h2rd32h2rd32h.jpg",
             "image_override_3_value": "Wooden Gift Box",
+            "image_override_3_image": "shopify://shop_images/gf.avif",
             "image_override_4_value": "Luxury Mahogany Box (w/LED)",
+            "image_override_4_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
@@ -160,6 +164,15 @@
             "show_gift_card_recipient": true,
             "elegant_button": true,
             "add_to_cart_label": ""
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> 925 silver with 18K gold plating</li><li><strong>Design:</strong> Infinity hearts with cubic zirconia all around</li><li><strong>Pendant:</strong> 14mm long, 7mm wide</li><li><strong>Chain:</strong> 6\" plus a 2\" extension</li><li><strong>Finish:</strong> Waterproof</li><li><strong>Includes:</strong> Personalized gift card, 1-year warranty card, wooden box (or LED mahogany box)</li></ul>",
+            "page": ""
           }
         },
         "collapsible_tab_8ncE3A": {
@@ -191,15 +204,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> 925 silver with 18K gold plating</li><li><strong>Design:</strong> Infinity hearts with cubic zirconia all around</li><li><strong>Pendant:</strong> 14mm long, 7mm wide</li><li><strong>Chain:</strong> 6\" plus a 2\" extension</li><li><strong>Finish:</strong> Waterproof</li><li><strong>Includes:</strong> Personalized gift card, 1-year warranty card, wooden box (or LED mahogany box)</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +356,7 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_5ak0sx5ak0sx5ak0.jpg",
             "eyebrow": "From mom, with all my love",
             "heading": "A hug she can wear",
             "body": "<p>Interlocking infinity hearts set with sparkling stones, in 18K white gold or yellow gold finish. It comes with a heartfelt message card from Mom, in a wooden gift box or an LED-lit mahogany box.</p>",

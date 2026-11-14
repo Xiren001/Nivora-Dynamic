@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Stainless steel base, plated in 18K gold, silver or rose gold</li><li><strong>Stones:</strong> Cubic zirconia, on a half-crystal, half-chain band</li><li><strong>Charm:</strong> Bone-shaped, engraved with your pet’s name (max. 10 characters)</li><li><strong>Size:</strong> Adjustable length with an extender</li><li><strong>Finish:</strong> Waterproof and tarnish-resistant</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Stainless steel base, plated in 18K gold, silver or rose gold</li><li><strong>Stones:</strong> Cubic zirconia, on a half-crystal, half-chain band</li><li><strong>Charm:</strong> Bone-shaped, engraved with your pet’s name (max. 10 characters)</li><li><strong>Size:</strong> Adjustable length with an extender</li><li><strong>Finish:</strong> Waterproof and tarnish-resistant</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
+            "mobile_image": "shopify://shop_images/Gold_MACK_Bone_Charm_Bracelet.png",
             "eyebrow": "Made for every dog mom",
             "heading": "Their name, always with you",
             "body": "<p>A dainty bracelet with a bone charm engraved with your best friend’s name, finished in gold, silver or rose gold. It’s made for everyday wear, so they’re with you wherever you go.</p>",

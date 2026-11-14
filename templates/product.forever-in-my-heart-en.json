@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> 14K gold-plated alloy</li><li><strong>Design:</strong> Silhouette of a man or woman embracing a dog or cat</li><li><strong>Chain:</strong> Adjustable length</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -191,15 +200,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> 14K gold-plated alloy</li><li><strong>Design:</strong> Silhouette of a man or woman embracing a dog or cat</li><li><strong>Chain:</strong> Adjustable length</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +352,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Cozy_Embrace_with_a_Bow_Pendant.png",
+            "mobile_image": "shopify://shop_images/Cozy_Embrace_with_a_Bow_Pendant.png",
             "eyebrow": "Made for every pet parent",
             "heading": "One embrace, forever",
             "body": "<p>A delicate pendant that shows you and your pet in a loving hug, available as man or woman with a dog or a cat. Wear it to celebrate the companion beside you, or to keep the memory of a best friend close.</p>",

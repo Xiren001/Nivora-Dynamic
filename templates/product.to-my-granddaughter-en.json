@@ -144,9 +144,13 @@
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
             "image_override_1_value": "14K White Gold",
+            "image_override_1_image": "shopify://shop_images/Gemini_Generated_Image_6ux6x56ux6x56ux6.jpg",
             "image_override_2_value": "18k Yellow Gold",
+            "image_override_2_image": "shopify://shop_images/3e2ff5f3-9dc6-44ad-b0ea-e4548adbbd87.webp",
             "image_override_3_value": "Standard Box",
+            "image_override_3_image": "shopify://shop_images/gf.avif",
             "image_override_4_value": "Premium Mahogany LED Box",
+            "image_override_4_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
@@ -160,6 +164,15 @@
             "show_gift_card_recipient": true,
             "elegant_button": true,
             "add_to_cart_label": ""
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> 14K white gold or 18K yellow gold over stainless steel</li><li><strong>Stone:</strong> 6mm round-cut cubic zirconia</li><li><strong>Pendant:</strong> 15.7mm high, 6mm wide</li><li><strong>Chain:</strong> Adjustable 18–22\" (45.7–55.9 cm), lobster clasp</li><li><strong>Includes:</strong> Keepsake message card, soft-touch box or LED mahogany box</li></ul>",
+            "page": ""
           }
         },
         "collapsible_tab_8ncE3A": {
@@ -191,15 +204,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> 14K white gold or 18K yellow gold over stainless steel</li><li><strong>Stone:</strong> 6mm round-cut cubic zirconia</li><li><strong>Pendant:</strong> 15.7mm high, 6mm wide</li><li><strong>Chain:</strong> Adjustable 18–22\" (45.7–55.9 cm), lobster clasp</li><li><strong>Includes:</strong> Keepsake message card, soft-touch box or LED mahogany box</li></ul>",
-            "page": ""
           }
         }
       },
@@ -352,6 +356,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Granddaughter_s_Heartfelt_Jewelry_Gift.png",
+            "mobile_image": "shopify://shop_images/Granddaughter_s_Heartfelt_Jewelry_Gift.png",
             "eyebrow": "From Grandpa, with love",
             "heading": "A promise she can wear",
             "body": "<p>An open heart pendant with a single sparkling stone, in 14K white gold or 18K yellow gold finish. It arrives with a heartfelt keepsake card from Grandpa, in a standard gift box or an LED-lit mahogany box.</p>",

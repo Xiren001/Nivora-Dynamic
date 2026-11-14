@@ -85,6 +85,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "quantity_selector_rPYY6k": {
+          "type": "quantity_selector",
+          "settings": {
+            "layout": "beside_button",
+            "show_label": true
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -162,6 +169,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Pendants:</strong> Miraculous Medal plus a gold cross</li><li><strong>Chain:</strong> 20\"</li><li><strong>Includes:</strong> Jewelry box</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -192,18 +208,10 @@
             "media_3_position": 3,
             "media_autoplay": true
           }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Pendants:</strong> Miraculous Medal plus a gold cross</li><li><strong>Chain:</strong> 20\"</li><li><strong>Includes:</strong> Jewelry box</li></ul>",
-            "page": ""
-          }
         }
       },
       "block_order": [
+        "quantity_selector_rPYY6k",
         "title",
         "loox_reviews_loox_rating_rpp9ad",
         "price",
@@ -352,6 +360,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_qb6fdhqb6fdhqb6f.jpg",
+            "mobile_image": "shopify://shop_images/Gemini_Generated_Image_qb6fdhqb6fdhqb6f.jpg",
             "eyebrow": "Made to hold close",
             "heading": "Protected, wherever you go",
             "body": "<p>The Miraculous Medal and a gold cross, paired on a 20\" chain to wear together every day. It arrives in a jewelry box, ready to give to someone whose faith means everything to them.</p>",

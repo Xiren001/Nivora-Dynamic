@@ -165,6 +165,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Design:</strong> Four hearts that click together into a four-leaf clover</li><li><strong>Chain:</strong> 16\" plus a 2\" extender</li><li><strong>Material:</strong> Hypoallergenic, tarnish-free and water-safe</li><li><strong>Colors:</strong> Silver, gold or rose gold</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -194,15 +203,6 @@
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Design:</strong> Four hearts that click together into a four-leaf clover</li><li><strong>Chain:</strong> 16\" plus a 2\" extender</li><li><strong>Material:</strong> Hypoallergenic, tarnish-free and water-safe</li><li><strong>Colors:</strong> Silver, gold or rose gold</li></ul>",
-            "page": ""
           }
         }
       },
@@ -355,6 +355,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/Luxury_Necklaces_on_Velvet_Display.png",
+            "mobile_image": "shopify://shop_images/Luxury_Necklaces_on_Velvet_Display.png",
             "eyebrow": "Made for the girl who is your world",
             "heading": "All of you, together in one clover",
             "body": "<p>Four hearts open on their own and click together into a four-leaf clover, a small reminder that her people are always with her. Available in silver, gold or rose gold, and made for everyday wear.</p>",
