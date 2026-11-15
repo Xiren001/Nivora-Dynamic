@@ -366,7 +366,9 @@
             "background_color": "#ffffff",
             "text_color": "#333333",
             "show_top_divider": true,
-            "show_bottom_divider": true
+            "show_bottom_divider": true,
+            "image": "shopify://shop_images/image2263_c5c0d35d-f184-42e7-bbb5-4344acf6f13a.png",
+            "mobile_image": "shopify://shop_images/image2263_c5c0d35d-f184-42e7-bbb5-4344acf6f13a.png"
           },
           "blocks": {}
         }
