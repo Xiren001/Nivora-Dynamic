@@ -852,6 +852,8 @@
                 {% render 'sale-banner', block: block %}
               {%- when 'morse_input' -%}
                 {% render 'morse-input', block: block, product_form_id: product_form_id %}
+              {%- when 'bundle_field_rules' -%}
+                {%- render 'kaching-ymq-rules', block: block -%}
               {%- when 'trust_shipping', 'trust_guarantee', 'trust_payment', 'trust_warning' -%}
                 {% render 'trust-stack', block: block %}
             {%- endcase -%}
@@ -924,6 +926,7 @@
   "tag": "section",
   "class": "section",
   "blocks": [
+    {"type": "bundle_field_rules", "name": "Bundle field rules", "limit": 1, "settings": [{"type": "paragraph", "content": "Shows only the YMQ option fields that match the selected Kaching bundle. Works only on templates that have this block."}, {"type": "checkbox", "id": "enabled", "label": "Enable bundle field sync", "default": true}, {"type": "select", "id": "count_by", "label": "Count bundles by", "options": [{"value": "items", "label": "Number of items (1, 2, 4…)"}, {"value": "position", "label": "Offer position (1st, 2nd, 3rd offer)"}], "default": "items", "info": "Number of items: \"4 Key Chains\" counts as 4. Offer position: the 3rd offer in the list counts as 3, whatever it contains."}, {"type": "header", "content": "Automatic"}, {"type": "checkbox", "id": "number_rule", "label": "Hide numbered fields above the bundle number", "info": "A field whose name ends in a number (e.g. \"Custom Photo 2\") shows only when the bundle number is at least that number. Fields listed below are not affected.", "default": true}, {"type": "header", "content": "Choose fields per bundle", "info": "Optional. A field listed under any bundle shows only for the bundles it is listed under. Fields not listed anywhere are left alone."}, {"type": "textarea", "id": "bundle_1_fields", "label": "Bundle 1 shows", "info": "YMQ field names to show for this bundle, one per line (or separated by commas). End a name with * to match every field starting with it, e.g. Custom Photo*."}, {"type": "textarea", "id": "bundle_2_fields", "label": "Bundle 2 shows"}, {"type": "textarea", "id": "bundle_3_fields", "label": "Bundle 3 shows"}, {"type": "textarea", "id": "bundle_4_fields", "label": "Bundle 4 shows"}, {"type": "textarea", "id": "bundle_5_fields", "label": "Bundle 5 shows"}, {"type": "header", "content": "Advanced"}, {"type": "textarea", "id": "rules", "label": "Custom rules", "info": "One rule per line: Field label = bundle numbers. Examples: Gift Note = 2+ (2 or more), Engraving = 2,4 (only 2 and 4), Name 3 = 3-4, Photo* = all (always show), Wrapping = none (always hide). These win over everything above."}]},
     {
       "type": "@app"
     },

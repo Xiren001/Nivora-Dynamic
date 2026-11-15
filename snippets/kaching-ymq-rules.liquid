@@ -1,0 +1,23 @@
+{%- comment -%}
+  Bundle field rules block: syncs YMQ option fields with the selected Kaching bundle
+  on this product template only. Logic lives in assets/kaching-ymq-sync.js.
+{%- endcomment -%}
+<div {{ block.shopify_attributes }} hidden>
+  {%- if block.settings.enabled -%}
+    <script type="application/json" data-kys-product-config>
+      {
+        "countBy": {{ block.settings.count_by | json }},
+        "numberRule": {{ block.settings.number_rule | json }},
+        "lists": [
+          {{ block.settings.bundle_1_fields | json }},
+          {{ block.settings.bundle_2_fields | json }},
+          {{ block.settings.bundle_3_fields | json }},
+          {{ block.settings.bundle_4_fields | json }},
+          {{ block.settings.bundle_5_fields | json }}
+        ],
+        "rules": {{ block.settings.rules | json }}
+      }
+    </script>
+    <script src="{{ 'kaching-ymq-sync.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+</div>
