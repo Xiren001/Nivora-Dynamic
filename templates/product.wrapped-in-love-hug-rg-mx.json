@@ -89,44 +89,49 @@
           "type": "title",
           "settings": {}
         },
-        "loox_reviews_loox_rating_QdzrJq": {
+        "loox_reviews_loox_rating_rpp9ad": {
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
-            "contentSize": 13,
+            "contentSize": 16,
             "pattern": "4.9/5.0 ([count]+ clientes felices)",
             "hideText": false,
             "alignment": "",
             "layout": "",
-            "textColor": "",
+            "textColor": "#000000",
             "starColor": "#d4af37",
             "showAllReviews": false,
             "looxOpenFloatingWidget": false,
             "emptyRatingWidget": false
           }
         },
-        "icon_with_text_RtEwBz": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "none",
-            "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "No se oxida (no deja la piel verde)",
-            "icon_2": "none",
-            "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Ajustable – talla única",
-            "icon_3": "none",
-            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Incluye caja de regalo y tarjeta de mensaje gratis"
-          }
-        },
         "price": {
           "type": "price",
           "settings": {}
         },
+        "custom_liquid_RTfLHt": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p style=\"font-size:11px;color:#888;margin: 0;margin-top: -20px;\">Precio más bajo de los últimos 30 días</p>"
+          }
+        },
+        "trust_badges_gXiPHp": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1_icon": "heart",
+            "badge_1_label": "Regalo con Corazón",
+            "badge_2_icon": "guarantee",
+            "badge_2_label": "Garantía de Devolución",
+            "badge_3_icon": "diamond",
+            "badge_3_label": "No Pierde su Brillo",
+            "badge_4_icon": "gift",
+            "badge_4_label": "Caja Lista para Regalar",
+            "label_font_size": 12
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
+            "picker_type": "image",
             "swatch_shape": "circle",
             "image_style_show_step_numbers": true,
             "image_style_accent_color": "#a8864f",
@@ -137,7 +142,7 @@
             "image_style_columns_step_3": "default",
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
-            "image_style_text_only_fallback": false,
+            "image_style_text_only_fallback": true,
             "image_override_1_value": "",
             "image_override_2_value": "",
             "image_override_3_value": "",
@@ -148,11 +153,6 @@
             "image_override_8_value": ""
           }
         },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {}
-        },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
@@ -162,59 +162,66 @@
             "add_to_cart_label": ""
           }
         },
-        "collapsible_tab_pyJdky": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Información del producto",
-            "icon": "none",
-            "content": "<p><strong>Descripción</strong><br/>Un abrazo enviado desde el cielo, guardado muy dentro de ti. Para recordarte siempre que estoy aquí, a tu lado. Cuando más me necesites, aprieta fuerte este anillo. Nunca olvides que te mando mi amor en la mañana, en la tarde y en la noche.</p><p><strong>Acabado de alta calidad</strong><br/>Solo usamos los más altos estándares de baño. Es extra resistente y a prueba de agua, así que no se oxida ni te deja la piel verde.</p><p><strong>Detalles</strong><br/>Talla: Ajustable<br/>Material base: Plata esterlina S925</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_Y4BabJ": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Empaque",
-            "icon": "none",
-            "content": "<p>Cada joya llega en el empaque listo para regalar de Nivora. Nosotros nos encargamos de todo, así que solo tienes que entregarla.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_U8t6ip": {
+        "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Envío",
-            "icon": "none",
-            "content": "<p>Nuestros tiempos de envío suelen dividirse en dos partes:<br/><br/>Tiempo de procesamiento: Nuestro tiempo de procesamiento incluye la producción, la verificación del pedido, la personalización del producto, el control de calidad y el empaque. Debido a la gran cantidad de pedidos, actualmente esto toma de 2 a 4 días hábiles.</p><p>Una vez que tu pedido ha sido enviado, normalmente llega en un plazo de 6 a 12 días hábiles.<br/><br/>Recibirás un número de seguimiento por correo electrónico una vez que tu pedido haya sido enviado.</p>",
+            "icon": "truck",
+            "content": "<p>Nuestros tiempos de envío generalmente se dividen en dos partes:</p><p><strong>Tiempo de Procesamiento:</strong> Nuestro tiempo de procesamiento incluye producción, verificación del pedido, personalización del producto, control de calidad y empaquetado. Debido al gran volumen de pedidos, esto actualmente toma entre <strong>10 y 12 días hábiles.</strong></p><p>Una vez que tu pedido haya sido enviado, generalmente llega en un plazo de 6 a 12 días hábiles.</p><p>Recibirás un número de seguimiento por correo electrónico en cuanto se envíe tu pedido.</p>",
             "page": ""
           }
         },
-        "collapsible_tab_LWxxBL": {
+        "collapsible_tab_ChtBDy": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Garantía",
-            "icon": "none",
-            "content": "<p>Esperamos que te encante tu nuevo anillo. Sin embargo, si algo no te deja del todo satisfecho, estamos aquí para ayudarte. Si quieres cambiar tu pedido por otro artículo o recibir un reembolso, puedes devolverlo fácilmente <strong>dentro de los 30 días</strong> posteriores a la entrega.<br/><br/>Esperamos que entiendas que las joyas y los aretes personalizados no se pueden devolver, a menos que tengan un defecto de fabricación. Si es el caso, contacta a nuestro amable equipo de atención al cliente, que te ayudará lo antes posible.</p>",
+            "icon": "box",
+            "content": "<p>Esperamos que quedes encantado/a con tu nueva compra; sin embargo, si algo no cumple del todo con tus expectativas, estamos aquí para ayudarte. Si deseas cambiar tu pedido por otro artículo o solicitar un reembolso, puedes devolverlo fácilmente <strong>dentro de los 30 días</strong> posteriores a la entrega.</p><p>Entendemos que la joyería personalizada y los pendientes no pueden devolverse a menos que presenten un defecto de fabricación. Si este es el caso, ponte en contacto con nuestro equipo de atención al cliente, quien te ayudará lo antes posible.</p>",
+            "page": ""
+          }
+        },
+        "description_fkQwXV": {
+          "type": "description",
+          "settings": {
+            "custom_description": "<h2><em>HAY ABRAZOS QUE NO TERMINAN CUANDO ALGUIEN SE VA… SOLO CAMBIAN DE FORMA.</em></h2><p>Hay días en los que darías lo que fuera por un abrazo más.</p><p>Por un “aquí estoy” más.</p><p>El duelo no pide permiso, y hay días en los que pesa demasiado para cargarlo sola.</p><p>Este anillo es un abrazo enviado desde el cielo, envuelto suavemente alrededor de tu dedo.</p><p>Cuando más lo necesites, apriétalo fuerte y recuerda: te está mandando su amor en la mañana, en la tarde y en la noche.</p><p>Hecho en plata esterlina S925, con un aro ajustable que le queda a cualquier mano.</p>",
+            "media_1_video_url": "",
+            "media_1_position": 5,
+            "media_2_video_url": "",
+            "media_2_position": 2,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materiales y medidas",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Plata esterlina S925</li><li><strong>Talla:</strong> Ajustable, talla única</li><li><strong>Acabado:</strong> A prueba de agua y no se oxida (no deja la piel verde)</li><li><strong>Incluye:</strong> Caja de regalo y tarjeta de mensaje gratis</li></ul>",
             "page": ""
           }
         }
       },
       "block_order": [
         "title",
-        "loox_reviews_loox_rating_QdzrJq",
-        "icon_with_text_RtEwBz",
+        "loox_reviews_loox_rating_rpp9ad",
         "price",
+        "custom_liquid_RTfLHt",
+        "trust_badges_gXiPHp",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons_KqEWkh",
-        "collapsible_tab_pyJdky",
-        "collapsible_tab_Y4BabJ",
-        "collapsible_tab_U8t6ip",
-        "collapsible_tab_LWxxBL"
+        "collapsible_tab_matsz1",
+        "collapsible_tab_8ncE3A",
+        "collapsible_tab_ChtBDy",
+        "description_fkQwXV"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
-        ".button {font-weight: bold; font-size: 20px;"
+        ".button {font-weight: bold; font-size: 20px;}",
+        ".product__tax {display: none;}",
+        ".note {margin: 0; font-size: 12px; font-weight: bold;}",
+        "div .note {margin: 0 0 5px 0 !important;}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -222,8 +229,8 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
-        "thumbnail_left_gap": 24,
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 60,
         "pgf_aspect_ratio": "square",
         "pgf_transition": "flash",
         "pgf_flash_color": "#ffffff",
@@ -259,11 +266,202 @@
         "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
+      }
+    },
+    "image_with_text_G8zpBF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Nthp3D": {
+          "type": "heading",
+          "settings": {
+            "heading": "Names Engraved , Family Forever United",
+            "heading_size": "h1",
+            "dynamic_sale_banner": false,
+            "banner_language": "",
+            "heading_color": "",
+            "heading_weight": "default",
+            "letter_spacing": 0,
+            "heading_uppercase": false
+          }
+        },
+        "text_qBCYQG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Imagine her suprise when she sees a necklace with her loved one's names. It's more than a gift, it's a message of love she can wear every day.</p>",
+            "text_style": "body",
+            "body_size": "default",
+            "text_color": ""
+          }
+        },
+        "button_KxhzHE": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy now",
+            "button_link": "shopify://products/to-the-best-mom-engraved-necklace",
+            "button_style_secondary": false,
+            "button_variant": "button",
+            "button_size": "default",
+            "button_full_width": false,
+            "new_tab": false,
+            "button_bg": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_Nthp3D",
+        "text_qBCYQG",
+        "button_KxhzHE"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2024-12-25_at_19.18.29.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "image_fit": "cover",
+        "image_radius": 0,
+        "image_link": "",
+        "full_width": false,
+        "mobile_layout": "image_first",
+        "grid_gap": 0,
+        "content_padding": "default",
+        "content_max_width": 0,
+        "block_spacing": 20,
+        "content_bg": "",
+        "text_color": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "blocks_f7LdBR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3ae7b4f_fG8eP8": {
+          "type": "ai_gen_block_3ae7b4f",
+          "settings": {
+            "eyebrow": "Enviado con amor desde el cielo",
+            "heading": "Un abrazo que puedes llevar contigo",
+            "body": "<p>Dos brazos que rodean suavemente tu dedo, un recordatorio silencioso de que quienes amamos nunca se van del todo. Un regalo de consuelo para quien extraña a alguien en el cielo.</p>",
+            "button_label": "Descubre la colección",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
+            "background_color": "#ffffff",
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3ae7b4f_fG8eP8"
+      ],
+      "name": "Sentimental image text",
+      "settings": {}
+    },
+    "related_products_slider_8xHdB6": {
+      "type": "related-products-slider",
+      "name": "Related products",
+      "settings": {
+        "source": "manual",
+        "product_list": [
+          "pulsera-nudo-eterno-mx",
+          "el-escudo-de-un-hijo-pulsera-de-ojo-de-tigre-mx",
+          "pulsera-personalizada-a-mi-esposo",
+          "nivora-pulsera-duo-mx",
+          "collar-de-nombre-con-diamantes",
+          "collar-de-corazon-grabado-en-oso-con-rosa-eterna-mx"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "También te puede gustar",
+        "show_heading_dot": false,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 22,
+        "heading_size_mobile": 14,
+        "heading_weight": "600",
+        "heading_letter_spacing": 8,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": false,
+        "sale_badge_text": "Oferta",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "related-products": {
@@ -285,82 +483,10 @@
         "padding_bottom": 28
       }
     },
-    "image_with_text_eCRMfk": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_94DP8n": {
-          "type": "heading",
-          "settings": {
-            "heading": "<em>EXCLUSIVE OFFERS ARE LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
-            "heading_size": "h1",
-            "dynamic_sale_banner": false,
-            "banner_language": "",
-            "heading_color": "",
-            "heading_weight": "default",
-            "letter_spacing": 0,
-            "heading_uppercase": false
-          }
-        },
-        "text_bXNFJ7": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Get one for yourself and surprise someone special — both for the price of one.</p>",
-            "text_style": "body",
-            "body_size": "default",
-            "text_color": ""
-          }
-        },
-        "button_TtgKq4": {
-          "type": "button",
-          "settings": {
-            "button_label": "Buy now",
-            "button_link": "shopify://products/wrapped-in-love-hug-ring",
-            "button_style_secondary": false,
-            "button_variant": "button",
-            "button_size": "default",
-            "button_full_width": false,
-            "new_tab": false,
-            "button_bg": "",
-            "button_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_94DP8n",
-        "text_bXNFJ7",
-        "button_TtgKq4"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/image2263_c5c0d35d-f184-42e7-bbb5-4344acf6f13a.png",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "image_fit": "cover",
-        "image_radius": 0,
-        "image_link": "",
-        "full_width": false,
-        "mobile_layout": "image_first",
-        "grid_gap": 0,
-        "content_padding": "default",
-        "content_max_width": 0,
-        "block_spacing": 20,
-        "content_bg": "",
-        "text_color": "",
-        "padding_top": 36,
-        "padding_bottom": 4
-      }
-    },
     "17341290603fa2426b": {
       "type": "apps",
       "blocks": {
-        "loox_reviews_loox_dynamic_section_Xh3akr": {
+        "loox_reviews_loox_dynamic_section_eCEYg3": {
           "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "reviews_to_display": "",
@@ -375,18 +501,44 @@
         }
       },
       "block_order": [
-        "loox_reviews_loox_dynamic_section_Xh3akr"
+        "loox_reviews_loox_dynamic_section_eCEYg3"
       ],
       "settings": {
         "include_margins": true
       }
+    },
+    "blocks_UD7fhM": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b5f6c36_jNtrcc": {
+          "type": "ai_gen_block_b5f6c36",
+          "settings": {
+            "button_label": "Agregar al carrito",
+            "sold_out_label": "Agotado",
+            "discount_label": "AHORRA [percent]%",
+            "accent_color": "#000000",
+            "bar_background": "#ffffff",
+            "text_color": "#343434",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b5f6c36_jNtrcc"
+      ],
+      "name": "Sticky add to cart",
+      "settings": {}
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
+    "image_with_text_G8zpBF",
+    "blocks_f7LdBR",
+    "related_products_slider_8xHdB6",
     "related-products",
-    "image_with_text_eCRMfk",
-    "17341290603fa2426b"
+    "17341290603fa2426b",
+    "blocks_UD7fhM"
   ]
 }
