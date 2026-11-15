@@ -201,6 +201,20 @@
             "media_3_position": 3,
             "media_autoplay": true
           }
+        },
+        "bundle_field_rules": {
+          "type": "bundle_field_rules",
+          "settings": {
+            "enabled": true,
+            "count_by": "items",
+            "number_rule": true,
+            "bundle_1_fields": "",
+            "bundle_2_fields": "",
+            "bundle_3_fields": "",
+            "bundle_4_fields": "",
+            "bundle_5_fields": "",
+            "rules": ""
+          }
         }
       },
       "block_order": [
@@ -214,7 +228,8 @@
         "collapsible_tab_matsz1",
         "collapsible_tab_8ncE3A",
         "collapsible_tab_ChtBDy",
-        "description_fkQwXV"
+        "description_fkQwXV",
+        "bundle_field_rules"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
