@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Design:</strong> Rechteckiger Stab-Anhänger mit aufgedrucktem Augenfoto</li><li><strong>Oberfläche:</strong> Gebürstetes Silber oder poliertes Gold</li><li><strong>Druck:</strong> Schwarz-Weiß</li><li><strong>Rückseite:</strong> Individueller Text, max. 20 Zeichen</li><li><strong>Extras:</strong> Schutzbeschichtung; optionaler Herz-, Unendlichkeits- oder Kreuz-Anhänger</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -183,7 +192,7 @@
         "description_fkQwXV": {
           "type": "description",
           "settings": {
-            "custom_description": "<h2><em>DIE AUGEN, IN DIE IHR SCHATZ SICH VERLIEBT HAT – IMMER DABEI</em></h2><p>Manche Blicke sagen mehr als tausend Worte.</p><p>Wie Sie einander ansehen.</p><p>Jetzt sind Ihre Augen überall mit dabei.</p><p>Bei jeder Fahrt, jeder Besorgung, jedem langen Tag unterwegs.</p><p>Ein Blick auf den Schlüsselbund – und schon denkt Ihr Schatz an Sie.</p><p>Ein Geschenk, persönlicher geht es nicht – gefertigt aus Ihrem eigenen Foto.</p><p>Denn Ihr Schatz hat nur Augen für Sie.</p>",
+            "custom_description": "<h2><em>DIE AUGEN, IN DIE IHR SCHATZ SICH VERLIEBT HAT – IMMER DABEI</em></h2><p>Manche Blicke erzählt mehr als tausend Worte.</p><p>Wie Sie einander ansehen.</p><p>Jetzt sind Ihre Augen überall mit dabei.</p><p>Bei jeder Fahrt, jeder Besorgung, jedem langen Tag unterwegs.</p><p>Ein Blick auf den Schlüsselbund – und schon denkt Ihr Schatz an Sie.</p><p>Ein Geschenk, persönlicher geht es nicht – gefertigt aus Ihrem eigenen Foto.</p><p>Denn Ihr Schatz hat nur Augen für Sie.</p>",
             "media_1_video_url": "",
             "media_1_position": 5,
             "media_2_video_url": "",
@@ -193,13 +202,18 @@
             "media_autoplay": true
           }
         },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
+        "bundle_field_rules": {
+          "type": "bundle_field_rules",
           "settings": {
-            "heading": "Material & Größe",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Design:</strong> Rechteckiger Stab-Anhänger mit aufgedrucktem Augenfoto</li><li><strong>Oberfläche:</strong> Gebürstetes Silber oder poliertes Gold</li><li><strong>Druck:</strong> Schwarz-Weiß</li><li><strong>Rückseite:</strong> Individueller Text, max. 20 Zeichen</li><li><strong>Extras:</strong> Schutzbeschichtung; optionaler Herz-, Unendlichkeits- oder Kreuz-Anhänger</li></ul>",
-            "page": ""
+            "enabled": true,
+            "count_by": "items",
+            "number_rule": true,
+            "bundle_1_fields": "",
+            "bundle_2_fields": "",
+            "bundle_3_fields": "",
+            "bundle_4_fields": "",
+            "bundle_5_fields": "",
+            "rules": ""
           }
         },
         "bundle_field_rules": {
@@ -367,6 +381,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/LuxuryGiftBoxwithSilverEyePendant.png",
+            "mobile_image": "shopify://shop_images/LuxuryGiftBoxwithSilverEyePendant.png",
             "eyebrow": "Aus Ihrem Foto gefertigt",
             "heading": "Ein Blick, der überallhin mitkommt",
             "body": "<p>Laden Sie ein Foto hoch – wir schneiden es auf die Augen zu und drucken sie auf einen eleganten Schlüsselanhänger in Silber oder Gold. Ein einzigartiges Geschenk für Ihren Partner oder Ihre Partnerin, damit Sie sich jeden Tag nah sind.</p>",

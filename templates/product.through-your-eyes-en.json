@@ -162,6 +162,15 @@
             "add_to_cart_label": ""
           }
         },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Design:</strong> Rectangular bar pendant with a printed eye photo</li><li><strong>Finish:</strong> Brushed silver or polished gold</li><li><strong>Print:</strong> Black &amp; white</li><li><strong>Back:</strong> Custom text, max. 20 characters</li><li><strong>Extras:</strong> Protective coating; optional heart, infinity or cross charm</li></ul>",
+            "page": ""
+          }
+        },
         "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
@@ -193,13 +202,18 @@
             "media_autoplay": true
           }
         },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
+        "bundle_field_rules": {
+          "type": "bundle_field_rules",
           "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Design:</strong> Rectangular bar pendant with a printed eye photo</li><li><strong>Finish:</strong> Brushed silver or polished gold</li><li><strong>Print:</strong> Black &amp; white</li><li><strong>Back:</strong> Custom text, max. 20 characters</li><li><strong>Extras:</strong> Protective coating; optional heart, infinity or cross charm</li></ul>",
-            "page": ""
+            "enabled": true,
+            "count_by": "items",
+            "number_rule": true,
+            "bundle_1_fields": "",
+            "bundle_2_fields": "",
+            "bundle_3_fields": "",
+            "bundle_4_fields": "",
+            "bundle_5_fields": "",
+            "rules": ""
           }
         },
         "bundle_field_rules": {
@@ -367,6 +381,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/LuxuryGiftBoxwithSilverEyePendant.png",
+            "mobile_image": "shopify://shop_images/LuxuryGiftBoxwithSilverEyePendant.png",
             "eyebrow": "Made from your photo",
             "heading": "A look they’ll carry everywhere",
             "body": "<p>Upload a photo and we’ll crop it to the eyes and print them on a sleek silver or gold bar keychain. It’s a one-of-a-kind gift for your partner, made to keep you close every day.</p>",
