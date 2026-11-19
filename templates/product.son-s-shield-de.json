@@ -108,8 +108,29 @@
           "type": "price",
           "settings": {}
         },
+        "custom_liquid_Qwp97N": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p style=\"font-size:11px;color:#888;margin: 0;margin-top: -20px;\">Niedrigster Preis der letzten 30 Tage</p>"
+          }
+        },
+        "trust_badges_JBTiRX": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1_icon": "leaf",
+            "badge_1_label": "Hautfreundlich",
+            "badge_2_icon": "heart",
+            "badge_2_label": "Herzliches Geschenk",
+            "badge_3_icon": "guarantee",
+            "badge_3_label": "Geld-zurück-Garantie",
+            "badge_4_icon": "diamond",
+            "badge_4_label": "Handgefertigtes Design",
+            "label_font_size": 12
+          }
+        },
         "icon_with_text_Yc4T4G": {
           "type": "icon-with-text",
+          "disabled": true,
           "settings": {
             "layout": "vertical",
             "icon_1": "heart",
@@ -126,8 +147,26 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "image",
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "3",
+            "image_style_columns_step_1": "3",
+            "image_style_columns_step_2": "2",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": true,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
         },
         "quantity_selector": {
@@ -139,11 +178,14 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
         "collapsible_tab_JYLRq8": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Beschreibung",
             "icon": "none",
@@ -165,8 +207,23 @@
           "settings": {
             "heading": "Garantie",
             "icon": "none",
-            "content": "<p>Wir hoffen,dass Sie mit ihrer neuen Halskette zufrieden sind. Sollte etwas nicht Ihren Erwartungen entsprechen, helfen wir Ihnen gerne weiter. Wenn Sie Ihre Bestellung umtauschen oder eine Rückerstattung erhalten möchten, können Sie sie innerhalb von 30 Tagen nach Lieferung problemlos zurücksenden. Bitte beachten Sie, dass personalisierter Schmuck und Ohrringe nur bei Herstellungsfehlern zurückgegeben werden können. In diesem Fall kontaktieren Sie bitte unser freundliches Kundenservice-Team, das Ihnen schnellstmöglich weiterhilft.</p>",
+            "content": "<p>Wir hoffen,dass Sie mit Ihrem neuen Armband zufrieden sind. Sollte etwas nicht Ihren Erwartungen entsprechen, helfen wir Ihnen gerne weiter. Wenn Sie Ihre Bestellung umtauschen oder eine Rückerstattung erhalten möchten, können Sie sie innerhalb von 30 Tagen nach Lieferung problemlos zurücksenden. Bitte beachten Sie, dass personalisierter Schmuck und Ohrringe nur bei Herstellungsfehlern zurückgegeben werden können. In diesem Fall kontaktieren Sie bitte unser freundliches Kundenservice-Team, das Ihnen schnellstmöglich weiterhilft.</p>",
             "page": ""
+          }
+        },
+        "description_d3AQXL": {
+          "type": "description",
+          "settings": {
+            "custom_description": "<h2><em>ER TRÄGT MEHR, ALS ER ZEIGT … SO STEHEN SIE AN SEINER SEITE, AUCH AUS DER FERNE.</em></h2><p>Er wird sagen, dass alles in Ordnung ist. Das sagt er immer.</p><p>Doch Sie bemerken die stillen Momente, das müde Lächeln, den Druck, den er für sich behält.</p><p>Sie können ihm nicht alles abnehmen. Aber Sie können dafür sorgen, dass er <em>spürt</em>, dass Sie bei ihm sind, an jedem schweren Tag.</p><p>Dieses Armband sagt, was Worte manchmal nicht können.</p><p>Seine Tigeraugensteine gelten seit jeher als Symbol für Mut und Schutz.</p><p>Und jedes Mal, wenn er auf sein Handgelenk blickt, weiß er: Er steht nie allein da.</p><h2><em>Machen Sie es ganz zu seinem: mit einer persönlichen Gravur.</em></h2><ul><li>Eine tägliche Erinnerung an die Stärke, die schon in ihm steckt</li><li>Ein Symbol für ruhige Zuversicht, wenn Zweifel aufkommen</li><li>Ein fester Halt, der ihn erdet</li><li>Ein Stück Ihrer Unterstützung, das er überallhin mitnimmt</li></ul>",
+            "media_1_image": "shopify://shop_images/28c1c5091a6141e2814dedaecba446d7.gif",
+            "media_1_video_url": "",
+            "media_1_position": 5,
+            "media_2_image": "shopify://shop_images/fef83571716c43218c5e07abbb6abbcb.gif",
+            "media_2_video_url": "",
+            "media_2_position": 8,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
           }
         }
       },
@@ -174,21 +231,21 @@
         "title",
         "loox_reviews_loox_rating_qkAgh6",
         "price",
+        "custom_liquid_Qwp97N",
+        "trust_badges_JBTiRX",
         "icon_with_text_Yc4T4G",
         "variant_picker",
         "quantity_selector",
         "buy_buttons_KqEWkh",
         "collapsible_tab_JYLRq8",
         "collapsible_tab_NUcrQe",
-        "collapsible_tab_JJLYL7"
+        "collapsible_tab_JJLYL7",
+        "description_d3AQXL"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
         ".button {font-weight: bold; font-size: 20px;}",
-        ".product__tax {display: none;}",
-        ".ymq-dropdown {border-radius: 4px !important;}",
-        ".note {margin: 0; font-size: 12px; font-weight: bold;}",
-        "div .note {margin: 0 0 5px 0 !important;}"
+        ".product__tax {display: none;}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -196,13 +253,47 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 60,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
       }
     },
@@ -225,49 +316,37 @@
         "padding_bottom": 28
       }
     },
-    "blocks_nCMPqQ": {
+    "blocks_ULGW4N": {
       "type": "_blocks",
       "blocks": {
-        "ai_gen_block_27b352b_R44BnX": {
-          "type": "ai_gen_block_27b352b",
+        "ai_gen_block_3ae7b4f_TkdKJd": {
+          "type": "ai_gen_block_3ae7b4f",
           "settings": {
-            "title": "Das könnte Ihnen auch gefallen",
-            "subtitle": "Handverlesene Stücke aus unserer Kollektion",
-            "product_list": [
-              "deine-immerwahrende-herz-halskette",
-              "knotenarmband-forever",
-              "gravierte-halskette-herz-der-familie",
-              "medizinisches-notfallarmband",
-              "armband-mit-schleife"
-            ],
-            "products_to_show": 4,
-            "container_width": 1200,
-            "products_per_row": 4,
-            "products_per_row_tablet": 3,
-            "grid_gap": 30,
-            "section_padding_top": 60,
-            "section_padding_bottom": 60,
-            "header_spacing": 40,
+            "image": "shopify://shop_images/DSC_6081_Edit_1.webp",
+            "mobile_image": "shopify://shop_images/DSC_6081_Edit_1.webp",
+            "eyebrow": "Für jeden Tag gemacht",
+            "heading": "STÄRKE AM HANDGELENK, HALT IM HERZEN",
+            "body": "<p>Stellen Sie sich sein Gesicht vor, wenn er es sieht: ein Armband, nur für ihn graviert. Es ist mehr als ein Geschenk. Es ist eine Erinnerung, die er durch jede Herausforderung trägt: Jemand steht immer hinter ihm.</p>",
+            "button_label": "Kollektion entdecken",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
             "background_color": "#ffffff",
-            "image_border_radius": 0,
-            "title_size": 28,
-            "title_color": "#121212",
-            "subtitle_size": 14,
-            "subtitle_color": "#666666",
-            "product_title_size": 16,
-            "product_title_color": "#121212",
-            "product_price_size": 15,
-            "product_price_color": "#121212",
-            "sale_price_color": "#d82c0d",
-            "link_hover_color": "#666666"
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
           },
           "blocks": {}
         }
       },
       "block_order": [
-        "ai_gen_block_27b352b_R44BnX"
+        "ai_gen_block_3ae7b4f_TkdKJd"
       ],
-      "name": "You may also like",
+      "name": "Sentimental image text",
       "settings": {}
     },
     "17341290603fa2426b": {
@@ -293,13 +372,100 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "related_products_slider_pnAppQ": {
+      "type": "related-products-slider",
+      "name": "Related products",
+      "settings": {
+        "source": "manual",
+        "product_list": [
+          "deine-immerwahrende-herz-halskette",
+          "knotenarmband-forever",
+          "gravierte-halskette-herz-der-familie",
+          "medizinisches-notfallarmband",
+          "armband-mit-schleife"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "Das könnte Ihnen auch gefallen",
+        "show_heading_dot": false,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 22,
+        "heading_size_mobile": 14,
+        "heading_weight": "600",
+        "heading_letter_spacing": 8,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": false,
+        "sale_badge_text": "Sale",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
+      }
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
     "related-products",
-    "blocks_nCMPqQ",
+    "blocks_ULGW4N",
+    "related_products_slider_pnAppQ",
     "17341290603fa2426b"
   ]
 }
