@@ -89,102 +89,119 @@
           "type": "title",
           "settings": {}
         },
-        "loox_reviews_loox_rating_qkAgh6": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "contentSize": 13,
-            "pattern": "4.9/5.0 ([count]+ Zufriedene Kunden)",
-            "hideText": false,
-            "alignment": "",
-            "layout": "",
-            "textColor": "#121212",
-            "starColor": "",
-            "showAllReviews": false,
-            "looxOpenFloatingWidget": false,
-            "emptyRatingWidget": false
-          }
-        },
         "price": {
           "type": "price",
           "settings": {}
         },
-        "icon_with_text_RtEwBz": {
-          "type": "icon-with-text",
+        "custom_liquid_RTfLHt": {
+          "type": "custom_liquid",
           "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Einzigartiges, herzvolles Geschenk",
-            "icon_2": "return",
-            "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Hergestellt aus Edelstahl",
-            "icon_3": "truck",
-            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Anlaufbeständig & wasserdicht"
+            "custom_liquid": "<p style=\"font-size:11px;color:#888;margin: 0;margin-top: -20px;\">Niedrigster Preis der letzten 30 Tage</p>"
+          }
+        },
+        "trust_badges_gXiPHp": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1_icon": "leaf",
+            "badge_1_label": "Hautfreundlich",
+            "badge_2_icon": "heart",
+            "badge_2_label": "Herzliches Geschenk",
+            "badge_3_icon": "guarantee",
+            "badge_3_label": "Geld-zurück-Garantie",
+            "badge_4_icon": "diamond",
+            "badge_4_label": "Handgefertigtes Design",
+            "label_font_size": 12
           }
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "image",
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": true,
+            "image_override_1_value": "Gold",
+            "image_override_1_image": "shopify://shop_images/1_57175374-5f0c-45f6-9928-08ccf8df56b9.png",
+            "image_override_2_value": "Silber",
+            "image_override_2_image": "shopify://shop_images/7.png",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {}
         },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
-        "collapsible_tab_pyJdky": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Ein Geschenk, das alles sagt",
-            "icon": "none",
-            "content": "<p>Für die Frau, die immer noch dein Herz hat, erinnert sie daran, dass sie es immer tun wird.</p><p>Jede Beziehung hat ihre Stürme.</p><p>Die langen Tage, die stillen Nächte, die unausgesprochene Distanz, die sich einschleicht.</p><p>Vielleicht hast du nicht immer die Worte.</p><p>Vielleicht wolltest du ihr schon lange zeigen, wie viel sie dir bedeutet, aber das Leben kommt immer wieder dazwischen.</p><p>Dieses Geschenk ist für diesen Moment.</p><p>Ein Weg, die Stille zu überbrücken. Sie daran zu erinnern, dass, egal was ihr durchgemacht habt, deine Liebe immer noch hier ist.</p><p>Wenn sie es sieht, wird sie wissen, dass der Funke nicht verschwunden ist.</p><p>Die Beziehung,die ihr telit, ist immer noch stark, immer noch wert, daran festzuhalten.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_WBErKc": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "LED-Geschenkbox",
-            "icon": "none",
-            "content": "<p>Kommt in einer eleganten LED-beleuchteten Box, die die Halskette sofort erstrahlen lässt, sobald sie sie öffnet.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_U8t6ip": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "100% wasserdicht",
-            "icon": "none",
-            "content": "<p>Es ist 100% wasserdicht, sodass du es beim Duschen, Schwimmen oder Sport treiben kannst, ohne dir Sorgen machen zu müssen.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_4AAh8x": {
+        "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Versand",
-            "icon": "none",
+            "icon": "truck",
             "content": "<p>Unsere Versandzeiten lassen sich allgemein in zwei Teile unterteilen:</p><p>Bearbeitungszeit: Unsere Bearbeitungszeit umfasst die Produktion, Auftragsverifikation, Produktpersonalisierung, Qualitätskontrolle und Verpackung. Aufgrund der großen Anzahl an Bestellungen dauert dies derzeit 2-4 Werktage.</p><p>Sobald Ihre Bestellung versandt wurde, trifft sie in der Regel innerhalb von 6-12 Werktagen ein.</p><p>Sie erhalten eine Sendungsverfolgungsnummer per E-Mail, sobald Ihre Bestellung versandt wurde.</p>",
             "page": ""
           }
         },
-        "collapsible_tab_UrbtPX": {
+        "collapsible_tab_ChtBDy": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Garantie",
-            "icon": "none",
+            "icon": "box",
             "content": "<p>Wir hoffen, dass Sie mit Ihrer neuen Halskette zufrieden sind. Sollte jedoch etwas nicht ganz zu Ihrer Zufriedenheit sein, sind wir hier, um zu helfen. Wenn Sie Ihre Bestellung gegen etwas anderes eintauschen oder eine Rückerstattung erhalten möchten, können Sie sie problemlos innerhalb von 30 Tagen nach Lieferung zurücksenden.</p><p>Wir bitten um Ihr Verständnis, dass personalisierte Schmuckstücke und Ohrringe nicht zurückgegeben werden können, es sei denn, es liegt ein Herstellungsfehler vor. Sollte dies der Fall sein, kontaktieren Sie bitte unser freundliches Kundenserviceteam, das Ihnen so schnell wie möglich weiterhelfen wird.</p>",
             "page": ""
+          }
+        },
+        "description_fkQwXV": {
+          "type": "description",
+          "settings": {
+            "custom_description": "<h2><em>IHR HERZ GEHÖRT IMMER NOCH IHR … AUCH AN TAGEN, AN DENEN DIE WORTE FEHLEN.</em></h2><p>Jede Beziehung hat ihre Stürme. Die langen Tage, die stillen Nächte, die unausgesprochene Distanz, die sich einschleicht.</p><p>Vielleicht fehlen Ihnen manchmal die Worte.</p><p>Vielleicht wollten Sie ihr schon lange zeigen, wie viel sie Ihnen bedeutet, aber das Leben kommt immer wieder dazwischen.</p><p>Diese Halskette ist für genau diesen Moment.</p><p>Ein Weg, die Stille zu überbrücken und sie daran zu erinnern, dass Ihre Liebe nach allem, was Sie gemeinsam durchgemacht haben, immer noch da ist.</p><p>Zwei verschlungene Herzen, graviert mit Ihren beiden Namen und besetzt mit Ihren beiden Geburtssteinen. Wenn sie sie trägt, weiß sie: Der Funke ist nie erloschen.</p>",
+            "media_1_video_url": "",
+            "media_1_position": 5,
+            "media_2_video_url": "",
+            "media_2_position": 2,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Edelstahl</li><li><strong>Personalisierung:</strong> Zwei gravierte Namen, Ihre beiden Geburtssteine</li><li><strong>Oberfläche:</strong> Anlaufbeständig und 100 % wasserdicht (Duschen, Schwimmen und Sport ohne Sorgen)</li><li><strong>Inklusive:</strong> LED-beleuchtete Geschenkbox</li></ul>",
+            "page": ""
+          }
+        },
+        "loox_reviews_loox_rating_qkAgh6": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "4.9/5.0 ([count]+ Zufriedene Kunden)",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "#000000",
+            "starColor": "#d4af37",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
           }
         }
       },
@@ -192,20 +209,21 @@
         "title",
         "loox_reviews_loox_rating_qkAgh6",
         "price",
-        "icon_with_text_RtEwBz",
+        "custom_liquid_RTfLHt",
+        "trust_badges_gXiPHp",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons_KqEWkh",
-        "collapsible_tab_pyJdky",
-        "collapsible_tab_WBErKc",
-        "collapsible_tab_U8t6ip",
-        "collapsible_tab_4AAh8x",
-        "collapsible_tab_UrbtPX"
+        "collapsible_tab_matsz1",
+        "collapsible_tab_8ncE3A",
+        "collapsible_tab_ChtBDy",
+        "description_fkQwXV"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
         ".button {font-weight: bold; font-size: 20px;}",
-        ".product__tax {display: none;}"
+        ".product__tax {display: none;}",
+        ".note {margin: 0; font-size: 12px; font-weight: bold;}",
+        "div .note {margin: 0 0 5px 0 !important;}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -213,14 +231,239 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 60,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
+      }
+    },
+    "image_with_text_G8zpBF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Nthp3D": {
+          "type": "heading",
+          "settings": {
+            "heading": "Names Engraved , Family Forever United",
+            "heading_size": "h1",
+            "dynamic_sale_banner": false,
+            "banner_language": "",
+            "heading_color": "",
+            "heading_weight": "default",
+            "letter_spacing": 0,
+            "heading_uppercase": false
+          }
+        },
+        "text_qBCYQG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Imagine her suprise when she sees a necklace with her loved one's names. It's more than a gift, it's a message of love she can wear every day.</p>",
+            "text_style": "body",
+            "body_size": "default",
+            "text_color": ""
+          }
+        },
+        "button_KxhzHE": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy now",
+            "button_link": "shopify://products/to-the-best-mom-engraved-necklace",
+            "button_style_secondary": false,
+            "button_variant": "button",
+            "button_size": "default",
+            "button_full_width": false,
+            "new_tab": false,
+            "button_bg": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_Nthp3D",
+        "text_qBCYQG",
+        "button_KxhzHE"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2024-12-25_at_19.18.29.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "image_fit": "cover",
+        "image_radius": 0,
+        "image_link": "",
+        "full_width": false,
+        "mobile_layout": "image_first",
+        "grid_gap": 0,
+        "content_padding": "default",
+        "content_max_width": 0,
+        "block_spacing": 20,
+        "content_bg": "",
+        "text_color": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "blocks_f7LdBR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3ae7b4f_fG8eP8": {
+          "type": "ai_gen_block_3ae7b4f",
+          "settings": {
+            "eyebrow": "Zwei Herzen, eine Geschichte",
+            "heading": "Ihre Namen, für immer verbunden",
+            "body": "<p>Stellen Sie sich ihr Lächeln vor, wenn sie die leuchtende LED-Box öffnet und Ihre beiden Namen und Geburtssteine in einem Herzen vereint sieht. Es ist mehr als ein Geschenk – es ist ein Versprechen, das sie jeden Tag tragen kann.</p>",
+            "button_label": "Kollektion entdecken",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
+            "background_color": "#ffffff",
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3ae7b4f_fG8eP8"
+      ],
+      "name": "Sentimental image text",
+      "settings": {}
+    },
+    "related_products_slider_8xHdB6": {
+      "type": "related-products-slider",
+      "name": "Related products",
+      "settings": {
+        "source": "manual",
+        "product_list": [
+          "halskette-fur-meine-liebe",
+          "fur-meine-tochter-fur-immer-in-meinem-herzen",
+          "fur-immer-verbunden-armband-fur-die-tochter",
+          "fur-meinen-sohn-graviertes-armband",
+          "graviertes-armband-fur-meinen-mann",
+          "fur-meinen-sohn-armband-nie-allein"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "Das könnte dir auch gefallen",
+        "show_heading_dot": false,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 22,
+        "heading_size_mobile": 14,
+        "heading_weight": "600",
+        "heading_letter_spacing": 8,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": false,
+        "sale_badge_text": "Sale",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "related-products": {
@@ -265,12 +508,39 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "blocks_UD7fhM": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b5f6c36_jNtrcc": {
+          "type": "ai_gen_block_b5f6c36",
+          "settings": {
+            "button_label": "In den Warenkorb",
+            "sold_out_label": "Ausverkauft",
+            "discount_label": "SPARE [percent]%",
+            "accent_color": "#000000",
+            "bar_background": "#ffffff",
+            "text_color": "#343434",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b5f6c36_jNtrcc"
+      ],
+      "name": "Sticky add to cart",
+      "settings": {}
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
+    "image_with_text_G8zpBF",
+    "blocks_f7LdBR",
+    "related_products_slider_8xHdB6",
     "related-products",
-    "17341290603fa2426b"
+    "17341290603fa2426b",
+    "blocks_UD7fhM"
   ]
 }
