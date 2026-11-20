@@ -1908,9 +1908,86 @@
         {
           "type": "text",
           "id": "birthstone_option_keywords",
-          "default": "birthstone,geburtsstein,piedra,pierre,pietra,steen,kamie,kivi,sten,pedra",
-          "label": "Birthstone option name keywords",
-          "info": "Comma-separated, not case-sensitive.",
+          "label": "Extra birthstone keywords",
+          "info": "Optional. Birthstone words in all store languages are built in (EN, DE, ES, PT, FR, IT, NL, SE, NO, DK, FI, EE, PL, CZ, SK, SI, RO, LT, TR, JP, KR, HE, AR). Add other words here, comma-separated.",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "header",
+          "content": "Birthstone pictures",
+          "info": "Optional. Upload a picture for any month (1st value = January … 12th = December). Months without a picture show the coloured gem.",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_1",
+          "label": "1. January",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_2",
+          "label": "2. February",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_3",
+          "label": "3. March",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_4",
+          "label": "4. April",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_5",
+          "label": "5. May",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_6",
+          "label": "6. June",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_7",
+          "label": "7. July",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_8",
+          "label": "8. August",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_9",
+          "label": "9. September",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_10",
+          "label": "10. October",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_11",
+          "label": "11. November",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "image_picker",
+          "id": "birthstone_image_12",
+          "label": "12. December",
           "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
         },
         {

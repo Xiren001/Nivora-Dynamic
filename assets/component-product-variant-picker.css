@@ -338,6 +338,25 @@ variant-selects {
   box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.15), 0 0.1rem 0.3rem rgba(0, 0, 0, 0.15);
 }
 
+.birthstone-gem--image {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.image-swatch-input__radio:checked + .image-swatch-input__label--birthstone .birthstone-gem--image {
+  box-shadow: none;
+}
+
+.birthstone-gem__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .image-swatch-input__radio:checked + .image-swatch-input__label--birthstone .birthstone-gem {
   box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.15), 0 0 0 0.2rem #fff, 0 0 0 0.35rem var(--image-picker-accent, #a8864f);
 }
@@ -351,6 +370,11 @@ variant-selects {
   .birthstone-gem {
     width: 2.4rem;
     height: 2.4rem;
+  }
+
+  .birthstone-gem--image {
+    width: 3.4rem;
+    height: 3.4rem;
   }
 
   .image-swatch-input__label--birthstone .image-swatch-input__name {

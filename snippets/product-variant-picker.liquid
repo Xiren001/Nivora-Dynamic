@@ -47,7 +47,11 @@
         assign is_birthstone = false
         if picker_type == 'image' and block.settings.birthstone_style_enable and option.values.size == 12
           assign option_name_downcase = option.name | downcase
-          assign birthstone_keywords = block.settings.birthstone_option_keywords | default: 'birthstone' | downcase | split: ','
+          assign birthstone_keywords = 'birthstone,birth stone,birth month,geburtsstein,geburtsmonat,piedra,nacimiento,pedra,nascimento,pierre,naissance,pietra,nascita,geboortesteen,geboortemaand,födelsesten,födelsemånad,fødselsstein,fødselssten,fødselsmåned,syntymäkivi,syntymäkuukausi,sünnikivi,sünnikuu,kamień,kamien,urodzeni,kámen,kameň,kamen,narozen,naroden,rojstn,piatra,piatră,naștere,nastere,akmuo,gimimo,doğum taşı,dogum tasi,taşı,誕生石,탄생석,אבן,חודש לידה,حجر,الميلاد'
+          if block.settings.birthstone_option_keywords != blank
+            assign birthstone_keywords = birthstone_keywords | append: ',' | append: block.settings.birthstone_option_keywords
+          endif
+          assign birthstone_keywords = birthstone_keywords | downcase | split: ','
           for keyword in birthstone_keywords
             assign keyword_clean = keyword | strip
             if keyword_clean != blank and option_name_downcase contains keyword_clean
