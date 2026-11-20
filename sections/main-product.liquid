@@ -1913,6 +1913,26 @@
           "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
         },
         {
+          "type": "range",
+          "id": "birthstone_columns_desktop",
+          "min": 2,
+          "max": 6,
+          "step": 1,
+          "default": 4,
+          "label": "Birthstones per row (desktop)",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
+          "type": "range",
+          "id": "birthstone_columns_mobile",
+          "min": 2,
+          "max": 6,
+          "step": 1,
+          "default": 4,
+          "label": "Birthstones per row (mobile)",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
           "type": "header",
           "content": "Birthstone pictures",
           "info": "Optional. Upload a picture for any month (1st value = January … 12th = December). Months without a picture show the coloured gem.",

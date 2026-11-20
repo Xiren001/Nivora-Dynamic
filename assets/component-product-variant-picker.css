@@ -306,7 +306,7 @@ variant-selects {
 }
 
 .product-form__input--birthstone {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(var(--birthstone-columns, 4), minmax(0, 1fr));
   gap: 0.8rem;
 }
 
@@ -363,7 +363,7 @@ variant-selects {
 
 @media screen and (max-width: 749px) {
   .product-form__input--birthstone {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--birthstone-columns-mobile, 4), minmax(0, 1fr));
     gap: 0.6rem;
   }
 
