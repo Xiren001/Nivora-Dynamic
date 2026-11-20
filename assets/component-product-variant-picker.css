@@ -297,4 +297,64 @@ variant-selects {
     font-size: 1.4rem;
   }
 }
+
+/* Birthstone gems (variant picker "birthstone_style_enable") */
+.image-picker__step-selected {
+  margin-left: auto;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.product-form__input--birthstone {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.image-swatch-input__label--birthstone {
+  min-width: 0;
+  gap: 0.5rem;
+  padding: 1rem 0.4rem 0.8rem;
+}
+
+.image-swatch-input__label--birthstone .image-swatch-input__name {
+  display: block;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.birthstone-gem {
+  display: block;
+  width: 2.8rem;
+  height: 2.8rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0 12%, rgba(255, 255, 255, 0) 30%),
+    conic-gradient(from 20deg, rgba(255, 255, 255, 0.28), rgba(0, 0, 0, 0.18), rgba(255, 255, 255, 0.22), rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.28)),
+    var(--gem-color, #ccc);
+  box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.15), 0 0.1rem 0.3rem rgba(0, 0, 0, 0.15);
+}
+
+.image-swatch-input__radio:checked + .image-swatch-input__label--birthstone .birthstone-gem {
+  box-shadow: inset 0 0 0 0.1rem rgba(0, 0, 0, 0.15), 0 0 0 0.2rem #fff, 0 0 0 0.35rem var(--image-picker-accent, #a8864f);
+}
+
+@media screen and (max-width: 749px) {
+  .product-form__input--birthstone {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .birthstone-gem {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .image-swatch-input__label--birthstone .image-swatch-input__name {
+    font-size: 1.15rem;
+  }
+}
 /* End custom styles for Image display type */

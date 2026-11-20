@@ -1898,6 +1898,22 @@
           "visible_if": "{{ block.settings.picker_type == 'image' }}"
         },
         {
+          "type": "checkbox",
+          "id": "birthstone_style_enable",
+          "default": false,
+          "label": "Show birthstone options as gems",
+          "info": "For options with 12 values (January to December) whose name contains a keyword below. Shows a coloured gem per month instead of an image.",
+          "visible_if": "{{ block.settings.picker_type == 'image' }}"
+        },
+        {
+          "type": "text",
+          "id": "birthstone_option_keywords",
+          "default": "birthstone,geburtsstein,piedra,pierre,pietra,steen,kamie,kivi,sten,pedra",
+          "label": "Birthstone option name keywords",
+          "info": "Comma-separated, not case-sensitive.",
+          "visible_if": "{{ block.settings.picker_type == 'image' and block.settings.birthstone_style_enable }}"
+        },
+        {
           "type": "header",
           "content": "t:sections.main-product.blocks.variant_picker.settings.header_custom_images.content",
           "info": "t:sections.main-product.blocks.variant_picker.settings.header_custom_images.info",

@@ -39,11 +39,27 @@
             assign image_columns = step_columns
           endif
         endif
+
+        comment
+          Birthstone gems (opt-in per template): a 12-value option whose name contains one of the
+          keywords is shown as gem swatches (January..December by position) instead of images.
+        endcomment
+        assign is_birthstone = false
+        if picker_type == 'image' and block.settings.birthstone_style_enable and option.values.size == 12
+          assign option_name_downcase = option.name | downcase
+          assign birthstone_keywords = block.settings.birthstone_option_keywords | default: 'birthstone' | downcase | split: ','
+          for keyword in birthstone_keywords
+            assign keyword_clean = keyword | strip
+            if keyword_clean != blank and option_name_downcase contains keyword_clean
+              assign is_birthstone = true
+            endif
+          endfor
+        endif
       -%}
 
       {%- if picker_type == 'image' -%}
         <fieldset
-          class="js product-form__input product-form__input--image"
+          class="js product-form__input product-form__input--image{% if is_birthstone %} product-form__input--birthstone{% endif %}"
           style="--image-picker-accent: {{ block.settings.image_style_accent_color | default: '#A8864F' }}; --image-picker-radius: {{ block.settings.image_style_border_radius | default: 8 }}px; --image-picker-columns: {{ image_columns }}; --image-picker-font-size: {{ block.settings.image_style_font_size | default: 14 }}px;"
         >
           <legend class="form__label image-picker__legend">
@@ -51,13 +67,17 @@
               <span class="image-picker__step-badge">{{ forloop.index }}</span>
             {%- endif -%}
             <span class="image-picker__step-title">{{ option.name }}</span>
+            {%- if is_birthstone and option.selected_value -%}
+              <span class="image-picker__step-selected">{{ option.selected_value }}</span>
+            {%- endif -%}
           </legend>
 
           {% render 'product-variant-options',
             product: product,
             option: option,
             block: block,
-            picker_type: picker_type
+            picker_type: picker_type,
+            is_birthstone: is_birthstone
           %}
         </fieldset>
 

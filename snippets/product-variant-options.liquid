@@ -40,6 +40,14 @@
 
     assign value_image = null
     assign value_price_diff = 0
+    assign birthstone_color = null
+    if is_birthstone
+      comment
+        Gem colour by position (January..December), so it works for every language.
+      endcomment
+      assign birthstone_colors = '#8E1B2C,#9966CC,#7FC9D9,#DDE6EE,#2EA866,#C8A2C8,#D0103A,#9DBF3C,#1F4FB8,#F28DB2,#F0A830,#3FA9E0' | split: ','
+      assign birthstone_color = birthstone_colors[forloop.index0]
+    endif
     if picker_type == 'image'
       assign option_index = option.position | minus: 1
       assign value_min_price = null
@@ -73,6 +81,9 @@
           assign value_image = product.featured_image
         endif
       endunless
+      if is_birthstone
+        assign value_image = null
+      endif
       if value_min_price
         assign value_price_diff = value_min_price | minus: product.price_min
       endif
@@ -111,8 +122,10 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}" class="image-swatch-input__label{% if value_image == null %} image-swatch-input__label--text-only{% endif %}">
-      {%- if value_image -%}
+    <label for="{{ input_id }}" class="image-swatch-input__label{% if birthstone_color %} image-swatch-input__label--birthstone{% elsif value_image == null %} image-swatch-input__label--text-only{% endif %}">
+      {%- if birthstone_color -%}
+        <span class="birthstone-gem" style="--gem-color: {{ birthstone_color }};" aria-hidden="true"></span>
+      {%- elsif value_image -%}
         <span class="image-swatch-input__image-wrapper">
           {%- assign value_alt = value | escape -%}
           {{
