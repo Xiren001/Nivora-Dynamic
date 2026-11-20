@@ -143,6 +143,22 @@
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
+            "birthstone_style_enable": true,
+            "birthstone_option_keywords": "",
+            "birthstone_columns_desktop": 6,
+            "birthstone_columns_mobile": 6,
+            "birthstone_image_1": "shopify://shop_images/gem_01.png",
+            "birthstone_image_2": "shopify://shop_images/gem_02.png",
+            "birthstone_image_3": "shopify://shop_images/gem_03.png",
+            "birthstone_image_4": "shopify://shop_images/gem_04.png",
+            "birthstone_image_5": "shopify://shop_images/gem_05.png",
+            "birthstone_image_6": "shopify://shop_images/gem_06.png",
+            "birthstone_image_7": "shopify://shop_images/gem_07.png",
+            "birthstone_image_8": "shopify://shop_images/gem_08.png",
+            "birthstone_image_9": "shopify://shop_images/gem_09.png",
+            "birthstone_image_10": "shopify://shop_images/gem_10.png",
+            "birthstone_image_11": "shopify://shop_images/gem_11.png",
+            "birthstone_image_12": "shopify://shop_images/gem_12.png",
             "image_override_1_value": "Gold",
             "image_override_1_image": "shopify://shop_images/Screenshot2026-02-16at12.06.591_1.png",
             "image_override_2_value": "Silver",
@@ -152,8 +168,7 @@
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
-            "image_override_8_value": "",
-            "birthstone_style_enable": true
+            "image_override_8_value": ""
           }
         },
         "buy_buttons_KqEWkh": {
@@ -163,6 +178,15 @@
             "show_gift_card_recipient": true,
             "elegant_button": true,
             "add_to_cart_label": ""
+          }
+        },
+        "collapsible_tab_matsz1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Materials & Size",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Stainless steel</li><li><strong>Personalization:</strong> Two engraved names, his and her birthstones</li><li><strong>Finish:</strong> Tarnish-free and 100% waterproof (shower, swim and exercise without worry)</li><li><strong>Includes:</strong> LED-lit gift box</li></ul>",
+            "page": ""
           }
         },
         "collapsible_tab_8ncE3A": {
@@ -187,22 +211,14 @@
           "type": "description",
           "settings": {
             "custom_description": "<h2><em>SHE STILL HAS YOUR HEART… EVEN ON THE DAYS YOU FORGET TO SAY IT.</em></h2><p>Every relationship has its storms. The long days, the quiet nights, the unspoken distance that creeps in.</p><p>Maybe you don't always have the words.</p><p>Maybe you've been meaning to show her how much she means, but life keeps getting in the way.</p><p>This necklace is for that moment.</p><p>A way to bridge the silence and remind her that, no matter what you've been through, your love is still here.</p><p>Two hearts intertwined, engraved with both your names and set with his and her birthstones. When she wears it, she'll know the spark never left.</p>",
+            "media_1_video": "shopify://files/videos/498bab56c83c4dea951a0a7367b1aad2.mp4",
             "media_1_video_url": "",
-            "media_1_position": 5,
+            "media_1_position": 10,
             "media_2_video_url": "",
             "media_2_position": 2,
             "media_3_video_url": "",
             "media_3_position": 3,
             "media_autoplay": true
-          }
-        },
-        "collapsible_tab_matsz1": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Materials & Size",
-            "icon": "ruler",
-            "content": "<ul><li><strong>Material:</strong> Stainless steel</li><li><strong>Personalization:</strong> Two engraved names, his and her birthstones</li><li><strong>Finish:</strong> Tarnish-free and 100% waterproof (shower, swim and exercise without worry)</li><li><strong>Includes:</strong> LED-lit gift box</li></ul>",
-            "page": ""
           }
         }
       },
@@ -355,6 +371,8 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
+            "image": "shopify://shop_images/imgi_241_HER-N138_Image5.jpg",
+            "mobile_image": "shopify://shop_images/imgi_241_HER-N138_Image5.jpg",
             "eyebrow": "Two hearts, one story",
             "heading": "Your Names, Forever Intertwined",
             "body": "<p>Imagine her smile when she opens the glowing LED box and sees both your names and birthstones wrapped in one heart. It's more than a gift, it's a promise she can wear every day.</p>",

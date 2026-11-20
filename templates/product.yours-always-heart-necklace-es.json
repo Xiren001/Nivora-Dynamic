@@ -138,7 +138,22 @@
             "image_override_6_value": "",
             "image_override_7_value": "",
             "image_override_8_value": "",
-            "birthstone_style_enable": true
+            "birthstone_style_enable": true,
+            "birthstone_option_keywords": "",
+            "birthstone_columns_desktop": 6,
+            "birthstone_columns_mobile": 6,
+            "birthstone_image_1": "shopify://shop_images/gem_01.png",
+            "birthstone_image_2": "shopify://shop_images/gem_02.png",
+            "birthstone_image_3": "shopify://shop_images/gem_03.png",
+            "birthstone_image_4": "shopify://shop_images/gem_04.png",
+            "birthstone_image_5": "shopify://shop_images/gem_05.png",
+            "birthstone_image_6": "shopify://shop_images/gem_06.png",
+            "birthstone_image_7": "shopify://shop_images/gem_07.png",
+            "birthstone_image_8": "shopify://shop_images/gem_08.png",
+            "birthstone_image_9": "shopify://shop_images/gem_09.png",
+            "birthstone_image_10": "shopify://shop_images/gem_10.png",
+            "birthstone_image_11": "shopify://shop_images/gem_11.png",
+            "birthstone_image_12": "shopify://shop_images/gem_12.png"
           }
         },
         "buy_buttons_KqEWkh": {
@@ -173,12 +188,13 @@
           "settings": {
             "custom_description": "<h2><em>ELLA SIGUE TENIENDO TU CORAZÓN… INCLUSO LOS DÍAS EN QUE OLVIDAS DECÍRSELO.</em></h2><p>Toda relación tiene sus tormentas. Los días largos, las noches silenciosas, la distancia no dicha que poco a poco aparece.</p><p>Quizás no siempre encuentras las palabras.</p><p>Quizás has querido demostrarle cuánto significa para ti, pero la vida siempre se interpone.</p><p>Este collar es para ese momento.</p><p>Una forma de romper el silencio y recordarle que, a pesar de todo lo que habéis vivido, tu amor sigue aquí.</p><p>Dos corazones entrelazados, grabados con vuestros dos nombres y con las piedras de nacimiento de ambos. Cuando lo lleve, sabrá que la chispa nunca se apagó.</p>",
             "media_1_video_url": "",
-            "media_1_position": 5,
+            "media_1_position": 10,
             "media_2_video_url": "",
             "media_2_position": 2,
             "media_3_video_url": "",
             "media_3_position": 3,
-            "media_autoplay": true
+            "media_autoplay": true,
+            "media_1_video": "shopify://files/videos/498bab56c83c4dea951a0a7367b1aad2.mp4"
           }
         },
         "collapsible_tab_matsz1": {
@@ -369,7 +385,9 @@
             "background_color": "#ffffff",
             "text_color": "#333333",
             "show_top_divider": true,
-            "show_bottom_divider": true
+            "show_bottom_divider": true,
+            "image": "shopify://shop_images/imgi_241_HER-N138_Image5.jpg",
+            "mobile_image": "shopify://shop_images/imgi_241_HER-N138_Image5.jpg"
           },
           "blocks": {}
         }
