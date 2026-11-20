@@ -50,6 +50,18 @@
       assign birthstone_color = birthstone_colors[forloop.index0]
       assign birthstone_image_key = 'birthstone_image_' | append: forloop.index
       assign birthstone_image = block.settings[birthstone_image_key]
+      comment
+        Short month label (3 letters). If June and July would look the same (e.g. French Juin/Juillet), use 4 letters for both.
+      endcomment
+      assign birthstone_label_length = 3
+      if forloop.index == 6 or forloop.index == 7
+        assign month_6_short = option.values[5].name | slice: 0, 3 | downcase
+        assign month_7_short = option.values[6].name | slice: 0, 3 | downcase
+        if month_6_short == month_7_short
+          assign birthstone_label_length = 4
+        endif
+      endif
+      assign birthstone_label = value.name | slice: 0, birthstone_label_length
     endif
     if picker_type == 'image'
       assign option_index = option.position | minus: 1
@@ -142,8 +154,8 @@
           }}
         </span>
       {%- endif -%}
-      <span class="image-swatch-input__name">
-        {{- value -}}
+      <span class="image-swatch-input__name"{% if is_birthstone %} title="{{ value | escape }}"{% endif %}>
+        {%- if is_birthstone -%}{{- birthstone_label -}}{%- else -%}{{- value -}}{%- endif -%}
       </span>
       {%- if block.settings.image_style_show_price_difference and value_price_diff != 0 -%}
         <span class="image-swatch-input__price-diff">
