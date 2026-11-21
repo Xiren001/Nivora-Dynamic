@@ -138,19 +138,25 @@
             "image_style_border_radius": 8,
             "image_style_columns": "2",
             "image_style_columns_step_1": "default",
-            "image_style_columns_step_2": "default",
+            "image_style_columns_step_2": "3",
             "image_style_columns_step_3": "default",
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
-            "image_override_1_value": "",
-            "image_override_2_value": "",
+            "image_override_1_value": "Dorado",
+            "image_override_2_value": "Plateado",
             "image_override_3_value": "",
             "image_override_4_value": "",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
-            "image_override_8_value": ""
+            "image_override_8_value": "",
+            "birthstone_style_enable": false,
+            "birthstone_option_keywords": "",
+            "birthstone_columns_desktop": 4,
+            "birthstone_columns_mobile": 4,
+            "image_override_1_image": "shopify://shop_images/gravure-ib-base-G.webp",
+            "image_override_2_image": "shopify://shop_images/change-the-metal.jpg"
           }
         },
         "buy_buttons_KqEWkh": {
@@ -366,7 +372,9 @@
             "background_color": "#ffffff",
             "text_color": "#333333",
             "show_top_divider": true,
-            "show_bottom_divider": true
+            "show_bottom_divider": true,
+            "image": "shopify://shop_images/imgi_193_23_abdfc429-d4d0-46f4-8703-aa2f157.jpg",
+            "mobile_image": "shopify://shop_images/imgi_193_23_abdfc429-d4d0-46f4-8703-aa2f157.jpg"
           },
           "blocks": {}
         }
