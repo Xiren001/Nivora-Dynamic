@@ -82,14 +82,6 @@
         "bg_color": ""
       }
     },
-    "178334961515e74470": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "17833507668ed9208a": {
-      "type": "_blocks",
-      "settings": {}
-    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -97,16 +89,16 @@
           "type": "title",
           "settings": {}
         },
-        "loox_reviews_loox_rating_qkAgh6": {
+        "loox_reviews_loox_rating_rpp9ad": {
           "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
-            "contentSize": 13,
+            "contentSize": 16,
             "pattern": "4,9/5,0 ([count]+ zufriedene Kunden)",
             "hideText": false,
             "alignment": "",
             "layout": "",
-            "textColor": "#121212",
-            "starColor": "",
+            "textColor": "#000000",
+            "starColor": "#d4af37",
             "showAllReviews": false,
             "looxOpenFloatingWidget": false,
             "emptyRatingWidget": false
@@ -116,99 +108,113 @@
           "type": "price",
           "settings": {}
         },
-        "icon_with_text_RtEwBz": {
-          "type": "icon-with-text",
+        "custom_liquid_RTfLHt": {
+          "type": "custom_liquid",
           "settings": {
-            "layout": "vertical",
-            "icon_1": "heart",
-            "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Hautfreundlich",
-            "icon_2": "return",
-            "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "100 % wasserdicht",
-            "icon_3": "truck",
-            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Nur für dich personalisiert"
+            "custom_liquid": "<p style=\"font-size:11px;color:#888;margin: 0;margin-top: -20px;\">Niedrigster Preis der letzten 30 Tage</p>"
           }
         },
-        "text_NnLNAb": {
-          "type": "text",
-          "disabled": true,
+        "trust_badges_gXiPHp": {
+          "type": "trust_badges",
           "settings": {
-            "text": "Buy 1, Get 1 Free! Add 2 to your cart to apply the discount!",
-            "text_style": "body"
+            "badge_1_icon": "leaf",
+            "badge_1_label": "Hautfreundlich",
+            "badge_2_icon": "heart",
+            "badge_2_label": "Herzliches Geschenk",
+            "badge_3_icon": "guarantee",
+            "badge_3_label": "Geld-zurück-Garantie",
+            "badge_4_icon": "diamond",
+            "badge_4_label": "Anlaufbeständig",
+            "label_font_size": 12
           }
         },
         "variant_picker": {
           "type": "variant_picker",
-          "disabled": true,
           "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
+            "picker_type": "image",
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": true,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "disabled": true,
-          "settings": {}
         },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
-        "collapsible_tab_RgKPV9": {
+        "collapsible_tab_matsz1": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Beschreibung",
-            "icon": "none",
-            "content": "<p>Zwei Armbänder, eine Geschichte. Mit dem Duo-Armband trägst du einen Namen, ein Datum oder eine Initiale für jemanden, der immer bei dir ist – an deinem Handgelenk, wohin du auch gehst. Eins für dich, eins für diese Person: eine leise Art zu sagen, dass ihr zusammengehört.</p>",
+            "heading": "Material & Größe",
+            "icon": "ruler",
+            "content": "<ul><li><strong>Material:</strong> Edelstahl mit PVD-Beschichtung in 18 K Gold oder silberfarbenem Finish</li><li><strong>Personalisierung:</strong> Ein Name, ein Datum oder eine Initiale</li><li><strong>Set:</strong> Zwei Armbänder: eins für Sie, eins für diesen Menschen</li><li><strong>Haltbarkeit:</strong> Beständig gegen Wasser, Schweiß und tägliches Tragen; läuft nicht an und oxidiert nicht</li></ul>",
             "page": ""
           }
         },
-        "collapsible_tab_Y4BabJ": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Material",
-            "icon": "none",
-            "content": "<p>Jedes Armband ist aus Edelstahl mit einer PVD-Beschichtung in 18 K Gold (oder einem silberfarbenen Finish) gefertigt – eine Kombination, die wegen ihrer Langlebigkeit und Beständigkeit gegen Wasser, Schweiß und tägliches Tragen gewählt wurde. So verblasst der Glanz nicht, und das Metall läuft mit der Zeit weder an noch oxidiert es.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_ckkHGy": {
+        "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Versand",
-            "icon": "none",
-            "content": "<p>Unsere Lieferzeiten lassen sich im Allgemeinen in zwei Abschnitte unterteilen:</p><p><strong>Bearbeitungszeit:</strong> Unsere Bearbeitungszeit umfasst Produktion, Bestellprüfung, Personalisierung der Produkte, Qualitätskontrolle und Verpackung. Aufgrund der hohen Bestellmenge beträgt diese derzeit 2–4 Werktage.<br/><br/>Sobald Ihre Bestellung versandt wurde, trifft sie in der Regel innerhalb von 6–12 Werktagen bei Ihnen ein.</p><p>Sie erhalten eine Sendungsverfolgungsnummer per E-Mail, sobald Ihre Bestellung versandt wurde.</p>",
+            "icon": "truck",
+            "content": "<p>Unsere Lieferzeiten lassen sich im Allgemeinen in zwei Abschnitte unterteilen:</p><p><strong>Bearbeitungszeit:</strong> Unsere Bearbeitungszeit umfasst Produktion, Bestellprüfung, Personalisierung der Produkte, Qualitätskontrolle und Verpackung. Aufgrund der hohen Bestellmenge beträgt diese derzeit 10–12 Werktage.<br/><br/>Sobald Ihre Bestellung versandt wurde, trifft sie in der Regel innerhalb von 6–12 Werktagen bei Ihnen ein.</p><p>Sie erhalten eine Sendungsverfolgungsnummer per E-Mail, sobald Ihre Bestellung versandt wurde.</p>",
             "page": ""
           }
         },
-        "collapsible_tab_zkpXUd": {
+        "collapsible_tab_ChtBDy": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Garantie",
-            "icon": "none",
-            "content": "<p>Wir hoffen, dass Ihnen Ihr neuer Einkauf gefällt. Sollte jedoch etwas nicht ganz Ihren Erwartungen entsprechen, sind wir hier, um zu helfen. Wenn Sie Ihre Bestellung gegen ein anderes Produkt umtauschen oder eine Rückerstattung erhalten möchten, können Sie diese innerhalb von <strong>30 Tagen</strong> nach Lieferung problemlos zurücksenden.</p><p>Bitte haben Sie Verständnis dafür, dass personalisierte oder individuell angefertigte Artikel nicht zurückgegeben werden können, es sei denn, es liegt ein Herstellungsfehler vor. Sollte dies der Fall sein, wenden Sie sich bitte an unser freundliches Kundenservice-Team, das Ihnen so schnell wie möglich weiterhilft.</p>",
+            "heading": "Rückgabe",
+            "icon": "box",
+            "content": "<p>Wir hoffen, dass Ihnen Ihr neuer Einkauf gefällt. Sollte jedoch etwas nicht ganz Ihren Erwartungen entsprechen, sind wir hier, um zu helfen. Wenn Sie Ihre Bestellung gegen ein anderes Produkt umtauschen oder eine Rückerstattung erhalten möchten, können Sie diese innerhalb von 30 Tagen nach Lieferung problemlos zurücksenden.</p><p>Bitte haben Sie Verständnis dafür, dass personalisierter Schmuck und Ohrringe nicht zurückgegeben werden können, <strong>es sei denn, es liegt ein Herstellungsfehler vor</strong>. Sollte dies der Fall sein, wenden Sie sich bitte an unser freundliches Kundenservice-Team, das Ihnen so schnell wie möglich weiterhilft.</p>",
             "page": ""
+          }
+        },
+        "description_fkQwXV": {
+          "type": "description",
+          "settings": {
+            "custom_description": "<h2><em>MANCHE MENSCHEN SIND IMMER BEI IHNEN … AUCH WENN SIE WEIT WEG SIND.</em></h2><p>Es gibt diesen einen Menschen, der Sie einfach versteht.</p><p>Den Sie zuerst anrufen, wenn es gute Neuigkeiten gibt. Der an schweren Tagen da ist, ohne dass Sie fragen müssen.</p><p>Vielleicht haben Sie nie die richtigen Worte gefunden, um ihm zu sagen, was das bedeutet.</p><p>Dieses Armband sagt es für Sie.</p><p>Zwei Armbänder, eine Geschichte: eins für Sie, eins für diesen Menschen, jedes mit einem Namen, einem Datum oder einer Initiale, die zählt.</p><p>Eine leise Art zu sagen, dass Sie zusammengehören – an Ihrem Handgelenk, wohin Sie auch gehen.</p>",
+            "media_1_video_url": "",
+            "media_1_position": 5,
+            "media_2_video_url": "",
+            "media_2_position": 2,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
           }
         }
       },
       "block_order": [
         "title",
-        "loox_reviews_loox_rating_qkAgh6",
+        "loox_reviews_loox_rating_rpp9ad",
         "price",
-        "icon_with_text_RtEwBz",
-        "text_NnLNAb",
+        "custom_liquid_RTfLHt",
+        "trust_badges_gXiPHp",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons_KqEWkh",
-        "collapsible_tab_RgKPV9",
-        "collapsible_tab_Y4BabJ",
-        "collapsible_tab_ckkHGy",
-        "collapsible_tab_zkpXUd"
+        "collapsible_tab_matsz1",
+        "collapsible_tab_8ncE3A",
+        "collapsible_tab_ChtBDy",
+        "description_fkQwXV"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
@@ -223,14 +229,238 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 60,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
+      }
+    },
+    "image_with_text_G8zpBF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Nthp3D": {
+          "type": "heading",
+          "settings": {
+            "heading": "Names Engraved , Family Forever United",
+            "heading_size": "h1",
+            "dynamic_sale_banner": false,
+            "banner_language": "",
+            "heading_color": "",
+            "heading_weight": "default",
+            "letter_spacing": 0,
+            "heading_uppercase": false
+          }
+        },
+        "text_qBCYQG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Imagine her suprise when she sees a necklace with her loved one's names. It's more than a gift, it's a message of love she can wear every day.</p>",
+            "text_style": "body",
+            "body_size": "default",
+            "text_color": ""
+          }
+        },
+        "button_KxhzHE": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy now",
+            "button_link": "shopify://products/to-the-best-mom-engraved-necklace",
+            "button_style_secondary": false,
+            "button_variant": "button",
+            "button_size": "default",
+            "button_full_width": false,
+            "new_tab": false,
+            "button_bg": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_Nthp3D",
+        "text_qBCYQG",
+        "button_KxhzHE"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2024-12-25_at_19.18.29.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "image_fit": "cover",
+        "image_radius": 0,
+        "image_link": "",
+        "full_width": false,
+        "mobile_layout": "image_first",
+        "grid_gap": 0,
+        "content_padding": "default",
+        "content_max_width": 0,
+        "block_spacing": 20,
+        "content_bg": "",
+        "text_color": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "blocks_f7LdBR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3ae7b4f_fG8eP8": {
+          "type": "ai_gen_block_3ae7b4f",
+          "settings": {
+            "eyebrow": "Eins für Sie, eins für Ihren Menschen",
+            "heading": "Zwei Armbänder, eine Geschichte",
+            "body": "<p>Edelstahl mit PVD-Beschichtung in 18 K Gold oder silberfarbenem Finish, personalisiert mit einem Namen, einem Datum oder einer Initiale. Beständig gegen Wasser, Schweiß und tägliches Tragen, damit der Glanz nicht verblasst.</p>",
+            "button_label": "Kollektion entdecken",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
+            "background_color": "#ffffff",
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3ae7b4f_fG8eP8"
+      ],
+      "name": "Sentimental image text",
+      "settings": {}
+    },
+    "related_products_slider_8xHdB6": {
+      "type": "related-products-slider",
+      "name": "Related products",
+      "settings": {
+        "source": "manual",
+        "product_list": [
+          "knotenarmband-forever",
+          "graviertes-armband-fur-meinen-mann",
+          "gravierte-halskette-herz-der-familie",
+          "schild-des-sohnes-tigeraugen-armband",
+          "whisper-verstellbarer-initialring"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "Das könnte dir auch gefallen",
+        "show_heading_dot": false,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 22,
+        "heading_size_mobile": 14,
+        "heading_weight": "600",
+        "heading_letter_spacing": 8,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": false,
+        "sale_badge_text": "Sale",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "related-products": {
@@ -252,103 +482,10 @@
         "padding_bottom": 28
       }
     },
-    "image_with_text_eCRMfk": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_94DP8n": {
-          "type": "heading",
-          "settings": {
-            "heading": "<em>MOTHER'S DAY SALE IS LIVE</em> - <strong>BUY 1 GET 1 FREE</strong>",
-            "heading_size": "h1"
-          }
-        },
-        "text_bXNFJ7": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Get one for yourself and surprise someone special — both for the price of one.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_ifPjT9": {
-          "type": "button",
-          "settings": {
-            "button_label": "Buy now",
-            "button_link": "shopify://products/personalized-memory-photo-bracelet",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_94DP8n",
-        "text_bXNFJ7",
-        "button_ifPjT9"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/222.gif",
-        "height": "medium",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 4
-      }
-    },
-    "blocks_L7g87F": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_27b352b_rwCMEE": {
-          "type": "ai_gen_block_27b352b",
-          "settings": {
-            "title": "<strong>Das könnte dir auch gefallen</strong>",
-            "subtitle": "Handverlesene Stücke aus unserer Kollektion",
-            "product_list": [
-              "knotenarmband-forever",
-              "graviertes-armband-fur-meinen-mann",
-              "gravierte-halskette-herz-der-familie",
-              "schild-des-sohnes-tigeraugen-armband",
-              "whisper-verstellbarer-initialring"
-            ],
-            "products_to_show": 4,
-            "container_width": 1200,
-            "products_per_row": 4,
-            "products_per_row_tablet": 3,
-            "grid_gap": 30,
-            "section_padding_top": 35,
-            "section_padding_bottom": 35,
-            "header_spacing": 40,
-            "background_color": "#ffffff",
-            "image_border_radius": 0,
-            "title_size": 28,
-            "title_color": "#121212",
-            "subtitle_size": 14,
-            "subtitle_color": "#666666",
-            "product_title_size": 16,
-            "product_title_color": "#121212",
-            "product_price_size": 15,
-            "product_price_color": "#121212",
-            "sale_price_color": "#d82c0d",
-            "link_hover_color": "#666666"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_27b352b_rwCMEE"
-      ],
-      "name": "You may also like",
-      "settings": {}
-    },
     "17341290603fa2426b": {
       "type": "apps",
       "blocks": {
-        "loox_reviews_loox_dynamic_section_HwRzqq": {
+        "loox_reviews_loox_dynamic_section_eCEYg3": {
           "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
           "settings": {
             "reviews_to_display": "",
@@ -363,21 +500,44 @@
         }
       },
       "block_order": [
-        "loox_reviews_loox_dynamic_section_HwRzqq"
+        "loox_reviews_loox_dynamic_section_eCEYg3"
       ],
       "settings": {
         "include_margins": true
       }
+    },
+    "blocks_UD7fhM": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b5f6c36_jNtrcc": {
+          "type": "ai_gen_block_b5f6c36",
+          "settings": {
+            "button_label": "In den Warenkorb",
+            "sold_out_label": "Ausverkauft",
+            "discount_label": "SPARE [percent]%",
+            "accent_color": "#000000",
+            "bar_background": "#ffffff",
+            "text_color": "#343434",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b5f6c36_jNtrcc"
+      ],
+      "name": "Sticky add to cart",
+      "settings": {}
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
-    "178334961515e74470",
-    "17833507668ed9208a",
     "main",
+    "image_with_text_G8zpBF",
+    "blocks_f7LdBR",
+    "related_products_slider_8xHdB6",
     "related-products",
-    "image_with_text_eCRMfk",
-    "blocks_L7g87F",
-    "17341290603fa2426b"
+    "17341290603fa2426b",
+    "blocks_UD7fhM"
   ]
 }
