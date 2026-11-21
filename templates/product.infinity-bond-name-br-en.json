@@ -143,14 +143,16 @@
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
-            "image_override_1_value": "",
-            "image_override_2_value": "",
+            "image_override_1_value": "Standard Black Box",
+            "image_override_2_value": "Premium LED Black Box",
             "image_override_3_value": "",
             "image_override_4_value": "",
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
-            "image_override_8_value": ""
+            "image_override_8_value": "",
+            "image_override_1_image": "shopify://shop_images/gf.avif",
+            "image_override_2_image": "shopify://shop_images/Untitled_design_10_357635d4-07d2-4d89-ae62-789ff4d08a83.webp"
           }
         },
         "buy_buttons_KqEWkh": {
