@@ -373,6 +373,17 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    {%- comment -%} Commslayer chat bubble: show only on the Track Your Order page (/apps/parcelpanel, any language prefix) {%- endcomment -%}
+    {%- unless request.path contains '/apps/parcelpanel' -%}
+      <style>
+        .woot--bubble-holder,
+        .woot-widget-holder,
+        .woot-widget-bubble {
+          display: none !important;
+        }
+      </style>
+    {%- endunless -%}
   </body>
   <style>
 .quantity:after {
