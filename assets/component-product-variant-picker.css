@@ -346,7 +346,7 @@ variant-selects {
   box-shadow: none;
 }
 
-.image-swatch-input__radio:checked + .image-swatch-input__label--birthstone .birthstone-gem--image {
+.image-swatch-input__radio:checked + .image-swatch-input__label--birthstone .birthstone-gem.birthstone-gem--image {
   box-shadow: none;
 }
 
