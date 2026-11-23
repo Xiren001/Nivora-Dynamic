@@ -154,7 +154,11 @@
             "image_override_5_value": "",
             "image_override_6_value": "",
             "image_override_7_value": "",
-            "image_override_8_value": ""
+            "image_override_8_value": "",
+            "birthstone_style_enable": false,
+            "birthstone_option_keywords": "",
+            "birthstone_columns_desktop": 4,
+            "birthstone_columns_mobile": 4
           }
         },
         "buy_buttons_KqEWkh": {
@@ -370,7 +374,9 @@
             "background_color": "#ffffff",
             "text_color": "#333333",
             "show_top_divider": true,
-            "show_bottom_divider": true
+            "show_bottom_divider": true,
+            "image": "shopify://shop_images/TwistedDiamondRingBeautyPortrait.png",
+            "mobile_image": "shopify://shop_images/TwistedDiamondRingBeautyPortrait.png"
           },
           "blocks": {}
         }
