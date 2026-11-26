@@ -300,11 +300,53 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "image_with_text_hInit1": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_hInit1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Un regalo con significado",
+            "heading_size": "h1",
+            "dynamic_sale_banner": false,
+            "banner_language": "pl"
+          }
+        },
+        "text_hInit1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Un corazón delicado junto a una inicial: un pequeño detalle que dice mucho y que se lleva cerca cada día.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hInit1",
+        "text_hInit1"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/72fe2754-154f-4814-a9fe-165919e6ed05.webp",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
+    "image_with_text_hInit1",
     "blocks_kYmr3K",
     "related-products",
     "17341290603fa2426b"
