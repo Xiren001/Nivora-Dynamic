@@ -308,7 +308,7 @@
         "heading_hInit1": {
           "type": "heading",
           "settings": {
-            "heading": "Een cadeau met betekenis",
+            "heading": "Meer dan zomaar een letter",
             "heading_size": "h1",
             "dynamic_sale_banner": false,
             "banner_language": "pl"
@@ -317,7 +317,7 @@
         "text_hInit1": {
           "type": "text",
           "settings": {
-            "text": "<p>Een sierlijk hartje met een initiaal naar keuze: een klein gebaar dat veel zegt en dat je elke dag dicht bij je draagt.</p>",
+            "text": "<p>Sieraden horen iets te betekenen. Met het hartje en de gepersonaliseerde initiaal houdt deze ketting iemand bijzonders dicht bij je – of het nu gaat om iemand van wie je houdt of om een herinnering aan jezelf.</p><p>Eenvoudig, betekenisvol en gemaakt om elke dag te dragen. Hij is gemaakt van duurzame, huidvriendelijke materialen die niet verkleuren en je huid niet irriteren. Een tijdloos sieraad om te dragen, cadeau te geven en jarenlang te koesteren.</p>",
             "text_style": "body"
           }
         }

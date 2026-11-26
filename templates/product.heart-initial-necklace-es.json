@@ -307,7 +307,7 @@
         "heading_hInit1": {
           "type": "heading",
           "settings": {
-            "heading": "Un regalo con significado",
+            "heading": "Mucho más que una letra",
             "heading_size": "h1",
             "dynamic_sale_banner": false,
             "banner_language": "pl"
@@ -316,7 +316,7 @@
         "text_hInit1": {
           "type": "text",
           "settings": {
-            "text": "<p>Un corazón delicado junto a una inicial: un pequeño detalle que dice mucho y que se lleva cerca cada día.</p>",
+            "text": "<p>Las joyas deberían significar algo. Este collar mantiene cerca a alguien especial gracias a su corazón y a la inicial personalizada, ya sea para una persona a la que quieres o como un recordatorio para ti.</p><p>Sencillo, lleno de significado y pensado para llevarlo a diario, está hecho con materiales resistentes y respetuosos con la piel que no se oscurecen ni irritan. Una pieza atemporal para llevar, regalar y atesorar durante años.</p>",
             "text_style": "body"
           }
         }
