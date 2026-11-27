@@ -85,9 +85,31 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "quantity_selector_irwb8c": {
+          "type": "quantity_selector",
+          "settings": {
+            "layout": "beside_button",
+            "show_label": true
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
+        },
+        "loox_reviews_loox_rating_QdzrJq": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "4.9/5.0 ([count]+ Happy Customers)",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "#000000",
+            "starColor": "#d4af37",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
+          }
         },
         "price": {
           "type": "price",
@@ -128,8 +150,14 @@
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
-            "image_override_1_value": "",
-            "image_override_2_value": "",
+            "birthstone_style_enable": false,
+            "birthstone_option_keywords": "",
+            "birthstone_columns_desktop": 4,
+            "birthstone_columns_mobile": 4,
+            "image_override_1_value": "Gold",
+            "image_override_1_image": "shopify://shop_images/Gold_Infinity_Heart_Pave_Bracelet.png",
+            "image_override_2_value": "Silver",
+            "image_override_2_image": "shopify://shop_images/Silver_Infinity_Heart_Bracelet.png",
             "image_override_3_value": "",
             "image_override_4_value": "",
             "image_override_5_value": "",
@@ -177,24 +205,10 @@
             "media_3_position": 3,
             "media_autoplay": true
           }
-        },
-        "loox_reviews_loox_rating_QdzrJq": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "contentSize": 16,
-            "pattern": "4.9/5.0 ([count]+ Happy Customers)",
-            "hideText": false,
-            "alignment": "",
-            "layout": "",
-            "textColor": "#000000",
-            "starColor": "#d4af37",
-            "showAllReviews": false,
-            "looxOpenFloatingWidget": false,
-            "emptyRatingWidget": false
-          }
         }
       },
       "block_order": [
+        "quantity_selector_irwb8c",
         "title",
         "loox_reviews_loox_rating_QdzrJq",
         "price",
@@ -342,7 +356,7 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
-            "image": "shopify://shop_images/S0d1e0ac396ff45fe83c86e9ead6bf09ar_jpg_960x960q75_jpg.webp",
+            "image": "shopify://shop_images/imgi_232_openart-image_1793891699435_2a4f4563_1793891700370_929bb518_1_enhanced.jpg",
             "mobile_image": "shopify://shop_images/S0d1e0ac396ff45fe83c86e9ead6bf09ar_jpg_960x960q75_jpg.webp",
             "eyebrow": "Made to hold close",
             "heading": "Not a simple gift",

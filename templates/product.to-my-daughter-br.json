@@ -128,14 +128,24 @@
             "image_style_font_size": 14,
             "image_style_show_price_difference": true,
             "image_style_text_only_fallback": true,
-            "image_override_1_value": "",
-            "image_override_2_value": "",
-            "image_override_3_value": "",
-            "image_override_4_value": "",
-            "image_override_5_value": "",
-            "image_override_6_value": "",
+            "image_override_1_value": "Gold",
+            "image_override_2_value": "Silver",
+            "image_override_3_value": "Dourado",
+            "image_override_4_value": "Prateado",
+            "image_override_5_value": "Ouro",
+            "image_override_6_value": "Prata",
             "image_override_7_value": "",
-            "image_override_8_value": ""
+            "image_override_8_value": "",
+            "birthstone_style_enable": false,
+            "birthstone_option_keywords": "",
+            "birthstone_columns_desktop": 4,
+            "birthstone_columns_mobile": 4,
+            "image_override_1_image": "shopify://shop_images/Gold_Infinity_Heart_Pave_Bracelet.png",
+            "image_override_2_image": "shopify://shop_images/Silver_Infinity_Heart_Bracelet.png",
+            "image_override_3_image": "shopify://shop_images/Gold_Infinity_Heart_Pave_Bracelet.png",
+            "image_override_4_image": "shopify://shop_images/Silver_Infinity_Heart_Bracelet.png",
+            "image_override_5_image": "shopify://shop_images/Gold_Infinity_Heart_Pave_Bracelet.png",
+            "image_override_6_image": "shopify://shop_images/Silver_Infinity_Heart_Bracelet.png"
           }
         },
         "buy_buttons_KqEWkh": {
@@ -192,9 +202,17 @@
             "looxOpenFloatingWidget": false,
             "emptyRatingWidget": false
           }
+        },
+        "quantity_selector_irwb8c": {
+          "type": "quantity_selector",
+          "settings": {
+            "layout": "beside_button",
+            "show_label": true
+          }
         }
       },
       "block_order": [
+        "quantity_selector_irwb8c",
         "title",
         "loox_reviews_loox_rating_QdzrJq",
         "price",
@@ -342,7 +360,7 @@
         "ai_gen_block_3ae7b4f_fG8eP8": {
           "type": "ai_gen_block_3ae7b4f",
           "settings": {
-            "image": "shopify://shop_images/S0d1e0ac396ff45fe83c86e9ead6bf09ar_jpg_960x960q75_jpg.webp",
+            "image": "shopify://shop_images/imgi_232_openart-image_1793891699435_2a4f4563_1793891700370_929bb518_1_enhanced.jpg",
             "mobile_image": "shopify://shop_images/S0d1e0ac396ff45fe83c86e9ead6bf09ar_jpg_960x960q75_jpg.webp",
             "eyebrow": "Feita para levar sempre perto",
             "heading": "Muito mais do que um presente",
