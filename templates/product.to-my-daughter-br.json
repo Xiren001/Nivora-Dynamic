@@ -89,109 +89,129 @@
           "type": "title",
           "settings": {}
         },
-        "loox_reviews_loox_rating_QdzrJq": {
-          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
-          "settings": {
-            "contentSize": 16,
-            "pattern": "4,9/5,0 ([count]+ clientes satisfechos)",
-            "hideText": false,
-            "alignment": "",
-            "layout": "",
-            "textColor": "",
-            "starColor": "#d4af37",
-            "showAllReviews": false,
-            "looxOpenFloatingWidget": false,
-            "emptyRatingWidget": false
-          }
-        },
-        "icon_with_text_RtEwBz": {
-          "type": "icon-with-text",
-          "settings": {
-            "layout": "vertical",
-            "icon_1": "none",
-            "image_1": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_1": "Tamaño ajustable",
-            "icon_2": "none",
-            "image_2": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_2": "Garantía de 2 años",
-            "icon_3": "none",
-            "image_3": "shopify://shop_images/Screenshot_2024-12-13_at_22.55.26.webp",
-            "heading_3": "Un regalo de corazón"
-          }
-        },
         "price": {
           "type": "price",
           "settings": {}
         },
-        "custom_liquid_EzC6G9": {
+        "custom_liquid_RTfLHt": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<style>\n        .offer__badge {\n    background-color: rgba(255, 65, 65, 0.1);\n    color: #792424;\n    font-weight: bold;\n    text-transform: uppercase;\n    padding: 8px 12px;\n    border-radius: 6px;\n    font-size: 14px;\n    display: flex\n;\n    margin: 0 auto;\n    align-items: center;\n    gap: 8px;\n    justify-content: center;\n        }\n</style>\n\n<div class=\"offer__badge\"> \n        <svg width=\"12\" height=\"12\" viewBox=\"0 0 12 12\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M3.06531 6.72604C2.93372 6.72604 2.82342 6.68151 2.7344 6.59245C2.64538 6.50339 2.60087 6.39303 2.60087 6.26137C2.60087 6.12972 2.64538 6.0213 2.7344 5.93611C2.82342 5.84705 2.93372 5.80252 3.06531 5.80252H5.53266V2.45692C5.53266 2.32914 5.57717 2.22072 5.66618 2.13166C5.7552 2.04259 5.86357 1.99806 5.99129 1.99806C6.12288 1.99806 6.23319 2.04259 6.32221 2.13166C6.41122 2.22072 6.45573 2.32914 6.45573 2.45692V6.26137C6.45573 6.39303 6.41122 6.50339 6.32221 6.59245C6.23319 6.68151 6.12288 6.72604 5.99129 6.72604H3.06531ZM5.9971 12C5.16884 12 4.39284 11.8432 3.66909 11.5295C2.94533 11.2197 2.30866 10.7899 1.75907 10.2401C1.20948 9.69409 0.777939 9.05905 0.464441 8.33495C0.154814 7.60697 0 6.82865 0 6C0 5.17135 0.154814 4.39497 0.464441 3.67086C0.777939 2.94288 1.20948 2.30397 1.75907 1.75411C2.30866 1.20426 2.94533 0.774443 3.66909 0.464666C4.39284 0.154889 5.16884 0 5.9971 0C6.82535 0 7.60135 0.154889 8.32511 0.464666C9.05273 0.774443 9.69134 1.20426 10.2409 1.75411C10.7905 2.30397 11.2201 2.94288 11.5298 3.67086C11.8433 4.39497 12 5.17135 12 6C12 6.82865 11.8433 7.60697 11.5298 8.33495C11.2201 9.05905 10.7905 9.69409 10.2409 10.2401C9.69134 10.7899 9.05273 11.2197 8.32511 11.5295C7.60135 11.8432 6.82535 12 5.9971 12ZM5.9971 10.8151C6.6628 10.8151 7.28592 10.6893 7.86647 10.4376C8.44702 10.1897 8.95791 9.84511 9.39913 9.40368C9.84422 8.96225 10.1906 8.45111 10.4383 7.87028C10.686 7.28945 10.8099 6.66602 10.8099 6C10.8099 5.33398 10.686 4.71055 10.4383 4.12972C10.1906 3.54501 9.84422 3.03388 9.39913 2.59632C8.95791 2.15489 8.44702 1.81026 7.86647 1.56244C7.28592 1.31075 6.6628 1.1849 5.9971 1.1849C5.33527 1.1849 4.71214 1.31075 4.12772 1.56244C3.54717 1.81026 3.03628 2.15489 2.59507 2.59632C2.15385 3.03388 1.80745 3.54501 1.55588 4.12972C1.30818 4.71055 1.18433 5.33398 1.18433 6C1.18433 6.66602 1.30818 7.28945 1.55588 7.87028C1.80745 8.45111 2.15385 8.96225 2.59507 9.40368C3.03628 9.84511 3.54717 10.1897 4.12772 10.4376C4.71214 10.6893 5.33527 10.8151 5.9971 10.8151Z\" fill=\"#792424\"/>\n        </svg>\n        Despacho gratis solo por hoy</div>"
+            "custom_liquid": "<p style=\"font-size:11px;color:#888;margin: 0;margin-top: -20px;\">Menor preço dos últimos 30 dias</p>"
+          }
+        },
+        "trust_badges_gXiPHp": {
+          "type": "trust_badges",
+          "settings": {
+            "badge_1_icon": "leaf",
+            "badge_1_label": "Seguro para a pele",
+            "badge_2_icon": "heart",
+            "badge_2_label": "Presente de coração",
+            "badge_3_icon": "guarantee",
+            "badge_3_label": "Garantia de reembolso",
+            "badge_4_icon": "diamond",
+            "badge_4_label": "Design artesanal",
+            "label_font_size": 12
           }
         },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
+            "picker_type": "image",
+            "swatch_shape": "circle",
+            "image_style_show_step_numbers": true,
+            "image_style_accent_color": "#a8864f",
+            "image_style_border_radius": 8,
+            "image_style_columns": "2",
+            "image_style_columns_step_1": "default",
+            "image_style_columns_step_2": "default",
+            "image_style_columns_step_3": "default",
+            "image_style_font_size": 14,
+            "image_style_show_price_difference": true,
+            "image_style_text_only_fallback": true,
+            "image_override_1_value": "",
+            "image_override_2_value": "",
+            "image_override_3_value": "",
+            "image_override_4_value": "",
+            "image_override_5_value": "",
+            "image_override_6_value": "",
+            "image_override_7_value": "",
+            "image_override_8_value": ""
           }
-        },
-        "quantity_selector": {
-          "type": "quantity_selector",
-          "settings": {}
         },
         "buy_buttons_KqEWkh": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": true,
+            "elegant_button": true,
+            "add_to_cart_label": ""
           }
         },
-        "collapsible_tab_Y4BabJ": {
+        "collapsible_tab_8ncE3A": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Materiales",
-            "icon": "question_mark",
-            "content": "<p>Duradera, hipoalergénica y resistente al deslustre: nuestras piezas de acero inoxidable 316L son la elección perfecta para el uso diario.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_U8t6ip": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Envío",
+            "heading": "Envio",
             "icon": "truck",
-            "content": "<p><br/>Nuestros tiempos de envío pueden dividirse, en general, en dos partes:<br/><br/>Tiempo de procesamiento: nuestro tiempo de procesamiento incluye la producción, la verificación del pedido, la personalización del producto, el control de calidad y el embalaje. Debido al gran número de pedidos, actualmente esto es de entre 2 y 4 días hábiles.</p><p><br/>Una vez enviado tu pedido, normalmente llega en un plazo de 6 a 12 días hábiles.<br/><br/>Recibirás un número de seguimiento por correo electrónico una vez que se haya enviado tu pedido.<br/><br/></p>",
+            "content": "<p>Nossos prazos de envio podem ser divididos, de modo geral, em duas partes:<br/><br/>Prazo de processamento: nosso prazo de processamento inclui produção, verificação do pedido, personalização do produto, controle de qualidade e embalagem. Devido ao grande volume de pedidos, isso corresponde atualmente a 2 a 4 dias úteis.<br/><br/>Após o envio, seu pedido normalmente chega em 6 a 12 dias úteis.<br/><br/>Você receberá um código de rastreamento por e-mail assim que seu pedido for enviado.</p>",
             "page": ""
           }
         },
-        "collapsible_tab_LWxxBL": {
+        "collapsible_tab_ChtBDy": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Devolución",
-            "icon": "return",
-            "content": "<p>Esperamos que te encante tu nueva pulsera. Sin embargo, si algo no cumple del todo con tus expectativas, estamos aquí para ayudarte. Si deseas cambiar tu pedido por otro artículo o recibir un reembolso, puedes devolverlo fácilmente dentro de los <strong>30 días</strong> posteriores a la entrega.<br/><br/>Te pedimos comprensión: las joyas personalizadas no pueden devolverse, salvo que exista un defecto de fabricación. Si es tu caso, comunícate con nuestro amable equipo de atención al cliente, que te ayudará lo antes posible.</p>",
+            "heading": "Devolução",
+            "icon": "box",
+            "content": "<p>Esperamos que você adore sua nova pulseira. No entanto, se algo não estiver totalmente à altura da sua satisfação, estamos aqui para ajudar. Se quiser trocar seu pedido por outro item ou receber um reembolso, você pode devolvê-lo facilmente em até <strong>30 dias</strong> após a entrega.<br/><br/>Pedimos sua compreensão de que joias personalizadas não podem ser devolvidas, a menos que haja um defeito de fabricação. Se for o caso, entre em contato com nossa simpática equipe de atendimento, que ajudará você o mais rápido possível.</p>",
             "page": ""
+          }
+        },
+        "description_fkQwXV": {
+          "type": "description",
+          "settings": {
+            "custom_description": "<h2><em>ELA SEMPRE SERÁ A SUA MENININHA… MESMO DEPOIS DE CRESCIDA.</em></h2><p>Você viu os primeiros passos dela, ouviu a primeira risada e segurou a mão dela no primeiro dia de aula.</p><p>Hoje ela está trilhando o próprio caminho, mas o laço entre vocês nunca se desfaz.</p><h2><em>Dois corações, conectados para sempre</em></h2><p>Esta pulseira é um lembrete silencioso que ela pode usar todos os dias: não importa a distância, vocês estarão sempre conectadas.</p><p>Toda vez que olhar para o pulso, ela vai lembrar que é amada, que alguém acredita nela e que nunca está sozinha.</p><h2><em>Um presente para guardar por muitos anos</em></h2><p>No aniversário, na formatura ou simplesmente sem motivo. É o seu jeito de dizer: “Tenho orgulho de você e sempre vou estar ao seu lado.”</p><h2><em>Detalhes do produto:</em></h2><ul><li>Tamanho ajustável, serve na maioria dos pulsos</li><li>Aço inoxidável 316L: resistente, hipoalergênico e não escurece</li><li>Disponível em dourado e prateado</li><li>Um presente cheio de significado para aniversários, formaturas e todos os momentos especiais</li></ul>",
+            "media_1_video_url": "",
+            "media_1_position": 5,
+            "media_2_video_url": "",
+            "media_2_position": 2,
+            "media_3_video_url": "",
+            "media_3_position": 3,
+            "media_autoplay": true
+          }
+        },
+        "loox_reviews_loox_rating_QdzrJq": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-rating/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "contentSize": 16,
+            "pattern": "4,9/5,0 ([count]+ clientes satisfeitos)",
+            "hideText": false,
+            "alignment": "",
+            "layout": "",
+            "textColor": "#000000",
+            "starColor": "#d4af37",
+            "showAllReviews": false,
+            "looxOpenFloatingWidget": false,
+            "emptyRatingWidget": false
           }
         }
       },
       "block_order": [
         "title",
         "loox_reviews_loox_rating_QdzrJq",
-        "icon_with_text_RtEwBz",
         "price",
-        "custom_liquid_EzC6G9",
+        "custom_liquid_RTfLHt",
+        "trust_badges_gXiPHp",
         "variant_picker",
-        "quantity_selector",
         "buy_buttons_KqEWkh",
-        "collapsible_tab_Y4BabJ",
-        "collapsible_tab_U8t6ip",
-        "collapsible_tab_LWxxBL"
+        "collapsible_tab_8ncE3A",
+        "collapsible_tab_ChtBDy",
+        "description_fkQwXV"
       ],
       "custom_css": [
         ".price.price--large.price--show-badge {color: #ff1e1e !important;}",
         ".button {font-weight: bold; font-size: 20px;}",
-        ".product__tax {display: none;}"
+        ".product__tax {display: none;}",
+        ".note {margin: 0; font-size: 12px; font-weight: bold;}",
+        "div .note {margin: 0 0 5px 0 !important;}"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -199,14 +219,242 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "cover",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_left",
+        "thumbnail_left_gap": 60,
+        "pgf_aspect_ratio": "square",
+        "pgf_transition": "flash",
+        "pgf_flash_color": "#ffffff",
+        "pgf_flash_opacity": 85,
+        "pgf_duration": 350,
+        "pgf_easing": "ease-in-out",
+        "pgf_arrows": "hover",
+        "pgf_lightbox": true,
+        "pgf_hover_zoom": "none",
+        "pgf_zoom_level": 20,
+        "pgf_autoplay": false,
+        "pgf_autoplay_interval": 5,
+        "pgf_autoplay_pause_hover": true,
+        "pgf_show_thumbs": true,
+        "pgf_thumb_position": "below",
+        "pgf_thumb_trigger": "click",
+        "pgf_thumb_per_row": 5,
+        "pgf_thumb_fill": "stretch",
+        "pgf_thumb_gap": 10,
+        "pgf_thumb_radius": 8,
+        "pgf_thumb_active_color": "#121212",
+        "pgf_thumb_active_width": 1,
+        "pgf_thumb_inactive_opacity": 70,
+        "pgf_thumb_max": 0,
+        "pgf_main_radius": 12,
+        "pgf_gap": 12,
+        "pgf_media_bg": "#f5f5f5",
+        "pgf_badge_sale": false,
+        "pgf_badge_new": false,
+        "pgf_badge_custom": "",
+        "pgf_badge_position": "top-left",
+        "pgf_badge_bg": "#121212",
+        "pgf_badge_text": "#ffffff",
         "media_position": "left",
         "image_zoom": "none",
-        "mobile_thumbnails": "hide",
+        "mobile_thumbnails": "thumbnail_below",
         "hide_variants": true,
         "enable_video_looping": false,
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 12
+      }
+    },
+    "image_with_text_G8zpBF": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Nthp3D": {
+          "type": "heading",
+          "settings": {
+            "heading": "Names Engraved , Family Forever United",
+            "heading_size": "h1",
+            "dynamic_sale_banner": false,
+            "banner_language": "",
+            "heading_color": "",
+            "heading_weight": "default",
+            "letter_spacing": 0,
+            "heading_uppercase": false
+          }
+        },
+        "text_qBCYQG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Imagine her suprise when she sees a necklace with her loved one's names. It's more than a gift, it's a message of love she can wear every day.</p>",
+            "text_style": "body",
+            "body_size": "default",
+            "text_color": ""
+          }
+        },
+        "button_KxhzHE": {
+          "type": "button",
+          "settings": {
+            "button_label": "Buy now",
+            "button_link": "shopify://products/to-the-best-mom-engraved-necklace",
+            "button_style_secondary": false,
+            "button_variant": "button",
+            "button_size": "default",
+            "button_full_width": false,
+            "new_tab": false,
+            "button_bg": "",
+            "button_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_Nthp3D",
+        "text_qBCYQG",
+        "button_KxhzHE"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2024-12-25_at_19.18.29.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "image_fit": "cover",
+        "image_radius": 0,
+        "image_link": "",
+        "full_width": false,
+        "mobile_layout": "image_first",
+        "grid_gap": 0,
+        "content_padding": "default",
+        "content_max_width": 0,
+        "block_spacing": 20,
+        "content_bg": "",
+        "text_color": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "blocks_f7LdBR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_3ae7b4f_fG8eP8": {
+          "type": "ai_gen_block_3ae7b4f",
+          "settings": {
+            "image": "shopify://shop_images/S0d1e0ac396ff45fe83c86e9ead6bf09ar_jpg_960x960q75_jpg.webp",
+            "mobile_image": "shopify://shop_images/S0d1e0ac396ff45fe83c86e9ead6bf09ar_jpg_960x960q75_jpg.webp",
+            "eyebrow": "Feita para levar sempre perto",
+            "heading": "Muito mais do que um presente",
+            "body": "<p>Este tesouro excepcional vai muito além de ser apenas um presente: é um símbolo cheio de significado do seu amor, feito para ser uma fonte diária de alegria e uma bela lembrança para guardar no coração por muitos anos.</p>",
+            "button_label": "Conheça a coleção",
+            "button_link": "",
+            "desktop_width_percent": 100,
+            "image_side": "left",
+            "image_position": "center center",
+            "image_height": 680,
+            "mobile_aspect_ratio": "1 / 1",
+            "text_alignment": "center",
+            "background_color": "#ffffff",
+            "text_color": "#333333",
+            "show_top_divider": true,
+            "show_bottom_divider": true
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_3ae7b4f_fG8eP8"
+      ],
+      "name": "Sentimental image text",
+      "settings": {}
+    },
+    "related_products_slider_8xHdB6": {
+      "type": "related-products-slider",
+      "name": "Related products",
+      "settings": {
+        "source": "manual",
+        "product_list": [
+          "colar-para-o-meu-amor",
+          "colar-perola-eterna",
+          "colar-signature-com-nome-e-pedra-do-mes",
+          "colar-sol-e-lua",
+          "conjunto-de-pulseiras-coracoes-compartilhados",
+          "escudo-do-filho-pulseira-de-olho-de-tigre",
+          "guardiao-eterno-pulseira-para-o-seu-neto"
+        ],
+        "collection": "",
+        "fallback_collection": "",
+        "product_count": 10,
+        "heading": "Você também pode gostar",
+        "show_heading_dot": false,
+        "heading_dot_size": 0.5,
+        "heading_dot_color": "#121212",
+        "heading_uppercase": true,
+        "heading_font": "body",
+        "heading_custom_font": "assistant_n4",
+        "heading_size_desktop": 22,
+        "heading_size_mobile": 14,
+        "heading_weight": "600",
+        "heading_letter_spacing": 8,
+        "heading_color": "",
+        "heading_alignment": "center",
+        "heading_spacing": 24,
+        "aspect_ratio": "1-1",
+        "border_radius": 0,
+        "gap_desktop": 16,
+        "gap_mobile": 10,
+        "card_alignment": "center",
+        "title_size": 14,
+        "title_weight": "400",
+        "title_color": "",
+        "price_size": 14,
+        "price_weight": "600",
+        "price_color": "",
+        "show_compare_price": true,
+        "show_sale_badge": false,
+        "sale_badge_text": "Oferta",
+        "sale_badge_bg": "#121212",
+        "sale_badge_color": "#ffffff",
+        "show_vendor": false,
+        "show_swatches": false,
+        "swatch_option_names": "Color,Colour",
+        "swap_effect": "crossfade",
+        "swap_duration": 0.5,
+        "swap_easing": "ease",
+        "hover_zoom": false,
+        "hover_zoom_scale": 105,
+        "swap_on_tap": false,
+        "show_quick_add": false,
+        "quick_add_bg": "#ffffff",
+        "quick_add_color": "#121212",
+        "per_desktop": 5,
+        "per_tablet": 3,
+        "per_mobile": 1.5,
+        "arrows": "hover",
+        "arrow_position": "sides",
+        "arrow_shape": "circle",
+        "arrow_size": 40,
+        "arrow_bg": "#ffffff",
+        "arrow_color": "#121212",
+        "hide_arrows_at_ends": true,
+        "navigation": "progress",
+        "progress_width": 30,
+        "progress_height": 2,
+        "progress_track_color": "#e5e5e5",
+        "progress_fill_color": "#121212",
+        "autoplay": false,
+        "autoplay_interval": 5,
+        "autoplay_pause_hover": true,
+        "loop": false,
+        "color_scheme": "",
+        "background_color": "",
+        "full_width": true,
+        "side_padding": 20,
+        "padding_top_desktop": 48,
+        "padding_bottom_desktop": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "related-products": {
@@ -227,99 +475,6 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
-    },
-    "image_with_text_eCRMfk": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_94DP8n": {
-          "type": "heading",
-          "settings": {
-            "heading": "Mucho más que un regalo",
-            "heading_size": "h1",
-            "dynamic_sale_banner": false,
-            "banner_language": ""
-          }
-        },
-        "text_bXNFJ7": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Esta excepcional joya es mucho más que un simple regalo: es un símbolo de amor lleno de significado, creado para ser una fuente diaria de alegría y un hermoso recordatorio para atesorar durante muchos años.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_TtgKq4": {
-          "type": "button",
-          "settings": {
-            "button_label": "Comprar ahora",
-            "button_link": "https://thenivora.cl/products/pulsera-para-mi-hija-conexion-eterna-cl",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_94DP8n",
-        "text_bXNFJ7",
-        "button_TtgKq4"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/S0d1e0ac396ff45fe83c86e9ead6bf09ar_jpg_960x960q75_jpg.webp",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 4
-      }
-    },
-    "blocks_Ua84kC": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_27b352b_AWKGcN": {
-          "type": "ai_gen_block_27b352b",
-          "settings": {
-            "title": "<strong>Quizás también te guste</strong>",
-            "subtitle": "Piezas seleccionadas de nuestra colección",
-            "product_list": [
-              "pulsera-de-piedras-de-nacimiento-entrelazadas-cl",
-              "para-mi-hijo-pulsera-grabada-cl",
-              "pulsera-vinculo-eterno-con-nombres-cl",
-              "pulsera-personalizada-a-mi-esposo-cl"
-            ],
-            "products_to_show": 4,
-            "container_width": 1200,
-            "products_per_row": 4,
-            "products_per_row_tablet": 3,
-            "grid_gap": 30,
-            "section_padding_top": 60,
-            "section_padding_bottom": 60,
-            "header_spacing": 40,
-            "background_color": "#ffffff",
-            "image_border_radius": 0,
-            "title_size": 28,
-            "title_color": "#121212",
-            "subtitle_size": 14,
-            "subtitle_color": "#666666",
-            "product_title_size": 16,
-            "product_title_color": "#121212",
-            "product_price_size": 15,
-            "product_price_color": "#121212",
-            "sale_price_color": "#d82c0d",
-            "link_hover_color": "#666666"
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_27b352b_AWKGcN"
-      ],
-      "name": "You may also like",
-      "settings": {}
     },
     "17341290603fa2426b": {
       "type": "apps",
@@ -344,14 +499,39 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "blocks_UD7fhM": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b5f6c36_jNtrcc": {
+          "type": "ai_gen_block_b5f6c36",
+          "settings": {
+            "button_label": "Adicionar ao carrinho",
+            "sold_out_label": "Esgotado",
+            "discount_label": "ECONOMIZE [percent]%",
+            "accent_color": "#000000",
+            "bar_background": "#ffffff",
+            "text_color": "#343434",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b5f6c36_jNtrcc"
+      ],
+      "name": "Sticky add to cart",
+      "settings": {}
     }
   },
   "order": [
     "ss_payment_icons_9hc3pf",
     "main",
+    "image_with_text_G8zpBF",
+    "blocks_f7LdBR",
+    "related_products_slider_8xHdB6",
     "related-products",
-    "image_with_text_eCRMfk",
-    "blocks_Ua84kC",
-    "17341290603fa2426b"
+    "17341290603fa2426b",
+    "blocks_UD7fhM"
   ]
 }
